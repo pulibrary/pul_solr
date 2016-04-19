@@ -9,3 +9,5 @@ gem 'rsolr'
 gem 'solr_wrapper', '0.6.1'
 
 gem 'faraday'
+
+gem 'rake'

@@ -1,5 +1,7 @@
 # PulSolr
 
+[![Circle CI](https://circleci.com/gh/pulibrary/pul_solr.svg?style=svg)](https://circleci.com/gh/pulibrary/pul_solr)
+
 Versions:
 
 * Ruby: 2.3.0
