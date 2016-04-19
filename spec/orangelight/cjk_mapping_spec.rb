@@ -51,17 +51,17 @@ describe 'CJK character equivalence' do
     before(:all) do
       delete_all
     end
-    it 'indirect mapping 壹 => 壱' do
-      add_single_char_doc('壹')
-      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:壱' })).to include('1')
+    it '毛泽东思想 => 毛澤東思想' do
+      add_single_char_doc('毛泽东思想')
+      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"毛澤東思想"' })).to include('1')
     end
-    it 'indirect mapping 壹 => 弌' do
-      add_single_char_doc('弌')
-      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:壹' })).to include('1')
+    it '毛澤東思想 => 毛沢東思想' do
+      add_single_char_doc('毛澤東思想')
+      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"毛沢東思想"' })).to include('1')
     end
-    it 'indirect mapping 壱 => 弌' do
-      add_single_char_doc('壱')
-      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:弌' })).to include('1')
+    it '毛沢東思想 => 毛泽东思想' do
+      add_single_char_doc('毛沢東思想')
+      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"毛泽东思想"' })).to include('1')
     end
   end
   after(:all) do
