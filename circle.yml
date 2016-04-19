@@ -1,0 +1,11 @@
+machine:
+  ruby:
+    version: 2.3.0
+dependencies:
+  bundler:
+    without: [development, production]
+  post:
+    - bundle exec rake solr:start
+test:
+  override:
+    - bundle exec rake spec
