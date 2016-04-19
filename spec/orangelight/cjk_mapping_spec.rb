@@ -18,11 +18,15 @@ describe 'CJK character equivalence' do
       from = map['cjk_mapped_from']
       to = map['cjk_mapped_to']
       id = map['id'].to_s
-      it "#{from} => #{to}" do
-        expect(solr_resp_doc_ids_only({ 'fq'=>"cjk_mapped_to:#{from}"})).to include(id)
-      end
-      it "#{to} => #{from} (reverse)" do
-        expect(solr_resp_doc_ids_only({ 'fq'=>"cjk_mapped_from:#{to}"})).to include(id)
+      if map['cjk_skip']
+        xit "#{from} => #{to}"
+      else
+        it "#{from} => #{to}" do
+          expect(solr_resp_doc_ids_only({ 'fq'=>"cjk_mapped_to:#{from}"})).to include(id)
+        end
+        it "#{to} => #{from} (reverse)" do
+          expect(solr_resp_doc_ids_only({ 'fq'=>"cjk_mapped_from:#{to}"})).to include(id)
+        end
       end
     end
   end
