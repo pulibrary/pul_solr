@@ -1,9 +1,4 @@
 [
-{"id": 1, "cjk_mapped_from": "０", "cjk_mapped_to": "〇", "cjk_skip": true},
-{"id": 2, "cjk_mapped_from": "『", "cjk_mapped_to": "「", "cjk_skip": true},
-{"id": 3, "cjk_mapped_from": "｢", "cjk_mapped_to": "「", "cjk_skip": true},
-{"id": 4, "cjk_mapped_from": "』", "cjk_mapped_to": "」", "cjk_skip": true},
-{"id": 5, "cjk_mapped_from": "｣", "cjk_mapped_to": "」", "cjk_skip": true},
 {"id": 6, "cjk_mapped_from": "ｳ", "cjk_mapped_to": "ウ"},
 {"id": 7, "cjk_mapped_from": "ﾑ", "cjk_mapped_to": "ム"},
 {"id": 8, "cjk_mapped_from": "儸", "cjk_mapped_to": "㑩"},
