@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'json'
 
 docs = JSON.parse(File.read('spec/fixtures/cjk_map_solr_fixtures.json'))
+stanford_docs = JSON.parse(File.read('spec/fixtures/cjk_stanford_fixtures.json'))
 
 describe 'CJK character equivalence' do
   def add_single_field_doc char
@@ -15,6 +16,28 @@ describe 'CJK character equivalence' do
   end
   describe 'Direct mapping check' do
     docs.each do |map|
+      from = map['cjk_mapped_from']
+      to = map['cjk_mapped_to']
+      id = map['id'].to_s
+      if map['cjk_skip']
+        xit "#{from} => #{to}"
+      else
+        it "#{from} => #{to}" do
+          expect(solr_resp_doc_ids_only({ 'fq'=>"cjk_mapped_to:#{from}"})).to include(id)
+        end
+        it "#{to} => #{from} (reverse)" do
+          expect(solr_resp_doc_ids_only({ 'fq'=>"cjk_mapped_from:#{to}"})).to include(id)
+        end
+      end
+    end
+  end
+  describe 'Stanford direct mapping check' do
+    before(:all) do
+      delete_all
+      @@solr.add(stanford_docs)
+      @@solr.commit
+    end
+    stanford_docs.each do |map|
       from = map['cjk_mapped_from']
       to = map['cjk_mapped_to']
       id = map['id'].to_s
@@ -72,6 +95,24 @@ describe 'CJK character equivalence' do
     it '二０００ => 二〇〇〇' do
       add_single_field_doc('二〇〇〇')
       expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"二０００"' })).to include('1')
+    end
+  end
+  describe 'mappings covered by other solr analyzers' do
+    it '亜梅亜 => 亞梅亞' do
+      add_single_field_doc('亜梅亜')
+      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"亞梅亞"' })).to include('1')
+    end
+    it '亞梅亞 => 亜梅亜' do
+      add_single_field_doc('亞梅亞')
+      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"亜梅亜"' })).to include('1')
+    end
+    it '梅亜 => 梅亞' do
+      add_single_field_doc('梅亜')
+      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"梅亞"' })).to include('1')
+    end
+    it '梅亜 => 梅亞' do
+      add_single_field_doc('梅亞')
+      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"梅亜"' })).to include('1')
     end
   end
   after(:all) do
