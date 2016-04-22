@@ -26,6 +26,8 @@ namespace :pulsolr do
   task :lib do
     FileUtils.cp("#{solr_home_path}/lib/contrib/analysis-extras/lib/CJKFoldingFilter.jar",
                  "#{solr_instance_path}/contrib/analysis-extras/lib")
+    FileUtils.rm_r(%W(#{solr_home_path}/lib/contrib/analysis-extras/lib
+                 #{solr_home_path}/lib/contrib/analysis-extras/lucene-libs))
     FileUtils.cp_r("#{solr_instance_path}/contrib/analysis-extras/lib",
                  "#{solr_home_path}/lib/contrib/analysis-extras")
     FileUtils.cp_r("#{solr_instance_path}/contrib/analysis-extras/lucene-libs",
