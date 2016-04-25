@@ -257,9 +257,12 @@
         author_addl_t^50
         subject_addl_unstem_search^250
         subject_addl_t^50
+        isbn_s^40
+        isbn_t^40
+        issn_s^40
+        lccn_s^40
         title_series_unstem_search^25
         title_series_t^10
-        isbn_t
         text
         description_t
         location
@@ -284,6 +287,10 @@
         author_addl_t^500
         subject_addl_unstem_search^2500
         subject_addl_t^500
+        isbn_s^400
+        isbn_t^400
+        issn_s^400
+        lccn_s^400
         title_series_unstem_search^250
         title_series_t^100
         text^10

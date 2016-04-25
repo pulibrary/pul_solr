@@ -1,6 +1,8 @@
 machine:
   ruby:
     version: 2.3.0
+  java:
+    version: openjdk8
 dependencies:
   bundler:
     without: [development, production]
