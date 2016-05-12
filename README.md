@@ -6,7 +6,7 @@ Versions:
 
 * Ruby: 2.3.0
 * Solr: 5.4.1
-* solr_wrapper: 0.6.1 (until https://github.com/cbeer/solr_wrapper/issues/44 is resolved)
+* solr_wrapper: 0.12.0
 * rspec-solr: 2.0.0
 * rspec: 3.4
 
