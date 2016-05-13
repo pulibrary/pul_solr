@@ -9,7 +9,6 @@ solr_download_path = '/tmp'
 solr_instance_path = "#{solr_download_path}/solr"
 solr_home_path = 'configs'
 
-# Remove this after upgrading to latest solr_wrapper
 SolrWrapper.default_instance_options = {
     verbose: true,
     port: '8888',
