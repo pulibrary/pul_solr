@@ -21,14 +21,17 @@
  It is *not* a good example to work from. 
 -->
 <config>
-  <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
-  <!--  The DirectoryFactory to use for indexes.
-        solr.StandardDirectoryFactory, the default, is filesystem based.
-        solr.RAMDirectoryFactory is memory based, not persistent, and doesn't work with replication. -->
-  <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
+  <luceneMatchVersion>6.0.1</luceneMatchVersion>
 
-  <lib dir="../lib/contrib/analysis-extras/lib" />
-  <lib dir="../lib/contrib/analysis-extras/lucene-libs" />
+  <lib dir="lib/contrib/analysis-extras/lib" />
+  <lib dir="lib/contrib/analysis-extras/lucene-libs" />
+
+  <directoryFactory name="DirectoryFactory"
+                    class="${solr.directoryFactory:solr.StandardDirectoryFactory}">
+  </directoryFactory>
+
+  <codecFactory class="solr.SchemaCodecFactory"/>
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
 
   <dataDir>${solr.blacklight-core.data.dir:}</dataDir>
   
@@ -42,10 +45,7 @@
     <str name="dir">${solr.data.dir:}</str>
   </updateLog>
 
-  <requestHandler name="standard" class="solr.StandardRequestHandler" />
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
-  <requestHandler name="/update" class="solr.UpdateRequestHandler"  />
-  <requestHandler name="/admin/" class="org.apache.solr.handler.admin.AdminHandlers" />
 
   <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
     <lst name="invariants">
@@ -70,9 +70,6 @@
   </admin>
 
 
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-       Query section - From Example solrconfig.xml
-       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <query>
     <filterCache class="solr.FastLRUCache"
                  size="8192"
@@ -218,7 +215,7 @@
        of SearchComponents (see below) and supports distributed
        queries across multiple shards
     -->
-  <requestHandler name="search" class="solr.SearchHandler" default="true">
+   <requestHandler name="search" class="solr.SearchHandler" default="true">
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
       -->
@@ -725,5 +722,24 @@
       -->
   </searchComponent>
 
-</config>
+  <searchComponent name="suggest" class="solr.SuggestComponent">
+    <lst name="suggester">
+      <str name="name">mySuggester</str>
+      <str name="lookupImpl">FuzzyLookupFactory</str>
+      <str name="suggestAnalyzerFieldType">textSuggest</str>
+      <str name="buildOnCommit">true</str>
+      <str name="field">suggest</str>
+    </lst>
+  </searchComponent>
 
+  <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
+    <lst name="defaults">
+      <str name="suggest">true</str>
+      <str name="suggest.count">5</str>
+      <str name="suggest.dictionary">mySuggester</str>
+    </lst>
+    <arr name="components">
+      <str>suggest</str>
+    </arr>
+  </requestHandler>
+</config>
