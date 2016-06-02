@@ -1,0 +1,170 @@
+{
+
+    "id": [
+        "1332805"
+    ],
+    "cjk_all": [
+        "Cairns, David, 1904-",
+        "The image of God in man / [by] David Cairns.",
+        "Revised ed. / with an introduction by David E. Jenkins.",
+        "London : Collins, 1973.",
+        "317 p. ; 18 cm.",
+        "The Fontana library of theology and philosophy",
+        "Includes bibliographical references and index.",
+        "Image of God.",
+        "1530450 rcppa 0 5743.232.1973 tr fr f"
+    ],
+    "author_display": [
+        "Cairns, David, 1904-"
+    ],
+    "author_sort": [
+        "Cairns, David, 1904-"
+    ],
+    "author_citation_display": [
+        "Cairns, David"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Cairns, David\"}"
+    ],
+    "author_s": [
+        "Cairns, David, 1904-"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": [
+        "The image of God in man / [by] David Cairns."
+    ],
+    "title_a_index": [
+        "The image of God in man /"
+    ],
+    "title_sort": [
+        "image of God in man / [by] David Cairns."
+    ],
+    "title_no_h_index": [
+        "The image of God in man / [by] David Cairns.",
+        "image of God in man / [by] David Cairns."
+    ],
+    "title_t": [
+        "The image of God in man / [by] David Cairns."
+    ],
+    "title_citation_display": [
+        "The image of God in man /"
+    ],
+    "series_title_index": [
+        "The Fontana library of theology and philosophy"
+    ],
+    "compiled_created_t": [
+        "The image of God in man / [by] David Cairns."
+    ],
+    "edition_display": [
+        "Revised ed. / with an introduction by David E. Jenkins."
+    ],
+    "pub_created_display": [
+        "London : Collins, 1973."
+    ],
+    "pub_created_s": [
+        "London : Collins, 1973."
+    ],
+    "pub_citation_display": [
+        "London: Collins"
+    ],
+    "pub_date_display": [
+        "1973"
+    ],
+    "pub_date_start_sort": [
+        "1973"
+    ],
+    "cataloged_tdt": [
+        "2000-06-13T04:00:00Z"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "317 p. ; 18 cm."
+    ],
+    "description_t": [
+        "317 p. ; 18 cm."
+    ],
+    "series_display": [
+        "The Fontana library of theology and philosophy"
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references and index."
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_code_s": [
+        "eng"
+    ],
+    "subject_display": [
+        "Image of God"
+    ],
+    "subject_facet": [
+        "Image of God"
+    ],
+    "subject_topic_facet": [
+        "Image of God"
+    ],
+    "lc_1letter_facet": [
+        "B - Philosophy, Psychology, Religion"
+    ],
+    "lc_rest_facet": [
+        "BT - Doctrinal Theology"
+    ],
+    "call_number_scheme_facet": [
+        "Library of Congress"
+    ],
+    "call_number_group_facet": [
+        "B - Philosophy, Psychology, Religion"
+    ],
+    "call_number_full_facet": [
+        "BT - Doctrinal Theology"
+    ],
+    "isbn_display": [
+        "0006427049 :"
+    ],
+    "lccn_display": [
+        "   74185643  "
+    ],
+    "lccn_s": [
+        "74185643"
+    ],
+    "isbn_s": [
+        "9780006427049"
+    ],
+    "oclc_s": [
+        "855996"
+    ],
+    "standard_no_index": [
+        "ocm00855996"
+    ],
+    "other_version_s": [
+        "9780006427049",
+        "ocm00855996"
+    ],
+    "holdings_1display": [
+        "{\"1530450\":{\"location\":\"ReCAP\",\"library\":\"ReCAP\",\"location_code\":\"rcppa\",\"call_number\":\"5743.232.1973\",\"call_number_browse\":\"5743.232.1973\"}}"
+    ],
+    "location_code_s": [
+        "rcppa"
+    ],
+    "location_display": [
+        "ReCAP"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "access_facet": [
+        "In the Library"
+    ],
+    "call_number_display": [
+        "5743.232.1973"
+    ],
+    "call_number_browse_s": [
+        "5743.232.1973"
+    ]
+
+}

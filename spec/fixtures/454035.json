@@ -1,0 +1,144 @@
+{
+
+    "id": [
+        "454035"
+    ],
+    "cjk_all": [
+        "Rumayḥ, Ṭalʻat.",
+        "ʻUthmān al-lughz wa-al-usṭūrah / Ṭalʻat Rumayḥ.",
+        "al-Ṭabʻah 1.",
+        "al-Qāhirah : Sīnā, 1987.",
+        "242 p. : ill. (1 folded), facsims. ; 24 cm.",
+        "Includes bibliographical references.",
+        "ʻUthmān, ʻUthmān Aḥmad.",
+        "Engineers Egypt Biography.",
+        "494089 anxafst 1 DT107.83 .R85 1987"
+    ],
+    "author_display": [
+        "Rumayḥ, Ṭalʻat."
+    ],
+    "author_sort": [
+        "Rumayḥ, Ṭalʻat."
+    ],
+    "author_citation_display": [
+        "Rumayḥ, Ṭalʻat."
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Rumayḥ, Ṭalʻat.\"}"
+    ],
+    "author_s": [
+        "Rumayḥ, Ṭalʻat."
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": [
+        "ʻUthmān al-lughz wa-al-usṭūrah / Ṭalʻat Rumayḥ."
+    ],
+    "title_a_index": [
+        "ʻUthmān al-lughz wa-al-usṭūrah /"
+    ],
+    "title_sort": [
+        "ʻUthmān al-lughz wa-al-usṭūrah / Ṭalʻat Rumayḥ."
+    ],
+    "title_no_h_index": [
+        "ʻUthmān al-lughz wa-al-usṭūrah / Ṭalʻat Rumayḥ."
+    ],
+    "title_t": [
+        "ʻUthmān al-lughz wa-al-usṭūrah / Ṭalʻat Rumayḥ."
+    ],
+    "title_citation_display": [
+        "ʻUthmān al-lughz wa-al-usṭūrah /"
+    ],
+    "compiled_created_t": [
+        "ʻUthmān al-lughz wa-al-usṭūrah / Ṭalʻat Rumayḥ."
+    ],
+    "edition_display": [
+        "al-Ṭabʻah 1."
+    ],
+    "pub_created_display": [
+        "al-Qāhirah : Sīnā, 1987."
+    ],
+    "pub_created_s": [
+        "al-Qāhirah : Sīnā, 1987."
+    ],
+    "pub_citation_display": [
+        "al-Qāhirah: Sīnā"
+    ],
+    "pub_date_display": [
+        "1987"
+    ],
+    "pub_date_start_sort": [
+        "1987"
+    ],
+    "cataloged_tdt": [
+        "2000-06-13T04:00:00Z"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "242 p. : ill. (1 folded), facsims. ; 24 cm."
+    ],
+    "description_t": [
+        "242 p. : ill. (1 folded), facsims. ; 24 cm."
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references."
+    ],
+    "language_facet": [
+        "Arabic"
+    ],
+    "language_code_s": [
+        "ara"
+    ],
+    "subject_display": [
+        "ʻUthmān, ʻUthmān Aḥmad",
+        "Engineers—Egypt—Biography"
+    ],
+    "subject_facet": [
+        "ʻUthmān, ʻUthmān Aḥmad",
+        "Engineers—Egypt—Biography"
+    ],
+    "subject_topic_facet": [
+        "ʻUthmān, ʻUthmān Aḥmad",
+        "Engineers",
+        "Egypt",
+        "Biography"
+    ],
+    "genre_facet": [
+        "Biography"
+    ],
+    "oclc_s": [
+        "20588638"
+    ],
+    "standard_no_index": [
+        "20588638",
+        "NJPG88-B34220"
+    ],
+    "other_version_s": [
+        "ocm20588638"
+    ],
+    "holdings_1display": [
+        "{\"494089\":{\"location\":\"Forrestal Annex - Temporary\",\"library\":\"Forrestal Annex\",\"location_code\":\"anxafst\",\"call_number\":\"DT107.83 .R85 1987\",\"call_number_browse\":\"DT107.83 .R85 1987\"}}"
+    ],
+    "location_code_s": [
+        "anxafst"
+    ],
+    "location_display": [
+        "Forrestal Annex - Temporary"
+    ],
+    "location": [
+        "Forrestal Annex"
+    ],
+    "access_facet": [
+        "In the Library"
+    ],
+    "call_number_display": [
+        "DT107.83 .R85 1987"
+    ],
+    "call_number_browse_s": [
+        "DT107.83 .R85 1987"
+    ]
+
+}
