@@ -1,6 +1,0 @@
-port: 8888
-version: 5.4.1
-instance_dir: /tmp/solr
-download_dir: /tmp
-solr_options:
-  s: configs/
