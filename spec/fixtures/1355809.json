@@ -1,0 +1,169 @@
+{
+  "id": [
+    "1355809"
+  ],
+  "cjk_all": [
+    "Stevens, Peter S.",
+    "Patterns in nature [by] Peter S. Stevens.",
+    "[1st ed.]",
+    "Boston, Little, Brown [1974]",
+    "240 p. illus. 25 cm.",
+    "\"An Atlantic Monthly Press book.\"",
+    "Bibliography: p. 225-232.",
+    "Nature.",
+    "Morphology.",
+    "Philosophy of nature.",
+    "1556898 f 0 QH81.S859"
+  ],
+  "author_display": [
+    "Stevens, Peter S."
+  ],
+  "author_sort": [
+    "Stevens, Peter S."
+  ],
+  "author_citation_display": [
+    "Stevens, Peter S."
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Stevens, Peter S.\"}"
+  ],
+  "author_s": [
+    "Stevens, Peter S."
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "Patterns in nature [by] Peter S. Stevens."
+  ],
+  "title_sort": [
+    "Patterns in nature [by] Peter S. Stevens."
+  ],
+  "title_no_h_index": [
+    "Patterns in nature [by] Peter S. Stevens."
+  ],
+  "title_t": [
+    "Patterns in nature [by] Peter S. Stevens."
+  ],
+  "title_citation_display": [
+    "Patterns in nature"
+  ],
+  "compiled_created_t": [
+    "Patterns in nature [by] Peter S. Stevens."
+  ],
+  "edition_display": [
+    "[1st ed.]"
+  ],
+  "pub_created_display": [
+    "Boston, Little, Brown [1974]"
+  ],
+  "pub_created_s": [
+    "Boston, Little, Brown [1974]"
+  ],
+  "pub_citation_display": [
+    "Boston: Little, Brown"
+  ],
+  "pub_date_display": [
+    "1974"
+  ],
+  "pub_date_start_sort": [
+    "1974"
+  ],
+  "cataloged_tdt": [
+    "2000-06-13T04:00:00Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "240 p. illus. 25 cm."
+  ],
+  "description_t": [
+    "240 p. illus. 25 cm."
+  ],
+  "notes_display": [
+    "\"An Atlantic Monthly Press book.\""
+  ],
+  "bib_ref_notes_display": [
+    "Bibliography: p. 225-232."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "subject_display": [
+    "Nature",
+    "Morphology",
+    "Philosophy of nature"
+  ],
+  "subject_facet": [
+    "Nature",
+    "Morphology",
+    "Philosophy of nature"
+  ],
+  "subject_topic_facet": [
+    "Nature",
+    "Morphology",
+    "Philosophy of nature"
+  ],
+  "lc_1letter_facet": [
+    "Q - Science"
+  ],
+  "lc_rest_facet": [
+    "QH - Natural History, Biology"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "Q - Science"
+  ],
+  "call_number_full_facet": [
+    "QH - Natural History, Biology"
+  ],
+  "isbn_display": [
+    "0316813281"
+  ],
+  "lccn_display": [
+    "   73019720  "
+  ],
+  "lccn_s": [
+    "73019720"
+  ],
+  "isbn_s": [
+    "9780316813280"
+  ],
+  "oclc_s": [
+    "749795"
+  ],
+  "standard_no_index": [
+    "ocm00749795"
+  ],
+  "other_version_s": [
+    "9780316813280",
+    "ocm00749795"
+  ],
+  "holdings_1display": [
+    "{\"1556898\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"call_number\":\"QH81.S859\",\"call_number_browse\":\"QH81.S859\"}}"
+  ],
+  "location_code_s": [
+    "f"
+  ],
+  "location_display": [
+    "Firestone Library"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "access_facet": [
+    "In the Library"
+  ],
+  "call_number_display": [
+    "QH81.S859"
+  ],
+  "call_number_browse_s": [
+    "QH81.S859"
+  ]
+}

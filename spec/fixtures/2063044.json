@@ -1,0 +1,151 @@
+{
+  "id": [
+    "2063044"
+  ],
+  "cjk_all": [
+    "American Association for the Advancement of Science.",
+    "Summarized proceedings ... including a chapter on the background and origin of the association and a directory of fellows and other members \/ American Association for the Advancement of Science.",
+    "Washington, D.C. : The Association, 1934.",
+    "1 v. ; 24 cm.",
+    "Quinquennial",
+    "Vol. 82 to 86 (June 1929 to Jan. 1934).",
+    "Full proceedings of the Association issued in: Science (Weekly).",
+    "Science Congresses.",
+    "American Association for the Advancement of Science Congresses.",
+    "American Association for the Advancement of Science. Summarized proceedings of the American Association for the Advancement of Science for the period from ... to ...",
+    "American Association for the Advancement of Science. Summarized proceedings and a directory of members",
+    "Science (Weekly) 0036-8075",
+    "2345729 anxb 1 8001.125",
+    "2345729 0 1934"
+  ],
+  "author_display": [
+    "American Association for the Advancement of Science"
+  ],
+  "author_sort": [
+    "American Association for the Advancement of Science"
+  ],
+  "author_citation_display": [
+    "American Association for the Advancement of Science"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"American Association for the Advancement of Science\"}"
+  ],
+  "author_s": [
+    "American Association for the Advancement of Science"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "Summarized proceedings ... including a chapter on the background and origin of the association and a directory of fellows and other members \/ American Association for the Advancement of Science."
+  ],
+  "title_sort": [
+    "Summarized proceedings ... including a chapter on the background and origin of the association and a directory of fellows and other members \/ American Association for the Advancement of Science."
+  ],
+  "title_no_h_index": [
+    "Summarized proceedings ... including a chapter on the background and origin of the association and a directory of fellows and other members \/ American Association for the Advancement of Science."
+  ],
+  "title_t": [
+    "Summarized proceedings ... including a chapter on the background and origin of the association and a directory of fellows and other members \/ American Association for the Advancement of Science."
+  ],
+  "title_citation_display": [
+    "Summarized proceedings ... including a chapter on the background and origin of the association and a directory of fellows and other members \/"
+  ],
+  "compiled_created_t": [
+    "Summarized proceedings ... including a chapter on the background and origin of the association and a directory of fellows and other members \/ American Association for the Advancement of Science."
+  ],
+  "pub_created_display": [
+    "Washington, D.C. : The Association, 1934."
+  ],
+  "pub_created_s": [
+    "Washington, D.C. : The Association, 1934."
+  ],
+  "pub_citation_display": [
+    "Washington, D.C.: The Association"
+  ],
+  "pub_date_display": [
+    "1934"
+  ],
+  "pub_date_start_sort": [
+    "1934"
+  ],
+  "pub_date_end_sort": [
+    "1934"
+  ],
+  "format": [
+    "Journal"
+  ],
+  "description_display": [
+    "1 v. ; 24 cm.",
+    "Vol. 82 to 86 (June 1929 to Jan. 1934)."
+  ],
+  "description_t": [
+    "1 v. ; 24 cm.",
+    "Vol. 82 to 86 (June 1929 to Jan. 1934)."
+  ],
+  "continues_display": [
+    "American Association for the Advancement of Science."
+  ],
+  "continued_by_display": [
+    "American Association for the Advancement of Science."
+  ],
+  "frequency_display": [
+    "Quinquennial"
+  ],
+  "linking_notes_display": [
+    "Full proceedings of the Association issued in: Science (Weekly)."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "subject_display": [
+    "Science\u2014Congresses",
+    "American Association for the Advancement of Science\u2014Congresses"
+  ],
+  "subject_facet": [
+    "Science\u2014Congresses",
+    "American Association for the Advancement of Science\u2014Congresses"
+  ],
+  "subject_topic_facet": [
+    "Science",
+    "Congresses",
+    "American Association for the Advancement of Science",
+    "Congresses"
+  ],
+  "genre_facet": [
+    "Congresses"
+  ],
+  "oclc_s": [
+    "14154019"
+  ],
+  "standard_no_index": [
+    "ocm14154019"
+  ],
+  "other_version_s": [
+    "ocm14154019"
+  ],
+  "holdings_1display": [
+    "{\"2345729\":{\"location\":\"Fine Annex\",\"library\":\"Fine Annex\",\"location_code\":\"anxb\",\"call_number\":\"8001.125\",\"call_number_browse\":\"8001.125\",\"location_has\":[\"1934\"]}}"
+  ],
+  "location_code_s": [
+    "anxb"
+  ],
+  "location_display": [
+    "Fine Annex"
+  ],
+  "location": [
+    "Fine Annex"
+  ],
+  "access_facet": [
+    "In the Library"
+  ],
+  "call_number_display": [
+    "8001.125"
+  ],
+  "call_number_browse_s": [
+    "8001.125"
+  ]
+}

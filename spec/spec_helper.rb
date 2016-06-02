@@ -43,7 +43,7 @@ end
 
 # gets solr doc from bibdata
 def add_doc(id)
-  doc = JSON.parse(Faraday.get("https://bibdata.princeton.edu/bibliographic/#{id}/solr").body)
+  doc = JSON.parse(File.read(File.expand_path("../fixtures/#{id}.json", __FILE__)))
   @@solr.add(doc)
   @@solr.commit
 end

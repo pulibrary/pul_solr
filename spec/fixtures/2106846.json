@@ -1,0 +1,172 @@
+{
+  "id": [
+    "2106846"
+  ],
+  "cjk_all": [
+    "Science (New York, N.Y.)",
+    "Science (Wash. D.C.)",
+    "Science (Washington, D.C.)",
+    "Science.",
+    "[New York, s.n., 1880-1882]",
+    "3 v. : ill. ; 29 cm.",
+    "Weekly",
+    "Vol. 1, no. 1 (July 3, 1880)-v. 3, no. 82 (Mar. 4, 1882).",
+    "\"A weekly record of scientific progress.\"",
+    "None issued for Jan. 7, Jan. 28-Feb. 1882.",
+    "Science Periodicals.",
+    "Science (Cambridge, Mass.) 0036-8075",
+    "2391056 f 8001.847",
+    "2391056 Vol. 1, no. 1 (July 3, 1880)-v. 3, no. 82 (Mar. 4, 1882)"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+  ],
+  "uniform_title_s": [
+    "Science (New York, N.Y.)"
+  ],
+  "title_display": [
+    "Science."
+  ],
+  "title_sort": [
+    "Science."
+  ],
+  "title_no_h_index": [
+    "Science."
+  ],
+  "title_t": [
+    "Science."
+  ],
+  "title_citation_display": [
+    "Science."
+  ],
+  "compiled_created_t": [
+    "Science."
+  ],
+  "pub_created_display": [
+    "[New York, s.n., 1880-1882]"
+  ],
+  "pub_created_s": [
+    "[New York, s.n., 1880-1882]"
+  ],
+  "pub_citation_display": [
+    "New York: s.n."
+  ],
+  "pub_date_display": [
+    "1880"
+  ],
+  "pub_date_start_sort": [
+    "1880"
+  ],
+  "pub_date_end_sort": [
+    "1882"
+  ],
+  "cataloged_tdt": [
+    "2000-08-14T15:57:11Z"
+  ],
+  "format": [
+    "Journal"
+  ],
+  "description_display": [
+    "3 v. : ill. ; 29 cm.",
+    "Vol. 1, no. 1 (July 3, 1880)-v. 3, no. 82 (Mar. 4, 1882).",
+    "None issued for Jan. 7, Jan. 28-Feb. 1882."
+  ],
+  "description_t": [
+    "3 v. : ill. ; 29 cm.",
+    "Vol. 1, no. 1 (July 3, 1880)-v. 3, no. 82 (Mar. 4, 1882).",
+    "None issued for Jan. 7, Jan. 28-Feb. 1882."
+  ],
+  "frequency_display": [
+    "Weekly"
+  ],
+  "notes_display": [
+    "\"A weekly record of scientific progress.\""
+  ],
+  "numbering_pec_notes_display": [
+    "None issued for Jan. 7, Jan. 28-Feb. 1882."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "subject_display": [
+    "Science\u2014Periodicals"
+  ],
+  "subject_facet": [
+    "Science\u2014Periodicals"
+  ],
+  "subject_topic_facet": [
+    "Science"
+  ],
+  "lc_1letter_facet": [
+    "Q - Science"
+  ],
+  "lc_rest_facet": [
+    "Q - Science"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "Q - Science"
+  ],
+  "call_number_full_facet": [
+    "Q - Science"
+  ],
+  "genre_facet": [
+    "Periodicals"
+  ],
+  "other_title_index": [
+    "Science (Wash. D.C.)",
+    "Science (Washington, D.C.)"
+  ],
+  "other_title_display": [
+    "Science (Wash. D.C.)",
+    "Science (Washington, D.C.)"
+  ],
+  "issn_display": [
+    "0036-8075"
+  ],
+  "lccn_display": [
+    "   02027780  "
+  ],
+  "lccn_s": [
+    "02027780"
+  ],
+  "issn_s": [
+    "00368075"
+  ],
+  "oclc_s": [
+    "2948546"
+  ],
+  "standard_no_index": [
+    "ocm02948546"
+  ],
+  "other_version_s": [
+    "00368075",
+    "ocm02948546"
+  ],
+  "holdings_1display": [
+    "{\"2391056\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"call_number\":\"8001.847\",\"call_number_browse\":\"8001.847\",\"location_has\":[\"Vol. 1, no. 1 (July 3, 1880)-v. 3, no. 82 (Mar. 4, 1882)\"]}}"
+  ],
+  "location_code_s": [
+    "f"
+  ],
+  "location_display": [
+    "Firestone Library"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "access_facet": [
+    "In the Library"
+  ],
+  "call_number_display": [
+    "8001.847"
+  ],
+  "call_number_browse_s": [
+    "8001.847"
+  ]
+}
