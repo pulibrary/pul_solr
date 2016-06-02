@@ -1,8 +1,6 @@
 require 'spec_helper'
 require 'json'
 
-docs = JSON.parse(File.read('spec/fixtures/cjk_map_solr_fixtures.json'))
-
 describe 'standard no keyword search' do
   before(:all) do
     delete_all

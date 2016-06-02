@@ -180,6 +180,7 @@
        <analyzer>
          <tokenizer class="solr.StandardTokenizerFactory"/>
          <filter class="solr.ICUFoldingFilterFactory" />
+         <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="'" replacement="" />
 <!--          <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" /> -->
          <filter class="solr.SnowballPorterFilterFactory" language="English" />
        </analyzer>

@@ -1,8 +1,6 @@
 require 'spec_helper'
 require 'json'
 
-docs = JSON.parse(File.read('spec/fixtures/cjk_map_solr_fixtures.json'))
-
 describe 'title keyword search' do
   def title_query_string q
     "{!qf=$title_qf pf=$title_pf}#{q}"
