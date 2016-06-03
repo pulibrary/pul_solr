@@ -7,7 +7,7 @@ task :default => :spec
 
 solr_download_path = '/tmp'
 solr_instance_path = "#{solr_download_path}/solr"
-solr_home_path = 'configs'
+solr_home_path = 'solr_configs'
 
 SolrWrapper.default_instance_options = {
     verbose: true,

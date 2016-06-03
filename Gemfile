@@ -11,3 +11,7 @@ gem 'solr_wrapper', '~> 0.12'
 gem 'faraday'
 
 gem 'rake'
+
+group :development do
+  gem 'capistrano', '~> 3.5'
+end

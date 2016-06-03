@@ -7,4 +7,5 @@
 /pkg/
 /spec/reports/
 /tmp/
-configs/orangelight/data/
+solr_configs/orangelight/data/
+/log/
