@@ -406,6 +406,12 @@
       <str name="facet.field">format</str>
       <str name="facet.field">language_facet</str>
       <str name="facet.field">pub_date_start_sort</str>
+      <str name="facet.field">location_code_s</str>
+      <str name="f.format.facet.sort">index</str>
+      <str name="f.location_code_s.facet.sort">index</str>
+      <str name="f.language_facet.facet.limit">1000</str>
+      <str name="f.location_code_s.facet.limit">500</str>
+
       <!--
       <str name="facet.method">enum</str>
       <str name="facet.enum.cache.minDf">25000</str>
@@ -486,156 +492,6 @@
       <str name="rows">1</str>
       <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
     </lst>
-  </requestHandler>
-
-  <!--  For Advanced Search  -->
-  <requestHandler name="advanced" class="solr.SearchHandler" >
-    <lst name="defaults">
-      <str name="defType">lucene</str>
-      <str name="echoParams">explicit</str>
-      <str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str>   
-      <str name="df">text</str> 
-      <str name="q.op">AND</str> 
-      <str name="qs">1</str>
-
-      <!-- used for dismax query parser -->
-      <str name="mm">1</str> 
-      <str name="ps">3</str> 
-      <float name="tie">0.01</float>
-      
-      <!-- for user query terms in author text box -->
-      <str name="qf_author">
-        author_unstem_search^200
-        author_addl_unstem_search^50
-        author_s^20
-        author_addl_t
-        cjk_author
-      </str>
-      <str name="pf_author">
-        author_unstem_search^2000
-        author_addl_unstem_search^500
-        author_s^200
-        author_addl_t^10
-        cjk_author^10
-      </str>
-      <str name="qf_left_anchor">
-        title_245_la^100
-        title_la^2
-        title_addl_la
-      </str>
-      <str name="pf_left_anchor">
-        title_245_la^1000
-        title_la^20
-        title_addl_la^10
-      </str>
-
-      <!-- for user query terms in title text box -->
-      <str name="qf_title">
-        title_unstem_search^50000
-        subtitle_unstem_search^25000
-        title_addl_unstem_search^10000
-        title_display^5000
-        title_vern_display
-        title_addl_t^100
-        title_added_entry_unstem_search^50
-        title_added_entry_t^10
-        title_series_unstem_search^5
-        other_title_index^5
-        series_title_index^5
-        uniform_title_s^5
-        content_title_index
-        contains_title_index
-        linked_title_index
-        series_ae_index
-        title_series_t
-        cjk_title
-      </str>
-      <str name="pf_title">
-        title_unstem_search^500000
-        subtitle_unstem_search^250000
-        title_addl_unstem_search^100000
-        title_display^50000
-        title_vern_display
-        title_addl_t^1000
-        title_added_entry_unstem_search^500
-        title_added_entry_t^100
-        title_series_t^50
-        other_title_index^50
-        series_title_index^50
-        uniform_title_s^50
-        content_title_index^10
-        contains_title_index^10
-        linked_title_index^10
-        series_ae_index^10
-        title_series_unstem_search^10
-        cjk_title^10
-      </str>
-
-
-      <!-- for user query terms in subject text box -->
-      <str name="qf_subject">
-        subject_topic_unstem_search^200
-        subject_unstem_search^125
-        subject_topic_facet^100
-        subject_t^50
-        subject_addl_unstem_search^10
-        subject_addl_t
-        cjk_subject
-      </str>
-      <str name="pf_subject">
-        subject_topic_unstem_search^2000
-        subject_unstem_search^1250
-        subject_t^1000
-        subject_topic_facet^500
-        subject_addl_unstem_search^100
-        subject_addl_t^10
-        cjk_subject^10
-      </str>
-
-      <!-- for user query terms in number text box -->
-      <str name="qf_number">isbn_t</str>
-      
-      <!-- for user query terms in keyword text box -->
-      <str name="qf_keyword">text</str>
-      <str name="pf_keyword">text^10</str>
-      
-      <str name="fl">
-        id, 
-        score,
-        author_display,
-        marc_relator_display,
-        format,
-        pub_created_display,
-        title_display,
-        title_vern_display,
-        isbn_s,
-        oclc_s,
-        lccn_s,
-        holdings_1display,
-        electronic_access_1display,
-        cataloged_tdt
-      </str>
-      
-      <str name="facet">true</str>
-      <str name="facet.mincount">1</str>
-      <str name="facet.limit">10</str>
-      <str name="facet.field">format</str>
-      <str name="facet.field">language_facet</str>
-      <str name="facet.field">pub_date_start_sort</str>
-      <!--
-      <str name="facet.method">enum</str>
-      <str name="facet.enum.cache.minDf">25000</str>
-        -->
-      <str name="spellcheck">true</str>
-      <str name="spellcheck.dictionary">subject</str>
-      <str name="spellcheck.onlyMorePopular">true</str>
-      <str name="spellcheck.extendedResults">true</str>
-      <str name="spellcheck.collate">false</str>
-      <str name="spellcheck.count">5</str>
-    </lst>
-    <arr name="last-components">
-      <str>spellcheck</str>
-    </arr>
   </requestHandler>
 
 <!-- Spell Check
