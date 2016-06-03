@@ -1,0 +1,144 @@
+{
+
+    "id": [
+        "7419275"
+    ],
+    "cjk_all": [
+        "Boroda, Moiseĭ, author.",
+        "Podarok vozhdi︠a︡ / Moiseĭ Boroda.",
+        "Sankt-Peterburg: Aleteĭi︠a︡, 2013.",
+        "285 pages ; 20 cm",
+        "text rdacontent",
+        "unmediated rdamedia",
+        "volume rdacarrier",
+        "7238413 rcppa PG3491.46.O67 P6 2013"
+    ],
+    "author_display": [
+        "Boroda, Moiseĭ"
+    ],
+    "author_sort": [
+        "Boroda, Moiseĭ"
+    ],
+    "author_citation_display": [
+        "Boroda, Moiseĭ"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Boroda, Moiseĭ\"}"
+    ],
+    "author_s": [
+        "Boroda, Moiseĭ"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": [
+        "Podarok vozhdi︠a︡ / Moiseĭ Boroda."
+    ],
+    "title_a_index": [
+        "Podarok vozhdi︠a︡ /"
+    ],
+    "title_sort": [
+        "Podarok vozhdi︠a︡ / Moiseĭ Boroda."
+    ],
+    "title_no_h_index": [
+        "Podarok vozhdi︠a︡ / Moiseĭ Boroda."
+    ],
+    "title_t": [
+        "Podarok vozhdi︠a︡ / Moiseĭ Boroda."
+    ],
+    "title_citation_display": [
+        "Podarok vozhdi︠a︡ /"
+    ],
+    "compiled_created_t": [
+        "Podarok vozhdi︠a︡ / Moiseĭ Boroda."
+    ],
+    "pub_created_display": [
+        "Sankt-Peterburg: Aleteĭi︠a︡, 2013."
+    ],
+    "pub_created_s": [
+        "Sankt-Peterburg: Aleteĭi︠a︡, 2013."
+    ],
+    "pub_citation_display": [
+        "Sankt-Peterburg: Aleteĭi︠a︡"
+    ],
+    "pub_date_display": [
+        "2013"
+    ],
+    "pub_date_start_sort": [
+        "2013"
+    ],
+    "cataloged_tdt": [
+        "2013-08-06T18:25:18Z"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "285 pages ; 20 cm"
+    ],
+    "description_t": [
+        "285 pages ; 20 cm"
+    ],
+    "language_facet": [
+        "Russian"
+    ],
+    "language_code_s": [
+        "rus"
+    ],
+    "lc_1letter_facet": [
+        "P - Language & Literature"
+    ],
+    "lc_rest_facet": [
+        "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    ],
+    "call_number_scheme_facet": [
+        "Library of Congress"
+    ],
+    "call_number_group_facet": [
+        "P - Language & Literature"
+    ],
+    "call_number_full_facet": [
+        "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    ],
+    "isbn_display": [
+        "9785914197596",
+        "5914197597"
+    ],
+    "isbn_s": [
+        "9785914197596"
+    ],
+    "oclc_s": [
+        "843535405"
+    ],
+    "standard_no_index": [
+        "ocn843535405",
+        "703110",
+        "843535405"
+    ],
+    "other_version_s": [
+        "ocn843535405",
+        "9785914197596"
+    ],
+    "holdings_1display": [
+        "{\"7238413\":{\"location\":\"ReCAP\",\"library\":\"ReCAP\",\"location_code\":\"rcppa\",\"call_number\":\"PG3491.46.O67 P6 2013\",\"call_number_browse\":\"PG3491.46.O67 P6 2013\"}}"
+    ],
+    "location_code_s": [
+        "rcppa"
+    ],
+    "location_display": [
+        "ReCAP"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "access_facet": [
+        "In the Library"
+    ],
+    "call_number_display": [
+        "PG3491.46.O67 P6 2013"
+    ],
+    "call_number_browse_s": [
+        "PG3491.46.O67 P6 2013"
+    ]
+
+}

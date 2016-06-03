@@ -1,0 +1,170 @@
+{
+
+    "id": [
+        "5188770"
+    ],
+    "cjk_all": [
+        "Idioms and collocations : corpus-based linguistic and lexicographic studies / edited by Christiane Fellbaum.",
+        "London : Continuum, 2007.",
+        "vi, 219 p. ; 24 cm.",
+        "Corpus and discourse. Research in corpus and discourse",
+        "Includes bibliographical references (p. [203]-212) and index.",
+        "Corpora (Linguistics)",
+        "English language Idioms.",
+        "German language Idioms.",
+        "Collocation (Linguistics)",
+        "Fellbaum, Christiane.",
+        "5376085 f P128.C68 F45 2007"
+    ],
+    "author_citation_display": [
+        "Fellbaum, Christiane"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[\"Fellbaum, Christiane\"],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+    ],
+    "author_s": [
+        "Fellbaum, Christiane"
+    ],
+    "title_display": [
+        "Idioms and collocations : corpus-based linguistic and lexicographic studies / edited by Christiane Fellbaum."
+    ],
+    "title_a_index": [
+        "Idioms and collocations :"
+    ],
+    "title_sort": [
+        "Idioms and collocations : corpus-based linguistic and lexicographic studies / edited by Christiane Fellbaum."
+    ],
+    "title_no_h_index": [
+        "Idioms and collocations : corpus-based linguistic and lexicographic studies / edited by Christiane Fellbaum."
+    ],
+    "title_t": [
+        "Idioms and collocations : corpus-based linguistic and lexicographic studies / edited by Christiane Fellbaum."
+    ],
+    "title_citation_display": [
+        "Idioms and collocations : corpus-based linguistic and lexicographic studies /"
+    ],
+    "series_title_index": [
+        "Corpus and discourse. Research in corpus and discourse"
+    ],
+    "compiled_created_t": [
+        "Idioms and collocations : corpus-based linguistic and lexicographic studies / edited by Christiane Fellbaum."
+    ],
+    "pub_created_display": [
+        "London : Continuum, 2007."
+    ],
+    "pub_created_s": [
+        "London : Continuum, 2007."
+    ],
+    "pub_citation_display": [
+        "London: Continuum"
+    ],
+    "pub_date_display": [
+        "2007"
+    ],
+    "pub_date_start_sort": [
+        "2007"
+    ],
+    "cataloged_tdt": [
+        "2007-06-20T14:09:02Z"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "vi, 219 p. ; 24 cm."
+    ],
+    "description_t": [
+        "vi, 219 p. ; 24 cm."
+    ],
+    "series_display": [
+        "Corpus and discourse. Research in corpus and discourse"
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references (p. [203]-212) and index."
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_code_s": [
+        "eng"
+    ],
+    "subject_display": [
+        "Corpora (Linguistics)",
+        "English language—Idioms",
+        "German language—Idioms",
+        "Collocation (Linguistics)"
+    ],
+    "subject_facet": [
+        "Corpora (Linguistics)",
+        "English language—Idioms",
+        "German language—Idioms",
+        "Collocation (Linguistics)"
+    ],
+    "subject_topic_facet": [
+        "Corpora (Linguistics)",
+        "English language",
+        "Idioms",
+        "German language",
+        "Idioms",
+        "Collocation (Linguistics)"
+    ],
+    "lc_1letter_facet": [
+        "P - Language & Literature"
+    ],
+    "lc_rest_facet": [
+        "P - Language & Literature"
+    ],
+    "call_number_scheme_facet": [
+        "Library of Congress"
+    ],
+    "call_number_group_facet": [
+        "P - Language & Literature"
+    ],
+    "call_number_full_facet": [
+        "P - Language & Literature"
+    ],
+    "related_name_json_1display": [
+        "{\"Related name\":[\"Fellbaum, Christiane\"]}"
+    ],
+    "isbn_display": [
+        "082648994X",
+        "9780826489944 (hbk.)"
+    ],
+    "isbn_s": [
+        "9780826489944"
+    ],
+    "oclc_s": [
+        "76936654"
+    ],
+    "standard_no_index": [
+        "ocm76936654",
+        "L1750486",
+        "76936654"
+    ],
+    "other_version_s": [
+        "ocm76936654",
+        "9780826489944"
+    ],
+    "holdings_1display": [
+        "{\"5376085\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"call_number\":\"P128.C68 F45 2007\",\"call_number_browse\":\"P128.C68 F45 2007\"}}"
+    ],
+    "location_code_s": [
+        "f"
+    ],
+    "location_display": [
+        "Firestone Library"
+    ],
+    "location": [
+        "Firestone Library"
+    ],
+    "access_facet": [
+        "In the Library"
+    ],
+    "call_number_display": [
+        "P128.C68 F45 2007"
+    ],
+    "call_number_browse_s": [
+        "P128.C68 F45 2007"
+    ]
+
+}

@@ -1,0 +1,146 @@
+{
+
+    "id": [
+        "484612"
+    ],
+    "cjk_all": [
+        "Fellbaum, Christiane.",
+        "On the middle construction in English / by Christiane Fellbaum.",
+        "Bloomington : Indiana University Linguistics Club, [c1986]",
+        "24 p. ; 28 cm.",
+        "\"July 1986.\"",
+        "Bibliography: p. 24.",
+        "English language Verb.",
+        "English language Syntax.",
+        "English language Semantics.",
+        "526451 f 1 PE1319 .F387"
+    ],
+    "author_display": [
+        "Fellbaum, Christiane"
+    ],
+    "author_sort": [
+        "Fellbaum, Christiane"
+    ],
+    "author_citation_display": [
+        "Fellbaum, Christiane"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Fellbaum, Christiane\"}"
+    ],
+    "author_s": [
+        "Fellbaum, Christiane"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": [
+        "On the middle construction in English / by Christiane Fellbaum."
+    ],
+    "title_a_index": [
+        "On the middle construction in English /"
+    ],
+    "title_sort": [
+        "On the middle construction in English / by Christiane Fellbaum."
+    ],
+    "title_no_h_index": [
+        "On the middle construction in English / by Christiane Fellbaum."
+    ],
+    "title_t": [
+        "On the middle construction in English / by Christiane Fellbaum."
+    ],
+    "title_citation_display": [
+        "On the middle construction in English /"
+    ],
+    "compiled_created_t": [
+        "On the middle construction in English / by Christiane Fellbaum."
+    ],
+    "pub_created_display": [
+        "Bloomington : Indiana University Linguistics Club, [c1986]"
+    ],
+    "pub_created_s": [
+        "Bloomington : Indiana University Linguistics Club, [c1986]"
+    ],
+    "pub_citation_display": [
+        "Bloomington: Indiana University Linguistics Club"
+    ],
+    "pub_date_display": [
+        "1986"
+    ],
+    "pub_date_start_sort": [
+        "1986"
+    ],
+    "cataloged_tdt": [
+        "2000-06-13T04:00:00Z"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "24 p. ; 28 cm."
+    ],
+    "description_t": [
+        "24 p. ; 28 cm."
+    ],
+    "notes_display": [
+        "\"July 1986.\""
+    ],
+    "bib_ref_notes_display": [
+        "Bibliography: p. 24."
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_code_s": [
+        "eng"
+    ],
+    "subject_display": [
+        "English language—Verb",
+        "English language—Syntax",
+        "English language—Semantics"
+    ],
+    "subject_facet": [
+        "English language—Verb",
+        "English language—Syntax",
+        "English language—Semantics"
+    ],
+    "subject_topic_facet": [
+        "English language",
+        "Verb",
+        "English language",
+        "Syntax",
+        "English language",
+        "Semantics"
+    ],
+    "oclc_s": [
+        "15057985"
+    ],
+    "standard_no_index": [
+        "15057985",
+        "NJPG88-B62473"
+    ],
+    "other_version_s": [
+        "ocm15057985"
+    ],
+    "holdings_1display": [
+        "{\"526451\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"call_number\":\"PE1319 .F387\",\"call_number_browse\":\"PE1319 .F387\"}}"
+    ],
+    "location_code_s": [
+        "f"
+    ],
+    "location_display": [
+        "Firestone Library"
+    ],
+    "location": [
+        "Firestone Library"
+    ],
+    "access_facet": [
+        "In the Library"
+    ],
+    "call_number_display": [
+        "PE1319 .F387"
+    ],
+    "call_number_browse_s": [
+        "PE1319 .F387"
+    ]
+
+}

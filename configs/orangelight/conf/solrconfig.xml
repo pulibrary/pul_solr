@@ -297,15 +297,17 @@
       </str>
       <str name="author_qf">
         author_unstem_search^200
+        author_main_t^100
         author_addl_unstem_search^50
-        author_s^20
+        author_t^20
         author_addl_t
         cjk_author
       </str>
       <str name="author_pf">
         author_unstem_search^2000
+        author_main_t^1000
         author_addl_unstem_search^500
-        author_s^200
+        author_t^200
         author_addl_t^10
         cjk_author^10
       </str>
