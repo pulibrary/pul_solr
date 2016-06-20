@@ -6,7 +6,7 @@ gem 'rspec-solr'
 
 gem 'rsolr'
 
-gem 'solr_wrapper', '~> 0.12'
+gem 'solr_wrapper', '~> 0.13'
 
 gem 'faraday'
 
