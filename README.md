@@ -5,8 +5,8 @@
 Versions:
 
 * Ruby: 2.3.0
-* Solr: 6.0.1
-* solr_wrapper: 0.12.1
+* Solr: 6.1.0
+* solr_wrapper: 0.13.1
 * rspec-solr: 2.0.0
 * rspec: 3.4
 
