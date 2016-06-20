@@ -432,6 +432,8 @@
       <analyzer type="query">
         <tokenizer class="solr.KeywordTokenizerFactory"/>
         <filter class="edu.umich.lib.solr_filters.LCCNNormalizerFilterFactory"/>
+        <filter class="solr.PatternReplaceFilterFactory" pattern="([\p{Punct}])" replacement=""/>
+        <filter class="solr.LengthFilterFactory" min="1" max="100"/>
       </analyzer>
     </fieldType>
 
@@ -442,6 +444,8 @@
       <analyzer type="query">
         <tokenizer class="solr.PatternTokenizerFactory" pattern="[;,]\s*" />
         <filter class="edu.umich.lib.solr_filters.ISBNNormalizerFilterFactory"/>
+        <filter class="solr.PatternReplaceFilterFactory" pattern="([\p{Punct}])" replacement=""/>
+        <filter class="solr.LengthFilterFactory" min="1" max="100"/>
       </analyzer>
     </fieldType>
 
@@ -479,7 +483,7 @@
     </fieldType>
     
     <fieldType name="alphaNumSort" class="solr.TextField" sortMissingLast="true" omitNorms="true">
-      <analyzer>
+      <analyzer type="index">
         <!-- KeywordTokenizer does no actual tokenizing, so the entire
              input string is preserved as a single token
           -->
@@ -504,6 +508,15 @@
         <filter class="solr.PatternReplaceFilterFactory"
                 pattern="([^a-z0-9])" replacement="" replace="all"
         />
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory" />
+        <filter class="solr.TrimFilterFactory" />
+        <filter class="solr.PatternReplaceFilterFactory"
+                pattern="([^a-z0-9])" replacement="" replace="all"
+        />
+        <filter class="solr.LengthFilterFactory" min="1" max="100"/>
       </analyzer>
     </fieldType>
 
@@ -791,8 +804,9 @@
    
    <!-- these fields are also used for display, so they must be stored -->
    <copyField source="isbn_s" dest="isbn_t"/>
+   <copyField source="isbn_s" dest="text"/>
    <copyField source="language_facet" dest="text"/>
-   <copyField source="subject_topic_facet" dest="text"/>
+   <copyField source="subject_topic_facet" dest="subject_topic_index"/>
    <copyField source="subject_era_facet" dest="text"/>
    <copyField source="subject_geo_facet" dest="text"/>
    <!-- pub_date is used for facet and display so it must be indexed and stored -->
