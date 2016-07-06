@@ -8,4 +8,5 @@
 /spec/reports/
 /tmp/
 solr_configs/orangelight/data/
+solr_configs/pulmap/data/
 /log/
