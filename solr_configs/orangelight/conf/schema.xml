@@ -206,7 +206,7 @@
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                
           <tokenizer class="solr.KeywordTokenizerFactory" />
           <filter class="solr.ICUFoldingFilterFactory" />          
-          <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="50"/>
+          <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="150"/>
        </analyzer>
        <analyzer type="query">     
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />   
@@ -728,7 +728,6 @@
    <copyField source="title_display" dest="title_unstem_search"/>
    <copyField source="title_addl_t" dest="title_addl_unstem_search"/>
    <copyField source="title_added_entry_t" dest="title_added_entry_unstem_search"/>
-   <copyField source="title_series_t" dest="title_series_unstem_search"/>
    <copyField source="author_display" dest="author_unstem_search"/>
    <copyField source="author_addl_t" dest="author_addl_unstem_search"/>
    <copyField source="subject_t" dest="subject_unstem_search"/>
@@ -750,7 +749,6 @@
    <copyField source="subtitle_t" dest="title_spell"/>
    <copyField source="addl_titles_t" dest="title_spell"/>
    <copyField source="title_added_entry_t" dest="title_spell"/>
-   <copyField source="title_series_t" dest="title_spell"/>
    <!-- author spell check; should match fields for author request handler -->
    <copyField source="author_s" dest="author_spell"/>
    <copyField source="author_addl_t" dest="author_spell"/>
@@ -764,7 +762,6 @@
    <copyField source="subtitle_t" dest="opensearch_display"/>
    <copyField source="addl_titles_t" dest="opensearch_display"/>
    <copyField source="title_added_entry_t" dest="opensearch_display"/>
-   <copyField source="title_series_t" dest="opensearch_display"/>
    <copyField source="author_s" dest="opensearch_display"/>
    <copyField source="author_addl_t" dest="opensearch_display"/>
    <copyField source="subject_topic_facet" dest="opensearch_display"/>
@@ -779,12 +776,17 @@
    <copyField source="title_no_h_index" dest="title_245_la"/>
    <copyField source="other_title_index" dest="title_la"/>
    <copyField source="series_title_index" dest="title_la"/>
+   <copyField source="series_statement_index" dest="title_la"/>
    <copyField source="uniform_title_s" dest="title_la"/>
    <copyField source="content_title_index" dest="title_addl_la"/>
    <copyField source="contains_title_index" dest="title_addl_la"/>
    <copyField source="linked_title_index" dest="title_addl_la"/>
+   <copyField source="linked_series_title_index" dest="title_addl_la"/>
+   <copyField source="linked_series_index" dest="title_addl_la"/>
    <copyField source="series_ae_index" dest="title_addl_la"/>
+   <copyField source="original_version_series_index" dest="title_addl_la"/>
 
+   <copyField source="more_in_this_series_t" dest="more_in_this_series_la"/>
 
    <!-- Above, multiple source fields are copied to the [text] field. 
     Another way to map multiple source fields to the same 
