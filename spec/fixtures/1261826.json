@@ -1,0 +1,152 @@
+{
+  "id": "1261826",
+  "author_display": [
+    "Parker, Dorothy, 1893-1967"
+  ],
+  "author_main_t": [
+    "Parker, Dorothy, 1893-1967"
+  ],
+  "author_citation_display": [
+    "Parker, Dorothy",
+    "Leonard L. Milberg Collection of Jewish American Writers"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Leonard L. Milberg Collection of Jewish American Writers\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Parker, Dorothy\"}",
+  "author_s": [
+    "Parker, Dorothy, 1893-1967",
+    "Leonard L. Milberg Collection of Jewish American Writers"
+  ],
+  "author_t": [
+    "Parker, Dorothy, 1893-1967",
+    "Leonard L. Milberg Collection of Jewish American Writers"
+  ],
+  "opensearch_display": [
+    "Parker, Dorothy, 1893-1967",
+    "Leonard L. Milberg Collection of Jewish American Writers",
+    "Constant Reader.",
+    "American literature",
+    "History and criticism",
+    "English literature",
+    "History and criticism"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Constant Reader.",
+  "title_t": [
+    "Constant Reader."
+  ],
+  "title_citation_display": [
+    "Constant Reader."
+  ],
+  "compiled_created_t": [
+    "Constant Reader."
+  ],
+  "pub_created_display": [
+    "New York, Viking Press [1970]"
+  ],
+  "pub_created_s": [
+    "New York, Viking Press [1970]"
+  ],
+  "pub_citation_display": [
+    "New York: Viking Press"
+  ],
+  "pub_date_display": [
+    "1970"
+  ],
+  "pub_date_start_sort": 1970,
+  "pub_date_end_sort": 1927,
+  "cataloged_tdt": "2000-06-13T04:00:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "x, 157 p. 24 cm."
+  ],
+  "description_t": [
+    "x, 157 p. 24 cm."
+  ],
+  "notes_display": [
+    "A selection of articles originally published in the New Yorker, 1927-1933.",
+    "Ex copy is gift of Leonard L. Milberg '53 in honor of President Harold T. Shapiro."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "subject_display": [
+    "American literature—20th century—History and criticism",
+    "English literature—20th century—History and criticism"
+  ],
+  "subject_t": [
+    "American literature—20th century—History and criticism",
+    "English literature—20th century—History and criticism"
+  ],
+  "subject_facet": [
+    "American literature—20th century—History and criticism",
+    "English literature—20th century—History and criticism"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Leonard L. Milberg Collection of Jewish American Writers\"]}",
+  "other_title_display": [
+    "New Yorker."
+  ],
+  "isbn_display": [
+    "067023916X"
+  ],
+  "lccn_display": [
+    "   72109220 //r893 "
+  ],
+  "lccn_s": [
+    "72109220"
+  ],
+  "isbn_s": [
+    "9780670239160"
+  ],
+  "isbn_t": [
+    "9780670239160"
+  ],
+  "oclc_s": [
+    "98734"
+  ],
+  "other_version_s": [
+    "9780670239160",
+    "ocm00098734"
+  ],
+  "subject_era_facet": [
+    "20th century"
+  ],
+  "holdings_1display": "{\"1447830\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"call_number\":\"PS3531.A5855 A6 1970b\",\"call_number_browse\":\"PS3531.A5855 A6 1970b\"},\"3570630\":{\"location\":\"Rare Books and Special Collections - Rare Books\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"ex\",\"call_number\":\"PS3531.A5855 A6 1970 Milberg JAmW\",\"call_number_browse\":\"PS3531.A5855 A6 1970 Milberg JAmW\"}}",
+  "location_code_s": [
+    "f",
+    "ex"
+  ],
+  "location_display": [
+    "Firestone Library",
+    "Rare Books and Special Collections - Rare Books"
+  ],
+  "location": [
+    "Firestone Library",
+    "Rare Books and Special Collections"
+  ],
+  "advanced_location_s": [
+    "f",
+    "ex",
+    "Firestone Library",
+    "Rare Books and Special Collections"
+  ],
+  "name_title_245_s": [
+    "Parker, Dorothy, 1893-1967. Constant Reader"
+  ],
+  "name_title_browse_s": [
+    "Parker, Dorothy, 1893-1967. Constant Reader"
+  ],
+  "call_number_display": [
+    "PS3531.A5855 A6 1970b",
+    "PS3531.A5855 A6 1970 Milberg JAmW"
+  ],
+  "call_number_browse_s": [
+    "PS3531.A5855 A6 1970b",
+    "PS3531.A5855 A6 1970 Milberg JAmW"
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "id": "2393109",
+  "author_display": [
+    "Gayton, Edmund, 1608-1666"
+  ],
+  "author_main_t": [
+    "Gayton, Edmund, 1608-1666"
+  ],
+  "author_citation_display": [
+    "Gayton, Edmund",
+    "Huygens, Constantijn"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Huygens, Constantijn\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Gayton, Edmund\"}",
+  "author_s": [
+    "Gayton, Edmund, 1608-1666",
+    "Huygens, Constantijn, 1596-1687"
+  ],
+  "author_t": [
+    "Gayton, Edmund, 1608-1666",
+    "Huygens, Constantijn, 1596-1687"
+  ],
+  "opensearch_display": [
+    "Gayton, Edmund, 1608-1666",
+    "Huygens, Constantijn, 1596-1687",
+    "Pleasant notes upon Don Quixot. By Edmund Gayton ...",
+    "Cervantes Saavedra, Miguel de, 1547-1616. Don Quixote"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Pleasant notes upon Don Quixot. By Edmund Gayton ...",
+  "title_t": [
+    "Pleasant notes upon Don Quixot. By Edmund Gayton ..."
+  ],
+  "title_citation_display": [
+    "Pleasant notes upon Don Quixot."
+  ],
+  "compiled_created_t": [
+    "Pleasant notes upon Don Quixot. By Edmund Gayton ..."
+  ],
+  "pub_created_display": [
+    "London, Printed by W. Hunt, 1654."
+  ],
+  "pub_created_s": [
+    "London, Printed by W. Hunt, 1654."
+  ],
+  "pub_citation_display": [
+    "London: Printed by W. Hunt"
+  ],
+  "pub_date_display": [
+    "1654"
+  ],
+  "pub_date_start_sort": 1654,
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "1 p.., 290 p. 26 cm."
+  ],
+  "description_t": [
+    "1 p.., 290 p. 26 cm."
+  ],
+  "notes_display": [
+    "Caption title: Festivovs notes vpon Don Quixot."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "provenance_display": [
+    "Ex copy has inscription on t.p.: Constanter  London  Aug. 1663.  (Ownership inscription of Sir Contantijn Huygens, 1596-1687)"
+  ],
+  "subject_display": [
+    "Cervantes Saavedra, Miguel de, 1547-1616. Don Quixote"
+  ],
+  "subject_t": [
+    "Cervantes Saavedra, Miguel de, 1547-1616. Don Quixote"
+  ],
+  "subject_facet": [
+    "Cervantes Saavedra, Miguel de, 1547-1616. Don Quixote"
+  ],
+  "related_name_json_1display": "{\"Former owner\":[\"Huygens, Constantijn, 1596-1687\"]}",
+  "other_title_display": [
+    "Festivovs notes vpon Don Quixot."
+  ],
+  "lccn_display": [
+    "   21009751  "
+  ],
+  "lccn_s": [
+    "21009751"
+  ],
+  "oclc_s": [
+    "4316932"
+  ],
+  "other_version_s": [
+    "ocm04316932"
+  ],
+  "holdings_1display": "{\"2688164\":{\"location\":\"Rare Books and Special Collections - Oversize \",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"exov\",\"copy_number\":\"1\",\"call_number\":\"3170.686\",\"call_number_browse\":\"3170.686\"}}",
+  "location_code_s": [
+    "exov"
+  ],
+  "location_display": [
+    "Rare Books and Special Collections - Oversize "
+  ],
+  "location": [
+    "Rare Books and Special Collections"
+  ],
+  "advanced_location_s": [
+    "exov",
+    "Rare Books and Special Collections"
+  ],
+  "name_title_245_s": [
+    "Gayton, Edmund, 1608-1666. Pleasant notes upon Don Quixot"
+  ],
+  "name_title_browse_s": [
+    "Gayton, Edmund, 1608-1666. Pleasant notes upon Don Quixot"
+  ],
+  "call_number_display": [
+    "3170.686"
+  ],
+  "call_number_browse_s": [
+    "3170.686"
+  ]
+}
