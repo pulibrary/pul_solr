@@ -237,80 +237,70 @@
        -->
 
       <str name="qf">
-        title_l^200000
-        title_unstem_search^100000
-        subtitle_unstem_search^50000
-        title_display^25000
-        title_addl_unstem_search^5000
-        title_addl_t^2500
-        title_added_entry_unstem_search^1500
-        title_added_entry_t^1250
-        subject_topic_unstem_search^1000
-        subject_unstem_search^750
-        subject_topic_index^625
-        subject_t^500
-        author_unstem_search^250
-        author_addl_unstem_search^250
-        author_t^100
-        author_addl_t^50
-        subject_addl_unstem_search^250
-        subject_addl_t^50
-        isbn_t^40
-        issn_s^40
-        lccn_s^40
+        title_a_index^1500
+        author_main_unstem_search^1000
+        title_unstem_search^40
+        title_display^40
+        author_unstem_search^40
+        title_addl_unstem_search^40
+        title_addl_t^30
+        title_added_entry_unstem_search^30
+        title_added_entry_t^20
+        subject_topic_unstem_search^18
+        subject_unstem_search^15
+        subject_topic_index^12
+        subject_t^10
+        subject_addl_unstem_search^8
+        subject_addl_t^4
+        isbn_t^3
+        issn_s^3
+        lccn_s^3
         text
         description_t
         cjk_all
       </str>
       <str name="pf">
-        title_l^2000000
-        title_unstem_search^1000000
-        subtitle_unstem_search^500000
-        title_display^250000
-        title_addl_unstem_search^50000
-        title_addl_t^25000
-        title_added_entry_unstem_search^15000
-        title_added_entry_t^12500
-        subject_topic_unstem_search^10000
-        subject_unstem_search^7500
-        subject_topic_index^6250
-        subject_t^5000
-        author_unstem_search^2500
-        author_addl_unstem_search^2500
-        author_t^1000
-        author_addl_t^500
-        subject_addl_unstem_search^2500
-        subject_addl_t^500
-        isbn_t^400
-        issn_s^400
-        lccn_s^400
+        title_a_index^15000
+        author_main_unstem_search^10000
+        title_unstem_search^400
+        title_display^400
+        author_unstem_search^400
+        title_addl_unstem_search^400
+        title_addl_t^300
+        title_added_entry_unstem_search^300
+        title_added_entry_t^200
+        subject_topic_unstem_search^180
+        subject_unstem_search^150
+        subject_topic_index^120
+        subject_t^100
+        subject_addl_unstem_search^80
+        subject_addl_t^40
+        isbn_t^30
+        issn_s^30
+        lccn_s^30
         text^10
-        description_t
-        cjk_all
+        description_t^10
+        cjk_all^10
       </str>
       <str name="author_qf">
-        author_unstem_search^200
-        author_main_t^100
-        author_addl_unstem_search^50
-        author_t^20
-        author_addl_t
+        author_main_unstem_search^20
+        author_unstem_search^10
         cjk_author
       </str>
       <str name="author_pf">
-        author_unstem_search^2000
-        author_main_t^1000
-        author_addl_unstem_search^500
-        author_t^200
-        author_addl_t^10
+        author_main_unstem_search^200
+        author_unstem_search^100
         cjk_author^10
       </str>
       <str name="left_anchor_qf">
-        title_245_la^100
+        title_245a_la^50
+        title_245_la^10
         title_la^2
         title_addl_la
       </str>
       <str name="left_anchor_pf">
-        title_245_la^1000
+        title_245a_la^500
+        title_245_la^100
         title_la^20
         title_addl_la^10
       </str>
@@ -337,17 +327,17 @@
         original_version_series_index^10
       </str>
       <str name="title_qf">
-        title_unstem_search^50000
-        subtitle_unstem_search^25000
-        title_addl_unstem_search^10000
-        title_display^5000
-        title_vern_display
-        title_addl_t^100
-        title_added_entry_unstem_search^50
+        title_a_index^500
+        title_unstem_search^100
+        title_addl_unstem_search^60
+        title_display^50
+        title_addl_t^30
+        title_added_entry_unstem_search^20
         title_added_entry_t^10
         other_title_index^5
         series_title_index^5
         uniform_title_s^5
+        title_vern_display
         content_title_index
         contains_title_index
         linked_title_index
@@ -359,17 +349,17 @@
         cjk_title
       </str>
       <str name="title_pf">
-        title_unstem_search^500000
-        subtitle_unstem_search^250000
-        title_addl_unstem_search^100000
-        title_display^50000
-        title_vern_display
-        title_addl_t^1000
-        title_added_entry_unstem_search^500
+        title_a_index^5000
+        title_unstem_search^1000
+        title_addl_unstem_search^600
+        title_display^500
+        title_addl_t^300
+        title_added_entry_unstem_search^200
         title_added_entry_t^100
         other_title_index^50
         series_title_index^50
         uniform_title_s^50
+        title_vern_display^10
         content_title_index^10
         contains_title_index^10
         linked_title_index^10
@@ -381,20 +371,20 @@
         cjk_title^10
       </str>
       <str name="subject_qf">
-        subject_topic_unstem_search^200
-        subject_unstem_search^125
-        subject_topic_index^100
-        subject_t^50
-        subject_addl_unstem_search^10
+        subject_topic_unstem_search^25
+        subject_unstem_search^20
+        subject_topic_index^15
+        subject_t^10
+        subject_addl_unstem_search^5
         subject_addl_t
         cjk_subject
       </str>
       <str name="subject_pf">
-        subject_topic_unstem_search^2000
-        subject_unstem_search^1250
-        subject_t^1000
-        subject_topic_index^500
-        subject_addl_unstem_search^100
+        subject_topic_unstem_search^250
+        subject_unstem_search^200
+        subject_t^150
+        subject_topic_index^100
+        subject_addl_unstem_search^50
         subject_addl_t^10
         cjk_subject^10
       </str>
