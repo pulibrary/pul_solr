@@ -48,6 +48,24 @@ describe 'title keyword search' do
       expect(solr_resp_doc_ids_only({ 'q' => title_query_string(series_title) })).to include(mozart_series)
     end
   end
+  describe 'title_a_index field relevancy' do
+    silence = '1228819'
+    four_silence_subtitle = '4789869'
+    sounds_like_silence = '7381137'
+    before(:all) do
+      add_doc(silence)
+      add_doc(four_silence_subtitle)
+      add_doc(sounds_like_silence)
+    end
+    it 'exact 245a match more relevant than longer 245a field' do
+      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('silence') }))
+            .to include(silence).before(sounds_like_silence)
+    end
+    it '245a match more relevant than subtitle match' do
+      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('silence') }))
+            .to include(sounds_like_silence).before(four_silence_subtitle)
+    end
+  end
   after(:all) do
     delete_all
   end
