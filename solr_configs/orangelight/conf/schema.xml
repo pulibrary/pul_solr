@@ -202,19 +202,21 @@
          <filter class="solr.SnowballPorterFilterFactory" language="English" />
        </analyzer> -->
        <analyzer type="index">
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />     
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[’՚Ꞌꞌ＇]" replacement="" />
           <tokenizer class="solr.KeywordTokenizerFactory" />
-          <filter class="solr.ICUFoldingFilterFactory" />          
+          <filter class="solr.ICUFoldingFilterFactory" />
           <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="150"/>
        </analyzer>
-       <analyzer type="query">     
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />   
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                   
-<!--           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="$1\*" />       -->               
+       <analyzer type="query">
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[’՚Ꞌꞌ＇]" replacement="" />
+<!--           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="$1\*" />       -->
           <tokenizer class="solr.KeywordTokenizerFactory"/>
           <filter class="solr.ICUFoldingFilterFactory" />
-       </analyzer>           
+       </analyzer>
      </fieldType>
 
     <!-- One can also specify an existing Analyzer class that has a
