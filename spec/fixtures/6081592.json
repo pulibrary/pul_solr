@@ -1,1 +1,190 @@
-{"id":["6081592"],"cjk_all":["Gann, Kyle.","No such thing as silence : John Cage's 4'33\" / Kyle Gann.","New Haven [Conn.] : Yale University Press, c2010.","xiii, 255 p. : ill. ; 22  cm.","Icons of America","Includes discography (p. [215]-217), bibliographical references (p. [233]-240), and index.","4'33\" at first listening -- The man: 1912-1949 -- Dramatis personae (predecessors and influences) -- The path to 4'33\" : 1946 to 1952 -- The piece and its notations -- The legacy.","Cage, John. 4'33\", no. 1.","Icons of America.","6125516 mus ML410.C24 G35 2010 reclassed fr ML410.C24"],"author_display":["Gann, Kyle"],"author_sort":["Gann, Kyle"],"author_citation_display":["Gann, Kyle"],"author_roles_1display":["{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Gann, Kyle\"}"],"author_s":["Gann, Kyle"],"marc_relator_display":["Author"],"title_display":["No such thing as silence : John Cage's 4'33\" / Kyle Gann."],"title_a_index":["No such thing as silence"],"title_sort":["No such thing as silence : John Cage's 4'33\" / Kyle Gann."],"title_no_h_index":["No such thing as silence : John Cage's 4'33\" / Kyle Gann."],"title_t":["No such thing as silence : John Cage's 4'33\" / Kyle Gann."],"title_citation_display":["No such thing as silence : John Cage's 4'33\" /"],"series_statement_index":["Icons of America"],"series_ae_index":["Icons of America."],"compiled_created_t":["No such thing as silence : John Cage's 4'33\" / Kyle Gann."],"pub_created_display":["New Haven [Conn.] : Yale University Press, c2010."],"pub_created_s":["New Haven [Conn.] : Yale University Press, c2010."],"pub_citation_display":["New Haven [Conn.]: Yale University Press"],"pub_date_display":["2010"],"pub_date_start_sort":["2010"],"cataloged_tdt":["2010-04-19T18:27:50Z"],"format":["Book"],"description_display":["xiii, 255 p. : ill. ; 22  cm."],"description_t":["xiii, 255 p. : ill. ; 22  cm."],"series_display":["Icons of America","Icons of America."],"more_in_this_series_t":["Icons of America."],"bib_ref_notes_display":["Includes discography (p. [215]-217), bibliographical references (p. [233]-240), and index."],"language_facet":["English"],"language_code_s":["eng"],"contents_display":["4'33\" at first listening -- The man: 1912-1949 -- Dramatis personae (predecessors and influences) -- The path to 4'33\" : 1946 to 1952 -- The piece and its notations -- The legacy."],"subject_display":["Cage, John. 4'33\", no. 1."],"subject_facet":["Cage, John. 4'33\", no. 1."],"subject_topic_facet":["Cage, John. 4'33\", no. 1."],"lc_1letter_facet":["M - Music"],"lc_rest_facet":["ML - Literature on Music"],"call_number_scheme_facet":["Library of Congress"],"call_number_group_facet":["M - Music"],"call_number_full_facet":["ML - Literature on Music"],"isbn_display":["9780300136999 (hardcover : alk. paper)","0300136994 (hardcover : alk. paper)"],"lccn_display":["  2009031472"],"lccn_s":["2009031472"],"isbn_s":["9780300136999"],"oclc_s":["428823404"],"standard_no_index":["ocn428823404","  2009031472","428823404"],"other_version_s":["ocn428823404","9780300136999"],"holdings_1display":["{\"6125516\":{\"location\":\"Mendel Music Library\",\"library\":\"Mendel Music Library\",\"location_code\":\"mus\",\"call_number\":\"ML410.C24 G35 2010\",\"call_number_browse\":\"ML410.C24 G35 2010\"}}"],"location_code_s":["mus"],"location_display":["Mendel Music Library"],"location":["Mendel Music Library"],"access_facet":["In the Library"],"advanced_location_s":["mus","Mendel Music Library"],"name_title_245_s":["Gann, Kyle. No such thing as silence"],"name_title_browse_s":["Gann, Kyle. No such thing as silence"],"call_number_display":["ML410.C24 G35 2010"],"call_number_browse_s":["ML410.C24 G35 2010"]}
+{
+
+    "id": [
+        "6081592"
+    ],
+    "cjk_all": [
+        "Gann, Kyle.",
+        "No such thing as silence : John Cage's 4'33\" / Kyle Gann.",
+        "New Haven [Conn.] : Yale University Press, c2010.",
+        "xiii, 255 p. : ill. ; 22  cm.",
+        "Icons of America",
+        "Includes discography (p. [215]-217), bibliographical references (p. [233]-240), and index.",
+        "4'33\" at first listening -- The man: 1912-1949 -- Dramatis personae (predecessors and influences) -- The path to 4'33\" : 1946 to 1952 -- The piece and its notations -- The legacy.",
+        "Cage, John. 4'33\", no. 1.",
+        "Icons of America.",
+        "6125516 mus ML410.C24 G35 2010 reclassed fr ML410.C24"
+    ],
+    "author_display": [
+        "Gann, Kyle"
+    ],
+    "author_sort": [
+        "Gann, Kyle"
+    ],
+    "author_citation_display": [
+        "Gann, Kyle"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Gann, Kyle\"}"
+    ],
+    "author_s": [
+        "Gann, Kyle"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": [
+        "No such thing as silence : John Cage's 4'33\" / Kyle Gann."
+    ],
+    "title_a_index": [
+        "No such thing as silence"
+    ],
+    "title_sort": [
+        "No such thing as silence : John Cage's 4'33\" / Kyle Gann."
+    ],
+    "title_no_h_index": [
+        "No such thing as silence : John Cage's 4'33\" / Kyle Gann."
+    ],
+    "title_t": [
+        "No such thing as silence : John Cage's 4'33\" / Kyle Gann."
+    ],
+    "title_citation_display": [
+        "No such thing as silence : John Cage's 4'33\" /"
+    ],
+    "series_statement_index": [
+        "Icons of America"
+    ],
+    "series_ae_index": [
+        "Icons of America."
+    ],
+    "compiled_created_t": [
+        "No such thing as silence : John Cage's 4'33\" / Kyle Gann."
+    ],
+    "pub_created_display": [
+        "New Haven [Conn.] : Yale University Press, c2010."
+    ],
+    "pub_created_s": [
+        "New Haven [Conn.] : Yale University Press, c2010."
+    ],
+    "pub_citation_display": [
+        "New Haven [Conn.]: Yale University Press"
+    ],
+    "pub_date_display": [
+        "2010"
+    ],
+    "pub_date_start_sort": [
+        "2010"
+    ],
+    "cataloged_tdt": [
+        "2010-04-19T18:27:50Z"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "xiii, 255 p. : ill. ; 22  cm."
+    ],
+    "description_t": [
+        "xiii, 255 p. : ill. ; 22  cm."
+    ],
+    "series_display": [
+        "Icons of America",
+        "Icons of America."
+    ],
+    "more_in_this_series_t": [
+        "Icons of America."
+    ],
+    "bib_ref_notes_display": [
+        "Includes discography (p. [215]-217), bibliographical references (p. [233]-240), and index."
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_code_s": [
+        "eng"
+    ],
+    "contents_display": [
+        "4'33\" at first listening -- The man: 1912-1949 -- Dramatis personae (predecessors and influences) -- The path to 4'33\" : 1946 to 1952 -- The piece and its notations -- The legacy."
+    ],
+    "subject_display": [
+        "Cage, John. 4'33\", no. 1."
+    ],
+    "subject_facet": [
+        "Cage, John. 4'33\", no. 1."
+    ],
+    "subject_topic_facet": [
+        "Cage, John. 4'33\", no. 1."
+    ],
+    "lc_1letter_facet": [
+        "M - Music"
+    ],
+    "lc_rest_facet": [
+        "ML - Literature on Music"
+    ],
+    "call_number_scheme_facet": [
+        "Library of Congress"
+    ],
+    "call_number_group_facet": [
+        "M - Music"
+    ],
+    "call_number_full_facet": [
+        "ML - Literature on Music"
+    ],
+    "isbn_display": [
+        "9780300136999 (hardcover : alk. paper)",
+        "0300136994 (hardcover : alk. paper)"
+    ],
+    "lccn_display": [
+        "  2009031472"
+    ],
+    "lccn_s": [
+        "2009031472"
+    ],
+    "isbn_s": [
+        "9780300136999"
+    ],
+    "oclc_s": [
+        "428823404"
+    ],
+    "standard_no_index": [
+        "ocn428823404",
+        "  2009031472",
+        "428823404"
+    ],
+    "other_version_s": [
+        "ocn428823404",
+        "9780300136999"
+    ],
+    "holdings_1display": [
+        "{\"6125516\":{\"location\":\"Mendel Music Library\",\"library\":\"Mendel Music Library\",\"location_code\":\"mus\",\"call_number\":\"ML410.C24 G35 2010\",\"call_number_browse\":\"ML410.C24 G35 2010\"}}"
+    ],
+    "location_code_s": [
+        "mus"
+    ],
+    "location_display": [
+        "Mendel Music Library"
+    ],
+    "location": [
+        "Mendel Music Library"
+    ],
+    "access_facet": [
+        "In the Library"
+    ],
+    "advanced_location_s": [
+        "mus",
+        "Mendel Music Library"
+    ],
+    "name_title_245_s": [
+        "Gann, Kyle. No such thing as silence"
+    ],
+    "name_title_browse_s": [
+        "Gann, Kyle. No such thing as silence"
+    ],
+    "call_number_display": [
+        "ML410.C24 G35 2010"
+    ],
+    "call_number_browse_s": [
+        "ML410.C24 G35 2010"
+    ]
+
+}
