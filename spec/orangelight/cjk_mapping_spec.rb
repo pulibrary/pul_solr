@@ -107,6 +107,13 @@ describe 'CJK character equivalence' do
       expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"梅亜"' })).to include('1')
     end
   end
+  describe 'mapping applied to left anchor search' do
+    it '国史大辞典 => 國史大辭典' do
+      @@solr.add({ id: 1, title_la: '國史大辭典' })
+      @@solr.commit
+      expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}国史大辞典' })).to include('1')
+    end
+  end
   after(:all) do
     delete_all
   end
