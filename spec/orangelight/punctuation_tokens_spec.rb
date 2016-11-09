@@ -2,6 +2,8 @@ require 'spec_helper'
 require 'json'
 
 describe 'stripping punctuation surrounded by whitespace' do
+  include_context 'solr_helpers'
+
   def qf_pf_string q, field
     "{!qf=$#{field}_qf pf=$#{field}_pf}#{q}"
   end

@@ -2,12 +2,15 @@ require 'spec_helper'
 require 'json'
 
 describe 'apostrophes are stripped' do
+
+  include_context 'solr_helpers'
+
   contraction = "Can't and Won't"
   cyrillic = 'Bratʹi︠a︡ Karamazovy'
   before(:all) do
     delete_all
-    @@solr.add({ id: 1, title_a_index: [contraction, cyrillic] })
-    @@solr.commit
+    solr.add({ id: 1, title_a_index: [contraction, cyrillic] })
+    solr.commit
   end
 
   describe 'in all_fields search (text field)' do

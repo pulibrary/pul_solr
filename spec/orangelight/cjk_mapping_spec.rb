@@ -5,14 +5,16 @@ docs = JSON.parse(File.read('spec/fixtures/cjk_map_solr_fixtures.json'))
 stanford_docs = JSON.parse(File.read('spec/fixtures/cjk_stanford_fixtures.json'))
 
 describe 'CJK character equivalence' do
+  include_context 'solr_helpers'
+
   def add_single_field_doc char
-    @@solr.add({ id: 1, cjk_title: char })
-    @@solr.commit
+    solr.add({ id: 1, cjk_title: char })
+    solr.commit
   end
   before(:all) do
     delete_all
-    @@solr.add(docs)
-    @@solr.commit
+    solr.add(docs)
+    solr.commit
   end
   describe 'Direct mapping check' do
     docs.each do |map|
@@ -30,8 +32,8 @@ describe 'CJK character equivalence' do
   describe 'Stanford direct mapping check' do
     before(:all) do
       delete_all
-      @@solr.add(stanford_docs)
-      @@solr.commit
+      solr.add(stanford_docs)
+      solr.commit
     end
     stanford_docs.each do |map|
       from = map['cjk_mapped_from']
@@ -109,8 +111,8 @@ describe 'CJK character equivalence' do
   end
   describe 'mapping applied to left anchor search' do
     it '国史大辞典 => 國史大辭典' do
-      @@solr.add({ id: 1, title_la: '國史大辭典' })
-      @@solr.commit
+      solr.add({ id: 1, title_la: '國史大辭典' })
+      solr.commit
       expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}国史大辞典' })).to include('1')
     end
   end

@@ -2,6 +2,8 @@ require 'spec_helper'
 require 'json'
 
 describe 'subject keyword search' do
+  include_context 'solr_helpers'
+
   def subject_query_string q
     "{!qf=$subject_qf pf=$subject_pf}#{q}"
   end
