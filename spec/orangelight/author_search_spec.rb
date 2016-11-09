@@ -2,6 +2,9 @@ require 'spec_helper'
 require 'json'
 
 describe 'author keyword search' do
+
+  include_context 'solr_helpers'
+
   def author_query_string q
     "{!qf=$author_qf pf=$author_pf}#{q}"
   end

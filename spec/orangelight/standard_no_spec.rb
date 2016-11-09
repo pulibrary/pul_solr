@@ -2,6 +2,8 @@ require 'spec_helper'
 require 'json'
 
 describe 'standard no keyword search' do
+  include_context 'solr_helpers'
+
   before(:all) do
     delete_all
   end
@@ -9,8 +11,8 @@ describe 'standard no keyword search' do
     isbn_normalized = '9784103534228'
     isbn_invalid = '9791032000373'
     before(:all) do
-      @@solr.add({ id: 1, isbn_s: [isbn_normalized, isbn_invalid] })
-      @@solr.commit
+      solr.add({ id: 1, isbn_s: [isbn_normalized, isbn_invalid] })
+      solr.commit
     end
     it 'isbn is indexed' do
       expect(solr_resp_doc_ids_only({ 'q' => isbn_normalized })).to include('1')
@@ -59,8 +61,8 @@ describe 'standard no keyword search' do
     lccn_2001000002 = '2001000002'
     lccn_75425165 = '75425165'
     before(:all) do
-      @@solr.add({ id: 1, lccn_s: [lccn_75425165, lccn_2001000002, lccn_85000002] })
-      @@solr.commit
+      solr.add({ id: 1, lccn_s: [lccn_75425165, lccn_2001000002, lccn_85000002] })
+      solr.commit
     end
     it 'lccn is indexed' do
       expect(solr_resp_doc_ids_only({ 'q' => lccn_75425165 })).to include('1')

@@ -2,6 +2,8 @@ require 'spec_helper'
 require 'json'
 
 describe 'title subfield a boost' do
+  include_context 'solr_helpers'
+
   before(:all) do
     delete_all
   end

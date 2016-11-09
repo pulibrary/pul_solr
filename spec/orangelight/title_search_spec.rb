@@ -2,6 +2,8 @@ require 'spec_helper'
 require 'json'
 
 describe 'title keyword search' do
+  include_context 'solr_helpers'
+
   def title_query_string q
     "{!qf=$title_qf pf=$title_pf}#{q}"
   end
