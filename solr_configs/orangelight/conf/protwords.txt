@@ -17,3 +17,5 @@
 perthes
 constanter
 bible
+oversize
+overseer
