@@ -194,6 +194,29 @@
        </analyzer>
      </fieldType>
 
+    <fieldType name="text_lr" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.PatternReplaceCharFilterFactory"
+          pattern="^(.*)$" replacement="AAAA $1 ZZZZ" />
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ICUFoldingFilterFactory" />
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
+        <!-- in this example, we will only use synonyms at query time
+        <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+        -->
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <charFilter class="solr.PatternReplaceCharFilterFactory"
+          pattern="^(.*)$" replacement="AAAA $1 ZZZZ" />
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ICUFoldingFilterFactory" />
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
      <fieldType name="title_l" class="solr.TextField" positionIncrementGap="100" >
 <!--        <analyzer>
          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA $1" /> 
@@ -686,6 +709,7 @@
    <dynamicField name="*_f"  type="float"  indexed="true"  stored="true"/>
    <dynamicField name="*_d"  type="double" indexed="true"  stored="true"/>
    <dynamicField name="*_la" type="title_l" indexed="true" stored="false" multiValued="true"/>
+   <dynamicField name="*_lr" type="text_lr" indexed="true" stored="false" multiValued="true"/>
 
    <dynamicField name="cjk_*" type="text_cjk" stored="false" indexed="true" multiValued="true" />
 
@@ -789,15 +813,19 @@
 
    <!-- left-anchored search fields -->
    <copyField source="title_a_index" dest="title_245a_la"/>
+   <copyField source="title_a_index" dest="title_245a_lr"/>
    <copyField source="title_display" dest="title_245_la"/>
+   <copyField source="title_display" dest="title_245_lr"/>
    <copyField source="title_vern_display" dest="title_245_la"/>
    <copyField source="title_sort" dest="title_245_la"/>
    <copyField source="title_vern_sort" dest="title_245_la"/>
    <copyField source="title_no_h_index" dest="title_245_la"/>
+   <copyField source="title_245_la" dest="title_245_lr"/>
    <copyField source="other_title_index" dest="title_la"/>
    <copyField source="series_title_index" dest="title_la"/>
    <copyField source="series_statement_index" dest="title_la"/>
    <copyField source="uniform_title_s" dest="title_la"/>
+   <copyField source="title_la" dest="title_lr"/>
    <copyField source="content_title_index" dest="title_addl_la"/>
    <copyField source="contains_title_index" dest="title_addl_la"/>
    <copyField source="linked_title_index" dest="title_addl_la"/>
@@ -805,6 +833,7 @@
    <copyField source="linked_series_index" dest="title_addl_la"/>
    <copyField source="series_ae_index" dest="title_addl_la"/>
    <copyField source="original_version_series_index" dest="title_addl_la"/>
+   <copyField source="title_addl_la" dest="title_addl_lr"/>
 
    <copyField source="more_in_this_series_t" dest="more_in_this_series_la"/>
 

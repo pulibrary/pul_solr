@@ -7,6 +7,9 @@ describe 'title keyword search' do
   def title_query_string q
     "{!qf=$title_qf pf=$title_pf}#{q}"
   end
+  def left_anchor_query_string q
+    "{!qf=$left_anchor_qf pf=$left_anchor_pf}#{q}"
+  end
   before(:all) do
     delete_all
   end
@@ -66,6 +69,24 @@ describe 'title keyword search' do
     it '245a match more relevant than subtitle match' do
       expect(solr_resp_doc_ids_only({ 'q' => title_query_string('silence') }))
             .to include(sounds_like_silence).before(four_silence_subtitle)
+    end
+  end
+  describe 'title exact match relevancy' do
+    first_science = '9774575'
+    science_and_spirit = '9805613'
+    second_science = '857469'
+    before(:all) do
+      add_doc(first_science)
+      add_doc(science_and_spirit)
+      add_doc(second_science)
+    end
+    it 'exact matches Science' do
+      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('Science'), 'sort' => 'score DESC'})["response"]["docs"].last)
+            .to eq({"id" => science_and_spirit})
+    end
+    it 'left anchor exact matches Science' do
+      expect(solr_resp_doc_ids_only({ 'q' => left_anchor_query_string('Science'), 'sort' => 'score DESC'})["response"]["docs"].last)
+            .to eq({"id" => science_and_spirit})
     end
   end
   after(:all) do
