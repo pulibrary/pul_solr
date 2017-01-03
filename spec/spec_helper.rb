@@ -1,6 +1,7 @@
 require 'rsolr'
 require 'rspec-solr'
 require 'faraday'
+require 'pry'
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 # Use this (by calling #include_context) as you would a ruby Module,

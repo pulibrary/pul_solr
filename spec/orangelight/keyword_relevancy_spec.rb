@@ -24,6 +24,10 @@ describe 'title subfield a boost' do
       expect(solr_resp_doc_ids_only({ 'q' => 'cage silence' }))
             .to include(silence_by_cage).as_first.document
     end
+    it 'works matching exact titles first' do
+      expect(solr_resp_doc_ids_only({ 'q' => 'Silence'}))
+            .to include(silence_by_cage).as_first.document
+    end
     it 'work matching 245a and not author comes before work matching author and not 245a' do
       expect(solr_resp_doc_ids_only({ 'q' => 'cage silence' }))
             .to include(sounds_like_silence_cage_in_title).before(four_by_cage)
