@@ -37,6 +37,24 @@ describe 'title subfield a boost' do
             .to include(sounds_like_silence_cage_in_title).before(no_such_thing_as_silence)
     end
   end
+  context 'when performing a keyword search combining author and title' do
+    exact_match = '6581897'
+    variant_exact_match = '1831578'
+    japanese_exact_match = '3175938'
+    left_anchor_match = '4216926'
+    non_phrase_match = '4276901'
+    before(:all) do
+      add_doc(exact_match)
+      add_doc(variant_exact_match)
+      add_doc(japanese_exact_match)
+      add_doc(left_anchor_match)
+      add_doc(non_phrase_match)
+    end
+    it 'work matching 245a and author comes first' do
+      expect(solr_resp_doc_ids_only({ 'q' => '诗经研究', 'sort' => 'score ASC' }))
+            .to include(non_phrase_match).as_first.document
+    end
+  end
   after(:all) do
     delete_all
   end
