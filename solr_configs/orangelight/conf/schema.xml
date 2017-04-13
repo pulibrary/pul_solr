@@ -209,7 +209,6 @@
         <filter class="solr.ICUTransformFilterFactory" id="Traditional-Simplified"/>
         <filter class="solr.ICUTransformFilterFactory" id="Katakana-Hiragana"/>
         <filter class="solr.ICUFoldingFilterFactory"/>   <!-- NFKC, case folding, diacritics removed -->
-        <filter class="solr.CJKBigramFilterFactory" han="true" hiragana="true" katakana="true" hangul="true" outputUnigrams="true" />
         <filter class="solr.PatternReplaceFilterFactory" pattern="(\p{Punct})" replacement="" replace="all" />
         <filter class="solr.TrimFilterFactory"/>
       </analyzer>

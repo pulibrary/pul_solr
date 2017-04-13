@@ -37,7 +37,7 @@ describe 'title subfield a boost' do
             .to include(sounds_like_silence_cage_in_title).before(no_such_thing_as_silence)
     end
   end
-  context 'when performing a keyword search combining author and title' do
+  context 'when performing CJK searches' do
     exact_match = '6581897'
     variant_exact_match = '1831578'
     japanese_exact_match = '3175938'
@@ -50,9 +50,13 @@ describe 'title subfield a boost' do
       add_doc(left_anchor_match)
       add_doc(non_phrase_match)
     end
-    it 'work matching 245a and author comes first' do
+    it 'records that contain non-phrase mathces appear last' do
       expect(solr_resp_doc_ids_only({ 'q' => '诗经研究', 'sort' => 'score ASC' }))
             .to include(non_phrase_match).as_first.document
+    end
+    it 'work matching full 245 as phrase comes first' do
+      expect(solr_resp_doc_ids_only({ 'q' => '诗经研究'}))
+            .to include(japanese_exact_match).as_first.document
     end
   end
   after(:all) do
