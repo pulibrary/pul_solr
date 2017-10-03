@@ -15,5 +15,5 @@ gem 'rake'
 gem 'pry-byebug'
 
 group :development do
-  gem 'capistrano', '~> 3.5'
+  gem 'capistrano', '~> 3.9'
 end
