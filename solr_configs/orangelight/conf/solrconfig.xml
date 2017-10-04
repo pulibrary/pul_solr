@@ -17,11 +17,11 @@
 -->
 
 <!--
- This is a stripped down config file used for a simple example...  
- It is *not* a good example to work from. 
+ This is a stripped down config file used for a simple example...
+ It is *not* a good example to work from.
 -->
 <config>
-  <luceneMatchVersion>6.2.1</luceneMatchVersion>
+  <luceneMatchVersion>7.0.0</luceneMatchVersion>
 
   <lib dir="${solr.install.dir}/contrib/analysis-extras/lib" />
   <lib dir="${solr.install.dir}/contrib/analysis-extras/lucene-libs" />
@@ -35,8 +35,8 @@
   <schemaFactory class="ClassicIndexSchemaFactory"/>
 
   <dataDir>${solr.blacklight-core.data.dir:}</dataDir>
-  
-  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" /> 
+
+  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
 
   <requestDispatcher handleSelect="true" >
     <requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
@@ -65,7 +65,7 @@
     </lst>
   </requestHandler>
 
-  <!-- config for the admin interface --> 
+  <!-- config for the admin interface -->
   <admin>
     <defaultQuery>solr</defaultQuery>
   </admin>
@@ -224,13 +224,13 @@
       <str name="defType">edismax</str>
       <str name="echoParams">explicit</str>
       <int name="rows">10</int>
-
+      <str name="sow">on</str>
       <str name="q.alt">*:*</str>
       <str name="mm">6&lt;90%</str>
 
        <!-- this qf and pf are used by default, if not otherwise specified by
             client. The default blacklight_config will use these for the
-            "keywords" search. See the author_qf/author_pf, title_qf, etc 
+            "keywords" search. See the author_qf/author_pf, title_qf, etc
             below, which the default blacklight_config will specify for
             those searches. You may also be interested in:
             http://wiki.apache.org/solr/LocalParams
@@ -262,7 +262,6 @@
       <str name="pf">
         title_245a_lr^16000
         title_245_lr^16000
-        title_245_lr^14000
         title_a_index^12000
         author_main_unstem_search^10000
         title_unstem_search^400
@@ -498,7 +497,7 @@
     <arr name="last-components">
       <str>spellcheck</str>
     </arr>
-      
+
   </requestHandler>
 
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
@@ -514,7 +513,7 @@
 <!-- Spell Check
 
         The spell check component can return a list of alternative spelling
-        suggestions.  
+        suggestions.
 
         http://wiki.apache.org/solr/SpellCheckComponent
      -->
@@ -569,7 +568,7 @@
        </lst>
      -->
 
-    <!-- a spellchecker that use an alternate comparator 
+    <!-- a spellchecker that use an alternate comparator
 
          comparatorClass be one of:
           1. score (default)

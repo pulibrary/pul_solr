@@ -6,7 +6,7 @@ gem 'rspec-solr'
 
 gem 'rsolr'
 
-gem 'solr_wrapper', '~> 0.23'
+gem 'solr_wrapper', '~> 1.0'
 
 gem 'faraday'
 
@@ -15,5 +15,5 @@ gem 'rake'
 gem 'pry-byebug'
 
 group :development do
-  gem 'capistrano', '~> 3.5'
+  gem 'capistrano', '~> 3.9'
 end
