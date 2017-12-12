@@ -1,3 +1,4 @@
+require 'json'
 # config valid only for current version of Capistrano
 lock '3.9.1'
 
@@ -38,7 +39,10 @@ set :deploy_to, '/solr/pul_solr'
 namespace :deploy do
   after :published, :restart do
     on roles(:all), wait: 5 do
-      execute "sudo service solr restart"
+      cores = capture "curl 'http://localhost:8983/solr/admin/cores?action=STATUS&wt=json'"
+      JSON.parse(cores)['status'].keys.each do |core|
+        execute "curl 'http://localhost:8983/solr/admin/cores?action=RELOAD&core=#{core}'"
+      end
     end
   end
 end
