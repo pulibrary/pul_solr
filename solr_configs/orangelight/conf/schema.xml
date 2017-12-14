@@ -806,6 +806,8 @@
    <!-- left-anchored search fields -->
    <copyField source="title_a_index" dest="title_245a_la"/>
    <copyField source="title_a_index" dest="title_245a_lr"/>
+   <copyField source="title_p_index" dest="title_245p_la"/>
+   <copyField source="title_p_index" dest="title_245p_lr"/>
    <copyField source="title_display" dest="title_245_la"/>
    <copyField source="title_display" dest="title_245_lr"/>
    <copyField source="title_vern_display" dest="title_245_la"/>
