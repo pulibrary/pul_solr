@@ -1,6 +1,4 @@
 require 'json'
-# config valid only for current version of Capistrano
-lock '3.10.1'
 
 set :application, 'pul_solr'
 set :repo_url, 'git@github.com:pulibrary/pul_solr.git'
