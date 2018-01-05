@@ -1,7 +1,7 @@
 require 'json'
 
 set :application, 'pul_solr'
-set :repo_url, 'git@github.com:pulibrary/pul_solr.git'
+set :repo_url, 'https://github.com/pulibrary/pul_solr.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
