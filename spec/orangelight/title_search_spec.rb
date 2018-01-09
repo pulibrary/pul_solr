@@ -88,6 +88,21 @@ describe 'title keyword search' do
       expect(solr_resp_doc_ids_only({ 'q' => left_anchor_query_string('Science'), 'sort' => 'score DESC'})["response"]["docs"].last)
             .to eq({"id" => science_and_spirit})
     end
+
+    context 'with a title which includes whitespace around punctuation marks' do
+      idioms_and_colloc = '5188770'
+      before(:all) do
+        add_doc(idioms_and_colloc)
+      end
+      it 'matches titles without the whitespace' do
+        expect(solr_resp_doc_ids_only({ 'q' => left_anchor_query_string('Idioms\ and\ collocations\ \:\ corpus-based'), 'sort' => 'score DESC'})["response"]["docs"].last)
+              .to eq({"id" => idioms_and_colloc})
+
+        expect(solr_resp_doc_ids_only({ 'q' => left_anchor_query_string('Idioms\ and\ collocations\:\ corpus-based'), 'sort' => 'score DESC'})["response"]["docs"].last)
+              .to eq({"id" => idioms_and_colloc})
+      end
+    end
+
   end
   after(:all) do
     delete_all
