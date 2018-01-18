@@ -1,0 +1,179 @@
+{
+    "access_facet": [
+        "In the Library"
+    ],
+    "advanced_location_s": [
+        "scsbcul",
+        "ReCAP"
+    ],
+    "author_citation_display": [
+        "Schumpeter, Joseph A."
+    ],
+    "author_display": [
+        "Schumpeter, Joseph A., 1883-1950"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Schumpeter, Joseph A.\"}"
+    ],
+    "author_s": [
+        "Schumpeter, Joseph A., 1883-1950"
+    ],
+    "author_sort": [
+        "Schumpeter, Joseph A., 1883-1950"
+    ],
+    "call_number_browse_s": [
+        "HX86 .S33 1950a"
+    ],
+    "call_number_display": [
+        "HX86 .S33 1950a"
+    ],
+    "call_number_full_facet": [
+        "HX - Socialism, Communism, Anarchism"
+    ],
+    "call_number_group_facet": [
+        "H - Social Sciences"
+    ],
+    "call_number_scheme_facet": [
+        "Library of Congress"
+    ],
+    "cjk_all": [
+        "Schumpeter, Joseph A., 1883-1950.",
+        "Capitalism, socialism, and democracy.",
+        "3d ed.",
+        "New York, Harper [1950]",
+        "xiv, 431 p. 22 cm.",
+        "Socialism.",
+        "Capitalism.",
+        "Democracy.",
+        "HX86 .S33 1950a 3314868 scsbcul",
+        "3314868 5034130 Not Available CU60456795 1 Shared CU"
+    ],
+    "compiled_created_t": [
+        "Capitalism, socialism, and democracy."
+    ],
+    "description_display": [
+        "xiv, 431 p. 22 cm."
+    ],
+    "description_t": [
+        "xiv, 431 p. 22 cm."
+    ],
+    "edition_display": [
+        "3d ed."
+    ],
+    "format": [
+        "Book"
+    ],
+    "holdings_1display": [
+        "{\"3314868\":{\"call_number\":\"HX86 .S33 1950a\",\"call_number_browse\":\"HX86 .S33 1950a\",\"location\":\"ReCAP\",\"library\":\"ReCAP\",\"location_code\":\"scsbcul\",\"items\":[{\"holding_id\":\"3314868\",\"id\":\"5034130\",\"status_at_load\":\"Not Available\",\"barcode\":\"CU60456795\",\"copy_number\":\"1\",\"cgc\":\"Shared\",\"collection_code\":\"CU\"}]}}"
+    ],
+    "id": [
+        "SCSB-3330744"
+    ],
+    "numeric_id_b":[
+        false
+    ],
+    "language_code_s": [
+        "eng"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "lc_1letter_facet": [
+        "H - Social Sciences"
+    ],
+    "lc_rest_facet": [
+        "HX - Socialism, Communism, Anarchism"
+    ],
+    "lccn_display": [
+        "   50008700 //r84"
+    ],
+    "lccn_s": [
+        "50008700"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "location_code_s": [
+        "scsbcul"
+    ],
+    "location_display": [
+        "ReCAP"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "name_title_browse_s": [
+        "Schumpeter, Joseph A., 1883-1950. Capitalism, socialism, and democracy"
+    ],
+    "oclc_s": [
+        "190103"
+    ],
+    "other_id_s": [
+        "1760173"
+    ],
+    "other_version_s": [
+        "ocm00190103"
+    ],
+    "pub_citation_display": [
+        "New York: Harper"
+    ],
+    "pub_created_display": [
+        [
+            "New York: Harper, 1950"
+        ]
+    ],
+    "pub_created_s": [
+        [
+            "New York: Harper, 1950"
+        ]
+    ],
+    "pub_date_display": [
+        "1950"
+    ],
+    "pub_date_start_sort": [
+        "1950"
+    ],
+    "publication_place_facet": [
+        "New York (State)"
+    ],
+    "recap_notes_display": [
+        "C - S"
+    ],
+    "standard_no_index": [
+        "ocm00190103",
+        "1760173"
+    ],
+    "subject_display": [
+        "Socialism",
+        "Capitalism",
+        "Democracy"
+    ],
+    "subject_facet": [
+        "Socialism",
+        "Capitalism",
+        "Democracy"
+    ],
+    "subject_topic_facet": [
+        "Socialism",
+        "Capitalism",
+        "Democracy"
+    ],
+    "title_a_index": [
+        "Capitalism, socialism, and democracy"
+    ],
+    "title_citation_display": [
+        "Capitalism, socialism, and democracy."
+    ],
+    "title_display": [
+        "Capitalism, socialism, and democracy."
+    ],
+    "title_no_h_index": [
+        "Capitalism, socialism, and democracy."
+    ],
+    "title_sort": [
+        "Capitalism, socialism, and democracy."
+    ],
+    "title_t": [
+        "Capitalism, socialism, and democracy."
+    ]
+}

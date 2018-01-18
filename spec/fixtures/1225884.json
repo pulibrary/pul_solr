@@ -1,0 +1,171 @@
+{
+    "access_facet": [
+        "In the Library"
+    ],
+    "advanced_location_s": [
+        "f",
+        "Firestone Library"
+    ],
+    "author_citation_display": [
+        "Schumpeter, Joseph A."
+    ],
+    "author_display": [
+        "Schumpeter, Joseph A., 1883-1950"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Schumpeter, Joseph A.\"}"
+    ],
+    "author_s": [
+        "Schumpeter, Joseph A., 1883-1950"
+    ],
+    "author_sort": [
+        "Schumpeter, Joseph A., 1883-1950"
+    ],
+    "call_number_browse_s": [
+        "HX86.S41"
+    ],
+    "call_number_display": [
+        "HX86.S41"
+    ],
+    "call_number_full_facet": [
+        "HX - Socialism, Communism, Anarchism"
+    ],
+    "call_number_group_facet": [
+        "H - Social Sciences"
+    ],
+    "call_number_scheme_facet": [
+        "Library of Congress"
+    ],
+    "cataloged_tdt": [
+        "2000-06-13T05:00:00Z"
+    ],
+    "cjk_all": [
+        "Schumpeter, Joseph A., 1883-1950. http://id.loc.gov/authorities/names/n50003171",
+        "Capitalism, socialism, and democracy.",
+        "2d ed. By Joseph A. Schumpeter ...",
+        "New York, London, Harper & brothers [1947]",
+        "xiv, 411 p. 22 cm.",
+        "Socialism. http://id.loc.gov/authorities/subjects/sh85124118",
+        "Capitalism. http://id.loc.gov/authorities/subjects/sh85019958",
+        "Democracy. http://id.loc.gov/authorities/subjects/sh85036647",
+        "1402115 f 1 HX86.S41",
+        "1402116 f 2 HX86.S41"
+    ],
+    "compiled_created_t": [
+        "Capitalism, socialism, and democracy."
+    ],
+    "description_display": [
+        "xiv, 411 p. 22 cm."
+    ],
+    "description_t": [
+        "xiv, 411 p. 22 cm."
+    ],
+    "edition_display": [
+        "2d ed. By Joseph A. Schumpeter ..."
+    ],
+    "format": [
+        "Book"
+    ],
+    "holdings_1display": [
+        "{\"1402115\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"copy_number\":\"1\",\"call_number\":\"HX86.S41\",\"call_number_browse\":\"HX86.S41\"},\"1402116\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"copy_number\":\"2\",\"call_number\":\"HX86.S41\",\"call_number_browse\":\"HX86.S41\"}}"
+    ],
+    "id": [
+        "1225884"
+    ],
+    "numeric_id_b":[
+        true
+    ],
+    "language_code_s": [
+        "eng"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "lc_1letter_facet": [
+        "H - Social Sciences"
+    ],
+    "lc_rest_facet": [
+        "HX - Socialism, Communism, Anarchism"
+    ],
+    "lccn_display": [
+        "   47000604  "
+    ],
+    "lccn_s": [
+        "47000604"
+    ],
+    "location": [
+        "Firestone Library"
+    ],
+    "location_code_s": [
+        "f"
+    ],
+    "location_display": [
+        "Firestone Library"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "name_title_browse_s": [
+        "Schumpeter, Joseph A., 1883-1950. Capitalism, socialism, and democracy"
+    ],
+    "oclc_s": [
+        "1439094"
+    ],
+    "other_version_s": [
+        "ocm01439094"
+    ],
+    "pub_citation_display": [
+        "London: Harper & brothers"
+    ],
+    "pub_created_display": [
+        "New York, London, Harper & brothers [1947]"
+    ],
+    "pub_created_s": [
+        "New York, London, Harper & brothers [1947]"
+    ],
+    "pub_date_display": [
+        "1947"
+    ],
+    "pub_date_start_sort": [
+        "1947"
+    ],
+    "publication_place_facet": [
+        "New York (State)"
+    ],
+    "standard_no_index": [
+        "ocm01439094"
+    ],
+    "subject_display": [
+        "Socialism",
+        "Capitalism",
+        "Democracy"
+    ],
+    "subject_facet": [
+        "Socialism",
+        "Capitalism",
+        "Democracy"
+    ],
+    "subject_topic_facet": [
+        "Socialism",
+        "Capitalism",
+        "Democracy"
+    ],
+    "title_a_index": [
+        "Capitalism, socialism, and democracy"
+    ],
+    "title_citation_display": [
+        "Capitalism, socialism, and democracy."
+    ],
+    "title_display": [
+        "Capitalism, socialism, and democracy."
+    ],
+    "title_no_h_index": [
+        "Capitalism, socialism, and democracy."
+    ],
+    "title_sort": [
+        "Capitalism, socialism, and democracy."
+    ],
+    "title_t": [
+        "Capitalism, socialism, and democracy."
+    ]
+}
