@@ -37,6 +37,22 @@ describe 'title subfield a boost' do
             .to include(sounds_like_silence_cage_in_title).before(no_such_thing_as_silence)
     end
   end
+  context 'when performing a keyword search with local and scsb results' do
+    capitalism_socialism_democracy_1 = '1225885'
+    capitalism_socialism_democracy_2 = '1225884'
+    capitalism_socialism_democracy_3 = 'SCSB-3330744'
+    before(:all) do
+      add_doc(capitalism_socialism_democracy_1)
+      add_doc(capitalism_socialism_democracy_2)
+      add_doc(capitalism_socialism_democracy_3)
+    end
+    it 'sorts scsb record after local records' do
+      expect(solr_resp_doc_ids_only({ 'q' => 'capitalism socialism democracy' }))
+            .to include(capitalism_socialism_democracy_1).before(capitalism_socialism_democracy_3)
+      expect(solr_resp_doc_ids_only({ 'q' => 'capitalism socialism democracy' }))
+            .to include(capitalism_socialism_democracy_2).before(capitalism_socialism_democracy_3)
+    end
+  end
   context 'when performing CJK searches' do
     exact_match = '6581897'
     variant_exact_match = '1831578'
