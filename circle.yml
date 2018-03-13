@@ -1,6 +1,6 @@
 machine:
   ruby:
-    version: 2.3.0
+    version: 2.4.3
   java:
     version: openjdk8
 dependencies:

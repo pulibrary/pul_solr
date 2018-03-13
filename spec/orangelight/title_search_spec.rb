@@ -7,17 +7,22 @@ describe 'title keyword search' do
   def title_query_string q
     "{!qf=$title_qf pf=$title_pf}#{q}"
   end
+
   def left_anchor_query_string q
     "{!qf=$left_anchor_qf pf=$left_anchor_pf}#{q}"
   end
-  before(:all) do
+
+  before do
     delete_all
   end
+
   describe 'title_display field' do
-    patterns_in_nature = '1355809'
-    before(:all) do
+    let(:patterns_in_nature) { '1355809' }
+
+    before do
       add_doc(patterns_in_nature)
     end
+
     it 'retrieves book when first word in title_display is searched' do
       expect(solr_resp_doc_ids_only({ 'q' => title_query_string('Patterns') })).to include(patterns_in_nature)
     end
@@ -37,12 +42,15 @@ describe 'title keyword search' do
       expect(solr_resp_doc_ids_only({ 'q' => title_query_string('pattern in nature by peter rabbit') })).not_to include(patterns_in_nature)
     end
   end
+
   describe 'series_title_index field' do
-    mozart_series = '8919079'
-    series_title = 'Neue Ausgabe samtlicher Werke'
-    before(:all) do
+    let(:mozart_series) { '8919079' }
+    let(:series_title) { 'Neue Ausgabe samtlicher Werke' }
+
+    before do
       add_doc(mozart_series)
     end
+
     it 'series title is not in 245' do
       expect(solr_resp_doc_ids_only({ 'fq' => "title_display:\"#{series_title}\"" })).not_to include(mozart_series)
     end
@@ -53,15 +61,18 @@ describe 'title keyword search' do
       expect(solr_resp_doc_ids_only({ 'q' => title_query_string(series_title) })).to include(mozart_series)
     end
   end
+
   describe 'title_a_index field relevancy' do
-    silence = '1228819'
-    four_silence_subtitle = '4789869'
-    sounds_like_silence = '7381137'
-    before(:all) do
+    let(:silence) { '1228819' }
+    let(:four_silence_subtitle) { '4789869' }
+    let(:sounds_like_silence) { '7381137' }
+
+    before do
       add_doc(silence)
       add_doc(four_silence_subtitle)
       add_doc(sounds_like_silence)
     end
+
     it 'exact 245a match more relevant than longer 245a field' do
       expect(solr_resp_doc_ids_only({ 'q' => title_query_string('silence') }))
             .to include(silence).before(sounds_like_silence)
@@ -71,15 +82,18 @@ describe 'title keyword search' do
             .to include(sounds_like_silence).before(four_silence_subtitle)
     end
   end
+
   describe 'title exact match relevancy' do
-    first_science = '9774575'
-    science_and_spirit = '9805613'
-    second_science = '857469'
-    before(:all) do
+    let(:first_science) { '9774575' }
+    let(:science_and_spirit) { '9805613' }
+    let(:second_science) { '857469' }
+
+    before do
       add_doc(first_science)
       add_doc(science_and_spirit)
       add_doc(second_science)
     end
+
     it 'exact matches Science' do
       expect(solr_resp_doc_ids_only({ 'q' => title_query_string('Science'), 'sort' => 'score DESC'})["response"]["docs"].last)
             .to eq({"id" => science_and_spirit})
@@ -90,10 +104,12 @@ describe 'title keyword search' do
     end
 
     context 'with a title which includes whitespace around punctuation marks' do
-      idioms_and_colloc = '5188770'
-      before(:all) do
+      let(:idioms_and_colloc) { '5188770' }
+
+      before do
         add_doc(idioms_and_colloc)
       end
+
       it 'matches titles without the whitespace' do
         expect(solr_resp_doc_ids_only({ 'q' => left_anchor_query_string('Idioms\ and\ collocations\ \:\ corpus-based'), 'sort' => 'score DESC'})["response"]["docs"].last)
               .to eq({"id" => idioms_and_colloc})
@@ -102,9 +118,38 @@ describe 'title keyword search' do
               .to eq({"id" => idioms_and_colloc})
       end
     end
-
   end
-  after(:all) do
+
+  describe 'handling for titles which contain dashes' do
+    let(:bibid) { '212556' }
+    let(:query) { title_query_string('theory of the avant garde') }
+    let(:parameters) do
+      {
+        'q' => query,
+        'sort' => 'score DESC'
+      }
+    end
+    let(:response) { solr_resp_doc_ids_only(parameters) }
+    let(:documents) { response["response"]["docs"] }
+
+    before do
+      add_doc(bibid)
+    end
+
+    it 'finds titles containing dashes' do
+      expect(documents.last).to eq({ "id" => bibid })
+    end
+
+    context 'when a query contains a dash character' do
+      let(:query) { title_query_string('theory of the avant-garde') }
+
+      it 'finds titles containing dashes' do
+        expect(documents.last).to eq({ "id" => bibid })
+      end
+    end
+  end
+
+  after do
     delete_all
   end
 end
