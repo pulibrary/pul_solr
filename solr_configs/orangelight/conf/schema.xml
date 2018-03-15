@@ -217,9 +217,9 @@
      <fieldType name="title_l" class="solr.TextField" positionIncrementGap="100" >
        <analyzer type="index">
           <!-- Filters for individual characters -->
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[ʹ’՚Ꞌꞌ' ︠	︡]" replacement="" />
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\s+(\p{Punct}+)" replacement="$1" />
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\p{Punct}^[‒–—―])*" replacement="" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[’՚Ꞌꞌ＇]" replacement="" />
           <!-- Filters for the entire string -->
           <filter class="solr.WordDelimiterGraphFilterFactory" />
           <filter class="solr.FlattenGraphFilterFactory"/> <!-- This is only necessary for indexing when using a *GraphFilterFactory -->
@@ -241,9 +241,9 @@
        </analyzer>
        <analyzer type="query">
           <!-- Filters for individual characters -->
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[ʹ’՚Ꞌꞌ' ︠	︡]" replacement="" />
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\s+(\p{Punct}+)" replacement="$1" />
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\p{Punct}^[‒–—―])*" replacement="" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[’՚Ꞌꞌ＇]" replacement="" />
           <!-- Filters for the entire string -->
           <filter class="solr.WordDelimiterGraphFilterFactory" />
           <!-- Tokenize the string -->
