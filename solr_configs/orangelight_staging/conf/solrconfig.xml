@@ -36,7 +36,9 @@
 
   <dataDir>${solr.blacklight-staging-core.data.dir:}</dataDir>
 
-  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
+  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy">
+    <int name="maxNumberOfBackups">1</int>
+  </requestHandler>
 
   <requestDispatcher handleSelect="true" >
     <requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
