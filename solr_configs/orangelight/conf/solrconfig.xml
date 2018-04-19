@@ -36,7 +36,12 @@
 
   <dataDir>${solr.blacklight-core.data.dir:}</dataDir>
 
-  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
+  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy">
+    <lst name="master">
+      <str name="backupAfter">optimize</str>
+    </lst>
+    <int name="maxNumberOfBackups">1</int>
+  </requestHandler>
 
   <requestDispatcher handleSelect="true" >
     <requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
