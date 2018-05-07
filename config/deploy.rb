@@ -9,6 +9,10 @@ set :repo_url, 'https://github.com/pulibrary/pul_solr.git'
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/solr/pul_solr'
 
+set :solr_configs_path, '/current/solr_configs/**'
+
+set :filter, :roles => %w{main replication}
+
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -35,8 +39,19 @@ set :deploy_to, '/solr/pul_solr'
 # set :keep_releases, 5
 
 namespace :deploy do
+    task :remove_replication_solrconfig_replication do
+      on roles(:replication) do
+    	  Dir.glob(solr_configs_path) do |d|
+	    	  if test("[ -f /#{d}/conf/solrconfig_replication.xml ]")
+	          run "rm #{d}/conf/solrconfig_replication.xml"
+	        end
+        end
+        puts capture(:pwd)  
+      end	
+    end
+
   after :published, :restart do
-    on roles(:all), wait: 5 do
+    on roles(:main, :replication), wait: 5 do
       cores = capture "curl 'http://localhost:8983/solr/admin/cores?action=STATUS&wt=json'"
       JSON.parse(cores)['status'].keys.each do |core|
         execute "curl 'http://localhost:8983/solr/admin/cores?action=RELOAD&core=#{core}'"
