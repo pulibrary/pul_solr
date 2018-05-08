@@ -41,7 +41,7 @@
 
     <!-- fully qualified url for the replication handler of master. It is
          possible to pass on this as a request param for the fetchindex command -->
-    <str name="masterUrl">http://lib-solr3.princeton.edu:8983/solr/blacklight-staging-core/replication</str>
+    <str name="masterUrl">http://lib-solr3.princeton.edu:8983/solr/catalog-production/replication</str>
     <str name="replicateAfter">commit</str>
     <!-- Interval in which the slave should poll master.  Format is HH:mm:ss .
          If this is absent slave does not poll automatically.

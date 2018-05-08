@@ -21,7 +21,7 @@
  It is *not* a good example to work from.
 -->
 <config>
-  <luceneMatchVersion>7.0.0</luceneMatchVersion>
+  <luceneMatchVersion>7.1.0</luceneMatchVersion>
 
   <lib dir="${solr.install.dir}/contrib/analysis-extras/lib" />
   <lib dir="${solr.install.dir}/contrib/analysis-extras/lucene-libs" />
@@ -36,11 +36,17 @@
 
   <dataDir>${solr.blacklight-core.data.dir:}</dataDir>
 
-  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy">
+  <requestHandler name="/replication" class="solr.ReplicationHandler">
     <lst name="master">
+      <str name="replicateAfter">commit</str>
       <str name="backupAfter">optimize</str>
+      <str name="confFiles">solrconfig_replication.xml:solrconfig.xml</str>
+      <str name="commitReserveDuration">00:00:10</str>
     </lst>
     <int name="maxNumberOfBackups">1</int>
+    <lst name="invariants">
+      <str name="maxWriteMPPerSec">16</str>
+    </lst>
   </requestHandler>
 
   <requestDispatcher handleSelect="true" >
