@@ -15,8 +15,8 @@ describe 'protected words' do
       add_doc(stemmed)
     end
     it 'does not stem the word' do
-      expect(solr_resp_doc_ids_only({ 'q' => 'constanter' })).to include(not_stemmed)
-      expect(solr_resp_doc_ids_only({ 'q' => 'constanter' })).not_to include(stemmed)
+      expect(solr_resp_doc_ids_only('q' => 'constanter')).to include(not_stemmed)
+      expect(solr_resp_doc_ids_only('q' => 'constanter')).not_to include(stemmed)
     end
   end
   after(:all) do

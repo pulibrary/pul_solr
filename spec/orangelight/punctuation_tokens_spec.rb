@@ -4,7 +4,7 @@ require 'json'
 describe 'stripping punctuation surrounded by whitespace' do
   include_context 'solr_helpers'
 
-  def qf_pf_string q, field
+  def qf_pf_string(q, field)
     "{!qf=$#{field}_qf pf=$#{field}_pf}#{q}"
   end
   before(:all) do
@@ -14,40 +14,40 @@ describe 'stripping punctuation surrounded by whitespace' do
   end
   describe 'default text query' do
     it 'matches when colon is included at end of query word' do
-      expect(solr_resp_doc_ids_only({ 'q' => 'China and Angola: marriage convenience' })).to include(@china_and_angola)
+      expect(solr_resp_doc_ids_only('q' => 'China and Angola: marriage convenience')).to include(@china_and_angola)
     end
     it 'matches when colon is surrounded by whitespace' do
-      expect(solr_resp_doc_ids_only({ 'q' => 'China and Angola : marriage convenience' })).to include(@china_and_angola)
+      expect(solr_resp_doc_ids_only('q' => 'China and Angola : marriage convenience')).to include(@china_and_angola)
     end
   end
   describe 'title query' do
     it 'matches when colon is included at end of query word' do
-      expect(solr_resp_doc_ids_only({ 'q' => qf_pf_string('China and Angola: marriage convenience',
-                                                          'title') })).to include(@china_and_angola)
+      expect(solr_resp_doc_ids_only('q' => qf_pf_string('China and Angola: marriage convenience',
+                                                        'title'))).to include(@china_and_angola)
     end
     it 'matches when colon is surrounded by whitespace' do
-      expect(solr_resp_doc_ids_only({ 'q' => qf_pf_string('China and Angola : marriage convenience',
-                                                          'title') })).to include(@china_and_angola)
+      expect(solr_resp_doc_ids_only('q' => qf_pf_string('China and Angola : marriage convenience',
+                                                        'title'))).to include(@china_and_angola)
     end
   end
   describe 'author query' do
     it 'matches when exclamation point is included at end of query word' do
-      expect(solr_resp_doc_ids_only({ 'q' => qf_pf_string('Power! Marcus',
-                                                          'author') })).to include(@china_and_angola)
+      expect(solr_resp_doc_ids_only('q' => qf_pf_string('Power! Marcus',
+                                                        'author'))).to include(@china_and_angola)
     end
     it 'matches when exclamation point is surrounded by whitespace' do
-      expect(solr_resp_doc_ids_only({ 'q' => qf_pf_string('Power ! Marcus',
-                                                          'author') })).to include(@china_and_angola)
+      expect(solr_resp_doc_ids_only('q' => qf_pf_string('Power ! Marcus',
+                                                        'author'))).to include(@china_and_angola)
     end
   end
   describe 'subject query' do
     it 'matches when undesired character is included at end of query word' do
-      expect(solr_resp_doc_ids_only({ 'q' => qf_pf_string('foreign economic relations% angola',
-                                                          'subject') })).to include(@china_and_angola)
+      expect(solr_resp_doc_ids_only('q' => qf_pf_string('foreign economic relations% angola',
+                                                        'subject'))).to include(@china_and_angola)
     end
     it 'matches when undesired character is surrounded by whitespace' do
-      expect(solr_resp_doc_ids_only({ 'q' => qf_pf_string('foreign economic relations % angola',
-                                                          'subject') })).to include(@china_and_angola)
+      expect(solr_resp_doc_ids_only('q' => qf_pf_string('foreign economic relations % angola',
+                                                        'subject'))).to include(@china_and_angola)
     end
   end
   after(:all) do

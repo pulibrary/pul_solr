@@ -9,6 +9,8 @@ set :repo_url, 'https://github.com/pulibrary/pul_solr.git'
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/solr/pul_solr'
 
+set :filter, :roles => %{main replication}
+
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -36,6 +38,16 @@ set :deploy_to, '/solr/pul_solr'
 
 namespace :deploy do
   after :published, :restart do
+    on roles(:replication) do
+      within release_path do
+        execute "pwd"
+        directories = []
+        Dir.chdir("solr_configs/") do
+          directories = Dir.glob('*').select { |f| File.directory? f }
+        end
+        directories.each {|e| execute "mv #{release_path}/solr_configs/#{e}/conf/solrconfig_replication.xml #{release_path}/solr_configs/#{e}/conf/solrconfig.xml"}  
+      end
+    end
     on roles(:all), wait: 5 do
       cores = capture "curl 'http://localhost:8983/solr/admin/cores?action=STATUS&wt=json'"
       JSON.parse(cores)['status'].keys.each do |core|
