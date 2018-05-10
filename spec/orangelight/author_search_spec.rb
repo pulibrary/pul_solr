@@ -2,10 +2,9 @@ require 'spec_helper'
 require 'json'
 
 describe 'author keyword search' do
-
   include_context 'solr_helpers'
 
-  def author_query_string q
+  def author_query_string(q)
     "{!qf=$author_qf pf=$author_pf}#{q}"
   end
   before(:all) do
@@ -17,10 +16,10 @@ describe 'author keyword search' do
       add_doc(diacritic_name)
     end
     it 'retrieves book when diacritics included' do
-      expect(solr_resp_doc_ids_only({ 'q' => author_query_string('Moiseĭ') })).to include(diacritic_name)
+      expect(solr_resp_doc_ids_only('q' => author_query_string('Moiseĭ'))).to include(diacritic_name)
     end
     it 'retrieves book when diacritics excluded' do
-      expect(solr_resp_doc_ids_only({ 'q' => author_query_string('Moisei') })).to include(diacritic_name)
+      expect(solr_resp_doc_ids_only('q' => author_query_string('Moisei'))).to include(diacritic_name)
     end
   end
   describe 'author 1xx field' do
@@ -31,7 +30,7 @@ describe 'author keyword search' do
       add_doc(related_name)
     end
     it 'author 1xx match returned before 7xx match' do
-      expect(solr_resp_doc_ids_only({ 'q' => author_query_string('Fellbaum') })).to include(author).before(related_name)
+      expect(solr_resp_doc_ids_only('q' => author_query_string('Fellbaum'))).to include(author).before(related_name)
     end
   end
   after(:all) do
