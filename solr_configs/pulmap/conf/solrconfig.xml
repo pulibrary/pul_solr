@@ -67,6 +67,17 @@
     </autoCommit>
   </updateHandler>
 
+  <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
+
+  <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
+    <lst name="invariants">
+      <str name="q">solrpingquery</str>
+    </lst>
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+    </lst>
+  </requestHandler>
+
   <!-- realtime get handler, guaranteed to return the latest stored fields
     of any document, without the need to commit or open a new searcher. The current
     implementation relies on the updateLog feature being enabled. -->
