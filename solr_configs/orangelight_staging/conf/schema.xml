@@ -218,10 +218,10 @@
        <analyzer type="index">
           <!-- Filters for individual characters -->
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[ʹ’՚Ꞌꞌ' ︠	︡]" replacement="" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\s+(\p{Punct}+)" replacement="$1" />
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\:\s+(\p{Punct}+)" replacement="$1" />
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\p{Punct}^[‒–—―])*" replacement="" />
           <!-- Filters for the entire string -->
-          <filter class="solr.WordDelimiterGraphFilterFactory" preserveOriginal="1" stemEnglishPossessive="0" />
+          <filter class="solr.WordDelimiterGraphFilterFactory" catenateWords="1" generateWordParts="1" preserveOriginal="1" stemEnglishPossessive="0" />
           <filter class="solr.FlattenGraphFilterFactory"/> <!-- This is only necessary for indexing when using a *GraphFilterFactory -->
           <!-- Tokenize the string -->
           <tokenizer class="solr.KeywordTokenizerFactory" />
@@ -242,10 +242,10 @@
        <analyzer type="query">
           <!-- Filters for individual characters -->
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[ʹ’՚Ꞌꞌ' ︠	︡]" replacement="" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\s+(\p{Punct}+)" replacement="$1" />
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\:\s+(\p{Punct}+)" replacement="$1" />
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\p{Punct}^[‒–—―])*" replacement="" />
           <!-- Filters for the entire string -->
-          <filter class="solr.WordDelimiterGraphFilterFactory" preserveOriginal="1" stemEnglishPossessive="0" />
+          <filter class="solr.WordDelimiterGraphFilterFactory" catenateWords="1" generateWordParts="1" preserveOriginal="1" stemEnglishPossessive="0" />
           <!-- Tokenize the string -->
           <tokenizer class="solr.KeywordTokenizerFactory"/>
           <!-- Handle non-Latin orthographies -->

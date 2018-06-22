@@ -153,3 +153,48 @@ describe 'title keyword search' do
     delete_all
   end
 end
+
+describe 'title_l search' do
+  include_context 'solr_helpers'
+
+  let(:title) { "Photo-secession : the golden age" }
+  let(:response) { solr_resp_doc_ids_only(params)['response'] }
+  let(:docs) { response['docs'] }
+
+  before do
+    solr.add({ id: 1, title_display: [title] })
+    solr.commit
+  end
+
+  context 'when colon excluded in query' do
+    let(:params) do
+      { 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}Photo-secession  the' }
+    end
+
+    it 'matches when colon excluded in query' do
+      expect(docs).to eq([{ "id" => "1" }])
+    end
+  end
+  context 'when dash is excluded in query' do
+    let(:params) do
+      { 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}Photosecession the' }
+    end
+
+    it 'matches when dash is excluded in query' do
+      expect(docs).to eq([{ "id" => "1" }])
+    end
+  end
+  context 'when dash is replaced with space in query' do
+    let(:params) do
+      { 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}Photo secession the' }
+    end
+
+    it 'matches when dash is replaced with space in query' do
+      expect(docs).to eq([{ "id" => "1" }])
+    end
+  end
+
+  after do
+    delete_all
+  end
+end
