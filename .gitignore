@@ -15,3 +15,4 @@ solr_configs/figgy/data/
 solr_configs/lae-blacklight/data/
 /log/
 .DS_Store
+/.byebug_history
