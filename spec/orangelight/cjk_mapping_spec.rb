@@ -109,13 +109,29 @@ describe 'CJK character equivalence' do
       expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"梅亜"' })).to include('1')
     end
   end
-  describe 'mapping applied to left anchor search' do
-    it '国史大辞典 => 國史大辭典' do
+  describe 'mapping applied to search fields' do
+    it '国史大辞典 => 國史大辭典 left anchor' do
       solr.add({ id: 1, title_la: '國史大辭典' })
       solr.commit
       expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}国史大辞典' })).to include('1')
     end
+    it '三晋出版社 => 三晉出版社 publisher' do
+      solr.add({ id: 1, pub_created_unstem_search: '三晋出版社' })
+      solr.commit
+      expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$publisher_qf pf=$publisher_pf}三晉出版社' })).to include('1')
+    end
+    it '巴蜀書社 => 巴蜀书社  notes' do
+      solr.add({ id: 1, notes_index: '巴蜀書社' })
+      solr.commit
+      expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$notes_qf pf=$notes_pf}巴蜀书社 ' })).to include('1')
+    end
+    it '鳳凰出版社 => 凤凰出版社  series title' do
+      solr.add({ id: 1, original_version_series_index: '鳳凰出版社' })
+      solr.commit
+      expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$series_title_qf pf=$series_title_pf}凤凰出版社 ' })).to include('1')
+    end
   end
+
   after(:all) do
     delete_all
   end

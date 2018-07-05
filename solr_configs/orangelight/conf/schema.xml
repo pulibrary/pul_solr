@@ -813,6 +813,16 @@
 
    <copyField source="more_in_this_series_t" dest="more_in_this_series_la"/>
 
+   <!-- advanced search fields cjk config -->
+   <copyField source="series_title_index" dest="cjk_series_title"/>
+   <copyField source="series_ae_index" dest="cjk_series_title"/>
+   <copyField source="series_statement_index" dest="cjk_series_title"/>
+   <copyField source="linked_series_title_index" dest="cjk_series_title"/>
+   <copyField source="linked_series_index" dest="cjk_series_title"/>
+   <copyField source="original_version_series_index" dest="cjk_series_title"/>
+   <copyField source="notes_index" dest="cjk_notes"/>
+   <copyField source="pub_created_unstem_search" dest="cjk_publisher"/>
+
    <!-- Above, multiple source fields are copied to the [text] field.
     Another way to map multiple source fields to the same
     destination field is to use the dynamic field syntax.
