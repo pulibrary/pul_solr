@@ -329,6 +329,22 @@
       <str name="in_series_pf">
         more_in_this_series_la
       </str>
+      <str name="publisher_qf">
+        pub_created_unstem_search
+        cjk_publisher
+      </str>
+      <str name="publisher_pf">
+        pub_created_unstem_search
+        cjk_publisher
+      </str>
+      <str name="notes_qf">
+        notes_index
+        cjk_notes
+      </str>
+      <str name="notes_pf">
+        notes_index
+        cjk_notes
+      </str>
       <str name="series_title_qf">
         series_title_index^5
         series_ae_index
@@ -336,6 +352,7 @@
         linked_series_title_index
         linked_series_index
         original_version_series_index
+        cjk_series_title
       </str>
       <str name="series_title_pf">
         series_title_index^50
@@ -344,6 +361,7 @@
         linked_series_title_index^10
         linked_series_index^10
         original_version_series_index^10
+        cjk_series_title^10
       </str>
       <str name="title_qf">
         title_a_index^500
