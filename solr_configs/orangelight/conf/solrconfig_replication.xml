@@ -433,19 +433,11 @@
       <str name="subject_qf">
         subject_topic_unstem_search^25
         subject_unstem_search^20
-        subject_topic_index^15
-        subject_t^10
-        subject_addl_unstem_search^5
-        subject_addl_t
         cjk_subject
       </str>
       <str name="subject_pf">
         subject_topic_unstem_search^250
         subject_unstem_search^200
-        subject_t^150
-        subject_topic_index^100
-        subject_addl_unstem_search^50
-        subject_addl_t^10
         cjk_subject^10
       </str>
 
