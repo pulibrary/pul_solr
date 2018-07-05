@@ -215,39 +215,15 @@
     </fieldType>
 
      <fieldType name="title_l" class="solr.TextField" positionIncrementGap="100" >
-       <analyzer type="index">
+       <analyzer>
           <!-- Filters for individual characters -->
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[ʹ’՚Ꞌꞌ' ︠	︡]" replacement="" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\:\s+(\p{Punct}+)" replacement="$1" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\p{Punct}^[‒–—―])*" replacement="" />
-          <!-- Filters for the entire string -->
-          <filter class="solr.WordDelimiterGraphFilterFactory" catenateWords="1" generateWordParts="1" preserveOriginal="1" stemEnglishPossessive="0" />
-          <filter class="solr.FlattenGraphFilterFactory"/> <!-- This is only necessary for indexing when using a *GraphFilterFactory -->
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[ʹ’՚Ꞌꞌ']" replacement="" />
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}" replacement="" />
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\s+" replacement=" " />
           <!-- Tokenize the string -->
           <tokenizer class="solr.KeywordTokenizerFactory" />
-          <!-- Handle non-Latin orthographies -->
-          <filter class="solr.ICUFoldingFilterFactory" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="０" replacement="〇" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}][\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}]*)\s+(?=[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])" replacement="$1"/>
-          <!-- a korean char guaranteed at the end of the pattern:    pattern="([\p{Hangul}\p{Han}])\s+(?=[\p{Han}\s]*\p{Hangul})" -->
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])\s+(?=[\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}\s]*[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}])" replacement="$1"/>
-          <filter class="solr.CJKWidthFilterFactory"/>
-          <filter class="edu.stanford.lucene.analysis.CJKFoldingFilterFactory"/>
-          <filter class="solr.ICUTransformFilterFactory" id="Traditional-Simplified"/>
-          <filter class="solr.ICUTransformFilterFactory" id="Katakana-Hiragana"/>
-          <filter class="solr.ICUFoldingFilterFactory"/>   <!-- NFKC, case folding, diacritics removed -->
-          <filter class="solr.CJKBigramFilterFactory" han="true" hiragana="true" katakana="true" hangul="true" outputUnigrams="true" />
-          <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="150"/>
-       </analyzer>
-       <analyzer type="query">
-          <!-- Filters for individual characters -->
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[ʹ’՚Ꞌꞌ' ︠	︡]" replacement="" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\:\s+(\p{Punct}+)" replacement="$1" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\p{Punct}^[‒–—―])*" replacement="" />
-          <!-- Filters for the entire string -->
-          <filter class="solr.WordDelimiterGraphFilterFactory" catenateWords="1" generateWordParts="1" preserveOriginal="1" stemEnglishPossessive="0" />
-          <!-- Tokenize the string -->
-          <tokenizer class="solr.KeywordTokenizerFactory"/>
+          <!-- Remove trailing and leading spaces -->
+          <filter class="solr.TrimFilterFactory"/>
           <!-- Handle non-Latin orthographies -->
           <filter class="solr.ICUFoldingFilterFactory" />
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="０" replacement="〇" />
