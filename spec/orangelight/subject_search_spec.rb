@@ -34,6 +34,21 @@ describe 'subject keyword search' do
       expect(solr_resp_doc_ids_only({ 'q' => subject_query_string('image god') })).to include(stop_word_subject)
     end
   end
+  describe 'stemming disabled' do
+    before(:all) do
+      solr.add({ id: 1, subject_display: 'Biographical films—United States' })
+      solr.commit
+    end
+    it 'matches heading terms exactly' do
+      expect(solr_resp_doc_ids_only({ 'q' => subject_query_string('Biographical films United States') })).to include('1')
+    end
+    it 'stemmed form included in all fields' do
+      expect(solr_resp_doc_ids_only({ 'q' => 'Biograph film Unit State' })).to include('1')
+    end
+    it 'stemmed form excluded from subject field' do
+      expect(solr_resp_doc_ids_only({ 'q' => subject_query_string('Biograph film Unit State') })).not_to include('1')
+    end
+  end
   after(:all) do
     delete_all
   end
