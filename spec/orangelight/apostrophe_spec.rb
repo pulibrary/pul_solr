@@ -68,7 +68,7 @@ describe 'apostrophes are stripped' do
 
   describe 'in left_anchor search' do
     let(:params) do
-      { 'q' => "{!qf=$left_anchor_qf pf=$left_anchor_pf}can’t" }
+      { 'q' => "{!qf=$left_anchor_qf pf=$left_anchor_pf}can’t*" }
     end
     let(:response) { solr_resp_doc_ids_only(params)['response'] }
     let(:docs) { response['docs'] }
@@ -79,7 +79,7 @@ describe 'apostrophes are stripped' do
 
     context 'when apostrophe excluded in query for contraction' do
       let(:params) do
-        { 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}cant' }
+        { 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}cant*' }
       end
 
       it 'matches' do

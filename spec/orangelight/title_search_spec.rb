@@ -1,16 +1,16 @@
 require 'spec_helper'
 require 'json'
 
+def title_query_string q
+  "{!qf=$title_qf pf=$title_pf}#{q}"
+end
+
+def left_anchor_query_string q
+  "{!qf=$left_anchor_qf pf=$left_anchor_pf}#{q}*"
+end
+
 describe 'title keyword search' do
   include_context 'solr_helpers'
-
-  def title_query_string q
-    "{!qf=$title_qf pf=$title_pf}#{q}"
-  end
-
-  def left_anchor_query_string q
-    "{!qf=$left_anchor_qf pf=$left_anchor_pf}#{q}"
-  end
 
   before do
     delete_all
@@ -157,7 +157,6 @@ end
 describe 'title_l search' do
   include_context 'solr_helpers'
 
-  let(:title) { "Photo-secession : the golden age" }
   let(:response) { solr_resp_doc_ids_only(params)['response'] }
   let(:docs) { response['docs'] }
 
@@ -167,8 +166,9 @@ describe 'title_l search' do
   end
 
   context 'when colon excluded in query' do
+    let(:title) { 'Photo-secession : the golden age' }
     let(:params) do
-      { 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}Photo-secession  the' }
+      { 'q' => left_anchor_query_string('Photo-secession\\ \\ the') }
     end
 
     it 'matches when colon excluded in query' do
@@ -176,21 +176,35 @@ describe 'title_l search' do
     end
   end
   context 'when dash is excluded in query' do
+    let(:title) { 'Photo-secession : the golden age' }
     let(:params) do
-      { 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}Photosecession the' }
+      { 'q' => left_anchor_query_string('Photosecession\\ the') }
     end
 
     it 'matches when dash is excluded in query' do
       expect(docs).to eq([{ "id" => "1" }])
     end
   end
-  context 'when dash is replaced with space in query' do
+
+  context 'Tests that search is left-anchored' do
+    let(:title) { 'Katja Strunz : Zeittraum' }
     let(:params) do
-      { 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}Photo secession the' }
+      { 'q' => left_anchor_query_string('Katja\\ Strunz\\ :\\ Zeittraum') }
     end
 
-    it 'matches when dash is replaced with space in query' do
+    it 'matches when the query includes first word of title' do
       expect(docs).to eq([{ "id" => "1" }])
+    end
+  end
+
+  context 'when dash is excluded in query' do
+    let(:title) { 'Katja Strunz : Zeittraum' }
+    let(:params) do
+      { 'q' => left_anchor_query_string('Strunz') }
+    end
+
+    it 'does not match when first word of title is not in query' do
+      expect(docs).to eq([])
     end
   end
 
