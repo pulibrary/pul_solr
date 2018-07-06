@@ -35,11 +35,11 @@
   <dataDir>${solr.blacklight-core.data.dir:}</dataDir>
   
   <requestHandler name="/replication" class="solr.ReplicationHandler">
+    <str name="commitReserveDuration">00:00:10</str>
     <lst name="master">
       <str name="replicateAfter">commit</str>
       <str name="backupAfter">optimize</str>
       <str name="confFiles">solrconfig_replication.xml:solrconfig.xml</str>
-      <str name="commitReserveDuration">00:00:10</str>
     </lst>
     <int name="maxNumberOfBackups">1</int>
     <lst name="invariants">
@@ -51,7 +51,7 @@
     <requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
   </requestDispatcher>
   
-  <requestHandler name="standard" class="solr.StandardRequestHandler" />
+  <requestHandler name="standard" class="solr.SearchHandler" />
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
   <requestHandler name="/update" class="solr.UpdateRequestHandler"  />
      

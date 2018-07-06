@@ -93,10 +93,10 @@
     <!--
       Default numeric field types. For faster range queries, consider the tint/tfloat/tlong/tdouble types.
     -->
-    <fieldType name="int" class="solr.TrieIntField" precisionStep="0" omitNorms="true" positionIncrementGap="0"/>
-    <fieldType name="float" class="solr.TrieFloatField" precisionStep="0" omitNorms="true" positionIncrementGap="0"/>
-    <fieldType name="long" class="solr.TrieLongField" precisionStep="0" omitNorms="true" positionIncrementGap="0"/>
-    <fieldType name="double" class="solr.TrieDoubleField" precisionStep="0" omitNorms="true" positionIncrementGap="0"/>
+    <fieldType name="int" class="solr.IntPointField"/>
+    <fieldType name="float" class="solr.FloatPointField"/>
+    <fieldType name="long" class="solr.LongPointField"/>
+    <fieldType name="double" class="solr.DoublePointField"/>
 
     <!--
      Numeric field types that index each value at various levels of precision
@@ -108,10 +108,10 @@
      indexed per value, slightly larger index size, and faster range queries.
      A precisionStep of 0 disables indexing at different precision levels.
     -->
-    <fieldType name="tint" class="solr.TrieIntField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
-    <fieldType name="tfloat" class="solr.TrieFloatField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
-    <fieldType name="tlong" class="solr.TrieLongField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
-    <fieldType name="tdouble" class="solr.TrieDoubleField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
+    <fieldType name="tint" class="solr.IntPointField"/>
+    <fieldType name="tfloat" class="solr.FloatPointField"/>
+    <fieldType name="tlong" class="solr.LongPointField"/>
+    <fieldType name="tdouble" class="solr.DoublePointField"/>
 
     <!-- The format for this date field is of the form 1995-12-31T23:59:59Z, and
          is a more restricted form of the canonical representation of dateTime
@@ -135,10 +135,10 @@
 
          Note: For faster range queries, consider the tdate type
       -->
-    <fieldType name="date" class="solr.TrieDateField" omitNorms="true" precisionStep="0" positionIncrementGap="0"/>
+    <fieldType name="date" class="solr.DatePointField" omitNorms="true"/>
 
     <!-- A Trie based date field for faster date range queries and date faceting. -->
-    <fieldType name="tdate" class="solr.TrieDateField" omitNorms="true" precisionStep="6" positionIncrementGap="0"/>
+    <fieldType name="tdate" class="solr.DatePointField" omitNorms="true"/>
 
     <!-- One can also specify an existing Analyzer class that has a
          default constructor via the class attribute on the analyzer element
@@ -164,7 +164,7 @@
         <filter class="solr.StopFilterFactory"
                 ignoreCase="true"
                 words="lang/stopwords_en.txt" />
-        <filter class="solr.WordDelimiterFilterFactory"
+        <filter class="solr.WordDelimiterGraphFilterFactory"
                 generateWordParts="1" generateNumberParts="1" 
                 catenateWords="1" catenateNumbers="1" 
                 catenateAll="0" splitOnCaseChange="1"/>
@@ -185,7 +185,7 @@
         <filter class="solr.StopFilterFactory"
                 ignoreCase="true"
                 words="lang/stopwords_es.txt" />
-        <filter class="solr.WordDelimiterFilterFactory"
+        <filter class="solr.WordDelimiterGraphFilterFactory"
                 generateWordParts="1" generateNumberParts="1" 
                 catenateWords="1" catenateNumbers="1" 
                 catenateAll="0" splitOnCaseChange="1"/>
@@ -205,7 +205,7 @@
         <filter class="solr.StopFilterFactory"
                 ignoreCase="true"
                 words="lang/stopwords_pt.txt" />
-        <filter class="solr.WordDelimiterFilterFactory"
+        <filter class="solr.WordDelimiterGraphFilterFactory"
                 generateWordParts="1" generateNumberParts="1" 
                 catenateWords="1" catenateNumbers="1" 
                 catenateAll="0" splitOnCaseChange="1"/>
@@ -223,7 +223,7 @@
         <!-- <tokenizer class="solr.WhitespaceTokenizerFactory"/> -->
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.ICUFoldingFilterFactory" />
-        <filter class="solr.WordDelimiterFilterFactory"
+        <filter class="solr.WordDelimiterGraphFilterFactory"
                 generateWordParts="1" generateNumberParts="1" 
                 catenateWords="1" catenateNumbers="1" 
                 catenateAll="0" splitOnCaseChange="1"/>
@@ -382,7 +382,6 @@
    <copyField source="date_created" dest="date_created_facet" />
    <copyField source="earliest_created" dest="date_created_facet" />
    <copyField source="date_created" dest="date_numsort" />
-   <copyField source="earliest_created" dest="date_numsort" />
    <copyField source="language_label" dest="language_label_facet"/>
    <copyField source="subject_label" dest="subject_label_facet"/>
 
