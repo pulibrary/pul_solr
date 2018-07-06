@@ -18,7 +18,7 @@
     </analyzer>
   </fieldType>
   <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
-  <fieldType name="date" class="solr.TrieDateField" positionIncrementGap="0" precisionStep="0"/>
+  <fieldType name="date" class="solr.DatePointField"/>
   <fieldType name="descendent_path" class="solr.TextField">
     <analyzer type="index">
       <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="/"/>
@@ -27,12 +27,12 @@
       <tokenizer class="solr.KeywordTokenizerFactory"/>
     </analyzer>
   </fieldType>
-  <fieldType name="double" class="solr.TrieDoubleField" positionIncrementGap="0" precisionStep="0"/>
-  <fieldType name="float" class="solr.TrieFloatField" positionIncrementGap="0" precisionStep="0"/>
-  <fieldType name="int" class="solr.TrieIntField" positionIncrementGap="0" precisionStep="0"/>
-  <fieldType name="location" class="solr.LatLonType" subFieldSuffix="_coordinate"/>
+  <fieldType name="double" class="solr.DoublePointField"/>
+  <fieldType name="float" class="solr.FloatPointField"/>
+  <fieldType name="int" class="solr.IntPointField"/>
+  <fieldType name="location" class="solr.LatLonPointSpatialField"/>
   <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.000009" distErrPct="0.025" distanceUnits="degrees"/>
-  <fieldType name="long" class="solr.TrieLongField" positionIncrementGap="0" precisionStep="0"/>
+  <fieldType name="long" class="solr.LongPointField"/>
   <fieldType name="pid_text" class="solr.TextField" positionIncrementGap="100">
     <analyzer>
       <tokenizer class="solr.KeywordTokenizerFactory"/>
@@ -41,8 +41,8 @@
   <fieldType name="point" class="solr.PointType" subFieldSuffix="_d" dimension="2"/>
   <fieldType name="rand" class="solr.RandomSortField" omitNorms="true"/>
   <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
-  <fieldType name="tdate" class="solr.TrieDateField" positionIncrementGap="0" precisionStep="6"/>
-  <fieldType name="tdouble" class="solr.TrieDoubleField" positionIncrementGap="0" precisionStep="8"/>
+  <fieldType name="tdate" class="solr.DatePointField"/>
+  <fieldType name="tdouble" class="solr.DoublePointField"/>
   <fieldType name="text" class="solr.TextField" omitNorms="false">
     <analyzer>
       <tokenizer class="solr.ICUTokenizerFactory"/>
@@ -75,9 +75,9 @@
       <filter class="solr.TrimFilterFactory"/>
     </analyzer>
   </fieldType>
-  <fieldType name="tfloat" class="solr.TrieFloatField" positionIncrementGap="0" precisionStep="8"/>
-  <fieldType name="tint" class="solr.TrieIntField" positionIncrementGap="0" precisionStep="8"/>
-  <fieldType name="tlong" class="solr.TrieLongField" positionIncrementGap="0" precisionStep="8"/>
+  <fieldType name="tfloat" class="solr.FloatPointField"/>
+  <fieldType name="tint" class="solr.IntPointField"/>
+  <fieldType name="tlong" class="solr.LongPointField"/>
   <field name="_version_" type="long" indexed="true" stored="true"/>
   <field name="all_text_timv" type="text" indexed="true" termOffsets="true" stored="false" termPositions="true" termVectors="true" multiValued="true"/>
   <field name="full_title_ng" type="text_en_ng" multiValued="true" indexed="true" stored="false"/>
