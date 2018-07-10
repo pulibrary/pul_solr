@@ -197,6 +197,17 @@ describe 'title_l search' do
     end
   end
 
+  context 'Tests that cjk searches work with wildcards' do
+    let(:title) { '浄名玄論 / 京都国' }
+    let(:params) do
+      { 'q' => left_anchor_query_string('浄名玄') }
+    end
+
+    it 'matches when the query includes first word of title' do
+      expect(docs).to eq([{ "id" => "1" }])
+    end
+  end
+
   context 'when dash is excluded in query' do
     let(:title) { 'Katja Strunz : Zeittraum' }
     let(:params) do
