@@ -116,7 +116,7 @@ describe 'CJK character equivalence' do
       expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}国史大辞典' })).to include('1')
     end
     it '三晋出版社 => 三晉出版社 publisher' do
-      solr.add({ id: 1, pub_created_unstem_search: '三晋出版社' })
+      solr.add({ id: 1, pub_created_vern_display: '三晋出版社' })
       solr.commit
       expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$publisher_qf pf=$publisher_pf}三晉出版社' })).to include('1')
     end

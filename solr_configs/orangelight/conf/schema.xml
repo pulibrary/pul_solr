@@ -737,12 +737,10 @@
    <copyField source="author_s" dest="author_unstem_search"/>
 
    <!-- publisher keyword -->
-   <copyField source="pub_created_display" dest="pub_created_unstem_search"/>
+   <copyField source="pub_created_s" dest="pub_created_unstem_search"/>
 
    <!-- unstemmed fields -->
    <copyField source="title_display" dest="title_unstem_search"/>
-   <copyField source="title_addl_t" dest="title_addl_unstem_search"/>
-   <copyField source="title_added_entry_t" dest="title_added_entry_unstem_search"/>
    <copyField source="subject_display" dest="subject_unstem_search"/>
    <copyField source="subject_topic_facet" dest="subject_topic_unstem_search"/>
 
@@ -760,7 +758,6 @@
    <copyField source="title_t" dest="title_spell"/>
    <copyField source="subtitle_t" dest="title_spell"/>
    <copyField source="addl_titles_t" dest="title_spell"/>
-   <copyField source="title_added_entry_t" dest="title_spell"/>
    <!-- author spell check; should match fields for author request handler -->
    <copyField source="author_s" dest="author_spell"/>
 
@@ -799,19 +796,18 @@
    <copyField source="linked_series_index" dest="cjk_series_title"/>
    <copyField source="original_version_series_index" dest="cjk_series_title"/>
    <copyField source="notes_index" dest="cjk_notes"/>
-   <copyField source="pub_created_unstem_search" dest="cjk_publisher"/>
+   <copyField source="pub_created_vern_display" dest="cjk_publisher"/>
 
    <!-- Above, multiple source fields are copied to the [text] field.
     Another way to map multiple source fields to the same
     destination field is to use the dynamic field syntax.
     copyField also supports a maxChars to copy setting.  -->
 
-<!--    <copyField source="*_t" dest="text" maxChars="3000"/> -->
+  <!--    <copyField source="*_t" dest="text" maxChars="3000"/> -->
 
+  <!-- default, catch all search field -->
    <copyField source="id" dest="text"/>
    <copyField source="timestamp" dest="text"/>
-   <!-- default, catch all search field -->
-   <copyField source="text" dest="text"/>
 
    <!-- these fields are NOT multi-valued -->
    <copyField source="title_display" dest="text"/>

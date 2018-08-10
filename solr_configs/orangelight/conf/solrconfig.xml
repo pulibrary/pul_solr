@@ -256,10 +256,6 @@
         title_unstem_search^40
         title_display^40
         author_unstem_search^40
-        title_addl_unstem_search^40
-        title_addl_t^30
-        title_added_entry_unstem_search^30
-        title_added_entry_t^20
         subject_topic_unstem_search^18
         subject_unstem_search^15
         subject_topic_index^12
@@ -281,10 +277,6 @@
         title_unstem_search^400
         title_display^400
         author_unstem_search^400
-        title_addl_unstem_search^400
-        title_addl_t^300
-        title_added_entry_unstem_search^300
-        title_added_entry_t^200
         subject_topic_unstem_search^180
         subject_unstem_search^150
         subject_topic_index^120
@@ -366,11 +358,7 @@
       <str name="title_qf">
         title_a_index^500
         title_unstem_search^100
-        title_addl_unstem_search^60
         title_display^50
-        title_addl_t^30
-        title_added_entry_unstem_search^20
-        title_added_entry_t^10
         other_title_index^5
         series_title_index^5
         uniform_title_s^5
@@ -390,11 +378,7 @@
         title_245_lr^5500
         title_a_index^5000
         title_unstem_search^1000
-        title_addl_unstem_search^600
         title_display^500
-        title_addl_t^300
-        title_added_entry_unstem_search^200
-        title_added_entry_t^100
         other_title_index^50
         series_title_index^50
         uniform_title_s^50
