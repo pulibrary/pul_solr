@@ -4,6 +4,8 @@ gem 'stringex', :git => 'https://github.com/pulibrary/stringex.git', :tag => 'vp
 
 gem 'rspec-solr'
 
+gem 'rspec', '~> 3.7.0'
+
 gem 'rsolr'
 
 gem 'solr_wrapper', '~> 1.0'
