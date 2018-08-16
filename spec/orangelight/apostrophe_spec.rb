@@ -7,6 +7,7 @@ describe 'apostrophes are stripped' do
 
   let(:contraction) { "Can't and Won't" }
   let(:cyrillic) { "Bratʹi︠a︡ Karamazovy" }
+  let(:french) { "l'opéra-comique français"}
   let(:response) { solr_resp_doc_ids_only(params)['response'] }
   let(:docs) { response['docs'] }
 
@@ -55,6 +56,49 @@ describe 'apostrophes are stripped' do
       context 'when apostrophe excluded in query for Romanized Cyrillic' do
         let(:params) do
           { 'q' => "Bratia" }
+        end
+        let(:response) { solr_resp_doc_ids_only(params)['response'] }
+        let(:docs) { response['docs'] }
+
+        it 'matches' do
+          expect(docs).to eq([{ "id" => "1" }])
+        end
+      end
+    end
+
+    context 'for French searches with articles' do
+      before do
+        solr.add({ id: 1, title_display: [french] })
+        solr.commit
+      end
+
+      context 'when apostrophe included in query, no whitespace after article' do
+        let(:params) do
+          { 'q' => "l'opera" }
+        end
+        let(:response) { solr_resp_doc_ids_only(params)['response'] }
+        let(:docs) { response['docs'] }
+
+        it 'matches' do
+          expect(docs).to eq([{ "id" => "1" }])
+        end
+      end
+
+      context 'when apostrophe excluded in query, no whitespace after article' do
+        let(:params) do
+          { 'q' => "lopera" }
+        end
+        let(:response) { solr_resp_doc_ids_only(params)['response'] }
+        let(:docs) { response['docs'] }
+
+        it 'matches' do
+          expect(docs).to eq([{ "id" => "1" }])
+        end
+      end
+
+      context 'when apostrophe included in query, whitespace after article' do
+        let(:params) do
+          { 'q' => "l' opera" }
         end
         let(:response) { solr_resp_doc_ids_only(params)['response'] }
         let(:docs) { response['docs'] }
