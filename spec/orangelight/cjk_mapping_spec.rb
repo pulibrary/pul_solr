@@ -121,12 +121,12 @@ describe 'CJK character equivalence' do
       expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$publisher_qf pf=$publisher_pf}三晉出版社' })).to include('1')
     end
     it '巴蜀書社 => 巴蜀书社  notes' do
-      solr.add({ id: 1, notes_index: '巴蜀書社' })
+      solr.add({ id: 1, cjk_notes: '巴蜀書社' })
       solr.commit
       expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$notes_qf pf=$notes_pf}巴蜀书社 ' })).to include('1')
     end
     it '鳳凰出版社 => 凤凰出版社  series title' do
-      solr.add({ id: 1, original_version_series_index: '鳳凰出版社' })
+      solr.add({ id: 1, cjk_series_title: '鳳凰出版社' })
       solr.commit
       expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$series_title_qf pf=$series_title_pf}凤凰出版社 ' })).to include('1')
     end
