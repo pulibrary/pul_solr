@@ -60,7 +60,7 @@
          If it is 'internal' everything will be taken care of automatically.
          USE THIS ONLY IF YOUR BANDWIDTH IS LOW.
          THIS CAN ACTUALLY SLOWDOWN REPLICATION IN A LAN -->
-    <str name="pollInterval">00:00:20</str>     
+    <str name="pollInterval">00:04:00</str>     
     <str name="compression">internal</str>
 
     <!-- The following values are used when the slave connects to the master to
