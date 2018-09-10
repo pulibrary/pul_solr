@@ -31,6 +31,12 @@
                     class="${solr.directoryFactory:solr.StandardDirectoryFactory}">
   </directoryFactory>
 
+  <updateHandler class="solr.DirectUpdateHandler2">
+    <updateLog>
+      <str name="dir">${solr.core0.data.dir:}</str>
+    </updateLog>
+  </updateHandler>
+
   <codecFactory class="solr.SchemaCodecFactory"/>
   <schemaFactory class="ClassicIndexSchemaFactory"/>
 
