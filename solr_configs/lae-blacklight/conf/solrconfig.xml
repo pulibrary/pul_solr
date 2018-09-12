@@ -17,8 +17,8 @@
 -->
 
 <!--
- This is a stripped down config file used for a simple example...  
- It is *not* a good example to work from. 
+ This is a stripped down config file used for a simple example...
+ It is *not* a good example to work from.
 -->
 <config>
   <luceneMatchVersion>7.0.0</luceneMatchVersion>
@@ -28,20 +28,26 @@
   <lib dir="conf" />
 
   <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
-  
+
+  <updateHandler class="solr.DirectUpdateHandler2">
+    <updateLog>
+      <str name="dir">${solr.core0.data.dir:}</str>
+    </updateLog>
+  </updateHandler>
+
   <codecFactory class="solr.SchemaCodecFactory"/>
   <schemaFactory class="ClassicIndexSchemaFactory"/>
 
   <dataDir>${solr.blacklight-core.data.dir:}</dataDir>
-  
+
   <requestDispatcher handleSelect="true" >
     <requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
   </requestDispatcher>
-  
+
   <requestHandler name="standard" class="solr.StandardRequestHandler" />
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
   <requestHandler name="/update" class="solr.UpdateRequestHandler"  />
-     
+
   <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
     <lst name="invariants">
       <str name="q">solrpingquery</str>
@@ -50,8 +56,8 @@
       <str name="echoParams">all</str>
     </lst>
   </requestHandler>
-   
-  <!-- config for the admin interface --> 
+
+  <!-- config for the admin interface -->
   <admin>
     <defaultQuery>solr</defaultQuery>
   </admin>
@@ -79,7 +85,7 @@
 
        <!-- this qf and pf are used by default, if not otherwise specified by
             client. The default blacklight_config will use these for the
-            "keywords" search. See the author_qf/author_pf, title_qf, etc 
+            "keywords" search. See the author_qf/author_pf, title_qf, etc
             below, which the default blacklight_config will specify for
             those searches. You may also be interested in:
             http://wiki.apache.org/solr/LocalParams
@@ -209,13 +215,13 @@
           geographic_subject_label^1000
           category^500
        </str>
-       
+
        <int name="ps">3</int>
        <float name="tie">0.01</float>
 
        <!-- NOT using marc_display because it is large and will slow things down for search results -->
        <str name="fl">
-         id, 
+         id,
          score,
          title_display,
          date_display,
@@ -238,8 +244,8 @@
        <str name="facet.field">date_created_facet</str>
        <str name="facet.field">subject_label_facet</str>
        <str name="facet.pivot">category_facet,subject_label_facet</str>
-       
-       <!-- See https://wiki.apache.org/solr/MoreLikeThis 
+
+       <!-- See https://wiki.apache.org/solr/MoreLikeThis
        Don't do this here or we get a much bigger doc for search results; set
        in CatalogController config.default_document_solr_params instead
        <str name="mlt">true</str>
@@ -316,7 +322,7 @@
     <arr name="last-components">
       <str>spellcheck</str>
     </arr>
-      
+
   </requestHandler>
 
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
@@ -377,7 +383,7 @@
   <!-- Spell Check
 
         The spell check component can return a list of alternative spelling
-        suggestions.  
+        suggestions.
 
         http://wiki.apache.org/solr/SpellCheckComponent
      -->
@@ -432,7 +438,7 @@
        </lst>
      -->
 
-    <!-- a spellchecker that use an alternate comparator 
+    <!-- a spellchecker that use an alternate comparator
 
          comparatorClass be one of:
           1. score (default)
@@ -481,4 +487,3 @@
     </arr>
   </requestHandler>
 </config>
-

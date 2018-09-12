@@ -667,6 +667,7 @@
    <!-- FIXME overriding dynamicField to avoid changing Solr Document field name for now -->
    <field name="standard_no_index" type="string" indexed="true" stored="false" multiValued="true" />
    <field name="uniform_title_s" type="text" indexed="true" stored="true" multiValued="true" />
+   <field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>
 
    <!-- Dynamic field definitions.  If a field name is not found, dynamicFields
         will be used if the name matches any of the patterns.

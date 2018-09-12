@@ -16,10 +16,10 @@
  limitations under the License.
 -->
 
-<!--  
+<!--
  This is the Solr schema file. This file should be named "schema.xml" and
  should be in the conf directory under the solr home
- (i.e. ./solr/conf/schema.xml by default) 
+ (i.e. ./solr/conf/schema.xml by default)
  or located where the classloader for the Solr webapp can find it.
 
  This example schema is the recommended starting point for users.
@@ -51,7 +51,7 @@
        version="1.4" is Solr's version number for the schema syntax and semantics.  It should
        not normally be changed by applications.
        1.0: multiValued attribute did not exist, all fields are multiValued by nature
-       1.1: multiValued attribute introduced, false by default 
+       1.1: multiValued attribute introduced, false by default
        1.2: omitTermFreqAndPositions attribute introduced, true by default except for text fields.
        1.3: removed optional field compress feature
        1.4: default auto-phrase (QueryParser feature) to off
@@ -88,7 +88,7 @@
        - If sortMissingLast="false" and sortMissingFirst="false" (the default),
          then default lucene sorting will be used which places docs without the
          field first in an ascending sort and last in a descending sort.
-    -->    
+    -->
 
     <!--
       Default numeric field types. For faster range queries, consider the tint/tfloat/tlong/tdouble types.
@@ -115,7 +115,7 @@
 
     <!-- The format for this date field is of the form 1995-12-31T23:59:59Z, and
          is a more restricted form of the canonical representation of dateTime
-         http://www.w3.org/TR/xmlschema-2/#dateTime    
+         http://www.w3.org/TR/xmlschema-2/#dateTime
          The trailing "Z" designates UTC time and is mandatory.
          Optional fractional seconds are allowed: 1995-12-31T23:59:59.999Z
          All other components are mandatory.
@@ -130,7 +130,7 @@
                NOW/DAY+6MONTHS+3DAYS
                   ... 6 months and 3 days in the future from the start of
                       the current day
-                      
+
          Consult the DateField javadocs for more information.
 
          Note: For faster range queries, consider the tdate type
@@ -155,7 +155,7 @@
     </fieldType>
 
     <!-- English. -->
-    <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100" 
+    <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100"
                autoGeneratePhraseQueries="true">
       <analyzer>
         <!-- <tokenizer class="solr.WhitespaceTokenizerFactory"/> -->
@@ -165,12 +165,12 @@
                 ignoreCase="true"
                 words="lang/stopwords_en.txt" />
         <filter class="solr.WordDelimiterFilterFactory"
-                generateWordParts="1" generateNumberParts="1" 
-                catenateWords="1" catenateNumbers="1" 
+                generateWordParts="1" generateNumberParts="1"
+                catenateWords="1" catenateNumbers="1"
                 catenateAll="0" splitOnCaseChange="1"/>
         <filter class="solr.EnglishPossessiveFilterFactory"/>
         <!-- Words in the file below would not be stemmed
-        <filter class="solr.KeywordMarkerFilterFactory" 
+        <filter class="solr.KeywordMarkerFilterFactory"
                 protected="lang/protwords_en.txt"/> -->
         <filter class="solr.EnglishMinimalStemFilterFactory"/>
       </analyzer>
@@ -186,11 +186,11 @@
                 ignoreCase="true"
                 words="lang/stopwords_es.txt" />
         <filter class="solr.WordDelimiterFilterFactory"
-                generateWordParts="1" generateNumberParts="1" 
-                catenateWords="1" catenateNumbers="1" 
+                generateWordParts="1" generateNumberParts="1"
+                catenateWords="1" catenateNumbers="1"
                 catenateAll="0" splitOnCaseChange="1"/>
         <!-- Words in the file below would not be stemmed
-        <filter class="solr.KeywordMarkerFilterFactory" 
+        <filter class="solr.KeywordMarkerFilterFactory"
                 protected="lang/protwords_es.txt"/> -->
         <filter class="solr.SpanishLightStemFilterFactory"/>
       </analyzer>
@@ -206,31 +206,31 @@
                 ignoreCase="true"
                 words="lang/stopwords_pt.txt" />
         <filter class="solr.WordDelimiterFilterFactory"
-                generateWordParts="1" generateNumberParts="1" 
-                catenateWords="1" catenateNumbers="1" 
+                generateWordParts="1" generateNumberParts="1"
+                catenateWords="1" catenateNumbers="1"
                 catenateAll="0" splitOnCaseChange="1"/>
         <!-- Words in the file below would not be stemmed
-        <filter class="solr.KeywordMarkerFilterFactory" 
+        <filter class="solr.KeywordMarkerFilterFactory"
                 protected="lang/protwords_es.txt"/> -->
         <filter class="solr.PortugueseLightStemFilterFactory"/>
       </analyzer>
     </fieldType>
 
     <!-- Fallback text type for fields with unspecified languages -->
-    <fieldType name="text" class="solr.TextField" positionIncrementGap="100" 
+    <fieldType name="text" class="solr.TextField" positionIncrementGap="100"
                autoGeneratePhraseQueries="true">
       <analyzer>
         <!-- <tokenizer class="solr.WhitespaceTokenizerFactory"/> -->
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.ICUFoldingFilterFactory" />
         <filter class="solr.WordDelimiterFilterFactory"
-                generateWordParts="1" generateNumberParts="1" 
-                catenateWords="1" catenateNumbers="1" 
+                generateWordParts="1" generateNumberParts="1"
+                catenateWords="1" catenateNumbers="1"
                 catenateAll="0" splitOnCaseChange="1"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true"
                 words="lang/stopwords_any_lang.txt" />
         <!-- Not sure how this will work; leaving any stemming out for now
-        <filter class="solr.KeywordMarkerFilterFactory" 
+        <filter class="solr.KeywordMarkerFilterFactory"
                 protected="lang/protwords.txt"/>
         <filter class="solr.SnowballPorterFilterFactory" language="English" />
         <filter class="solr.SnowballPorterFilterFactory" language="Spanish" />
@@ -262,21 +262,21 @@
         <tokenizer class="solr.KeywordTokenizerFactory"/>
         <filter class="solr.LowerCaseFilterFactory" />
         <filter class="solr.TrimFilterFactory" />
-        <filter class="solr.PatternReplaceFilterFactory" 
+        <filter class="solr.PatternReplaceFilterFactory"
                 pattern="([^a-z])" replacement="" replace="all" />
       </analyzer>
     </fieldType>
-    
+
     <!-- since fields of this type are by default not stored or indexed,
-         any data added to them will be ignored outright.  --> 
-    <fieldtype name="ignored" stored="false" indexed="false" multiValued="true" 
+         any data added to them will be ignored outright.  -->
+    <fieldtype name="ignored" stored="false" indexed="false" multiValued="true"
                class="solr.StrField" />
  </types>
 
  <fields>
    <!-- Valid attributes for fields:
      name: mandatory - the name for the field
-     type: mandatory - the name of a previously defined type from the 
+     type: mandatory - the name of a previously defined type from the
        <types> section
      indexed: true if this field should be indexed (searchable or sortable)
      stored: true if this field should be retrievable
@@ -289,9 +289,9 @@
        given field.
        When using MoreLikeThis, fields used for similarity should be
        stored for best performance.
-     termPositions: Store position information with the term vector.  
+     termPositions: Store position information with the term vector.
        This will increase storage costs.
-     termOffsets: Store offset information with the term vector. This 
+     termOffsets: Store offset information with the term vector. This
        will increase storage costs.
      default: a value that should be used if no value is specified
        when adding a document.
@@ -311,7 +311,7 @@
    <field name="width_in_cm" type="text" indexed="true" stored="true" multiValued="false" termVectors="true" />
    <field name="height_in_cm" type="text" indexed="true" stored="true" multiValued="false" termVectors="true" />
    <field name="page_count" type="text" indexed="true" stored="true" multiValued="false" termVectors="true" />
-  
+
    <field name="date_created"     type="tint"   indexed="true"  stored="true" multiValued="false"/>
    <field name="date_modified"    type="date"   indexed="true"  stored="true" multiValued="false"/>
    <field name="date_uploaded"    type="date"   indexed="true"  stored="true" multiValued="false"/>
@@ -346,15 +346,17 @@
    <field name="series_en"         type="text_en" indexed="true" stored="true" multiValued="true" termVectors="true"/>
    <field name="series_es"         type="text_es" indexed="true" stored="true" multiValued="true" termVectors="true"/>
    <field name="series_pt"         type="text_pt" indexed="true" stored="true" multiValued="true" termVectors="true"/>
-   
+
    <!-- export fields ttl and manifest-->
    <field name="ttl"            type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="manifest"       type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="thumbnail_base" type="string" indexed="true" stored="true" multiValued="false"/>
 
-   <!-- 
+   <field name="_version_"      type="long" indexed="true" stored="true" multiValued="false"/>
+
+   <!--
      All labels:
-     genre_pul_label, geographic_origin_label, geographic_subject_label, 
+     genre_pul_label, geographic_origin_label, geographic_subject_label,
      language_label, subject_label
    -->
    <dynamicField name="*_label" type="text_en" indexed="true" stored="true" multiValued="true" />
@@ -366,10 +368,10 @@
    <!-- ignored -->
    <dynamicField name="*" type="ignored" multiValued="true" />
 
-   
+
  </fields>
 
- <!-- Field to use to determine and enforce document uniqueness. 
+ <!-- Field to use to determine and enforce document uniqueness.
       Unless this field is marked with required="false", it will be a required field
    -->
  <uniqueKey>id</uniqueKey>
@@ -413,5 +415,5 @@
    <!-- subject spell check; should match fields for subject request handler -->
    <copyField source="subject_topic_facet" dest="subject_spell"/>
    <copyField source="subject_t" dest="subject_spell"/>
-   <copyField source="subject_addl_t" dest="subject_spell"/>  
+   <copyField source="subject_addl_t" dest="subject_spell"/>
 </schema>
