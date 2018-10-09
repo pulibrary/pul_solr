@@ -1,0 +1,30 @@
+{
+  "geoblacklight_version": "1.0",
+  "dc_identifier_s": "ark:/88435/4j03d346d",
+  "layer_slug_s": "princeton-4j03d346d",
+  "uuid": "princeton-4j03d346d",
+  "dc_title_s": "Abbottābād guide map",
+  "solr_geom": "ENVELOPE(73.186111, 73.288889, 34.210556, 34.123889)",
+  "dct_provenance_s": "Princeton",
+  "dc_rights_s": "Restricted",
+  "dc_description_s": "Relief shown by 20 m. contours and spot heights. Shows roads, important places, and buildings. Government of Pākistān copyright reserved. Area surveyed 1996. \"REG. No. 313 RWD '97 ...\" \"Refer to this map as 1:15,000 Abbottābād guide map second edition.\"",
+  "dc_creator_sm": [
+    "Survey of Pakistan"
+  ],
+  "dc_language_s": "eng",
+  "dc_publisher_s": "Rāwalpindi : Survey of Pakistan, 2002.",
+  "dc_subject_sm": [
+    "Abbottābād (Pakistan)—Maps",
+    "Abbottābād District (Pakistan)—Maps",
+    "Khyber Pakhtunkhwa (Pakistan)—Maps"
+  ],
+  "dct_spatial_sm": [
+    "Pakistan"
+  ],
+  "layer_modified_dt": "2018-10-01T12:31:38Z",
+  "layer_id_s": "restricted-figgy:p-40d31e2d-81f5-4de6-87ab-39df8507017e",
+  "dct_references_s": "{\"http://schema.org/url\":\"https://catalog.princeton.edu/catalog/7705553\",\"http://schema.org/thumbnailUrl\":\"https://figgy.princeton.edu/downloads/40d31e2d-81f5-4de6-87ab-39df8507017e/file/636f5415-06e2-40db-b544-9c86a4183505\"}",
+  "layer_geom_type_s": "Image",
+  "dc_format_s": "TIFF",
+  "call_number_s": "G7644.A2E635 2002 .S8"
+}
