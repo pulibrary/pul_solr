@@ -20,9 +20,7 @@ Note that `solr.xml` is used for development and testing on this repository, but
 
 ## Adding a new core
 
-In practice, the home directory is at `solr/data`. The deploy scripts are designed for updating, not adding, cores. It is likely that solr config management process will be a topic of discussion soon. For now, if you're adding a new core you must create a directory for it in `solr/data`, then symlink the conf folder to the deployed folder. Finally, create the new core via the cli, e.g.:
-
-`./solr create -c my-new-core`
+This repository updates, but does not create, collections. To add a new collection, create its config here and deploy to get the config up to the server. Then use the UI to create the collection (TODO: how to make the config set available to the UI?). Finally, you can add the collection to the deploy scripts so that it will be updated in future deployments.
 
 ## Specs
 
