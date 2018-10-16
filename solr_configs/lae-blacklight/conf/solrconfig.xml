@@ -124,6 +124,7 @@
           language_label
           latest_created
           local_identifier
+          provenance
           id
        </str>
        <str name="pf">
@@ -159,6 +160,7 @@
           language_label
           latest_created
           local_identifier
+          provenance
           id
        </str>
        <str name="creator_qf">
