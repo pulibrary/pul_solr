@@ -125,6 +125,10 @@
           latest_created
           local_identifier
           provenance
+          series
+          series_en
+          series_es
+          series_pt
           id
        </str>
        <str name="pf">
@@ -161,6 +165,10 @@
           latest_created
           local_identifier
           provenance
+          series
+          series_en
+          series_es
+          series_pt
           id
        </str>
        <str name="creator_qf">
