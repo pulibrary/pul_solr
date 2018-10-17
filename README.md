@@ -16,6 +16,8 @@ To install run `bundle install`
 
 `solr_configs/` is configured to be the Solr home directory. Each application's Solr core configuration is a subdirectory of `solr_configs/`. Relevant Solr analysis library packages can be found within each core's `lib/` directory.
 
+Note that `solr.xml` is used for development and testing on this repository, but not in production. The production file is at https://github.com/pulibrary/princeton_ansible/blob/master/roles/pulibrary.solrcloud/templates/solr.xml.j2
+
 ## Adding a new core
 
 In practice, the home directory is at `solr/data`. The deploy scripts are designed for updating, not adding, cores. It is likely that solr config management process will be a topic of discussion soon. For now, if you're adding a new core you must create a directory for it in `solr/data`, then symlink the conf folder to the deployed folder. Finally, create the new core via the cli, e.g.:
