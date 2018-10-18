@@ -39,10 +39,21 @@ set :filter, :roles => %w{main}
 namespace :deploy do
   after :published, :restart do
     on roles(:main), wait: 5 do
-      cores = capture "curl 'http://localhost:8983/solr/admin/cores?action=STATUS&wt=json'"
-      JSON.parse(cores)['status'].keys.each do |core|
-        execute "curl 'http://localhost:8983/solr/admin/cores?action=RELOAD&core=#{core}'"
-      end
+      config_map = {
+        'dpul-blacklight' => 'dpul-production',
+        'figgy' => 'figgy',
+        'lae-blacklight' => 'lae',
+        'orangelight' => 'catalog-production1',
+        'orangelight' => 'catalog-production2',
+        'orangelight_staging' => 'catalog-staging',
+        'pulmap' => 'pulmap'
+      }
+      config_map.each { |key, val| update_and_reload(config_dir: key, collection: val) }
     end
   end
+end
+
+def update_and_reload(config_dir:, collection:)
+  execute "cd /opt/solr/bin && ./solr zk -upconfig -d /solr/pul_solr/solr_configs/#{config_dir} -n #{collection}"
+  execute "curl 'http://localhost:8983/solr/admin/collections?action=RELOAD&name=#{collection}'"
 end
