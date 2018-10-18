@@ -45,7 +45,7 @@ namespace :deploy do
         'lae-blacklight' => 'lae',
         'orangelight' => 'catalog-production1',
         'orangelight' => 'catalog-production2',
-        'orangelight_staging' => 'catalog-staging',
+        'catalog-staging' => 'catalog-staging',
         'pulmap' => 'pulmap'
       }
       config_map.each { |key, val| update_and_reload(config_dir: key, collection: val) }
