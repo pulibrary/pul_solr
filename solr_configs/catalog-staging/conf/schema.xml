@@ -408,15 +408,6 @@
       </analyzer>
     </fieldType>
 
-    <fieldType class="solr.TextField" name="textSuggest" positionIncrementGap="100">
-       <analyzer>
-          <tokenizer class="solr.KeywordTokenizerFactory"/>
-          <filter class="solr.StandardFilterFactory"/>
-          <filter class="solr.LowerCaseFilterFactory"/>
-          <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
-       </analyzer>
-    </fieldType>
-
     <!-- Based on Stanford's text_cjk field: https://github.com/sul-dlss/solrmarc-sw/blob/master/stanford-sw/solr/conf/schema.xml -->
     <fieldtype name="text_cjk" class="solr.TextField" positionIncrementGap="10000" autoGeneratePhraseQueries="false">
      <analyzer>
