@@ -40,20 +40,35 @@ namespace :deploy do
   after :published, :restart do
     on roles(:main), wait: 5 do
       config_map = {
-        'dpul-blacklight' => 'dpul-production',
-        'figgy' => 'figgy',
-        'lae-blacklight' => 'lae',
-        'orangelight' => 'catalog-production1',
-        'orangelight' => 'catalog-production2',
-        'catalog-staging' => 'catalog-staging',
-        'pulmap' => 'pulmap'
+        "orangelight" => "orangelight",
+        "catalog-staging" => "catalog-staging",
+        "dpul-blacklight" => "dpul",
+        "figgy" => "figgy",
+        "lae-blacklight" => "lae",
+        "pulmap" => "pulmap"
       }
-      config_map.each { |key, val| update_and_reload(config_dir: key, collection: val) }
+      collections = [
+        'dpul-production',
+        'figgy',
+        'lae',
+        'catalog-production1',
+        'catalog-production2',
+        'pulmap',
+        'catalog-staging',
+        'pulmap-staging',
+        'dpul-staging-core',
+        'lae-blacklight-staging'
+      ]
+      config_map.each { |key, val| update_configset(config_dir: key, config_set: val) }
+      collections.each { |collection| reload_collection(collection) }
     end
   end
 end
 
-def update_and_reload(config_dir:, collection:)
-  execute "cd /opt/solr/bin && ./solr zk -upconfig -d #{File.join(release_path, "solr_configs", config_dir)} -n #{collection}"
+def update_configset(config_dir:, config_set:)
+  execute "cd /opt/solr/bin && ./solr zk -upconfig -d #{File.join(release_path, "solr_configs", config_dir)} -n #{config_set}"
+end
+
+def reload_collection(collection)
   execute "curl 'http://localhost:8983/solr/admin/collections?action=RELOAD&name=#{collection}'"
 end
