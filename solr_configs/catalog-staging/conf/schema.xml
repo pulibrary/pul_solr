@@ -750,19 +750,6 @@
    <!-- sort fields -->
    <copyField source="pub_date" dest="pub_date_sort"/>
 
-
-   <!-- spellcheck fields -->
-   <!-- default spell check;  should match fields for default request handler -->
-   <!-- it won't work with a copy of a copy field -->
-   <copyField source="*_t" dest="spell"/>
-   <copyField source="*_facet" dest="spell"/>
-   <!-- title spell check;  should match fields for title request handler -->
-   <copyField source="title_t" dest="title_spell"/>
-   <copyField source="subtitle_t" dest="title_spell"/>
-   <copyField source="addl_titles_t" dest="title_spell"/>
-   <!-- author spell check; should match fields for author request handler -->
-   <copyField source="author_s" dest="author_spell"/>
-
    <!-- left-anchored search fields -->
    <copyField source="title_a_index" dest="title_245a_la"/>
    <copyField source="title_a_index" dest="title_245a_lr"/>
@@ -867,7 +854,6 @@
    <copyField source="*_facet" dest="text"/>
    <copyField source="*_sort" dest="text"/>
    <copyField source="*_unstem_search" dest="text"/>
-   <copyField source="*spell" dest="text"/>
    <copyField source="title_245_la" dest="text"/>
    <copyField source="title_la" dest="text"/>
    <copyField source="title_addl_la" dest="text"/>
