@@ -7,12 +7,12 @@
 /pkg/
 /spec/reports/
 /tmp/
-solr_configs/orangelight/data/
-solr_configs/orangelight_staging/data/
+solr_configs/catalog-production/data/
+solr_configs/catalog-staging/data/
 solr_configs/pulmap/data/
-solr_configs/dpul-blacklight/data/
+solr_configs/dpul/data/
 solr_configs/figgy/data/
-solr_configs/lae-blacklight/data/
+solr_configs/lae/data/
 /log/
 .DS_Store
 /.byebug_history

@@ -40,11 +40,11 @@ namespace :deploy do
   after :published, :restart do
     on roles(:main), wait: 5 do
       config_map = {
-        "orangelight" => "orangelight",
+        "catalog-production" => "catalog-production",
         "catalog-staging" => "catalog-staging",
-        "dpul-blacklight" => "dpul",
+        "dpul" => "dpul",
         "figgy" => "figgy",
-        "lae-blacklight" => "lae",
+        "lae" => "lae",
         "pulmap" => "pulmap"
       }
       collections = [
