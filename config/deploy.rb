@@ -54,6 +54,6 @@ namespace :deploy do
 end
 
 def update_and_reload(config_dir:, collection:)
-  execute "cd /opt/solr/bin && ./solr zk -upconfig -d /solr/pul_solr/solr_configs/#{config_dir} -n #{collection}"
+  execute "cd /opt/solr/bin && ./solr zk -upconfig -d #{File.join(release_path, "solr_configs", config_dir)} -n #{collection}"
   execute "curl 'http://localhost:8983/solr/admin/collections?action=RELOAD&name=#{collection}'"
 end
