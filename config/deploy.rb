@@ -65,6 +65,36 @@ namespace :deploy do
   end
 end
 
+namespace :alias do
+  task :list do
+    on roles(:main) do
+      execute "curl 'http://localhost:8983/solr/admin/collections?action=LISTALIASES'"
+    end
+  end
+
+  # Swaps the catalog-rebuild and catalog-production aliases.
+  # Production and rebuild collections are set with env variables when running the task.
+  task :catalog do
+    production = ENV['PRODUCTION']
+    rebuild = ENV['REBUILD']
+    if production && rebuild
+      on roles(:main) do
+        # Delete the rebuild alias
+        execute "curl 'http://localhost:8983/solr/admin/collections?action=DELETEALIAS&name=catalog-rebuild'"
+
+        # Move the catalog-production alias
+        execute "curl 'http://localhost:8983/solr/admin/collections?action=CREATEALIAS&name=catalog-production&collections=#{production}'"
+
+        # Add the rebuild alias to its new location
+        execute "curl 'http://localhost:8983/solr/admin/collections?action=CREATEALIAS&name=catalog-rebuild&collections=#{rebuild}'"
+      end
+    else
+      puts "Please set the PRODUCTION and REBUILD environment variables. For example:"
+      puts "cap production alias:catalog PRODUCTION=catalog-production2 REBUILD=catalog-production1"
+    end
+  end
+end
+
 def update_configset(config_dir:, config_set:)
   execute "cd /opt/solr/bin && ./solr zk -upconfig -d #{File.join(release_path, "solr_configs", config_dir)} -n #{config_set}"
 end
