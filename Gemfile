@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 gem 'stringex', :git => 'https://github.com/pulibrary/stringex.git', :tag => 'vpton.2.5.2.2'
 
-gem 'rspec-solr'
+gem 'rspec-solr', '~> 3.0'
 
-gem 'rspec', '~> 3.7.0'
+gem 'rspec', '~> 3.8'
 
 gem 'rsolr'
 
