@@ -45,7 +45,8 @@ namespace :deploy do
         "dpul" => "dpul",
         "figgy" => "figgy",
         "lae" => "lae",
-        "pulmap" => "pulmap"
+        "pulmap" => "pulmap",
+        "pulfa3" => "pulfa3"
       }
       collections = [
         'dpul-production',
@@ -57,7 +58,8 @@ namespace :deploy do
         'catalog-staging',
         'pulmap-staging',
         'dpul-staging-core',
-        'lae-blacklight-staging'
+        'lae-blacklight-staging',
+        'pulfa3-staging'
       ]
       config_map.each { |key, val| update_configset(config_dir: key, config_set: val) }
       collections.each { |collection| reload_collection(collection) }
