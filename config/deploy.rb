@@ -36,6 +36,10 @@ set :filter, :roles => %w{main}
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+def solr_url
+  ENV['SOLR_URL'] ||= 'http://localhost:8983/solr'
+end
+
 namespace :deploy do
   after :published, :restart do
     on roles(:main), wait: 5 do
@@ -70,7 +74,7 @@ end
 namespace :alias do
   task :list do
     on roles(:main) do
-      execute "curl 'http://localhost:8983/solr/admin/collections?action=LISTALIASES'"
+      execute "curl '#{solr_url}/admin/collections?action=LISTALIASES'"
     end
   end
 
@@ -82,13 +86,13 @@ namespace :alias do
     if production && rebuild
       on roles(:main) do
         # Delete the rebuild alias
-        execute "curl 'http://localhost:8983/solr/admin/collections?action=DELETEALIAS&name=catalog-rebuild'"
+        execute "curl '#{solr_url}/admin/collections?action=DELETEALIAS&name=catalog-rebuild'"
 
         # Move the catalog-production alias
-        execute "curl 'http://localhost:8983/solr/admin/collections?action=CREATEALIAS&name=catalog-production&collections=#{production}'"
+        execute "curl '#{solr_url}/admin/collections?action=CREATEALIAS&name=catalog-production&collections=#{production}'"
 
         # Add the rebuild alias to its new location
-        execute "curl 'http://localhost:8983/solr/admin/collections?action=CREATEALIAS&name=catalog-rebuild&collections=#{rebuild}'"
+        execute "curl '#{solr_url}/admin/collections?action=CREATEALIAS&name=catalog-rebuild&collections=#{rebuild}'"
       end
     else
       puts "Please set the PRODUCTION and REBUILD environment variables. For example:"
@@ -97,10 +101,96 @@ namespace :alias do
   end
 end
 
-def update_configset(config_dir:, config_set:)
-  execute "cd /opt/solr/bin && ./solr zk -upconfig -d #{File.join(release_path, "solr_configs", config_dir)} -n #{config_set}"
+namespace :configsets do
+  def list_configsets
+    execute "curl #{solr_url}/admin/configs?action=LIST&omitHeader=true"
+  end
+
+  def upload_configset(config_dir:, config_set:)
+    execute "(cd #{File.join(release_path, config_dir)} && zip -r - *) | curl -X POST --header 'Content-Type:application/octet-stream' --data-binary @- '#{solr_url}/admin/configs?action=UPLOAD&name=#{config_set}'"
+  end
+
+  def update_configset(config_dir:, config_set:)
+    execute "cd /opt/solr/bin && ./solr zk -upconfig -d #{File.join(release_path, "solr_configs", config_dir)} -n #{config_set}"
+  end
+
+  def delete_configset(config_set)
+    execute "curl #{solr_url}/admin/configs?action=DELETE&name=#{config_set}&omitHeader=true"
+  end
+
+  desc 'List all Configsets'
+  task :list do |task_name, args|
+    on roles(:main) do
+      list_configsets
+    end
+  end
+
+  desc 'Update a Configset'
+  task :update, :config_dir, :config_set do |task_name, args|
+    on roles(:main) do
+      update_configset(config_dir: args[:config_dir], config_set: args[:config_set])
+    end
+  end
+
+  desc 'Upload a Configset using a Solr config. directory'
+  task :upload, :config_dir, :config_set do |task_name, args|
+    on roles(:main) do
+      upload_configset(config_dir: args[:config_dir], config_set: args[:config_set])
+    end
+  end
+
+  desc 'Delete a Configset'
+  task :delete, :config_set do |task_name, args|
+    on roles(:main) do
+      delete_configset(args[:config_set])
+    end
+  end
 end
 
-def reload_collection(collection)
-  execute "curl 'http://localhost:8983/solr/admin/collections?action=RELOAD&name=#{collection}'"
+namespace :collections do
+  def list_collections
+    execute "curl '#{solr_url}/admin/collections?action=LIST'"
+  end
+
+  def create_collection(collection, config_name, num_shards = 1, replication_factor = 1)
+    execute "curl '#{solr_url}/admin/collections?action=CREATE&name=#{collection}&collection.configName=#{config_name}&numShards=#{num_shards}&replicationFactor=#{replication_factor}'"
+  end
+
+  def reload_collection(collection)
+    execute "curl '#{solr_url}/admin/collections?action=RELOAD&name=#{collection}'"
+  end
+
+  def delete_collection(collection)
+    execute "curl '#{solr_url}/admin/collections?action=DELETE&name=#{collection}'"
+  end
+
+  desc 'List Collections'
+  task :list do
+    on roles(:main) do
+      list_collections
+    end
+  end
+
+  desc 'Reload a Collection'
+  task :reload, :collection do |task_name, args|
+    on roles(:main) do
+      reload_collection(args[:collection])
+    end
+  end
+
+  desc 'Create a Collection'
+  task :create, :collection, :config_name, :num_shards, :replication_factor do |task_name, args|
+    on roles(:main) do
+      num_shards = args[:num_shards] || 1
+      replication_factor = args[:replication_factor] || 1
+      create_collection(args[:collection], args[:config_name], num_shards, replication_factor)
+    end
+  end
+
+  desc 'Delete a Collection'
+  task :delete, :collection do |task_name, args|
+    on roles(:main) do
+      delete_collection(args[:delete])
+    end
+  end
 end

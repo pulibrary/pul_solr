@@ -22,6 +22,28 @@ Note that `solr.xml` is used for development and testing on this repository, but
 
 This repository updates, but does not create, collections. To add a new collection, create its config here and deploy to get the config up to the server. Then use the UI to create the collection (TODO: how to make the config set available to the UI?). Finally, you can add the collection to the deploy scripts so that it will be updated in future deployments.
 
+## Managing Configsets
+
+*After deploying* one may list, upload, update, and delete Configsets using the following Capistrano tasks:
+```
+SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:list
+SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:upload[solr_configs/dpul/conf,dpul-config]
+SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:update[solr_configs/dpul_new/conf,dpul-config]
+SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:delete[dpul-config]
+```
+
+Please note that, when uploading a directory for a new Configset from this repository, that the `/conf` subdirectory should be used (e. g. `solr_configs/dpul/conf`)
+
+## Managing Collections
+
+Using Capistrano, one may create, reload, delete, and list Collections using the following tasks:
+```
+SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:list
+SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:create[dpul,dpul-config]
+SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:reload[dpul]
+SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:delete[dpul]
+```
+
 ## Specs
 
 Solr must be running in order for rspec-solr specs to run.
