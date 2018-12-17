@@ -238,6 +238,31 @@
        </analyzer>
      </fieldType>
 
+     <!-- solr plugins from upenn start-->
+     <fieldType name="normSortTerm" class="edu.upenn.library.solrplugins.CaseInsensitiveSortingTextField">
+       <analyzer>
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="edu.upenn.library.solrplugins.tokentype.TokenTypeSplitFilterFactory" inputTypeRename="SPLIT_ORIGINAL" outputType="SPLIT_COPY"/>
+        <filter class="edu.upenn.library.solrplugins.tokentype.TokenTypeProcessFilterFactory" includeTypes="SPLIT_COPY" _class="solr.ICUFoldingFilterFactory"/>
+        <filter class="edu.upenn.library.solrplugins.tokentype.TokenTypeJoinFilterFactory" inputTypes="SPLIT_COPY,SPLIT_ORIGINAL" outputType="SPLIT_JOINED"/>
+       </analyzer>
+     </fieldType>
+     <fieldType name="xfacet" class="edu.upenn.library.solrplugins.CaseInsensitiveSortingTextField" payloadHandler="edu.upenn.library.solrplugins.JsonReferencePayloadHandler" sortMissingLast="true" omitNorms="true">
+      <analyzer type="index">
+        <tokenizer class="edu.upenn.library.solrplugins.JsonReferencePayloadTokenizerFactory"/>
+        <!-- use SplitFilter to create 'normalized' token based on 'filing' token -->
+        <filter class="edu.upenn.library.solrplugins.tokentype.TokenTypeSplitFilterFactory" includeTypes="filing" outputType="normalized" _class="org.apache.lucene.analysis.icu.ICUFoldingFilterFactory" />
+        <filter class="edu.upenn.library.solrplugins.tokentype.TokenTypeJoinFilterFactory" inputTypes="normalized,filing,prefix" outputType="indexed" typeForPayload="normalized" outputComponentTypes="false"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="edu.upenn.library.solrplugins.JsonReferencePayloadTokenizerFactory"/>
+        <!-- use SplitFilter to create 'normalized' token based on 'filing' token -->
+        <filter class="edu.upenn.library.solrplugins.tokentype.TokenTypeSplitFilterFactory" includeTypes="filing" outputType="normalized" _class="org.apache.lucene.analysis.icu.ICUFoldingFilterFactory" />
+        <filter class="edu.upenn.library.solrplugins.tokentype.TokenTypeJoinFilterFactory" inputTypes="normalized,filing,prefix" outputType="indexed" typeForPayload="normalized" outputComponentTypes="true"/>
+      </analyzer>
+    </fieldType>
+    <!-- solr plugins from upenn end -->
+
     <!-- One can also specify an existing Analyzer class that has a
          default constructor via the class attribute on the analyzer element
     <fieldType name="text_greek" class="solr.TextField">
@@ -706,6 +731,11 @@
    <dynamicField name="*_sort" type="alphaOnlySort" indexed="true" stored="false" />
    <dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*spell" type="textSpell" indexed="true" stored="false" multiValued="true" />
+   
+   <!-- upenn solr plugins dynamicField start-->
+   <dynamicField name="*_normsort" type="normSortTerm" indexed="true" stored="true" multiValued="true" />
+   <dynamicField name="*_xfacet" type="xfacet" indexed="true" stored="true" multiValued="true" />
+   <!-- upenn solr plugins dynamicField end -->
 
    <!-- uncomment the following to ignore any fields that don't already match an existing
         field name or dynamic field, rather than reporting them as an error.
