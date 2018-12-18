@@ -239,6 +239,7 @@
      </fieldType>
 
      <!-- solr plugins from upenn start-->
+     <!-- https://github.com/upenn-libraries/solrplugins -->
      <fieldType name="normSortTerm" class="edu.upenn.library.solrplugins.CaseInsensitiveSortingTextField">
        <analyzer>
         <tokenizer class="solr.KeywordTokenizerFactory"/>
@@ -733,6 +734,7 @@
    <dynamicField name="*spell" type="textSpell" indexed="true" stored="false" multiValued="true" />
    
    <!-- upenn solr plugins dynamicField start-->
+   <!-- https://github.com/upenn-libraries/solrplugins -->
    <dynamicField name="*_normsort" type="normSortTerm" indexed="true" stored="true" multiValued="true" />
    <dynamicField name="*_xfacet" type="xfacet" indexed="true" stored="true" multiValued="true" />
    <!-- upenn solr plugins dynamicField end -->
