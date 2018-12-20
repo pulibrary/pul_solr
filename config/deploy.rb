@@ -46,6 +46,7 @@ namespace :deploy do
       config_map = {
         "catalog-production" => "catalog-production",
         "catalog-staging" => "catalog-staging",
+        "cicognara" => "cicognara",
         "dpul" => "dpul",
         "figgy" => "figgy",
         "lae" => "lae",
@@ -63,7 +64,9 @@ namespace :deploy do
         'pulmap-staging',
         'dpul-staging-core',
         'lae-blacklight-staging',
-        'pulfa3-staging'
+        'pulfa3-staging',
+        'cicognara-staging',
+        'cicognara'
       ]
       config_map.each { |key, val| update_configset(config_dir: key, config_set: val) }
       collections.each { |collection| reload_collection(collection) }
@@ -115,7 +118,7 @@ namespace :configsets do
   end
 
   def delete_configset(config_set)
-    execute "curl #{solr_url}/admin/configs?action=DELETE&name=#{config_set}&omitHeader=true"
+    execute "curl \"#{solr_url}/admin/configs?action=DELETE&name=#{config_set}&omitHeader=true\""
   end
 
   desc 'List all Configsets'

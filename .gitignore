@@ -14,6 +14,7 @@ solr_configs/dpul/data/
 solr_configs/figgy/data/
 solr_configs/lae/data/
 solr_configs/pulfa3/data/
+solr_configs/cicognara/data/
 /log/
 .DS_Store
 /.byebug_history
