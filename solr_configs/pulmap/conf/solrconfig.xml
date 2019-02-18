@@ -51,7 +51,7 @@
     <!-- Hard commit every 60 minutes -->
     <autoCommit>
       <maxDocs>10000</maxDocs>
-      <maxTime>36000000</maxTime>
+      <maxTime>3600000</maxTime>
       <openSearcher>false</openSearcher>
     </autoCommit>
     <!-- Soft commit every 5 minutes -->
