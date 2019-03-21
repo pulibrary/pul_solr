@@ -68,7 +68,8 @@ namespace :deploy do
         'pulfa3-staging',
         'cicognara-staging',
         'cicognara',
-        'libwww-staging'
+        'libwww-staging',
+        'libwww-production'
       ]
       config_map.each { |key, val| update_configset(config_dir: key, config_set: val) }
       collections.each { |collection| reload_collection(collection) }
