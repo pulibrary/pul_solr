@@ -196,7 +196,7 @@ namespace :collections do
   desc 'Delete a Collection'
   task :delete, :collection do |task_name, args|
     on roles(:main) do
-      delete_collection(args[:delete])
+      delete_collection(args[:collection])
     end
   end
 end
