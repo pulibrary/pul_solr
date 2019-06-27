@@ -10,6 +10,34 @@ server 'lib-solr1', user: 'deploy', roles: %{main}
 
 set :branch, ENV['BRANCH'] || 'master'
 
+def config_map
+  {
+    "catalog-production" => "catalog-production",
+    "catalog-staging" => "catalog-staging",
+    "cicognara" => "cicognara",
+    "dpul" => "dpul",
+    "figgy" => "figgy",
+    "lae" => "lae",
+    "pulmap" => "pulmap",
+    "pulfa3" => "pulfa3",
+    "libwww" => 'libwww'
+  }
+end
+
+def collections
+  [
+    'dpul-production',
+    'figgy',
+    'lae',
+    'catalog-production1',
+    'catalog-production2',
+    'pulmap',
+    'cicognara',
+    'libwww-staging',
+    'libwww-production'
+  ]
+end
+
 # role-based syntax
 # ==================
 

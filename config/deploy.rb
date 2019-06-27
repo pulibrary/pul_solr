@@ -54,34 +54,6 @@ namespace :deploy do
         end    
         next
       end
-      config_map = {
-        "catalog-production" => "catalog-production",
-        "catalog-staging" => "catalog-staging",
-        "cicognara" => "cicognara",
-        "dpul" => "dpul",
-        "figgy" => "figgy",
-        "lae" => "lae",
-        "pulmap" => "pulmap",
-        "plantain" => "plantain",
-        "libwww" => 'libwww'
-      }
-      collections = [
-        'dpul-production',
-        'figgy',
-        'lae',
-        'catalog-production1',
-        'catalog-production2',
-        'pulmap',
-        'catalog-staging',
-        'pulmap-staging',
-        'dpul-staging-core',
-        'lae-blacklight-staging',
-        'plantain-staging',
-        'cicognara-staging',
-        'cicognara',
-        'libwww-staging',
-        'libwww-production'
-      ]
       config_map.each { |key, val| update_configset(config_dir: key, config_set: val) }
       collections.each { |collection| reload_collection(collection) }
     end
