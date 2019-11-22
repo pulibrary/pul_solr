@@ -51,7 +51,7 @@ namespace :deploy do
         "figgy" => "figgy",
         "lae" => "lae",
         "pulmap" => "pulmap",
-        "pulfa3" => "pulfa3",
+        "plantain" => "plantain",
         "libwww" => 'libwww'
       }
       collections = [
@@ -65,7 +65,7 @@ namespace :deploy do
         'pulmap-staging',
         'dpul-staging-core',
         'lae-blacklight-staging',
-        'pulfa3-staging',
+        'plantain-staging',
         'cicognara-staging',
         'cicognara',
         'libwww-staging',
