@@ -43,6 +43,13 @@ end
 namespace :deploy do
   after :published, :restart do
     on roles(:main), wait: 5 do
+      # on stand alone server just restart solr, no way to send information to zoo keeper since it does not exist
+      if fetch(:stand_alone, false)
+        on roles(:main) do
+          execute "sudo /usr/sbin/service solr restart"
+        end    
+        next
+      end
       config_map = {
         "catalog-production" => "catalog-production",
         "catalog-staging" => "catalog-staging",
