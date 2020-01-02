@@ -20,21 +20,21 @@ def config_map
     "lae" => "lae",
     "pulmap" => "pulmap",
     "pulfa3" => "pulfa3",
-    "libwww" => 'libwww'
   }
 end
 
 def collections
   [
-    'dpul-production',
-    'figgy',
-    'lae',
     'catalog-production1',
     'catalog-production2',
-    'pulmap',
     'cicognara',
-    'libwww-staging',
-    'libwww-production'
+    'dpul-production',
+    'dss-production', # uses catalog-production config set
+    'figgy-production1',
+    'figgy-production2',
+    'lae',
+    'pulmap',
+    'reserves' # uses catalog-production config set
   ]
 end
 

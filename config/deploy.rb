@@ -51,11 +51,12 @@ namespace :deploy do
       if fetch(:stand_alone, false)
         on roles(:main) do
           execute "sudo /usr/sbin/service solr restart"
-        end    
-        next
+        end
+      # on solr cloud, reload the configsets and collections
+      else
+        config_map.each { |key, val| update_configset(config_dir: key, config_set: val) }
+        collections.each { |collection| reload_collection(collection) }
       end
-      config_map.each { |key, val| update_configset(config_dir: key, config_set: val) }
-      collections.each { |collection| reload_collection(collection) }
     end
   end
 end

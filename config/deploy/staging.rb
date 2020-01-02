@@ -26,15 +26,19 @@ end
 
 def collections
   [
-    'figgy',
     'catalog-production-backup',
     'catalog-staging',
-    'pulmap-staging',
-    'dpul-staging',
-    'lae-staging',
-    'pulfa3-staging',
+    'catalog-test',
     'cicognara-staging',
-    'dss-staging'
+    'dpul-staging',
+    'dss-staging',
+    'figgy',
+    'lae-staging',
+    'libsc-staging',
+    'libwww-production',
+    'libwww-staging',
+    'pulfa3-staging',
+    'pulmap-staging'
   ]
 end
 
