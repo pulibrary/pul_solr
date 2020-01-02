@@ -40,6 +40,10 @@ def solr_url
   ENV['SOLR_URL'] ||= 'http://localhost:8983/solr'
 end
 
+def zk_host
+  "lib-zk1:2181,lib-zk2:2181,lib-zk3:2181"
+end
+
 namespace :deploy do
   after :published, :restart do
     on roles(:main), wait: 5 do
@@ -124,7 +128,7 @@ namespace :configsets do
   end
 
   def update_configset(config_dir:, config_set:)
-    execute "cd /opt/solr/bin && ./solr zk -upconfig -d #{File.join(release_path, "solr_configs", config_dir)} -n #{config_set}"
+    execute "cd /opt/solr/bin && ./solr zk -upconfig -d #{File.join(release_path, "solr_configs", config_dir)} -n #{config_set} -z #{zk_host}"
   end
 
   def delete_configset(config_set)
