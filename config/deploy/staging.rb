@@ -19,7 +19,7 @@ def config_map
     "figgy" => "figgy",
     "lae" => "lae",
     "pulmap" => "pulmap",
-    "pulfa3" => "pulfa3-staging",
+    "pulfa3-staging" => "pulfa3-staging",
     "libwww" => 'libwww'
   }
 end

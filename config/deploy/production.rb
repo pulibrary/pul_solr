@@ -18,8 +18,7 @@ def config_map
     "dpul" => "dpul",
     "figgy" => "figgy",
     "lae" => "lae",
-    "pulmap" => "pulmap",
-    "pulfa3" => "pulfa3",
+    "pulmap" => "pulmap"
   }
 end
 
