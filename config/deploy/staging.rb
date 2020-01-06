@@ -3,7 +3,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server 'localhost', user: 'deploy', roles: %{main}
+server 'lib-solr-staging1', user: 'deploy', roles: %{main}
 
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
@@ -19,28 +19,24 @@ def config_map
     "figgy" => "figgy",
     "lae" => "lae",
     "pulmap" => "pulmap",
-    "pulfa3" => "pulfa3",
     "libwww" => 'libwww'
   }
 end
 
 def collections
   [
-    'dpul-production',
-    'figgy',
-    'lae',
-    'catalog-production1',
-    'catalog-production2',
-    'pulmap',
+    'catalog-production-backup',
     'catalog-staging',
-    'pulmap-staging',
-    'dpul-staging-core',
-    'lae-blacklight-staging',
-    'pulfa3-staging',
+    'catalog-test',
     'cicognara-staging',
-    'cicognara',
+    'dpul-staging',
+    'dss-staging',
+    'figgy',
+    'lae-staging',
+    'libsc-staging',
+    'libwww-production',
     'libwww-staging',
-    'libwww-production'
+    'pulmap-staging'
   ]
 end
 
@@ -81,9 +77,6 @@ end
 #    forward_agent: false,
 #    auth_methods: %w(password)
 #  }
-set :ssh_options, {
-  port: 2222
-}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------

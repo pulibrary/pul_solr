@@ -51,39 +51,12 @@ namespace :deploy do
       if fetch(:stand_alone, false)
         on roles(:main) do
           execute "sudo /usr/sbin/service solr restart"
-        end    
-        next
+        end
+      # on solr cloud, reload the configsets and collections
+      else
+        config_map.each { |key, val| update_configset(config_dir: key, config_set: val) }
+        collections.each { |collection| reload_collection(collection) }
       end
-      config_map = {
-        "catalog-production" => "catalog-production",
-        "catalog-staging" => "catalog-staging",
-        "cicognara" => "cicognara",
-        "dpul" => "dpul",
-        "figgy" => "figgy",
-        "lae" => "lae",
-        "pulmap" => "pulmap",
-        "plantain" => "plantain",
-        "libwww" => 'libwww'
-      }
-      collections = [
-        'dpul-production',
-        'figgy',
-        'lae',
-        'catalog-production1',
-        'catalog-production2',
-        'pulmap',
-        'catalog-staging',
-        'pulmap-staging',
-        'dpul-staging-core',
-        'lae-blacklight-staging',
-        'plantain-staging',
-        'cicognara-staging',
-        'cicognara',
-        'libwww-staging',
-        'libwww-production'
-      ]
-      config_map.each { |key, val| update_configset(config_dir: key, config_set: val) }
-      collections.each { |collection| reload_collection(collection) }
     end
   end
 end
