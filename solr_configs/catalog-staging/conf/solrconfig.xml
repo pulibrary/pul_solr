@@ -95,17 +95,17 @@
 
   <query>
     <filterCache class="solr.FastLRUCache"
-                 size="8192"
-                 initialSize="8192"
-                 autowarmCount="256"/>
+                 size="2048"
+                 initialSize="2048"
+                 autowarmCount="64"/>
     <queryResultCache class="solr.LRUCache"
-                      size="16384"
-                      initialSize="16384"
-                      autowarmCount="128"/>
+                      size="4096"
+                      initialSize="4096"
+                      autowarmCount="32"/>
 
     <documentCache class="solr.LRUCache"
-                   size="16384"
-                   initialSize="16384"/>
+                   size="4096"
+                   initialSize="4096"/>
 
     <enableLazyFieldLoading>true</enableLazyFieldLoading>
 
