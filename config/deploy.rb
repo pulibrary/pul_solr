@@ -40,9 +40,6 @@ def solr_url
   ENV['SOLR_URL'] ||= 'http://localhost:8983/solr'
 end
 
-def zk_host
-  "lib-zk1:2181,lib-zk2:2181,lib-zk3:2181"
-end
 
 namespace :deploy do
   after :published, :restart do
