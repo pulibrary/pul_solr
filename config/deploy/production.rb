@@ -34,7 +34,6 @@ def collections
     'dpul-production',
     'dss-production', # uses catalog-production config set
     'figgy-production1',
-    'figgy-production2',
     'lae',
     'pulmap',
     'reserves' # uses catalog-production config set
