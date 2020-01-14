@@ -407,11 +407,17 @@
       <str name="subject_qf">
         subject_topic_unstem_search^25
         subject_unstem_search^20
+        lcgft_s^5
+        rbgenr_s^5
+        aat_s^5
         cjk_subject
       </str>
       <str name="subject_pf">
         subject_topic_unstem_search^250
         subject_unstem_search^200
+        lcgft_s^50
+        rbgenr_s^50
+        aat_s^50
         cjk_subject^10
       </str>
 
