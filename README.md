@@ -71,3 +71,33 @@ Then get the indexed json with the following command in the marc_liberation file
 `bundle exec traject -c marc_to_solr/lib/traject_config.rb -t xml scsb.xml -w Traject::JsonWriter`
 
 Finally, copy the output and paste it into a fixture file in your pul_solr project. It's nice to fix the formatting of the json; in vim you can do this with a little python utility ala `:%!python -m json.tool`
+
+### Heap Dump
+
+If you have no idea what is happening on solr you may want to try dumping the
+heap. This is difficult when GC is freezing everything. Keep trying and
+eventually you may be lucky!
+
+Run as deploy user:
+`jmap -dump:format=b,file=/home/deploy/solr.hprof [pid_of_solr_process]`
+
+Then you'll want to look at it. Download the file to your machine
+`scp deploy@lib-solrN:/home/deploy/solr.hprof .`
+
+Download and install the [eclipse memory analyzer](https://www.eclipse.org/mat/downloads.php) application.
+
+You need to assign enough heap to the app to hold the entire heap that you
+dumped on the server. When you unzip it you get a `mat` directory. Right click
+and select "Show Package Contents", then expand contents > eclipse > right click
+on "MemoryAnalyzer.ini" to edit. Change "-Xmx" to be a number bigger than the
+file you have.
+
+You're supposed to be able to double-click the 'mat' file but that doesn't work.
+you have to "Show Package Contents" > Contents > MacOS > run 'MemoryAnalyzer'
+
+Congratulations! You opened the application. Now open the heap file and wait a
+long time while it parses the file and the progress bar jumps around. It took
+about an hour for a 20g file for us.
+
+You want to look at the dominator tree to see how much heap is used by each
+object. Right-click the biggest one's thread (higher in the tree) > Java Basics > Thread Overview and Stacks. Expand the thread click the "total" button at the bottom so all of them will open up. Expand the first column (Object stack frame). Expand 'org.eclipse.jetty.servlet.ServletHandler.doHandle'. Click the first (local) frame. Look on the left, double-click the + to expand more properties, the thing that broke it was `_originalURI`. right-click > copy value.
