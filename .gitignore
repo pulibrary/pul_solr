@@ -19,3 +19,4 @@ solr_configs/cicognara/data/
 /log/
 .DS_Store
 /.byebug_history
+urls.txt
