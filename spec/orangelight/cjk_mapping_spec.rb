@@ -17,6 +17,11 @@ describe 'CJK character equivalence' do
     solr.commit
   end
   describe 'Direct mapping check' do
+    before(:all) do
+      delete_all
+      solr.add(docs)
+      solr.commit
+    end
     docs.each do |map|
       from = map['cjk_mapped_from']
       to = map['cjk_mapped_to']
@@ -112,25 +117,28 @@ describe 'CJK character equivalence' do
     end
   end
   describe 'mapping applied to search fields' do
+    def qf_pf_params q, field
+      {qf: "${#{field}_qf}", pf: "${#{field}_pf}", q: q}
+    end
     it '国史大辞典 => 國史大辭典 left anchor' do
       solr.add({ id: 1, title_la: '國史大辭典' })
       solr.commit
-      expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$left_anchor_qf pf=$left_anchor_pf}国史大辞典' })).to include('1')
+      expect(solr_resp_doc_ids_only(qf_pf_params("国史大辞典","left_anchor"))).to include('1')
     end
     it '三晋出版社 => 三晉出版社 publisher' do
       solr.add({ id: 1, pub_created_vern_display: '三晋出版社' })
       solr.commit
-      expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$publisher_qf pf=$publisher_pf}三晉出版社' })).to include('1')
+      expect(solr_resp_doc_ids_only(qf_pf_params("三晉出版社", "publisher"))).to include('1')
     end
     it '巴蜀書社 => 巴蜀书社  notes' do
       solr.add({ id: 1, cjk_notes: '巴蜀書社' })
       solr.commit
-      expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$notes_qf pf=$notes_pf}巴蜀书社 ' })).to include('1')
+      expect(solr_resp_doc_ids_only(qf_pf_params("巴蜀书社 ", "notes"))).to include('1')
     end
     it '鳳凰出版社 => 凤凰出版社  series title' do
       solr.add({ id: 1, cjk_series_title: '鳳凰出版社' })
       solr.commit
-      expect(solr_resp_doc_ids_only({ 'q' => '{!qf=$series_title_qf pf=$series_title_pf}凤凰出版社 ' })).to include('1')
+      expect(solr_resp_doc_ids_only(qf_pf_params("凤凰出版社 ", "series_title"))).to include('1')
     end
   end
 

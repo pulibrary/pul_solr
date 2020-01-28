@@ -1,12 +1,12 @@
 require 'spec_helper'
 require 'json'
 
-def title_query_string q
-  "{!qf=$title_qf pf=$title_pf}#{q}"
+def title_query_params q
+  {qf: "${title_qf}", pf:"${title_pf}", q: q}
 end
 
-def left_anchor_query_string q
-  "{!qf=$left_anchor_qf pf=$left_anchor_pf}#{q}*"
+def left_anchor_query_params q
+  {qf: "${left_anchor_qf}", pf: "${left_anchor_pf}", q: "#{q}*"}
 end
 
 describe 'title keyword search' do
@@ -24,22 +24,22 @@ describe 'title keyword search' do
     end
 
     it 'retrieves book when first word in title_display is searched' do
-      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('Patterns') })).to include(patterns_in_nature)
+      expect(solr_resp_doc_ids_only(title_query_params('Patterns'))).to include(patterns_in_nature)
     end
     it 'retrieves book with multiword query of title_display field' do
-      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('Patterns in nature by') })).to include(patterns_in_nature)
+      expect(solr_resp_doc_ids_only(title_query_params('Patterns in nature by'))).to include(patterns_in_nature)
     end
     it 'casing does not impact search' do
-      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('pAttErnS iN NatURE') })).to include(patterns_in_nature)
+      expect(solr_resp_doc_ids_only(title_query_params('pAttErnS iN NatURE'))).to include(patterns_in_nature)
     end
     it 'title keywords are not required to appear in the same order as title_display field' do
-      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('stevens patterns') })).to include(patterns_in_nature)
+      expect(solr_resp_doc_ids_only(title_query_params('stevens patterns'))).to include(patterns_in_nature)
     end
     it 'title keywords are stemmed' do
-      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('steven pattern') })).to include(patterns_in_nature)
+      expect(solr_resp_doc_ids_only(title_query_params('steven pattern'))).to include(patterns_in_nature)
     end
     it 'fails to match when word in query is missing from title_display field (mm 6<90%)' do
-      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('pattern in nature by peter rabbit') })).not_to include(patterns_in_nature)
+      expect(solr_resp_doc_ids_only(title_query_params('pattern in nature by peter rabbit'))).not_to include(patterns_in_nature)
     end
   end
 
@@ -58,7 +58,7 @@ describe 'title keyword search' do
       expect(solr_resp_doc_ids_only({ 'fq' => "series_title_index:\"#{series_title}\"" })).to include(mozart_series)
     end
     it 'title keyword search matches 490 field' do
-      expect(solr_resp_doc_ids_only({ 'q' => title_query_string(series_title) })).to include(mozart_series)
+      expect(solr_resp_doc_ids_only(title_query_params(series_title))).to include(mozart_series)
     end
   end
 
@@ -74,11 +74,11 @@ describe 'title keyword search' do
     end
 
     it 'exact 245a match more relevant than longer 245a field' do
-      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('silence') }))
+      expect(solr_resp_doc_ids_only(title_query_params('silence')))
             .to include(silence).before(sounds_like_silence)
     end
     it '245a match more relevant than subtitle match' do
-      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('silence') }))
+      expect(solr_resp_doc_ids_only(title_query_params('silence')))
             .to include(sounds_like_silence).before(four_silence_subtitle)
     end
   end
@@ -95,11 +95,11 @@ describe 'title keyword search' do
     end
 
     it 'exact matches Science' do
-      expect(solr_resp_doc_ids_only({ 'q' => title_query_string('Science'), 'sort' => 'score DESC'})["response"]["docs"].last)
+      expect(solr_resp_doc_ids_only(title_query_params('Science').merge('sort' => 'score DESC'))["response"]["docs"].last)
             .to eq({"id" => science_and_spirit})
     end
     it 'left anchor exact matches Science' do
-      expect(solr_resp_doc_ids_only({ 'q' => left_anchor_query_string('Science'), 'sort' => 'score DESC'})["response"]["docs"].last)
+      expect(solr_resp_doc_ids_only(left_anchor_query_params('Science').merge('sort' => 'score DESC'))["response"]["docs"].last)
             .to eq({"id" => science_and_spirit})
     end
 
@@ -111,10 +111,10 @@ describe 'title keyword search' do
       end
 
       it 'matches titles without the whitespace' do
-        expect(solr_resp_doc_ids_only({ 'q' => left_anchor_query_string('Idioms\ and\ collocations\ \:\ corpus-based'), 'sort' => 'score DESC'})["response"]["docs"].last)
+        expect(solr_resp_doc_ids_only(left_anchor_query_params('Idioms\ and\ collocations\ \:\ corpus-based').merge('sort' => 'score DESC'))["response"]["docs"].last)
               .to eq({"id" => idioms_and_colloc})
 
-        expect(solr_resp_doc_ids_only({ 'q' => left_anchor_query_string('Idioms\ and\ collocations\:\ corpus-based'), 'sort' => 'score DESC'})["response"]["docs"].last)
+        expect(solr_resp_doc_ids_only(left_anchor_query_params('Idioms\ and\ collocations\:\ corpus-based').merge('sort' => 'score DESC'))["response"]["docs"].last)
               .to eq({"id" => idioms_and_colloc})
       end
     end
@@ -122,12 +122,9 @@ describe 'title keyword search' do
 
   describe 'handling for titles which contain dashes' do
     let(:bibid) { '212556' }
-    let(:query) { title_query_string('theory of the avant garde') }
+    let(:query) { 'theory of the avant garde' }
     let(:parameters) do
-      {
-        'q' => query,
-        'sort' => 'score DESC'
-      }
+      title_query_params(query).merge('sort' => 'score DESC')
     end
     let(:response) { solr_resp_doc_ids_only(parameters) }
     let(:documents) { response["response"]["docs"] }
@@ -141,7 +138,7 @@ describe 'title keyword search' do
     end
 
     context 'when a query contains a dash character' do
-      let(:query) { title_query_string('theory of the avant-garde') }
+      let(:query) { 'theory of the avant-garde' }
 
       it 'finds titles containing dashes' do
         expect(documents.last).to eq({ "id" => bibid })
@@ -168,7 +165,7 @@ describe 'title_l search' do
   context 'when colon excluded in query' do
     let(:title) { 'Photo-secession : the golden age' }
     let(:params) do
-      { 'q' => left_anchor_query_string('Photo-secession\\ \\ the') }
+      left_anchor_query_params('Photo-secession\\ \\ the')
     end
 
     it 'matches when colon excluded in query' do
@@ -178,7 +175,7 @@ describe 'title_l search' do
   context 'when dash is excluded in query' do
     let(:title) { 'Photo-secession : the golden age' }
     let(:params) do
-      { 'q' => left_anchor_query_string('Photosecession\\ the') }
+      left_anchor_query_params('Photosecession\\ the')
     end
 
     it 'matches when dash is excluded in query' do
@@ -189,7 +186,7 @@ describe 'title_l search' do
   context 'Tests that search is left-anchored' do
     let(:title) { 'Katja Strunz : Zeittraum' }
     let(:params) do
-      { 'q' => left_anchor_query_string('Katja\\ Strunz\\ :\\ Zeittraum') }
+      left_anchor_query_params('Katja\\ Strunz\\ :\\ Zeittraum')
     end
 
     it 'matches when the query includes first word of title' do
@@ -200,7 +197,7 @@ describe 'title_l search' do
   context 'Tests that cjk searches work with wildcards' do
     let(:title) { '浄名玄論 / 京都国' }
     let(:params) do
-      { 'q' => left_anchor_query_string('浄名玄') }
+      left_anchor_query_params('浄名玄')
     end
 
     it 'matches when the query includes first word of title' do
@@ -211,7 +208,7 @@ describe 'title_l search' do
   context 'when dash is excluded in query' do
     let(:title) { 'Katja Strunz : Zeittraum' }
     let(:params) do
-      { 'q' => left_anchor_query_string('Strunz') }
+      left_anchor_query_params('Strunz')
     end
 
     it 'does not match when first word of title is not in query' do
