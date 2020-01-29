@@ -67,17 +67,29 @@ describe 'CJK character equivalence' do
     end
   end
   describe 'multi-character searches' do
-    it '毛泽东思想 => 毛澤東思想' do
-      add_single_field_doc('毛泽东思想')
-      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"毛澤東思想"' })).to include('1')
+    describe "Chinese" do
+      it '毛沢東思想 => 毛泽东思想' do
+        add_single_field_doc('毛沢東思想')
+        expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"毛泽东思想"' })).to include('1')
+      end
     end
-    it '毛澤東思想 => 毛沢東思想' do
-      add_single_field_doc('毛澤東思想')
-      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"毛沢東思想"' })).to include('1')
+    describe "Korean" do
+      it '고려의후삼국통일과후백제 => 고려의 후삼국 통일과 후백제' do
+        add_single_field_doc('고려의후삼국통일과후백제')
+        expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"고려의 후삼국 통일과"' })).to include('1')
+      end
+      it '한국사 => 한국' do
+        add_single_field_doc('한국사')
+        expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"한국"' })).to include('1')
+      end
     end
-    it '毛沢東思想 => 毛泽东思想' do
-      add_single_field_doc('毛沢東思想')
-      expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"毛泽东思想"' })).to include('1')
+    describe "Japanese Hiragana" do
+      it 'における => おける' do
+        add_single_field_doc('における')
+        # This works, but not because of cjk_text. It works because of the
+        # standard tokenizer on the text field.
+        expect(solr_resp_doc_ids_only({ 'q'=>'おける' })).to include('1')
+      end
     end
   end
   describe 'punctuation marks are stripped' do
