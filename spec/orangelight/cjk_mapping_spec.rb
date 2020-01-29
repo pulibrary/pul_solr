@@ -68,12 +68,10 @@ describe 'CJK character equivalence' do
   end
   describe 'multi-character searches' do
     it '毛泽东思想 => 毛澤東思想' do
-      pending "Outputting bigrams fixes this, but crashes Solr."
       add_single_field_doc('毛泽东思想')
       expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"毛澤東思想"' })).to include('1')
     end
     it '毛澤東思想 => 毛沢東思想' do
-      pending "Outputting bigrams fixes this, but crashes Solr. See https://github.com/pulibrary/pul_solr/issues/183"
       add_single_field_doc('毛澤東思想')
       expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"毛沢東思想"' })).to include('1')
     end
