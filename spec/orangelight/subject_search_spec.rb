@@ -4,9 +4,10 @@ require 'json'
 describe 'subject keyword search' do
   include_context 'solr_helpers'
 
-  def subject_query_string q
-    "{!qf=$subject_qf pf=$subject_pf}#{q}"
+  def subject_query_params q
+    {qf: "${subject_qf}", pf: "${subject_pf}", q: q}
   end
+
   before(:all) do
     delete_all
   end
@@ -16,10 +17,10 @@ describe 'subject keyword search' do
       add_doc(diacritic_subject)
     end
     it 'retrieves book when diacritics included' do
-      expect(solr_resp_doc_ids_only({ 'q' => subject_query_string('ʻUthmān, ʻUthmān') })).to include(diacritic_subject)
+      expect(solr_resp_doc_ids_only(subject_query_params('ʻUthmān, ʻUthmān'))).to include(diacritic_subject)
     end
     it 'retrieves book when diacritics excluded' do
-      expect(solr_resp_doc_ids_only({ 'q' => subject_query_string('Uthman') })).to include(diacritic_subject)
+      expect(solr_resp_doc_ids_only(subject_query_params('Uthman'))).to include(diacritic_subject)
     end
   end
   describe 'stopwords' do
@@ -28,10 +29,10 @@ describe 'subject keyword search' do
       add_doc(stop_word_subject)
     end
     it 'retrieves book when stop words included' do
-      expect(solr_resp_doc_ids_only({ 'q' => subject_query_string('image of god') })).to include(stop_word_subject)
+      expect(solr_resp_doc_ids_only(subject_query_params('image of god'))).to include(stop_word_subject)
     end
     it 'retrieves book when stop words excluded' do
-      expect(solr_resp_doc_ids_only({ 'q' => subject_query_string('image god') })).to include(stop_word_subject)
+      expect(solr_resp_doc_ids_only(subject_query_params('image god'))).to include(stop_word_subject)
     end
   end
   describe 'stemming disabled' do
@@ -40,13 +41,13 @@ describe 'subject keyword search' do
       solr.commit
     end
     it 'matches heading terms exactly' do
-      expect(solr_resp_doc_ids_only({ 'q' => subject_query_string('Biographical films United States') })).to include('1')
+      expect(solr_resp_doc_ids_only(subject_query_params('Biographical films United States'))).to include('1')
     end
     it 'stemmed form included in all fields' do
       expect(solr_resp_doc_ids_only({ 'q' => 'Biograph film Unit State' })).to include('1')
     end
     it 'stemmed form excluded from subject field' do
-      expect(solr_resp_doc_ids_only({ 'q' => subject_query_string('Biograph film Unit State') })).not_to include('1')
+      expect(solr_resp_doc_ids_only(subject_query_params('Biograph film Unit State'))).not_to include('1')
     end
   end
   after(:all) do

@@ -8,7 +8,7 @@ gem 'rspec', '~> 3.8'
 
 gem 'rsolr'
 
-gem 'solr_wrapper', '~> 1.0'
+gem 'solr_wrapper'
 
 gem 'faraday'
 

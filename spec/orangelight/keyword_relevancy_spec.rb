@@ -53,6 +53,7 @@ describe 'title subfield a boost' do
             .to include(capitalism_socialism_democracy_2).before(capitalism_socialism_democracy_3)
     end
   end
+
   context 'when performing CJK searches' do
     exact_match = '6581897'
     variant_exact_match = '1831578'
