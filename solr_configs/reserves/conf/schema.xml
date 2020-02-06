@@ -206,7 +206,6 @@
 
    <!-- NOTE: this is not a full list of fields in the index; dynamic fields are also used -->
    <!-- default, catch all search field -->
-   <field name="text" type="text" indexed="true" stored="false" multiValued="true"/>
 
    <!-- single values -->
    <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false"/>
