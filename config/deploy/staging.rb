@@ -11,7 +11,7 @@ server 'lib-solr-staging1', user: 'deploy', roles: %{main}
 set :branch, ENV['BRANCH'] || 'master'
 
 def zk_host
-  "lib-zk-staging1:2181,lib-zk-staging2:2181,lib-zk-staging3:2181"
+  "lib-zk-staging1:2181,lib-zk-staging2:2181,lib-zk-staging3:2181/solr7"
 end
 
 def config_map
@@ -23,7 +23,8 @@ def config_map
     "figgy" => "figgy",
     "lae" => "lae",
     "pulmap" => "pulmap",
-    "libwww" => 'libwww'
+    "libwww" => "libwww",
+    "reserves" => "reserves"
   }
 end
 
@@ -40,7 +41,8 @@ def collections
     'libsc-staging',
     'libwww-production',
     'libwww-staging',
-    'pulmap-staging'
+    'pulmap-staging',
+    'reserves'
   ]
 end
 
