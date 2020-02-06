@@ -7,15 +7,7 @@
 /pkg/
 /spec/reports/
 /tmp/
-solr_configs/catalog-production/data/
-solr_configs/catalog-staging/data/
-solr_configs/libwww/data/
-solr_configs/pulmap/data/
-solr_configs/dpul/data/
-solr_configs/figgy/data/
-solr_configs/lae/data/
-solr_configs/pulfa3/data/
-solr_configs/cicognara/data/
+solr_configs/*/data/
 /log/
 .DS_Store
 /.byebug_history
