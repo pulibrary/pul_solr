@@ -36,10 +36,9 @@ Please note that, when uploading a directory for a new Configset from this repos
 
 ## Managing Collections
 
-Using Capistrano, one may create, reload, delete, and list Collections using the following tasks:
+Using Capistrano, one may reload, delete, and list Collections using the following tasks:
 ```
 SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:list
-SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:create[dpul,dpul-config]
 SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:reload[dpul]
 SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:delete[dpul]
 ```
