@@ -9,7 +9,8 @@ end
 def config_map
   {
     "catalog-production" => "catalog-production",
-    "catalog-staging" => "catalog-staging"
+    "catalog-staging" => "catalog-staging",
+    "pulfalight-staging" => "pulfalight-staging"
   }
 end
 
