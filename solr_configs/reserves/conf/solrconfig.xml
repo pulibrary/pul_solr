@@ -4,7 +4,7 @@
      from this file.  Please refer to http://wiki.apache.org/solr/SolrConfigXml,
      as well as the default solrconfig file included with Solr -->
 
-  <schemaFactory class=“ClassicIndexSchemaFactory”/>
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
 
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
 
