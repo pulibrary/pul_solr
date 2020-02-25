@@ -87,20 +87,26 @@
        <str name="qf">
          collection_title_tesim^150
          title_tesim^100
-         name_tesim^10
+         names_ssim^10
          place_tesim^10
          unitid_identifier_match^5
          subject_tesim^2
+         ref_ssi
+         parent_identifier_match
          text
+         id
        </str>
        <str name="pf">
          collection_title_tesim^150
          title_tesim^100
-         name_tesim^10
+         names_ssim^10
          place_tesim^10
          unitid_identifier_match^5
          subject_tesim^2
+         ref_ssi
+         parent_identifier_match
          text
+         id
        </str>
 
        <str name="qf_name">
