@@ -72,7 +72,7 @@
           active_fedora_model_ssi
           title_tesim
           author_tesim
-          subject_tesim
+          subject_tsim
           all_text_timv
         </str>
         <str name="pf">
@@ -93,7 +93,7 @@
        <str name="title_pf">
        </str>
        <str name="subject_qf">
-          subject_tesim
+          subject_tsim
        </str>
        <str name="subject_pf">
        </str>
