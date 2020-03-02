@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/pul_solr
 
     docker:
-      - image: circleci/ruby:2.4.2-node-browsers
+      - image: circleci/ruby:2.6.5-node-browsers
         environment:
           RAILS_ENV: test
 
@@ -15,6 +15,8 @@ jobs:
           keys:
           - pul_solr-{{ checksum "Gemfile" }}
           - pul_solr-
+
+      - run: gem install bundler -v '~> 2.0'
 
       - run:
           name: Install dependencies
