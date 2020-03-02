@@ -93,6 +93,7 @@
          subject_tesim^2
          ref_ssi
          parent_identifier_match
+         containers_identifier_match
          text
          id
        </str>
@@ -105,6 +106,7 @@
          subject_tesim^2
          ref_ssi
          parent_identifier_match
+         containers_identifier_match
          text
          id
        </str>
