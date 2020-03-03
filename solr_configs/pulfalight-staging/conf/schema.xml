@@ -368,8 +368,12 @@
    <copyField source="scopecontent_teim" dest="text" />
    <copyField source="separatedmaterial_teim" dest="text" />
    <copyField source="userestrict_teim" dest="text" />
-   <!-- grab structured data that's important -->
    <copyField source="unitid_ssm" dest="text" />
+   <copyField source="parent_ssm" dest="text" />
+   <copyField source="containers_ssim" dest="text" />
+   <copyField source="id" dest="text" />
+
+   <!-- grab structured data that's important -->
    <copyField source="unitid_ssm" dest="unitid_identifier_match" />
    <copyField source="parent_ssm" dest="parent_identifier_match" />
    <copyField source="containers_ssim" dest="containers_identifier_match" />

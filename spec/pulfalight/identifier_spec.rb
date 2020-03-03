@@ -52,23 +52,28 @@ describe 'all fields search for id value' do
       expect(response.to_s).to include(mc_component_name2)
       expect(response.to_s).not_to include(mc_component_name3)
 
-      # case insensitive 
+      # case insensitive
       response = solr_response(query_params('FOLDER 1').merge('fl' => 'id', 'facet' => 'false'))
       expect(response.to_s).to include(mc_component_name1)
       expect(response.to_s).to include(mc_component_name2)
       expect(response.to_s).not_to include(mc_component_name3)
 
-      # response = solr_response(query_params('box 1865 folder 2').merge('fl' => 'id', 'facet' => 'false'))
-      # byebug
-      # expect(response.to_s).not_to include(mc_component_name1)
-      # expect(response.to_s).not_to include(mc_component_name2)
-      # expect(response.to_s).to include(mc_component_name3)
+      response = solr_response(query_params('box 1865 folder 2').merge('fl' => 'id', 'facet' => 'false'))
+      byebug
+      expect(response.to_s).not_to include(mc_component_name1)
+      expect(response.to_s).not_to include(mc_component_name2)
+      expect(response.to_s).to include(mc_component_name3)
 
-      # response = solr_response(query_params('MC001-02-04MC001-02-04_c03575 box 1865').merge('fl' => 'id', 'facet' => 'false'))
-      # byebug
-      # expect(response.to_s).to include(mc_component_name1)
-      # expect(response.to_s).not_to include(mc_component_name2)
-      # expect(response.to_s).not_to include(mc_component_name3)
+      response = solr_response(query_params('MC001-02-04 box 1865').merge('fl' => 'id', 'facet' => 'false'))
+      expect(response.to_s).to include(mc_component_name1)
+      expect(response.to_s).not_to include(mc_component_name2)
+      expect(response.to_s).to include(mc_component_name3)
+
+      # MC001-02-04 box 1865
+
+      # MC001-02-04 box 1865 folder 1
+
+      # MC001-02-04MC001-02-04_c03575 box 1865
 
     end
   end
@@ -116,9 +121,10 @@ describe 'all fields search for id value' do
 
     it 'retrieves only collection and neither subgroup nor series when search for collection id' do
       response = solr_response(query_params('MC001').merge('fl' => 'id', 'facet' => 'false'))
-      expect(response.to_s).to include("\"#{mc_collection_name}\"")
-      expect(response.to_s).not_to include("\"#{mc_subgroup_name}\"")
-      expect(response.to_s).not_to include("\"#{mc_series_name}\"")
+      byebug
+      expect(response.to_s).to include("\"#{mc_collection_name}\"") # 'MC001'
+      expect(response.to_s).not_to include("\"#{mc_subgroup_name}\"") # 'MC001-04'
+      expect(response.to_s).not_to include("\"#{mc_series_name}\"") # 'MC001-02-04'
     end
 
    end
