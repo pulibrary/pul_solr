@@ -151,6 +151,19 @@ namespace :collections do
     execute "curl '#{solr_url}/admin/collections?action=DELETE&name=#{collection}'"
   end
 
+  def backup_collection(collection)
+    #execute "mkdir /mnt/solrbackup/#{today}"
+    execute "curl '#{solr_url}/admin/collections?action=BACKUP&name=#{collection}-#{znode}&collection=#{collection}&location=/mnt/solrbackup/#{today}'"
+  end
+
+  def restore_collection(collection, date)
+    execute "curl '#{solr_url}/admin/collections?action=BACKUP&name=#{collection}-#{znode}&collection=#{collection}&location=/mnt/solrbackup/#{date}'"
+  end
+
+  def today
+    Time.now.strftime('%Y%m%d')
+  end
+
   desc 'List Collections'
   task :list do
     on roles(:main) do
@@ -180,4 +193,19 @@ namespace :collections do
       delete_collection(args[:collection])
     end
   end
+
+  desc 'Backup a Collection'
+  task :backup, :collection do |task_name, args|
+    on roles(:main) do
+      backup_collection(args[:collection])
+    end
+  end
+
+  desc 'Restore a Collection'
+  task :restore, :collection do |task_name, args|
+    on roles(:main) do
+      restore_collection(args[:collection], args[:date])
+    end
+  end
+
 end
