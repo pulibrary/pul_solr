@@ -57,6 +57,7 @@
        1.4: default auto-phrase (QueryParser feature) to off
      -->
 
+  <similarity class="solr.LegacyBM25SimilarityFactory"/>
   <types>
     <!-- field type definitions. The "name" attribute is
        just a label to be used by field definitions.  The "class"
