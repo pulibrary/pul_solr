@@ -16,8 +16,6 @@ end
 
 def config_map
   {
-    "catalog-production" => "catalog-production",
-    "catalog-staging" => "catalog-staging",
     "cicognara" => "cicognara",
     "dpul" => "dpul",
     "figgy" => "figgy",
@@ -28,15 +26,11 @@ end
 
 def collections
   [
-    'catalog-production1',
-    'catalog-production2',
     'cicognara',
     'dpul-production',
-    'dss-production', # uses catalog-production config set
     'figgy-production1',
     'lae',
     'pulmap',
-    'reserves' # uses catalog-production config set
   ]
 end
 

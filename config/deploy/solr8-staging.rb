@@ -17,9 +17,8 @@ end
 
 def collections
   [
-    'catalog-production-backup',
     'catalog-staging',
-    'catalog-test',
-    'reserves'
+    'reserves',
+    'dss-staging' # uses catalog configset
   ]
 end

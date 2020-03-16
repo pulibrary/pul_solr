@@ -16,33 +16,25 @@ end
 
 def config_map
   {
-    "catalog-production" => "catalog-production",
-    "catalog-staging" => "catalog-staging",
     "cicognara" => "cicognara",
     "dpul" => "dpul",
     "figgy" => "figgy",
     "lae" => "lae",
     "pulmap" => "pulmap",
     "libwww" => "libwww",
-    "reserves" => "reserves"
   }
 end
 
 def collections
   [
-    'catalog-production-backup',
-    'catalog-staging',
-    'catalog-test',
     'cicognara-staging',
     'dpul-staging',
-    'dss-staging',
     'figgy',
     'lae-staging',
     'libsc-staging',
     'libwww-production',
     'libwww-staging',
     'pulmap-staging',
-    'reserves'
   ]
 end
 
