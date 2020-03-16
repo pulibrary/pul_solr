@@ -57,6 +57,15 @@
        1.4: default auto-phrase (QueryParser feature) to off
      -->
 
+  <!--
+    Absolute scores have gone down as of solr 8.0, and our weighting was not longer
+      accurate to make our tests pass. See:
+      * https://lucene.apache.org/solr/guide/8_0/major-changes-in-solr-8.html#schema-changes-in-8-0
+      * https://lucene.apache.org/solr/guide/8_0/other-schema-elements.html#similarity
+      * https://github.com/pulibrary/orangelight/issues/1958
+  -->
+  <similarity class="solr.LegacyBM25SimilarityFactory"/>
+
   <types>
     <!-- field type definitions. The "name" attribute is
        just a label to be used by field definitions.  The "class"
@@ -402,7 +411,6 @@
       <analyzer>
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
-        <filter class="solr.StandardFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
       </analyzer>
@@ -423,7 +431,7 @@
         <filter class="solr.ICUTransformFilterFactory" id="Traditional-Simplified"/>
         <filter class="solr.ICUTransformFilterFactory" id="Katakana-Hiragana"/>
         <filter class="solr.ICUFoldingFilterFactory"/>   <!-- NFKC, case folding, diacritics removed -->
-        <filter class="solr.CJKBigramFilterFactory" han="false" hiragana="false" katakana="false" hangul="false" outputUnigrams="true" />
+        <filter class="solr.CJKBigramFilterFactory" han="false" hiragana="false" katakana="false" hangul="true" outputUnigrams="true" />
       </analyzer>
     </fieldtype>
 

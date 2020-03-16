@@ -54,6 +54,7 @@ RSpec.shared_context 'solr_helpers' do
     # @param req_handler [String] the pathname of the desired Solr request handler (defaults to 'select')
     # @return [RSpecSolr::SolrResponseHash] object for rspec-solr testing the Solr response
     def solr_response(solr_params, req_handler='select')
-      RSpecSolr::SolrResponseHash.new(solr.send_and_receive(req_handler, {:method => :get, :params => solr_params}))
+      response = solr.send_and_receive(req_handler, {:method => :get, :params => solr_params})
+      RSpecSolr::SolrResponseHash.new(response)
     end
 end

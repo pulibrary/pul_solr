@@ -139,8 +139,8 @@ namespace :collections do
     execute "curl '#{solr_url}/admin/collections?action=LIST'"
   end
 
-  def create_collection(collection, config_name, num_shards = 1, replication_factor = 1)
-    execute "curl '#{solr_url}/admin/collections?action=CREATE&name=#{collection}&collection.configName=#{config_name}&numShards=#{num_shards}&replicationFactor=#{replication_factor}'"
+  def create_collection(collection, config_name, num_shards = 1, replication_factor = 1, shards_per_node = 1)
+    execute "curl '#{solr_url}/admin/collections?action=CREATE&name=#{collection}&collection.configName=#{config_name}&numShards=#{num_shards}&replicationFactor=#{replication_factor}&maxShardsPerNode=#{shards_per_node}'"
   end
 
   def reload_collection(collection)
@@ -166,11 +166,12 @@ namespace :collections do
   end
 
   desc 'Create a Collection'
-  task :create, :collection, :config_name, :num_shards, :replication_factor do |task_name, args|
+  task :create, :collection, :config_name, :num_shards, :replication_factor, :shards_per_node do |task_name, args|
     on roles(:main) do
       num_shards = args[:num_shards] || 1
       replication_factor = args[:replication_factor] || 1
-      create_collection(args[:collection], args[:config_name], num_shards, replication_factor)
+      shards_per_node = args[:shards_per_node] || 1
+      create_collection(args[:collection], args[:config_name], num_shards, replication_factor, shards_per_node)
     end
   end
 

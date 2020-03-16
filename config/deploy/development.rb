@@ -19,7 +19,6 @@ def config_map
     "figgy" => "figgy",
     "lae" => "lae",
     "pulmap" => "pulmap",
-    "pulfa3" => "pulfa3",
     "libwww" => 'libwww'
   }
 end
@@ -36,7 +35,6 @@ def collections
     'pulmap-staging',
     'dpul-staging-core',
     'lae-blacklight-staging',
-    'pulfa3-staging',
     'cicognara-staging',
     'cicognara',
     'libwww-staging',
