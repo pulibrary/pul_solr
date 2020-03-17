@@ -19,6 +19,7 @@ def collections
   [
     'catalog-staging',
     'reserves',
-    'dss-staging' # uses catalog configset
+    'dss-staging', # uses catalog configset
+    'pulfalight-staging'
   ]
 end
