@@ -72,6 +72,16 @@ describe 'CJK character equivalence' do
         add_single_field_doc('毛沢東思想')
         expect(solr_resp_doc_ids_only({ 'fq'=>'cjk_title:"毛泽东思想"' })).to include('1')
       end
+      it 'can find this particular title' do
+        titles = [
+          "長沙走馬楼三國吴简 / 長沙市文物考古研究所, 中國文物研究所, 北京大學歷史學系走馬樓簡牘整理組編著.",
+          "走馬楼三國吴简",
+          "嘉禾吏民田家[bie]",
+          "竹簡."
+        ]
+        add_single_field_doc(titles)
+        expect(solr_resp_doc_ids_only({'fq' => 'cjk_title:长沙走马楼三国吴简'})).to include('1')
+      end
     end
     describe "Korean" do
       it '고려의후삼국통일과후백제 => 고려의 후삼국 통일과 후백제' do
