@@ -37,7 +37,7 @@ describe 'subject keyword search' do
   end
   describe 'stemming disabled' do
     before(:all) do
-      solr.add({ id: 1, subject_display: 'Biographical films—United States' })
+      solr.add({ id: 1, subject_unstem_search: 'Biographical films—United States' })
       solr.commit
     end
     it 'matches heading terms exactly' do

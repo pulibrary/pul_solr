@@ -718,7 +718,9 @@
 
    <!-- unstemmed fields -->
    <copyField source="title_display" dest="title_unstem_search"/>
-   <copyField source="subject_display" dest="subject_unstem_search"/>
+   <copyField source="lcgft_s" dest="genre_unstem_search"/>
+   <copyField source="aat_s" dest="genre_unstem_search"/>
+   <copyField source="rbgenr_s" dest="genre_unstem_search"/>
    <copyField source="subject_topic_facet" dest="subject_topic_unstem_search"/>
 
 
