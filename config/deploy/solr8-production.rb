@@ -9,7 +9,7 @@ end
 def config_map
   {
     "catalog-production" => "catalog-production",
-    "catalog-staging" => "catalog-staging",
+    "catalog-production-alt" => "catalog-production-alt",
     "reserves" => "reserves"
   }
 end
