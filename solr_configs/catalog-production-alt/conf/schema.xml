@@ -863,6 +863,9 @@
    <copyField source="title_la" dest="text"/>
    <copyField source="title_addl_la" dest="text"/>
 
+   <!-- copy notes_index to cjk_notes_copied -->
+   <copyField source="notes_index" dest="cjk_notes_copied"/>
+
    <!-- copy name to alphaNameSort, a field designed for sorting by name -->
    <!-- <copyField source="name" dest="alphaNameSort"/> -->
 

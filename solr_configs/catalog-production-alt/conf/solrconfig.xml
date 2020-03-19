@@ -347,10 +347,12 @@
       <str name="notes_qf">
         notes_index
         cjk_notes
+        cjk_notes_copied
       </str>
       <str name="notes_pf">
         notes_index
         cjk_notes
+        cjk_notes_copied
       </str>
       <str name="series_title_qf">
         series_title_index^5
