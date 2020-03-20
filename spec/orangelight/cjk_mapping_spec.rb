@@ -83,6 +83,13 @@ describe 'CJK character equivalence' do
         params = {qf: 'cjk_title', pf: 'cjk_title', q: '长沙走马楼三国吴简'}
         expect(solr_resp_doc_ids_only(params)).to include('1')
       end
+      it "can find notes" do
+        notes = '闲话'
+        solr.add({ id: 1, notes_index: '閑話' })
+        solr.commit
+        params = {q: notes}
+        expect(solr_resp_doc_ids_only(params, 'search')).to include('1')
+      end
     end
     describe "Korean" do
       it '고려의후삼국통일과후백제 => 고려의 후삼국 통일과 후백제' do

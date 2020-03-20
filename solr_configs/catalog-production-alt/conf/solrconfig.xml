@@ -281,6 +281,7 @@
         text
         description_t
         cjk_all
+        cjk_text
       </str>
       <str name="pf">
         title_245a_lr^16000
@@ -304,6 +305,7 @@
         text^10
         description_t^10
         cjk_all^10
+        cjk_text^10
       </str>
       <str name="author_qf">
         author_main_unstem_search^20
@@ -347,10 +349,12 @@
       <str name="notes_qf">
         notes_index
         cjk_notes
+        cjk_notes_copied
       </str>
       <str name="notes_pf">
         notes_index
         cjk_notes
+        cjk_notes_copied
       </str>
       <str name="series_title_qf">
         series_title_index^5

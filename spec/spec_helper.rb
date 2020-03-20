@@ -23,7 +23,7 @@ RSpec.shared_context 'solr_helpers' do
   # @param solr_params [Hash] the key/value pairs to be sent to Solr as HTTP parameters, in addition to
   #  those to get only id fields and no facets in the response
   # @return [RSpecSolr::SolrResponseHash] object for rspec-solr testing the Solr response
-  def solr_resp_doc_ids_only(solr_params)
+  def solr_resp_doc_ids_only(solr_params, request_handler='select')
     solr_response(solr_params.merge(doc_ids_only))
   end
 
