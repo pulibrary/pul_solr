@@ -8,8 +8,6 @@ server 'lib-solr1', user: 'deploy', roles: %{main}
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-set :branch, ENV['BRANCH'] || 'master'
-
 def zk_host
   "lib-zk1:2181,lib-zk2:2181,lib-zk3:2181/solr7"
 end
