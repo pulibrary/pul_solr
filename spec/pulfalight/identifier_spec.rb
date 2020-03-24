@@ -46,12 +46,6 @@ describe 'all fields search for id value' do
       expect(response.to_s).not_to include("\"#{bad_tc_collection_name}\"")
     end
 
-    it 'retrieves only component when search for component_id' do
-      response = solr_response(query_params('TC071TC071_c00001').merge('fl' => 'id', 'facet' => 'false'))
-      expect(response.to_s).to include(tc_component_name)
-      expect(response.to_s).not_to include("\"#{tc_collection_name}\"")
-    end
-
     it 'retrieves component even when search for incomplete component id' do
       response = solr_response(query_params('TC071_c00001').merge('fl' => 'id', 'facet' => 'false'))
       expect(response.to_s).to include(tc_component_name)
