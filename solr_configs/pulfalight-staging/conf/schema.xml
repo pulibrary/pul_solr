@@ -138,7 +138,7 @@
 
     <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
-        <tokenizer class="solr.ICUTokenizerFactory" />
+        <tokenizer class="solr.WhitespaceTokenizerFactory" />
         <filter class="solr.KeywordRepeatFilterFactory" />
         <filter class="solr.ICUFoldingFilterFactory" />
         <filter class="solr.PorterStemFilterFactory"/>
@@ -357,11 +357,11 @@
    <copyField source="scopecontent_teim" dest="text" />
    <copyField source="separatedmaterial_teim" dest="text" />
    <copyField source="userestrict_teim" dest="text" />
-   <!-- grab structured data that's important -->
    <copyField source="unitid_ssm" dest="text" />
-   <copyField source="unitid_ssm" dest="unitid_identifier_match" />
-   <copyField source="parent_ssm" dest="parent_identifier_match" />
-   <copyField source="ref_ssm" dest="ref_identifier_match" />
+   <copyField source="parent_ssm" dest="text" />
+   <copyField source="containers_ssim" dest="text" />
+   <copyField source="id" dest="text" />
+   <copyField source="ref_ssm" dest="text" />
 
    <!-- sort fields -->
    <copyField source="normalized_title_ssm" dest="title_sort"/> <!-- TODO: assumes single values -->

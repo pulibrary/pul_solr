@@ -85,25 +85,9 @@
        -->
 
        <str name="qf">
-         collection_title_tesim^150
-         title_tesim^100
-         name_tsim^10
-         place_tsim^10
-         unitid_identifier_match^5
-         subject_tsim^2
-         ref_identifier_match
-         parent_identifier_match
          text
        </str>
        <str name="pf">
-         collection_title_tesim^150
-         title_tesim^100
-         name_tsim^10
-         place_tsim^10
-         unitid_identifier_match^5
-         subject_tsim^2
-         ref_identifier_match
-         parent_identifier_match
          text
        </str>
 
