@@ -18,6 +18,11 @@ To install run `bundle install`
 
 Note that `solr.xml` is used for development and testing on this repository, but not in production. The production file is at https://github.com/pulibrary/princeton_ansible/blob/master/roles/pulibrary.solrcloud/templates/solr.xml.j2
 
+## Solr Inventory
+
+Current solr machines and their collections are enumerated in the [solr
+inventory](https://docs.google.com/spreadsheets/d/118O7JeVEPaoVsCIxoWLdDTctcTCe4CGaHChjN6yorgc/edit#gid=0).
+
 ## Adding a new core
 
 This repository updates, but does not create, collections. To add a new collection, create its config here and deploy to get the config up to the server. Then use the UI to create the collection (TODO: how to make the config set available to the UI?). Finally, you can add the collection to the deploy scripts so that it will be updated in future deployments.
