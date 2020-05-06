@@ -9,7 +9,7 @@ describe 'all fields search for id value' do
     { q: q }
   end
   before(:all) do
-    @solr =  RSolr.connect :url => "http://127.0.0.1:8888/solr/pulfalight-staging", :read_timeout => 9999999
+    @solr = RSolr.connect :url => "http://127.0.0.1:8888/solr/pulfalight-staging", :read_timeout => 9999999
     delete_all
   end
   describe 'collection and component ids' do
