@@ -17,6 +17,7 @@ end
 
 def collections
   [
+    'catalog-alma-qa', # uses catalog staging configset
     'catalog-staging',
     'reserves',
     'dss-staging', # uses catalog configset
