@@ -184,3 +184,21 @@ namespace :collections do
     end
   end
 end
+
+namespace :solr do
+  desc "Opens Solr Console"
+  task :console do
+    on roles(:main) do |host|
+      solr_host = host.hostname
+      user = "pulsys"
+      port = rand(9000..9999)
+      puts "Opening #{solr_host} Solr Console on port #{port} as user #{user}"
+      Net::SSH.start(solr_host, user) do |session|
+        session.forward.local(port, "localhost", 8983)
+        puts "Press Ctrl+C to end Console connection"
+        `open http://localhost:#{port}`
+        session.loop(0.1) { true }
+      end
+    end
+  end
+end
