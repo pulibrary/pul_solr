@@ -1,4 +1,5 @@
 require 'json'
+require_relative '../lib/pul_solr'
 
 set :application, 'pul_solr'
 set :repo_url, 'https://github.com/pulibrary/pul_solr.git'

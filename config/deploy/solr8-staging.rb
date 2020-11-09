@@ -18,13 +18,5 @@ def config_map
 end
 
 def collections
-  [
-    'catalog-alma-qa', # uses catalog staging configset
-    'catalog-staging',
-    'reserves',
-    'dss-staging', # uses catalog configset
-    'pulfalight-staging',
-    "cicognara-staging",
-    "lae-staging"
-  ]
+  PulSolr.collections["solr8_staging"]
 end

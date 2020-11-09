@@ -19,3 +19,4 @@ SolrWrapper.default_instance_options = {
 }
 
 require 'solr_wrapper/rake_task'
+Dir[File.join(__dir__, 'lib', 'tasks', '*.rake')].each {|file| import file }

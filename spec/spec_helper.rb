@@ -2,12 +2,15 @@ require 'rsolr'
 require 'rspec-solr'
 require 'faraday'
 require 'pry'
+require 'webmock/rspec'
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 # Use this (by calling #include_context) as you would a ruby Module,
 # to mixin these methods into an rspec context. This allows contexts
 # to access different solr instances and cores.
 RSpec.shared_context 'solr_helpers' do
+
+  WebMock.disable_net_connect!(allow_localhost: true)
 
   def solr(host: "localhost", core: "solr/blacklight-core", dtype: "edismax", suffix: "&defType=edismax", port: 8888)
     unless @solr

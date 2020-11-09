@@ -18,13 +18,5 @@ def config_map
 end
 
 def collections
-  [
-    'catalog-production1',
-    'catalog-production2',
-    'dss-production', # uses catalog-production config set
-    'reserves',
-    'pulfalight-production',
-    'cicognara',
-    'lae'
-  ]
+  PulSolr.collections["solr8_production"]
 end
