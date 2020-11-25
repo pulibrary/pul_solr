@@ -95,10 +95,6 @@ namespace :configsets do
     execute "curl #{solr_url}/admin/configs?action=LIST&omitHeader=true"
   end
 
-  def upload_configset(config_dir:, config_set:)
-    execute "(cd #{File.join(release_path, config_dir)} && zip -r - *) | curl -X POST --header 'Content-Type:application/octet-stream' --data-binary @- '#{solr_url}/admin/configs?action=UPLOAD&name=#{config_set}'"
-  end
-
   def update_configset(config_dir:, config_set:)
     execute "cd /opt/solr/bin && ./solr zk -upconfig -d #{File.join(release_path, "solr_configs", config_dir)} -n #{config_set} -z #{zk_host}"
   end
@@ -114,17 +110,10 @@ namespace :configsets do
     end
   end
 
-  desc 'Update a Configset'
+  desc 'Update or create a Configset'
   task :update, :config_dir, :config_set do |task_name, args|
     on roles(:main) do
       update_configset(config_dir: args[:config_dir], config_set: args[:config_set])
-    end
-  end
-
-  desc 'Upload a Configset using a Solr config. directory'
-  task :upload, :config_dir, :config_set do |task_name, args|
-    on roles(:main) do
-      upload_configset(config_dir: args[:config_dir], config_set: args[:config_set])
     end
   end
 
