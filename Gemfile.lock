@@ -19,6 +19,9 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-bundler (1.6.0)
+      capistrano (~> 3.1)
+    chronic (0.10.2)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crack (0.4.4)
@@ -77,12 +80,15 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
+    whenever (0.11.0)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   capistrano (~> 3.9)
+  capistrano-bundler
   faraday
   pry-byebug
   rake
@@ -92,6 +98,7 @@ DEPENDENCIES
   solr_wrapper
   stringex!
   webmock
+  whenever
 
 BUNDLED WITH
    2.1.4

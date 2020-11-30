@@ -1,6 +1,7 @@
 server 'lib-solr-prod4', user: 'deploy', roles: %{main}
 
 set :branch, ENV['BRANCH'] || 'master'
+set :whenever_environment, ->{ "production" }
 
 def zk_host
   "lib-zk1:2181,lib-zk2:2181,lib-zk3:2181/solr8"

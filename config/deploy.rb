@@ -43,8 +43,17 @@ def solr_url
   ENV['SOLR_URL'] ||= 'http://localhost:8983/solr'
 end
 
-
 namespace :deploy do
+  desc "Generate the crontab tasks using Whenever"
+  after :published, :whenever do
+    on roles(:main) do
+      within release_path do
+        execute("cd #{release_path} && bundle exec whenever --set environment=#{fetch(:whenever_environment, "production")} --update-crontab pul_solr")
+      end
+    end
+  end
+
+  desc "Update configsets and reload collections"
   after :published, :restart do
     on roles(:main), wait: 5 do
       # on stand alone server just restart solr, no way to send information to zoo keeper since it does not exist
