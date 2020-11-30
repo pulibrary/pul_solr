@@ -10,7 +10,8 @@ def config_map
   {
     "catalog-production" => "catalog-production",
     "catalog-production-alt" => "catalog-production-alt",
-    "reserves" => "reserves"
+    "reserves" => "reserves",
+    "cicognara" => "cicognara"
   }
 end
 
@@ -19,6 +20,7 @@ def collections
     'catalog-production1',
     'catalog-production2',
     'dss-production', # uses catalog-production config set
-    'reserves'
+    'reserves',
+    'cicognara'
   ]
 end
