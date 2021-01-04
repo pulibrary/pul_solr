@@ -27,7 +27,7 @@ module PulSolr
     # @param collections [Array<String>]
     def backup(collections:)
       collections.each do |collection|
-        url_path = "/admin/collections?action=BACKUP&name=#{collection}-#{today_str}.bk&collection=#{collection}&location=#{backup_dir}"
+        url_path = "/admin/collections?action=BACKUP&name=#{collection}-#{today_str}.bk&collection=#{collection}&location=#{backup_dir}&async=#{collection}#{timestamp}"
         uri = URI.parse("#{base_url}#{url_path}")
         response = Net::HTTP.get_response(uri)
       end
@@ -41,6 +41,10 @@ module PulSolr
 
       def today_str
         Date.today.strftime("%Y%m%d")
+      end
+
+      def timestamp
+        Time.now.strftime("%Y%m%d%H%M%S")
       end
 
       # Should we delete the directory?

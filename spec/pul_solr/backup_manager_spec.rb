@@ -46,18 +46,31 @@ describe PulSolr::BackupManager do
 
   describe "#backup" do
     it "issues commands to solr via the collections api" do
-      url = "http://localhost:8983/solr/admin/collections?action=BACKUP&collection=test&location=#{File.join(File.absolute_path(base_dir), solr_env, today_str)}&name=test-#{today_str}.bk"
-      url2 = "http://localhost:8983/solr/admin/collections?action=BACKUP&collection=test-staging&location=#{File.join(File.absolute_path(base_dir), solr_env, today_str)}&name=test-staging-#{today_str}.bk"
+      url = "http://localhost:8983/solr/admin/collections"
+      test_params = {
+        "action" => "BACKUP",
+        "collection" => "test-staging",
+        "location" => File.join(File.absolute_path(base_dir), solr_env, today_str),
+        "name" => "test-staging-#{today_str}.bk"
+      }
+      staging_params = {
+        "action" => "BACKUP",
+        "collection" => "test",
+        "location" => File.join(File.absolute_path(base_dir), solr_env, today_str),
+        "name" => "test-#{today_str}.bk"
+      }
       stub_request(:get, url)
+        .with(:query => hash_including(test_params))
         .to_return(status: 200, body: "", headers: {})
-      stub_request(:get, url2)
+      stub_request(:get, url)
+        .with(:query => hash_including(staging_params))
         .to_return(status: 200, body: "", headers: {})
       FileUtils.mkdir_p(base_dir)
       collections = ["test", "test-staging"]
 
       backup_manager.backup(collections: collections)
-      expect(a_request(:get, url)).to have_been_made
-      expect(a_request(:get, url2)).to have_been_made
+      expect(a_request(:get, url).with(query: hash_including(test_params))).to have_been_made
+      expect(a_request(:get, url).with(query: hash_including(staging_params))).to have_been_made
     end
   end
 end
