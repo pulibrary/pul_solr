@@ -12,7 +12,8 @@ def config_map
     "catalog-staging" => "catalog-staging",
     "pulfalight-staging" => "pulfalight-staging",
     "reserves" => "reserves",
-    "cicognara" => "cicognara"
+    "cicognara" => "cicognara",
+    "lae" => "lae"
   }
 end
 
@@ -23,6 +24,7 @@ def collections
     'reserves',
     'dss-staging', # uses catalog configset
     'pulfalight-staging',
-    "cicognara-staging"
+    "cicognara-staging",
+    "lae-staging"
   ]
 end
