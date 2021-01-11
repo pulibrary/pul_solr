@@ -22,8 +22,8 @@
 set :environment_variable, "SOLR_ENV"
 set :job_template, "bash -l -c 'export PATH=\"/usr/local/bin/:$PATH\" && :job'"
 
-job_type :rake_with_truncating_log, "cd :path && :environment_variable=:environment bundle exec rake :task > :output_file 2>&1"
+job_type :logging_rake, "cd :path && :environment_variable=:environment bundle exec rake :task >> :output_file 2>&1"
 
 every 1.day, roles: [:db] do
-  rake_with_truncating_log "pul_solr:solr8:backup", output_file: "/tmp/solr8_backup.log"
+  logging_rake "pul_solr:solr8:backup", output_file: "/tmp/solr8_backup.log"
 end

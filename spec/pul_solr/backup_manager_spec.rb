@@ -6,7 +6,7 @@ require 'fileutils'
 describe PulSolr::BackupManager do
   let(:base_dir) { "spec/tmp" }
   let(:solr_env) { "test" }
-  let(:backup_manager) { PulSolr::BackupManager.new(base_dir: base_dir, solr_env: solr_env) }
+  let(:backup_manager) { PulSolr::BackupManager.new(base_dir: base_dir, solr_env: solr_env, logger: Logger.new(nil)) }
   let(:today_str) { Date.today.strftime("%Y%m%d") }
 
   before do

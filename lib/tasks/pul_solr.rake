@@ -1,5 +1,6 @@
 require 'date'
 require 'fileutils'
+require 'logger'
 require_relative '../../lib/pul_solr'
 
 namespace :pul_solr do
@@ -20,10 +21,8 @@ namespace :pul_solr do
       abort "usage: rake pul_solr:solr8:backup SOLR_ENV=[production|staging]" unless allowed_targets.include? target
       collections = PulSolr.collections["solr8_#{target}"]
 
-      backup_manager = PulSolr::BackupManager.new(solr_env: target)
-      puts "Deleting old backups"
+      backup_manager = PulSolr::BackupManager.new(solr_env: target, logger: Logger.new(STDOUT))
       backup_manager.cleanup_old_backups
-      puts "Backing up collections: #{collections}"
       backup_manager.backup(collections: collections)
     end
   end
