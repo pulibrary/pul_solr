@@ -21,7 +21,8 @@ namespace :pul_solr do
       abort "usage: rake pul_solr:solr8:backup SOLR_ENV=[production|staging]" unless allowed_targets.include? target
       collections = PulSolr.collections["solr8_#{target}"]
 
-      backup_manager = PulSolr::BackupManager.new(solr_env: target, logger: Logger.new(STDOUT))
+      logger = Logger.new("/tmp/solr8_backup.log", "monthly")
+      backup_manager = PulSolr::BackupManager.new(solr_env: target, logger: logger)
       backup_manager.cleanup_old_backups
       backup_manager.backup(collections: collections)
     end
