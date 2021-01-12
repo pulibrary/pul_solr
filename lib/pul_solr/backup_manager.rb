@@ -31,7 +31,7 @@ module PulSolr
     def backup(collections:)
       collections.each do |collection|
         request_status = "#{collection}-#{timestamp}"
-        logger.info "Backing up collection: #{collections} with requeststatus #{request_status}"
+        logger.info "Backing up collection: #{collection} with requeststatus #{request_status}"
         url_path = "/admin/collections?action=BACKUP&name=#{collection}-#{today_str}.bk&collection=#{collection}&location=#{backup_dir}&async=#{request_status}"
         uri = URI.parse("#{base_url}#{url_path}")
         response = Net::HTTP.get_response(uri)
