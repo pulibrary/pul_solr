@@ -11,8 +11,9 @@ def config_map
     "catalog-production" => "catalog-production",
     "catalog-production-alt" => "catalog-production-alt",
     "reserves" => "reserves",
-    "pulfalight-production" => "pulfalight-production"
-    "cicognara" => "cicognara"
+    "pulfalight-production" => "pulfalight-production",
+    "cicognara" => "cicognara",
+    "lae" => "lae"
   }
 end
 
@@ -22,7 +23,8 @@ def collections
     'catalog-production2',
     'dss-production', # uses catalog-production config set
     'reserves',
-    'pulfalight-production'
-    'cicognara'
+    'pulfalight-production',
+    'cicognara',
+    'lae'
   ]
 end
