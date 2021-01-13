@@ -1,6 +1,7 @@
 server 'lib-solr-staging4', user: 'deploy', roles: %{main}
 
 set :branch, ENV['BRANCH'] || 'master'
+set :whenever_environment, ->{ "staging" }
 
 def zk_host
   "lib-zk-staging1:2181,lib-zk-staging2:2181,lib-zk-staging3:2181/solr8"
@@ -18,13 +19,5 @@ def config_map
 end
 
 def collections
-  [
-    'catalog-alma-qa', # uses catalog staging configset
-    'catalog-staging',
-    'reserves',
-    'dss-staging', # uses catalog configset
-    'pulfalight-staging',
-    "cicognara-staging",
-    "lae-staging"
-  ]
+  PulSolr.collections["solr8_staging"]
 end

@@ -47,6 +47,18 @@ SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:relo
 SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:delete[dpul]
 ```
 
+## SolrCloud Backups
+
+Backups are implemented as a ruby service class wrapped in a rake task that's invoked by cron (scheduled via whenever / capistrano)
+
+If a specific backup did not complete and you want more information, consult the log for the requeststatus and check it with the [requeststatus api call](https://lucene.apache.org/solr/guide/8_4/collections-api.html#requeststatus).
+
+Restoring a backup ([solr docs](https://lucene.apache.org/solr/guide/8_4/collection-management.html#restore)) is a matter of issuing the proper API call on the solr box, e.g.:
+
+```
+$ curl "http://localhost:8983/solr/admin/collections?action=RESTORE&name=pulfalight-staging-20210111.bk&collection=pulfalight-staging-restore&location=/mnt/solr_backup/staging/20210111"
+```
+
 ## Specs
 
 Solr must be running in order for rspec-solr specs to run.
