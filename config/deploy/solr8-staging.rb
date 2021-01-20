@@ -11,6 +11,7 @@ def config_map
   {
     "catalog-production" => "catalog-production",
     "catalog-staging" => "catalog-staging",
+    "catalog-alma-qa" => "catalog-alma-qa",
     "pulfalight-staging" => "pulfalight-staging",
     "reserves" => "reserves",
     "cicognara" => "cicognara",
