@@ -14,10 +14,8 @@ end
 
 def config_map
   {
-    "cicognara" => "cicognara",
     "dpul" => "dpul",
     "figgy" => "figgy",
-    "lae" => "lae",
     "pulmap" => "pulmap",
     "libwww" => "libwww",
   }
@@ -25,10 +23,8 @@ end
 
 def collections
   [
-    'cicognara-staging',
     'dpul-staging',
     'figgy',
-    'lae-staging',
     'libsc-staging',
     'libwww-production',
     'libwww-staging',
