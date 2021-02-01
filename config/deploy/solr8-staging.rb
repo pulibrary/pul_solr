@@ -7,11 +7,11 @@ def zk_host
   "lib-zk-staging1:2181,lib-zk-staging2:2181,lib-zk-staging3:2181/solr8"
 end
 
+# config set => config directory
 def config_map
   {
     "catalog-production" => "catalog-production",
     "catalog-staging" => "catalog-staging",
-    "catalog-alma-qa" => "catalog-alma-qa",
     "pulfalight-staging" => "pulfalight-staging",
     "reserves" => "reserves",
     "cicognara" => "cicognara",
