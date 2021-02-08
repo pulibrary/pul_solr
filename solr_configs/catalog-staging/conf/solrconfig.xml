@@ -525,10 +525,4 @@
       <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
     </lst>
   </requestHandler>
-
-  <updateHandler class="solr.DirectUpdateHandler2">
-    <updateLog>
-      <str name="dir">${solr.core0.data.dir:}</str>
-    </updateLog>
-  </updateHandler>
 </config>
