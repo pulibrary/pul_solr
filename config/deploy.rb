@@ -4,10 +4,9 @@ require_relative '../lib/pul_solr'
 set :application, 'pul_solr'
 set :repo_url, 'https://github.com/pulibrary/pul_solr.git'
 
-# Default branch is :master
+# Default branch is :main
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-
-set :branch, ENV['BRANCH'] || 'master'
+set :branch, ENV['BRANCH'] || 'main'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/solr/pul_solr'

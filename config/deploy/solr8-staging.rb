@@ -1,6 +1,5 @@
 server 'lib-solr-staging4', user: 'deploy', roles: %{main}
 
-set :branch, ENV['BRANCH'] || 'master'
 set :whenever_environment, ->{ "staging" }
 
 def zk_host
