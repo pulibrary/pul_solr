@@ -1,5 +1,6 @@
 server 'lib-solr-prod4', user: 'deploy', roles: %{main}
 
+set :whenever_host, ->{ "solr8" }
 set :whenever_environment, ->{ "production" }
 
 def zk_host

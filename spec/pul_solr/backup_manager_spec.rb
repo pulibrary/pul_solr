@@ -5,8 +5,9 @@ require 'fileutils'
 
 describe PulSolr::BackupManager do
   let(:base_dir) { "spec/tmp" }
+  let(:host) { "solr8" }
   let(:solr_env) { "test" }
-  let(:backup_manager) { PulSolr::BackupManager.new(base_dir: base_dir, solr_env: solr_env, logger: Logger.new(nil)) }
+  let(:backup_manager) { PulSolr::BackupManager.new(base_dir: base_dir, host: host, solr_env: solr_env, logger: Logger.new(nil)) }
   let(:today_str) { Date.today.strftime("%Y%m%d") }
 
   before do
@@ -15,9 +16,9 @@ describe PulSolr::BackupManager do
 
   describe "#cleanup_old_backups" do
     it "clean up backup directories older than 3 weeks ago" do
-      today_dir = File.join(base_dir, solr_env, today_str)
+      today_dir = File.join(base_dir, host, solr_env, today_str)
       three_weeks_ago = Date.today - 22
-      three_weeks_ago_dir = File.join(base_dir, solr_env, three_weeks_ago.strftime("%Y%m%d"))
+      three_weeks_ago_dir = File.join(base_dir, host, solr_env, three_weeks_ago.strftime("%Y%m%d"))
       FileUtils.mkdir_p(today_dir)
       FileUtils.mkdir_p(three_weeks_ago_dir)
       FileUtils.touch(
@@ -40,7 +41,7 @@ describe PulSolr::BackupManager do
     it "creates and returns a backup directory for today's backup" do
       FileUtils.mkdir_p(base_dir)
       expect(backup_manager.backup_dir).to start_with "/"
-      expect(backup_manager.backup_dir).to end_with "/#{base_dir}/#{solr_env}/#{today_str}"
+      expect(backup_manager.backup_dir).to end_with "/#{base_dir}/#{host}/#{solr_env}/#{today_str}"
     end
   end
 
@@ -50,13 +51,13 @@ describe PulSolr::BackupManager do
       test_params = {
         "action" => "BACKUP",
         "collection" => "test-staging",
-        "location" => File.join(File.absolute_path(base_dir), solr_env, today_str),
+        "location" => File.join(File.absolute_path(base_dir), host, solr_env, today_str),
         "name" => "test-staging-#{today_str}.bk"
       }
       staging_params = {
         "action" => "BACKUP",
         "collection" => "test",
-        "location" => File.join(File.absolute_path(base_dir), solr_env, today_str),
+        "location" => File.join(File.absolute_path(base_dir), host, solr_env, today_str),
         "name" => "test-#{today_str}.bk"
       }
       stub_request(:get, url)

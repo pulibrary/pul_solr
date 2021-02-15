@@ -47,7 +47,7 @@ namespace :deploy do
   after :published, :whenever do
     on roles(:main) do
       within release_path do
-        execute("cd #{release_path} && bundle exec whenever --set environment=#{fetch(:whenever_environment, "production")} --update-crontab pul_solr")
+        execute("cd #{release_path} && bundle exec whenever --set 'environment=#{fetch(:whenever_environment, "production")}&host=#{fetch(:whenever_host, "test-host")}' --update-crontab pul_solr")
       end
     end
   end
