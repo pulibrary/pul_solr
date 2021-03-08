@@ -15,3 +15,16 @@ solr8_staging:
   - 'pulfalight-staging'
   - 'cicognara-staging'
   - 'lae-staging'
+solr7_staging:
+  - 'dpul-staging'
+  - 'figgy'
+  - 'libsc-staging'
+  - 'libwww-production'
+  - 'libwww-staging'
+  - 'pulmap-staging'
+solr7_production:
+  - 'cicognara'
+  - 'dpul-production'
+  - 'figgy-production1'
+  - 'lae'
+  - 'pulmap'

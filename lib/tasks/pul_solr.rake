@@ -14,18 +14,17 @@ namespace :pul_solr do
     end
   end
 
-  namespace :solr8 do
-    desc "backup all collections on production solr8 server"
-    task "backup" do
-      target = ENV["SOLR_ENV"]
-      abort "usage: rake pul_solr:solr8:backup SOLR_ENV=[production|staging]" unless allowed_targets.include? target
-      collections = PulSolr.collections["solr8_#{target}"]
+  desc "backup all collections on solrcloud server"
+  task "backup" do
+    target = ENV["SOLR_ENV"]
+    host = ENV["HOST"]
+    abort "usage: rake pul_solr:backup HOST=[solr7|solr8] SOLR_ENV=[production|staging]" unless (allowed_targets.include?(target) && allowed_hosts.include?(host))
+    collections = PulSolr.collections["#{host}_#{target}"]
 
-      logger = Logger.new("/tmp/solr8_backup.log", "monthly")
-      backup_manager = PulSolr::BackupManager.new(solr_env: target, logger: logger)
-      backup_manager.cleanup_old_backups
-      backup_manager.backup(collections: collections)
-    end
+    logger = Logger.new("/tmp/solr_backup.log", "monthly")
+    backup_manager = PulSolr::BackupManager.new(host: host, solr_env: target, logger: logger)
+    backup_manager.cleanup_old_backups
+    backup_manager.backup(collections: collections)
   end
 end
 
@@ -35,4 +34,8 @@ end
 
 def allowed_targets
   ["production", "staging"]
+end
+
+def allowed_hosts
+  ["solr7", "solr8"]
 end

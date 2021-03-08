@@ -3,10 +3,11 @@ require 'logger'
 
 module PulSolr
   class BackupManager
-    attr_reader :base_dir, :solr_env, :base_url, :logger
-    def initialize(base_dir: "/mnt/solr_backup", solr_env:, base_url: "http://localhost:8983/solr", logger:)
+    attr_reader :base_dir, :host, :solr_env, :base_url, :logger
+    def initialize(base_dir: "/mnt/solr_backup", host:, solr_env:, base_url: "http://localhost:8983/solr", logger:)
       @base_dir = base_dir
       @solr_env = solr_env
+      @host = host
       @base_url = base_url
       @logger = logger
     end
@@ -14,7 +15,7 @@ module PulSolr
     # delete old backup directories
     def cleanup_old_backups
       logger.info "Deleting backups from before #{oldest_backup_date}"
-      Dir[File.join(base_dir, solr_env, "*")].select { |d| older_than_threshold?(d) }.each do |d|
+      Dir[File.join(base_dir, host, solr_env, "*")].select { |d| older_than_threshold?(d) }.each do |d|
         FileUtils.rmtree(d)
       end
     end
@@ -41,7 +42,7 @@ module PulSolr
     private
 
       def destination
-        File.absolute_path(File.join(base_dir, solr_env, today_str))
+        File.absolute_path(File.join(base_dir, host, solr_env, today_str))
       end
 
       def today_str

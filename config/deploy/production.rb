@@ -1,12 +1,7 @@
-# server-based syntax
-# ======================
-# Defines a single server with a list of roles and multiple properties.
-# You can define all roles on a single server, or split them:
-
 server 'lib-solr1', user: 'deploy', roles: %{main}
 
-# server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
-# server 'db.example.com', user: 'deploy', roles: %w{db}
+set :whenever_host, ->{ "solr7" }
+set :whenever_environment, ->{ "production" }
 
 def zk_host
   "lib-zk1:2181,lib-zk2:2181,lib-zk3:2181/solr7"
@@ -23,13 +18,7 @@ def config_map
 end
 
 def collections
-  [
-    'cicognara',
-    'dpul-production',
-    'figgy-production1',
-    'lae',
-    'pulmap',
-  ]
+  PulSolr.collections["solr8_production"]
 end
 
 # role-based syntax
