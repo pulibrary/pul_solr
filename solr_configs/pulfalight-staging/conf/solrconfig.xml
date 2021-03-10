@@ -100,9 +100,9 @@
          text
        </str>
        <str name="pf">
-         title_teim^10
-         name_tsim^5
-         place_tsim^5
+         title_teim^4
+         name_tsim^2
+         place_tsim^2
          subject_tsim^2
        </str>
        <str name="pf2">
