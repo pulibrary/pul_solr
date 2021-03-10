@@ -90,7 +90,7 @@
          containers_tesim
          physloc_tesim
          collection_title_tesim
-         title_tesim
+         title_teim
          name_tsim
          place_tsim
          unitid_identifier_match
@@ -100,7 +100,7 @@
          text
        </str>
        <str name="pf">
-         title_tesim^10
+         title_teim^10
          name_tsim^5
          place_tsim^5
          subject_tsim^2
@@ -130,10 +130,10 @@
          subject_tsim
        </str>
        <str name="qf_title">
-         title_tesim
+         title_teim
        </str>
        <str name="pf_title">
-         title_tesim
+         title_teim
        </str>
 
        <float name="tie">0.01</float>
