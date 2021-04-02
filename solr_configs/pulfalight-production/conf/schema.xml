@@ -6,9 +6,7 @@
  The ASF licenses this file to You under the Apache License, Version 2.0
  (the "License"); you may not use this file except in compliance with
  the License.  You may obtain a copy of the License at
-
      http://www.apache.org/licenses/LICENSE-2.0
-
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -21,13 +19,10 @@
  should be in the conf directory under the solr home
  (i.e. ./solr/conf/schema.xml by default)
  or located where the classloader for the Solr webapp can find it.
-
  This example schema is the recommended starting point for users.
  It should be kept correct and concise, usable out-of-the-box.
-
  For more information, on how to customize this file, please see
  http://wiki.apache.org/solr/SchemaXml
-
  PERFORMANCE NOTE: this schema includes many optional features and should not
  be used for benchmarking.  To improve performance one could
   - set stored="false" for all fields possible (esp large fields) when you
@@ -104,10 +99,8 @@
          The trailing "Z" designates UTC time and is mandatory.
          Optional fractional seconds are allowed: 1995-12-31T23:59:59.999Z
          All other components are mandatory.
-
          Expressions can also be used to denote calculations that should be
          performed relative to "NOW" to determine the value, ie...
-
                NOW/HOUR
                   ... Round to the start of the current hour
                NOW-1DAY
@@ -115,9 +108,7 @@
                NOW/DAY+6MONTHS+3DAYS
                   ... 6 months and 3 days in the future from the start of
                       the current day
-
          Consult the DateField javadocs for more information.
-
          Note: For faster range queries, consider the tdate type
       -->
     <!-- KD-tree versions of date fields -->
@@ -220,10 +211,8 @@
              matching a pattern with an arbitrary replacement string,
              which may include back references to portions of the original
              string matched by the pattern.
-
              See the Java Regular Expression documentation for more
              information on pattern and replacement string syntax.
-
              http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/package-summary.html
           -->
         <filter class="solr.PatternReplaceFilterFactory"
@@ -270,6 +259,7 @@
    <field name="timestamp" type="pdate" indexed="true" stored="true" default="NOW" multiValued="false"/>
    <!-- default, catch all search field -->
    <field name="text" type="text" indexed="true" stored="true" multiValued="true"/>
+   <field name="text_en" type="text_en" indexed="true" stored="true" multiValued="true"/>
 
    <field name="_root_" type="string" indexed="true" stored="true" docValues="false" />
    <field name="_nest_parent_" type="string" indexed="true" stored="true"/>
@@ -366,7 +356,41 @@
    <copyField source="unitid_ssm" dest="text" />
    <copyField source="unitid_ssm" dest="unitid_identifier_match" />
    <copyField source="parent_ssm" dest="parent_identifier_match" />
+   <copyField source="parent_ssm" dest="parent_ssim" />
    <copyField source="ref_ssm" dest="ref_identifier_match" />
+
+   <!-- process with english searching as well -->
+   <copyField source="normalized_title_ssm" dest="text_en" />
+   <copyField source="places_ssm" dest="text_en" />
+   <copyField source="names_ssim" dest="text_en" />
+   <copyField source="access_subjects_ssim" dest="text_en" />
+   <!-- grab the searchable notes -->
+   <copyField source="abstract_teim" dest="text_en" />
+   <copyField source="accessrestricct_teim" dest="text_en" />
+   <copyField source="accruals_teim" dest="text_en" />
+   <copyField source="acqinfo_teim" dest="text_en" />
+   <copyField source="altformavail_teim" dest="text_en" />
+   <copyField source="appraisal_teim" dest="text_en" />
+   <copyField source="arrangement_teim" dest="text_en" />
+   <copyField source="bibliography_teim" dest="text_en" />
+   <copyField source="bioghist_teim" dest="text_en" />
+   <copyField source="custodhist_teim" dest="text_en" />
+   <copyField source="did_note_teim" dest="text_en" />
+   <copyField source="fileplan_teim" dest="text_en" />
+   <copyField source="materialspec_teim" dest="text_en" />
+   <copyField source="note_teim" dest="text_en" />
+   <copyField source="odd_teim" dest="text_en" />
+   <copyField source="originalsloc_teim" dest="text_en" />
+   <copyField source="physdesc_teim" dest="text_en" />
+   <copyField source="physloc_teim" dest="text_en" />
+   <copyField source="phystech_teim" dest="text_en" />
+   <copyField source="processinfo_teim" dest="text_en" />
+   <copyField source="relatedmaterial_teim" dest="text_en" />
+   <copyField source="scopecontent_teim" dest="text_en" />
+   <copyField source="separatedmaterial_teim" dest="text_en" />
+   <copyField source="userestrict_teim" dest="text_en" />
+   <!-- grab structured data that's important -->
+   <copyField source="unitid_ssm" dest="text_en" />
 
    <!-- sort fields -->
    <copyField source="normalized_title_ssm" dest="title_sort"/> <!-- TODO: assumes single values -->
