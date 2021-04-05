@@ -87,6 +87,7 @@
        <str name="qf">
          ead_ssi^100
          location_info_tesim
+         physloc_teim
          containers_tesim
          physloc_tesim
          collection_title_tesim
@@ -98,6 +99,8 @@
          ref_identifier_match
          parent_identifier_match
          prefercite_teim
+         text_en
+         parent_unittitles_teim
          text
        </str>
        <str name="pf">
@@ -109,7 +112,6 @@
        <str name="pf2">
          location_info_tesim^20
        </str>
-
        <int name="ps2">3</int>
 
        <str name="qf_name">
