@@ -432,6 +432,7 @@
         lccn_s,
         holdings_1display,
         electronic_access_1display,
+        electronic_portfolio_s,
         cataloged_tdt
       </str>
 
