@@ -25,6 +25,24 @@ inventory](https://docs.google.com/spreadsheets/d/118O7JeVEPaoVsCIxoWLdDTctcTCe4
 
 This repository updates, but does not create, collections. To add a new collection, create its config here and deploy to get the config up to the server. Then use the UI to create the collection. Finally, you can add the collection to the deploy scripts so that it will be updated in future deployments.
 
+## Managing Orangelight Catalog Configsets
+
+When we need to make a change to the orangelight config set that would break
+search we need to deploy a new config set, index with it, and then swap it in
+and retire the previous config set. See ADR#0005 for more details. In this case
+the following procedure should be followed:
+
+1. Copy the current production config set into a new directory, incrementing the
+   version number. Change the name of the core in core.properties in the old
+   config set so the new one is used for testing.
+1. Deploy the new config set
+1. Delete the solr collection in use for indexing. Recreate it using the new config set.
+1. Populate the reindex collection
+1. Swap the alias so the reindex collection becomes the production / in-use
+   collection
+1. Delete the old collection and re-create it using the new config set
+1. Delete the old config set from this repository
+
 ## Managing Configsets
 
 *After deploying* one may list, upload, update, and delete Configsets using the following Capistrano tasks:

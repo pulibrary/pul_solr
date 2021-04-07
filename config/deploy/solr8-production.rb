@@ -11,6 +11,7 @@ def config_map
   {
     "catalog-production" => "catalog-production",
     "catalog-production-alt" => "catalog-production-alt",
+    "catalog-production-v2" => "catalog-production-v2",
     "reserves" => "reserves",
     "pulfalight-production" => "pulfalight-production",
     "cicognara" => "cicognara",
