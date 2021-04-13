@@ -78,23 +78,26 @@ namespace :alias do
 
   # Swaps the catalog-rebuild and catalog-production aliases.
   # Production and rebuild collections are set with env variables when running the task.
-  task :catalog do
+  task :swap do
     production = ENV['PRODUCTION']
     rebuild = ENV['REBUILD']
+    production_alias = ENV['PRODUCTION_ALIAS'] || "catalog-production"
+    rebuild_alias = ENV['REBUILD_ALIAS'] || "catalog-rebuild"
     if production && rebuild
       on roles(:main) do
         # Delete the rebuild alias
-        execute "curl '#{solr_url}/admin/collections?action=DELETEALIAS&name=catalog-rebuild'"
+        execute "curl '#{solr_url}/admin/collections?action=DELETEALIAS&name=#{rebuild_alias}'"
 
-        # Move the catalog-production alias
-        execute "curl '#{solr_url}/admin/collections?action=CREATEALIAS&name=catalog-production&collections=#{production}'"
+        # Move the production alias
+        execute "curl '#{solr_url}/admin/collections?action=CREATEALIAS&name=#{production_alias}&collections=#{production}'"
 
-        # Add the rebuild alias to its new location
-        execute "curl '#{solr_url}/admin/collections?action=CREATEALIAS&name=catalog-rebuild&collections=#{rebuild}'"
+        # Create the rebuild alias
+        execute "curl '#{solr_url}/admin/collections?action=CREATEALIAS&name=#{rebuild_alias}&collections=#{rebuild}'"
       end
     else
-      puts "Please set the PRODUCTION and REBUILD environment variables. For example:"
-      puts "cap production alias:catalog PRODUCTION=catalog-production2 REBUILD=catalog-production1"
+      puts "Please set the PRODUCTION and REBUILD environment variables. Optionally, set PRODUCTION_ALIAS and REBUILD_ALIAS as well. For example:"
+      puts "PRODUCTION=catalog-production2 REBUILD=catalog-production1 cap production alias:swap"
+      puts "PRODUCTION=catalog-alma-staging1 REBUILD=catalog-alma-staging2 PRODUCTION_ALIAS=catalog-alma-staging REBUILD_ALIAS=catalog-alma-rebuild cap production alias:swap"
     end
   end
 end
