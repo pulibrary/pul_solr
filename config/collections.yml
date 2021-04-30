@@ -3,14 +3,12 @@ solr8_production:
   - 'catalog-production1'
   - 'catalog-production2'
   - 'dss-production' # uses catalog-production config set
-  - 'reserves'
   - 'pulfalight-production'
   - 'cicognara'
   - 'lae'
 solr8_staging:
   - 'catalog-alma-qa' # uses catalog staging configset
   - 'catalog-staging'
-  - 'reserves'
   - 'dss-staging' # uses catalog configset
   - 'pulfalight-staging'
   - 'cicognara-staging'
