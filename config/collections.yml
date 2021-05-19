@@ -6,6 +6,8 @@ solr8_production:
   - 'pulfalight-production'
   - 'cicognara'
   - 'lae'
+  - 'catalog-alma-production1'
+  - 'catalog-alma-production2'
 solr8_staging:
   - 'catalog-alma-qa' # uses catalog staging configset
   - 'catalog-staging'
