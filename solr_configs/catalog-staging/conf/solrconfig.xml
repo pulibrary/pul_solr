@@ -455,7 +455,8 @@
         holdings_1display,
         electronic_access_1display,
         electronic_portfolio_s,
-        cataloged_tdt
+        cataloged_tdt,
+        contained_in_s
       </str>
 
       <str name="facet">true</str>
