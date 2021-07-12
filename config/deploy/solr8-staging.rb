@@ -15,7 +15,7 @@ def config_map
     "pulfalight-staging" => "pulfalight-staging",
     "cicognara" => "cicognara",
     "lae" => "lae",
-    "dpul" => "dpul"
+    "dpul" => "dpul-staging"
   }
 end
 
