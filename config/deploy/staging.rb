@@ -9,7 +9,6 @@ end
 
 def config_map
   {
-    "dpul" => "dpul",
     "figgy" => "figgy",
     "pulmap" => "pulmap",
     "libwww" => "libwww",
