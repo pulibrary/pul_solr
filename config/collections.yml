@@ -16,8 +16,9 @@ solr8_staging:
   - 'pulfalight-staging'
   - 'cicognara-staging'
   - 'lae-staging'
-solr7_staging:
   - 'dpul-staging'
+  - 'pdc-discovery-staging'
+solr7_staging:
   - 'figgy-staging'
   - 'libsc-staging'
   - 'pulmap-staging'
