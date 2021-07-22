@@ -10,6 +10,9 @@ gem 'rsolr'
 gem 'rspec', '~> 3.8'
 gem 'solr_wrapper'
 gem 'whenever'
+gem 'rbnacl', '>= 3.2', '< 5.0'
+gem 'rbnacl-libsodium'
+gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
 
 group :development do
   gem 'capistrano', '~> 3.9'
