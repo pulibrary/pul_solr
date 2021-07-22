@@ -1,31 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!--
- Licensed to the Apache Software Foundation (ASF) under one or more
- contributor license agreements.  See the NOTICE file distributed with
- this work for additional information regarding copyright ownership.
- The ASF licenses this file to You under the Apache License, Version 2.0
- (the "License"); you may not use this file except in compliance with
- the License.  You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
--->
-
-<!--
- This is a stripped down config file used for a simple example...
- It is *not* a good example to work from.
--->
 <config>
-  <luceneMatchVersion>7.0.0</luceneMatchVersion>
+  <!-- NOTE: various comments and unused configuration possibilities have been purged
+     from this file.  Please refer to http://wiki.apache.org/solr/SolrConfigXml,
+     as well as the default solrconfig file included with Solr -->
 
-  <lib dir="${solr.install.dir}/contrib/analysis-extras/lib" />
-  <lib dir="${solr.install.dir}/contrib/analysis-extras/lucene-libs" />
-  <lib dir="conf" />
+  <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
+
+  <luceneMatchVersion>6.1.0</luceneMatchVersion>
 
   <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
 
@@ -33,66 +14,26 @@
     <updateLog>
       <str name="dir">${solr.core0.data.dir:}</str>
     </updateLog>
-    <!-- Hard commit every 60 minutes -->
-    <autoCommit>
-      <maxDocs>10000</maxDocs>
-      <maxTime>36000000</maxTime>
-      <openSearcher>false</openSearcher>
-    </autoCommit>
-    <!-- Soft commit every 5 minutes -->
-    <autoSoftCommit>
-      <maxTime>300000</maxTime>
-    </autoSoftCommit>
   </updateHandler>
 
-  <codecFactory class="solr.SchemaCodecFactory"/>
-  <schemaFactory class="ClassicIndexSchemaFactory"/>
+  <!-- solr lib dirs -->
+  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
+  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
 
-  <dataDir>${solr.blacklight-core.data.dir:}</dataDir>
+  <dataDir>${solr.data.dir:}</dataDir>
 
-  <requestDispatcher handleSelect="true" >
-    <requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
-  </requestDispatcher>
-
-  <requestHandler name="standard" class="solr.StandardRequestHandler" />
-  <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
-  <requestHandler name="/update" class="solr.UpdateRequestHandler"  />
-
-  <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
-    <lst name="invariants">
-      <str name="q">solrpingquery</str>
-    </lst>
-    <lst name="defaults">
-      <str name="echoParams">all</str>
-    </lst>
-  </requestHandler>
-
-  <!-- config for the admin interface -->
-  <admin>
-    <defaultQuery>solr</defaultQuery>
-  </admin>
-
-  <!-- SearchHandler
-
-       http://wiki.apache.org/solr/SearchHandler
-
-       For processing Search Queries, the primary Request Handler
-       provided with Solr is "SearchHandler" It delegates to a sequent
-       of SearchComponents (see below) and supports distributed
-       queries across multiple shards
-    -->
   <requestHandler name="search" class="solr.SearchHandler" default="true">
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
       -->
      <lst name="defaults">
-       <str name="defType">dismax</str>
+       <str name="defType">edismax</str>
        <str name="echoParams">explicit</str>
-       <int name="rows">10</int>
-
        <str name="q.alt">*:*</str>
        <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
-
+       <int name="qs">1</int>
+       <int name="ps">2</int>
+       <float name="tie">0.01</float>
        <!-- this qf and pf are used by default, if not otherwise specified by
             client. The default blacklight_config will use these for the
             "keywords" search. See the author_qf/author_pf, title_qf, etc
@@ -100,184 +41,50 @@
             those searches. You may also be interested in:
             http://wiki.apache.org/solr/LocalParams
        -->
+        <str name="qf">
+          id
+          full_title_tsim
+          short_title_tsim
+          alternative_title_tsim
+          active_fedora_model_ssi
+          title_tsim
+          author_tsim
+          subject_tsim
+          all_text_timv
+        </str>
+        <str name="pf">
+          all_text_timv^10
+        </str>
 
-       <str name="qf">
-          title^100000
-          title_en^100000
-          title_es^100000
-          title_pt^100000
-          alternative_title^50000
-          alternative_title_en^50000
-          alternative_title_es^50000
-          alternative_title_pt^50000
-          series^2500
-          series_en^2500
-          series_es^2500
-          series_pt^2500
-          subject_label^1000
-          geographic_subject_label^1000
-          geographic_origin_label^1000
-          genre_pul_label^1000
-          creator^750
-          publisher^750
-          publisher_en^750
-          publisher_es^750
-          publisher_pt^750
-          contributor^750
-          category^500
-          description^250
-          barcode
-          box_barcode
-          date_created
-          date_display
-          earliest_created
-          language_label
-          latest_created
-          local_identifier
-          provenance
-          series
-          series_en
-          series_es
-          series_pt
-          id
+       <str name="author_qf">
+          author_tsim
        </str>
-       <str name="pf">
-          title^100000
-          title_en^100000
-          title_es^100000
-          title_pt^100000
-          alternative_title^50000
-          alternative_title_en^50000
-          alternative_title_es^50000
-          alternative_title_pt^50000
-          series^2500
-          series_en^2500
-          series_es^2500
-          series_pt^2500
-          publisher^750
-          publisher_en^750
-          publisher_es^750
-          publisher_pt^750
-          subject_label^1000
-          geographic_subject_label^1000
-          geographic_origin_label^1000
-          genre_pul_label^1000
-          creator^750
-          contributor^750
-          category^500
-          description^250
-          barcode
-          box_barcode
-          date_created
-          date_display
-          earliest_created
-          language_label
-          latest_created
-          local_identifier
-          provenance
-          series
-          series_en
-          series_es
-          series_pt
-          id
-       </str>
-       <str name="creator_qf">
-          creator^1000
-          contributor^1000
-          publisher^750
-          publisher_en^750
-          publisher_es^750
-          publisher_pt^750
-       </str>
-       <str name="creator_pf">
-          creator^1000
-          contributor^1000
-          publisher^750
-          publisher_en^750
-          publisher_es^750
-          publisher_pt^750
+       <str name="author_pf">
        </str>
        <str name="title_qf">
-          title^100000
-          title_en^100000
-          title_es^100000
-          title_pt^100000
-          alternative_title^50000
-          alternative_title_en^50000
-          alternative_title_es^50000
-          alternative_title_pt^50000
-          series^2500
-          series_en^2500
-          series_es^2500
-          series_pt^2500
+          title_tsim
+          full_title_tsim
+          short_title_tsim
+          alternative_title_tsim
        </str>
        <str name="title_pf">
-          title^100000
-          title_en^100000
-          title_es^100000
-          title_pt^100000
-          alternative_title^50000
-          alternative_title_en^50000
-          alternative_title_es^50000
-          alternative_title_pt^50000
-          series^2500
-          series_en^2500
-          series_es^2500
-          series_pt^2500
        </str>
        <str name="subject_qf">
-          subject_label^1000
-          geographic_subject_label^1000
-          category^500
+          subject_tsim
        </str>
        <str name="subject_pf">
-          subject_label^1000
-          geographic_subject_label^1000
-          category^500
        </str>
 
-       <int name="ps">3</int>
-       <float name="tie">0.01</float>
-
-       <!-- NOT using marc_display because it is large and will slow things down for search results -->
        <str name="fl">
-         id,
-         score,
-         title_display,
-         date_display,
-         geographic_origin_label,
-         publisher_display,
-         manifest,
-         ttl,
-         thumbnail_base
+         *,
+         score
        </str>
 
        <str name="facet">true</str>
-<!--        <str name="facet.mincount">0</str>
-       <str name="facet.limit">100</str> -->
        <str name="facet.mincount">1</str>
-       <str name="facet.field">genre_pul_label_facet</str>
-       <str name="facet.field">geographic_origin_label_facet</str>
-       <str name="facet.field">geographic_subject_label_facet</str>
-       <str name="facet.field">language_label_facet</str>
-       <str name="facet.field">category_facet</str>
-       <str name="facet.field">date_created_facet</str>
-       <str name="facet.field">subject_label_facet</str>
-       <str name="facet.pivot">category_facet,subject_label_facet</str>
-
-       <!-- See https://wiki.apache.org/solr/MoreLikeThis
-       Don't do this here or we get a much bigger doc for search results; set
-       in CatalogController config.default_document_solr_params instead
-       <str name="mlt">true</str>
-       <str name="mlt.fl">
-        title,
-        alternative_title,
-        contributor,
-        creator,
-        description,
-        publisher,
-        series
-       </str> -->
+       <str name="facet.limit">10</str>
+       <str name="facet.field">active_fedora_model_ssi</str>
+       <str name="facet.field">subject_ssim</str>
 
        <str name="spellcheck">true</str>
        <str name="spellcheck.dictionary">default</str>
@@ -287,136 +94,46 @@
        <str name="spellcheck.count">5</str>
 
      </lst>
-    <!-- In addition to defaults, "appends" params can be specified
-         to identify values which should be appended to the list of
-         multi-val params from the query (or the existing "defaults").
-      -->
-    <!-- In this example, the param "fq=instock:true" would be appended to
-         any query time fq params the user may specify, as a mechanism for
-         partitioning the index, independent of any user selected filtering
-         that may also be desired (perhaps as a result of faceted searching).
-
-         NOTE: there is *absolutely* nothing a client can do to prevent these
-         "appends" values from being used, so don't use this mechanism
-         unless you are sure you always want it.
-      -->
-    <!--
-       <lst name="appends">
-         <str name="fq">inStock:true</str>
-       </lst>
-      -->
-    <!-- "invariants" are a way of letting the Solr maintainer lock down
-         the options available to Solr clients.  Any params values
-         specified here are used regardless of what values may be specified
-         in either the query, the "defaults", or the "appends" params.
-
-         In this example, the facet.field and facet.query params would
-         be fixed, limiting the facets clients can use.  Faceting is
-         not turned on by default - but if the client does specify
-         facet=true in the request, these are the only facets they
-         will be able to see counts for; regardless of what other
-         facet.field or facet.query params they may specify.
-
-         NOTE: there is *absolutely* nothing a client can do to prevent these
-         "invariants" values from being used, so don't use this mechanism
-         unless you are sure you always want it.
-      -->
-    <!--
-       <lst name="invariants">
-         <str name="facet.field">cat</str>
-         <str name="facet.field">manu_exact</str>
-         <str name="facet.query">price:[* TO 500]</str>
-         <str name="facet.query">price:[500 TO *]</str>
-       </lst>
-      -->
-    <!-- If the default list of SearchComponents is not desired, that
-         list can either be overridden completely, or components can be
-         prepended or appended to the default list.  (see below)
-      -->
-    <!--
-       <arr name="components">
-         <str>nameOfCustomComponent1</str>
-         <str>nameOfCustomComponent2</str>
-       </arr>
-      -->
     <arr name="last-components">
       <str>spellcheck</str>
     </arr>
-
   </requestHandler>
 
-  <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
-  <requestHandler name="document" class="solr.SearchHandler" >
+  <requestHandler name="permissions" class="solr.SearchHandler" >
     <lst name="defaults">
+      <str name="facet">off</str>
       <str name="echoParams">all</str>
-      <str name="fl">*</str>
       <str name="rows">1</str>
       <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
-      <str name="mlt">true</str>
-      <str name="mlt.fl">
-        title,
-        title_en,
-        title_es,
-        title_pt,
-        alternative_title,
-        alternative_title_en,
-        alternative_title_es,
-        alternative_title_pt,
-        publisher,
-        publisher_en,
-        publisher_es,
-        publisher_pt,
-        series,
-        series_en,
-        series_es,
-        series_pt,
-        contributor,
-        creator'
+      <str name="fl">
+        id,
+        access_ssim,
+        discover_access_group_ssim,discover_access_person_ssim,
+        read_access_group_ssim,read_access_person_ssim,
+        edit_access_group_ssim,edit_access_person_ssim,
+        depositor_ti,
+        embargo_release_date_dtsi
+        inheritable_access_ssim,
+        inheritable_discover_access_group_ssim,inheritable_discover_access_person_ssim,
+        inheritable_read_access_group_ssim,inheritable_read_access_person_ssim,
+        inheritable_edit_access_group_ssim,inheritable_edit_access_person_ssim,
+        inheritable_embargo_release_date_dtsi
       </str>
-      <str name="mlt.qf">
-        title^100000
-        title_en^100000
-        title_es^100000
-        title_pt^10000
-        alternative_title^10000
-        alternative_title_en^1000
-        alternative_title_es^10000
-        alternative_title_pt^1000
-        publisher^10000
-        publisher_en^10000
-        publisher_es^1000
-        publisher_pt^1000
-        series^2500
-        series_en^2500
-        series_es^2500
-        series_pt^250
-        contributor^100
-        creator^10
-      </str>
-      <str name="mlt.mintf">2</str>
-      <str name="mlt.mindf">5</str>
-      <str name="mlt.minwl">5</str>
-      <str name="mlt.boost">true</str>
     </lst>
   </requestHandler>
 
-  <!-- Spell Check
+  <requestHandler name="standard" class="solr.SearchHandler">
+     <lst name="defaults">
+       <str name="echoParams">explicit</str>
+       <str name="defType">lucene</str>
+     </lst>
+  </requestHandler>
 
-        The spell check component can return a list of alternative spelling
-        suggestions.
 
-        http://wiki.apache.org/solr/SpellCheckComponent
-     -->
   <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
-
     <str name="queryAnalyzerFieldType">textSpell</str>
-
-    <!-- Multiple "Spell Checkers" can be declared and used by this
-         component
-      -->
-
-    <!-- a spellchecker built from a field of the main index, and
-         written to disk
+    <!-- Multiple "Spell Checkers" can be declared and used by this component
+      (e.g. for title_spell field)
       -->
     <lst name="spellchecker">
       <str name="name">default</str>
@@ -425,9 +142,9 @@
       <str name="buildOnOptimize">true</str>
     </lst>
     <lst name="spellchecker">
-      <str name="name">creator</str>
-      <str name="field">creator_spell</str>
-      <str name="spellcheckIndexDir">./spell_creator</str>
+      <str name="name">author</str>
+      <str name="field">author_spell</str>
+      <str name="spellcheckIndexDir">./spell_author</str>
       <str name="accuracy">0.7</str>
       <str name="buildOnOptimize">true</str>
     </lst>
@@ -445,45 +162,6 @@
       <str name="accuracy">0.7</str>
       <str name="buildOnOptimize">true</str>
     </lst>
-
-    <!-- a spellchecker that uses a different distance measure -->
-    <!--
-       <lst name="spellchecker">
-         <str name="name">jarowinkler</str>
-         <str name="field">spell</str>
-         <str name="distanceMeasure">
-           org.apache.lucene.search.spell.JaroWinklerDistance
-         </str>
-         <str name="spellcheckIndexDir">spellcheckerJaro</str>
-       </lst>
-     -->
-
-    <!-- a spellchecker that use an alternate comparator
-
-         comparatorClass be one of:
-          1. score (default)
-          2. freq (Frequency first, then score)
-          3. A fully qualified class name
-      -->
-    <!--
-       <lst name="spellchecker">
-         <str name="name">freq</str>
-         <str name="field">lowerfilt</str>
-         <str name="spellcheckIndexDir">spellcheckerFreq</str>
-         <str name="comparatorClass">freq</str>
-         <str name="buildOnCommit">true</str>
-      -->
-
-    <!-- A spellchecker that reads the list of words from a file -->
-    <!--
-       <lst name="spellchecker">
-         <str name="classname">solr.FileBasedSpellChecker</str>
-         <str name="name">file</str>
-         <str name="sourceLocation">spellings.txt</str>
-         <str name="characterEncoding">UTF-8</str>
-         <str name="spellcheckIndexDir">spellcheckerFile</str>
-       </lst>
-      -->
   </searchComponent>
 
   <searchComponent name="suggest" class="solr.SuggestComponent">
@@ -506,4 +184,12 @@
       <str>suggest</str>
     </arr>
   </requestHandler>
+
+  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
+
+  <requestDispatcher handleSelect="true" >
+    <requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048" />
+  </requestDispatcher>
+
+  <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
 </config>
