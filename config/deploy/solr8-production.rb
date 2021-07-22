@@ -14,7 +14,8 @@ def config_map
     "catalog-production-v2" => "catalog-production-v2",
     "pulfalight-production" => "pulfalight-production",
     "cicognara" => "cicognara",
-    "lae" => "lae"
+    "lae" => "lae",
+    "pdc-discovery" => "pdc-discovery-production"
   }
 end
 
