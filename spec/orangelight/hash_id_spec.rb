@@ -13,6 +13,7 @@ describe 'hash id field solrconfig update handler' do
       solr.commit
     end
     it 'hashed id field is indexed' do
+      pending "Disabled until we implement dynamic site maps."
       expect(solr_resp_doc_ids_only({ 'q': 'hashed_id_s:*'  })).to include('1')
     end
 
