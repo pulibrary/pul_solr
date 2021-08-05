@@ -291,7 +291,7 @@
          <str name="spellcheckIndexDir">spellcheckerFile</str>
        </lst>
       -->
-  </searchComponent>
+  <!-- </searchComponent> -->
 
   <!-- <searchComponent name="suggest" class="solr.SuggestComponent"> -->
   <!--   <lst name="suggester"> -->
