@@ -15,7 +15,8 @@ def config_map
     "pulfalight-production" => "pulfalight-production",
     "cicognara" => "cicognara",
     "lae" => "lae",
-    "pdc-discovery" => "pdc-discovery-production"
+    "pdc-discovery" => "pdc-discovery-production",
+    "oawaiver" => "oawaiver-production"
   }
 end
 
