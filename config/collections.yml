@@ -9,6 +9,7 @@ solr8_production:
   - 'catalog-alma-production3'
   - 'catalog-alma-production2'
   - 'pdc-discovery-production'
+  - 'oawaiver-production'
 solr8_staging:
   - 'catalog-staging'
   - 'catalog-alma-staging1' # uses catalog staging configset
@@ -19,6 +20,7 @@ solr8_staging:
   - 'lae-staging'
   - 'dpul-staging'
   - 'pdc-discovery-staging'
+  - 'oawaiver-staging'
 solr7_staging:
   - 'figgy-staging'
   - 'libsc-staging'

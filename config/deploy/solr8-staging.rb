@@ -16,7 +16,8 @@ def config_map
     "cicognara" => "cicognara",
     "lae" => "lae",
     "dpul" => "dpul-staging",
-    "pdc-discovery" => "pdc-discovery-staging"
+    "pdc-discovery" => "pdc-discovery-staging",
+    "oawaiver" => "oawaiver-staging"
   }
 end
 
