@@ -150,3 +150,31 @@ about an hour for a 20g file for us.
 
 You want to look at the dominator tree to see how much heap is used by each
 object. Right-click the biggest one's thread (higher in the tree) > Java Basics > Thread Overview and Stacks. Expand the thread click the "total" button at the bottom so all of them will open up. Expand the first column (Object stack frame). Expand 'org.eclipse.jetty.servlet.ServletHandler.doHandle'. Click the first (local) frame. Look on the left, double-click the + to expand more properties, the thing that broke it was `_originalURI`. right-click > copy value.
+
+## Solr Docker
+The docker directory contains a Dockerfile that serves as the base docker image for running Solr in CI and Lando.
+
+This image:
+- adds a security.json which allows us to make changes to solr via basic auth. It runs with an embedded zookeeper on a separate port.
+- adds Solr plugins downloaded from the solrcloud role in princeton_ansible
+- contains scripts for solr setup in circleci and lando.
+
+### Update and Rebuild
+
+You must have an account under our dockerhub organization to push to dockerhub.
+
+To update and rebuild the image:
+
+```bash
+cd docker/
+docker login # login to docker hub
+docker build -t pulibrary/ci-solr:{solr version}-{Dockerfile version} .
+docker push pulibrary/ci-solr:{solr version}-{Dockerfile version}
+```
+
+```bash
+cd docker/
+docker login # login to docker hub
+docker build -t pulibrary/ci-solr:8.4-v1.0.0 .
+docker push pulibrary/ci-solr:8.4-v1.0.0
+```
