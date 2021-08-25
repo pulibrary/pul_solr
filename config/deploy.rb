@@ -76,13 +76,13 @@ namespace :alias do
     end
   end
 
-  # Swaps the catalog-rebuild and catalog-production aliases.
+  # Swaps the rebuild and production catalog aliases.
   # Production and rebuild collections are set with env variables when running the task.
   task :swap do
     production = ENV['PRODUCTION']
     rebuild = ENV['REBUILD']
     production_alias = ENV['PRODUCTION_ALIAS'] || "catalog-alma-production"
-    rebuild_alias = ENV['REBUILD_ALIAS'] || "catalog-alma-rebuild"
+    rebuild_alias = ENV['REBUILD_ALIAS'] || "catalog-alma-production-rebuild"
     if production && rebuild
       on roles(:main) do
         # Delete the rebuild alias
