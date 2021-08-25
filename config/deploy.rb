@@ -81,8 +81,8 @@ namespace :alias do
   task :swap do
     production = ENV['PRODUCTION']
     rebuild = ENV['REBUILD']
-    production_alias = ENV['PRODUCTION_ALIAS'] || "catalog-production"
-    rebuild_alias = ENV['REBUILD_ALIAS'] || "catalog-rebuild"
+    production_alias = ENV['PRODUCTION_ALIAS'] || "catalog-alma-production"
+    rebuild_alias = ENV['REBUILD_ALIAS'] || "catalog-alma-rebuild"
     if production && rebuild
       on roles(:main) do
         # Delete the rebuild alias
