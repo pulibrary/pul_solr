@@ -96,8 +96,11 @@ namespace :alias do
       end
     else
       puts "Please set the PRODUCTION and REBUILD environment variables. Optionally, set PRODUCTION_ALIAS and REBUILD_ALIAS as well. For example:"
-      puts "PRODUCTION=catalog-production2 REBUILD=catalog-production1 cap production alias:swap"
-      puts "PRODUCTION=catalog-alma-staging1 REBUILD=catalog-alma-staging2 PRODUCTION_ALIAS=catalog-alma-staging REBUILD_ALIAS=catalog-alma-rebuild cap production alias:swap"
+      # Set PRODUCTION the collection name that is going to be in production.
+      # Set REBUILD the collection name that is in production until the swap and moving forward is going to be in rebuild.
+      # To know the current collection names for PRODUCTION and REBUILD see Solr UI -> collections. The following is an example.
+      puts "PRODUCTION=catalog-alma-production2 REBUILD=catalog-alma-production3 cap production alias:swap"
+      puts "PRODUCTION=catalog-alma-staging2 REBUILD=catalog-alma-staging1 PRODUCTION_ALIAS=catalog-alma-staging REBUILD_ALIAS=catalog-alma-staging-rebuild cap production alias:swap"
     end
   end
 end
