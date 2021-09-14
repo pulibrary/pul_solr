@@ -16,7 +16,8 @@ def config_map
     "cicognara" => "cicognara",
     "lae" => "lae",
     "pdc-discovery" => "pdc-discovery-production",
-    "oawaiver" => "oawaiver-production"
+    "oawaiver" => "oawaiver-production",
+    "figgy" => "figgy-production"
   }
 end
 
