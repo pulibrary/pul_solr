@@ -21,6 +21,7 @@ solr8_staging:
   - 'dpul-staging'
   - 'pdc-discovery-staging'
   - 'oawaiver-staging'
+  - 'figgy-staging'
 solr7_staging:
   - 'figgy-staging'
   - 'libsc-staging'
