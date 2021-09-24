@@ -15,6 +15,7 @@ solr8_staging:
   - 'catalog-staging'
   - 'catalog-alma-staging1' # uses catalog staging configset
   - 'catalog-alma-staging2' # uses catalog staging configset
+  - 'catalog-alma-qa'
   - 'dss-staging' # uses catalog configset
   - 'pulfalight-staging'
   - 'cicognara-staging'
