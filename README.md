@@ -48,12 +48,11 @@ the following procedure should be followed:
 *After deploying* one may list, upload, update, and delete Configsets using the following Capistrano tasks:
 ```
 SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:list
-SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:upload[solr_configs/dpul/conf,dpul-config]
-SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:update[solr_configs/dpul_new/conf,dpul-config]
+SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:update[dpul_new/conf,dpul-config]
 SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:delete[dpul-config]
 ```
 
-Please note that, when uploading a directory for a new Configset from this repository, that the `/conf` subdirectory should be used (e. g. `solr_configs/dpul/conf`)
+Please note that, when uploading a directory for a new Configset from this repository, that the `/conf` subdirectory should be used (e. g. `dpul/conf`)
 
 ## Managing Collections
 

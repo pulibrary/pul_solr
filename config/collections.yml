@@ -11,6 +11,7 @@ solr8_production:
   - 'pdc-discovery-production'
   - 'oawaiver-production'
   - 'figgy-production'
+  - 'pulmap'
 solr8_staging:
   - 'catalog-staging'
   - 'catalog-alma-staging1' # uses catalog staging configset
@@ -24,11 +25,10 @@ solr8_staging:
   - 'pdc-discovery-staging'
   - 'oawaiver-staging'
   - 'figgy-staging'
+  - 'pulmap-staging'
 solr7_staging:
   - 'figgy-staging'
   - 'libsc-staging'
-  - 'pulmap-staging'
 solr7_production:
   - 'dpul-production'
   - 'figgy-production1'
-  - 'pulmap'
