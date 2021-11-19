@@ -27,8 +27,6 @@ solr8_staging:
   - 'figgy-staging'
   - 'pulmap-staging'
 solr7_staging:
-  - 'figgy-staging'
   - 'libsc-staging'
 solr7_production:
   - 'dpul-production'
-  - 'figgy-production1'
