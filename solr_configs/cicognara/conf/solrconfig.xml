@@ -209,7 +209,8 @@
          tei_title_txt,
          tei_author_txt,
          title_display,
-         tei_section_number_display
+         tei_section_number_display,
+         manifests_s
        </str>
 
        <str name="facet">true</str>
