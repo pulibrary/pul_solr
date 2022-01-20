@@ -2,6 +2,7 @@
 solr8_production:
   - 'catalog-production1'
   - 'catalog-production2'
+  - 'dpul-production'
   - 'dss-production' # uses catalog-production config set
   - 'pulfalight-production'
   - 'cicognara'
