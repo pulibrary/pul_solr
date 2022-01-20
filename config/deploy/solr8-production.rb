@@ -7,6 +7,7 @@ def zk_host
   "lib-zk1:2181,lib-zk2:2181,lib-zk3:2181/solr8"
 end
 
+# config directory => config set name
 def config_map
   {
     "catalog-production" => "catalog-production",
@@ -17,7 +18,8 @@ def config_map
     "lae" => "lae",
     "pdc-discovery" => "pdc-discovery-production",
     "oawaiver" => "oawaiver-production",
-    "figgy" => "figgy-production"
+    "figgy" => "figgy-production",
+    "dpul" => "dpul"
   }
 end
 
