@@ -18,7 +18,7 @@ def config_map
 end
 
 def collections
-  PulSolr.collections["solr8_production"]
+  PulSolr.collections["solr7_production"]
 end
 
 # role-based syntax
