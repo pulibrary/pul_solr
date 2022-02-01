@@ -25,6 +25,34 @@ inventory](https://docs.google.com/spreadsheets/d/118O7JeVEPaoVsCIxoWLdDTctcTCe4
 
 This repository updates, but does not create, collections. To add a new collection, create its config here and deploy to get the config up to the server. Then use the UI to create the collection. Finally, you can add the collection to the deploy scripts so that it will be updated in future deployments.
 
+### Connecting to Solr UI
+There are capistrano tasks to connect to the Solr UI for managing solr that can be run from the project directory on your machine.  You will need to be connected to VPN for the tasks to run.
+ * Production Solr 8
+   ```
+   bundle exec cap solr8-production solr:console 
+   ```
+   
+ * Production Solr 7
+   ```
+   bundle exec cap production solr:console 
+   ```
+   
+ * Staging Solr 8
+   ```
+   bundle exec cap solr8-staging solr:console
+   ```
+   
+* Staging Solr 7
+   ```
+   bundle exec cap staging solr:console
+   ```
+
+* Library Production Solr 7
+   ```
+   bundle exec cap library-prod solr:console 
+   ```
+
+
 ## Managing Orangelight Catalog Configsets
 
 When we need to make a change to the orangelight config set that would break
