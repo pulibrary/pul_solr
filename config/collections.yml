@@ -3,7 +3,7 @@ solr8_production:
   - 'catalog-production1'
   - 'catalog-production2'
   - 'dpul-production'
-  - 'dss-production' # uses catalog-production config set
+  - 'dss-production1'
   - 'pulfalight-production'
   - 'cicognara'
   - 'lae'
@@ -14,11 +14,11 @@ solr8_production:
   - 'figgy-production'
   - 'pulmap'
 solr8_staging:
-  - 'catalog-staging'
-  - 'catalog-alma-staging1' # uses catalog staging configset
-  - 'catalog-alma-staging2' # uses catalog staging configset
-  - 'catalog-alma-qa'
-  - 'dss-staging' # uses catalog configset
+  - 'catalog-qa1' # uses catalog v2 production configset
+  - 'catalog-qa2' # uses catalog v2 production configset
+  - 'catalog-staging1' # uses catalog v2 production configset
+  - 'catalog-staging2' # uses catalog v2 production configset
+  - 'dss-staging1' # uses dss production configset
   - 'pulfalight-staging'
   - 'cicognara-staging'
   - 'lae-staging'
