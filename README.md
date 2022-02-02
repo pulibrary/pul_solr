@@ -76,8 +76,8 @@ the following procedure should be followed:
 *After deploying* one may list, upload, update, and delete Configsets using the following Capistrano tasks:
 ```
 SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:list
-SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:update[dpul_new/conf,dpul-config]
-SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:delete[dpul-config]
+SOLR_URL=http://localhost:8983/solr bundle exec cap development "configsets:update[dpul_new/conf,dpul-config]"
+SOLR_URL=http://localhost:8983/solr bundle exec cap development "configsets:delete[dpul-config]"
 ```
 
 Please note that, when uploading a directory for a new Configset from this repository, that the `/conf` subdirectory should be used (e. g. `dpul/conf`)
@@ -87,9 +87,9 @@ Please note that, when uploading a directory for a new Configset from this repos
 Using Capistrano, one may create, reload, delete, and list Collections using the following tasks:
 ```
 SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:list
-SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:create[dpul,dpul-config]
-SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:reload[dpul]
-SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:delete[dpul]
+SOLR_URL=http://localhost:8983/solr bundle exec cap development "collections:create[dpul,dpul-config]"
+SOLR_URL=http://localhost:8983/solr bundle exec cap development "collections:reload[dpul]"
+SOLR_URL=http://localhost:8983/solr bundle exec cap development "collections:delete[dpul]"
 ```
 
 ## SolrCloud Backups
