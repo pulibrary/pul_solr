@@ -10,8 +10,9 @@ end
 # config directory => config set name
 def config_map
   {
-    "catalog-production" => "catalog-production",
+    "catalog-production-v2" => "catalog-production-v2",
     "catalog-staging" => "catalog-staging",
+    "dss-production" => "dss-production",
     "pulfalight-staging" => "pulfalight-staging",
     "cicognara" => "cicognara",
     "lae" => "lae",
