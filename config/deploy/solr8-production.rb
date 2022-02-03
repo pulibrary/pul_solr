@@ -18,7 +18,8 @@ def config_map
     "pdc-discovery" => "pdc-discovery-production",
     "oawaiver" => "oawaiver-production",
     "figgy" => "figgy-production",
-    "dpul" => "dpul"
+    "dpul" => "dpul",
+    "libwww" => "libwww"
   }
 end
 
