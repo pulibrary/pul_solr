@@ -18,7 +18,8 @@ def config_map
     "dpul" => "dpul",
     "pdc-discovery" => "pdc-discovery-staging",
     "oawaiver" => "oawaiver-staging",
-    "figgy" => "figgy-staging"
+    "figgy" => "figgy-staging",
+    "libwww" => "libwww"
   }
 end
 
