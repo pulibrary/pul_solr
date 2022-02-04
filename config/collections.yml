@@ -13,6 +13,8 @@ solr8_production:
   - 'oawaiver-production'
   - 'figgy-production'
   - 'pulmap'
+  - 'library-prod1' # uses libwww configset, which is the same as solr 7
+  - 'special-collections-prod1' # uses libwww configset, which is the same as solr 7
 solr8_staging:
   - 'catalog-staging'
   - 'catalog-alma-staging1' # uses catalog staging configset
@@ -27,8 +29,8 @@ solr8_staging:
   - 'oawaiver-staging'
   - 'figgy-staging'
   - 'pulmap-staging'
-  - 'library-staging' # uses libwww configset, which is the same as solr 7
+  - 'library-staging1' # uses libwww configset, which is the same as solr 7
+  - 'special-collections-staging1' # uses libwww configset, which is the same as solr 7
 solr7_staging:
-  - 'libsc-staging'
 solr7_production:
   - 'dpul-production'
