@@ -206,3 +206,9 @@ cd docker/
 docker login # login to docker hub
 docker buildx build --platform linux/arm64/v8,linux/amd64 -t pulibrary/ci-solr:8.4-v1.0.0 --push .
 ```
+
+You can also push to your own Github Container Registry, if you are just testing something out:
+
+1. [Login to the container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+1. `cd docker`
+1. `docker buildx build --platform linux/arm64/v8,linux/amd64 -t ghcr.io/[username]/ci-solr:{solr version}-{Dockerfile version} --push .`
