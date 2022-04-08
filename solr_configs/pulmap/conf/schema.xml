@@ -168,6 +168,7 @@
   <copyField source="dct_isPartOf_sm"    dest="dct_isPartOf_tmi"    maxChars="1000"/>
   <copyField source="layer_geom_type_s"  dest="layer_geom_type_tmi"  maxChars="100"/>
   <copyField source="layer_geom_type_s"  dest="layer_geom_type_sm"  maxChars="100"/>
+  <copyField source="layer_geom_type_sm"  dest="layer_geom_type_tmi"  maxChars="100"/>
   <copyField source="layer_slug_s"       dest="layer_slug_ti"       maxChars="100"/>
 
   <!-- core text search -->
