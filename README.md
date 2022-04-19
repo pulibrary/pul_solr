@@ -197,13 +197,21 @@ To update and rebuild the image:
 ```bash
 cd docker/
 docker login # login to docker hub
-docker build -t pulibrary/ci-solr:{solr version}-{Dockerfile version} .
-docker push pulibrary/ci-solr:{solr version}-{Dockerfile version}
+docker buildx create --use # only necessary the first time you want to build an image
+docker buildx build --platform linux/arm64/v8,linux/amd64 -t pulibrary/ci-solr:{solr version}-{Dockerfile version} --push .
 ```
+For example, if you are building with solr 8.4 and Dockerfile 1.0.0:
 
 ```bash
 cd docker/
 docker login # login to docker hub
-docker build -t pulibrary/ci-solr:8.4-v1.0.0 .
-docker push pulibrary/ci-solr:8.4-v1.0.0
+docker buildx create --use
+docker buildx build --platform linux/arm64/v8,linux/amd64 -t pulibrary/ci-solr:8.4-v1.0.0 --push .
 ```
+
+You can also push to your own Github Container Registry, if you are just testing something out:
+
+1. [Login to the container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+1. `cd docker`
+2. `docker buildx create --use # only necessary the first time`
+3. `docker buildx build --platform linux/arm64/v8,linux/amd64 -t ghcr.io/[username]/ci-solr:{solr version}-{Dockerfile version} --push .`
