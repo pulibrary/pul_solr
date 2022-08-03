@@ -18,7 +18,7 @@ namespace :pul_solr do
   task "backup" do
     target = ENV["SOLR_ENV"]
     host = ENV["HOST"]
-    abort "usage: rake pul_solr:backup HOST=[solr7|solr8] SOLR_ENV=[production|staging]" unless (allowed_targets.include?(target) && allowed_hosts.include?(host))
+    abort "usage: rake pul_solr:backup HOST=solr8 SOLR_ENV=[production|staging]" unless (allowed_targets.include?(target) && allowed_hosts.include?(host))
     collections = PulSolr.collections["#{host}_#{target}"]
 
     logger = Logger.new("/tmp/solr_backup.log", "monthly")
@@ -37,5 +37,5 @@ def allowed_targets
 end
 
 def allowed_hosts
-  ["solr7", "solr8"]
+  ["solr8"]
 end
