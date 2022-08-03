@@ -31,6 +31,3 @@ solr8_staging:
   - 'pulmap-staging'
   - 'library-staging1' # uses libwww configset, which is the same as solr 7
   - 'special-collections-staging1' # uses libwww configset, which is the same as solr 7
-solr7_staging:
-solr7_production:
-  - 'dpul-production'
