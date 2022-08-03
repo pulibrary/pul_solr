@@ -172,7 +172,7 @@ namespace :collections do
   end
 
   desc 'Create a Collection'
-  # usage example: bundle exec cap solr8-staging collections:create[dpul-staging,dpul,1,3,1]
+  # usage example: bundle exec cap staging collections:create[dpul-staging,dpul,1,3,1]
   task :create, :collection, :config_name, :num_shards, :replication_factor, :shards_per_node do |task_name, args|
     on roles(:main) do
       num_shards = args[:num_shards] || 1

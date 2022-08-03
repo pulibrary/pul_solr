@@ -31,29 +31,13 @@ This repository updates, but does not create, collections. To add a new collecti
 There are capistrano tasks to connect to the Solr UI for managing solr that can be run from the project directory on your machine.  You will need to be connected to VPN for the tasks to run.
  * Production Solr 8
    ```
-   bundle exec cap solr8-production solr:console 
+   bundle exec cap production solr:console
    ```
-   
- * Production Solr 7
-   ```
-   bundle exec cap production solr:console 
-   ```
-   
+
  * Staging Solr 8
-   ```
-   bundle exec cap solr8-staging solr:console
-   ```
-   
-* Staging Solr 7
    ```
    bundle exec cap staging solr:console
    ```
-
-* Library Production Solr 7
-   ```
-   bundle exec cap library-prod solr:console 
-   ```
-
 
 ## Managing Orangelight Catalog Configsets
 
