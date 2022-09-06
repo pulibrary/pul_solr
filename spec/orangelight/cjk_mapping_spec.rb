@@ -170,6 +170,18 @@ describe 'CJK character equivalence' do
     end
   end
 
+  describe 'equivalent cjk strings in facets' do
+    it '沈从文 is equivalent to 沈從文 when calculating facets' do
+      solr.add({ id: 1, subject_facet: '沈从文' })
+      solr.add({ id: 2, subject_facet: '沈從文' })
+      solr.commit
+      facets = solr_response(q: '*:*', 'facet.field': 'subject_facet')['facet_counts']['facet_fields']
+      subject_facet_hash = facets['subject_facet'].each_slice(2).to_h
+      expect(subject_facet_hash.length).to eq(1) # Only one facet entry
+      expect(subject_facet_hash.values.first).to eq(2) # ...and the facet entry contains both documents
+    end
+  end
+
   after(:all) do
     delete_all
   end

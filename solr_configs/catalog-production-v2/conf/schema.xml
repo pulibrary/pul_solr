@@ -180,8 +180,21 @@
        </analyzer>
      </fieldType>
 
+     <fieldType name="facetString" class="solr.TextField" sortMissingLast="true" omitNorms="true">
+      <analyzer type="index">
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.ICUTransformFilterFactory" id="Traditional-Simplified"/>
+        <filter class="solr.ICUTransformFilterFactory" id="Katakana-Hiragana"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.KeywordTokenizerFactory" />
+      </analyzer>
+   </fieldType>
+
      <fieldType name="descendent_path" class="solr.TextField">
        <analyzer type="index">
+         <filter class="solr.ICUTransformFilterFactory" id="Traditional-Simplified"/>
+         <filter class="solr.ICUTransformFilterFactory" id="Katakana-Hiragana"/>
          <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="—" />
        </analyzer>
        <analyzer type="query">
@@ -635,10 +648,10 @@
    <field name="isbn_t" type="isbn" indexed="true" stored="true" multiValued="true"/>
    <field name="lccn_s" type="lccn" indexed="true" stored="true" multiValued="true"/>
    <field name="issn_s" type="alphaNumSort" indexed="true" stored="true" multiValued="true"/>
-   <field name="language_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="language_facet" type="facetString" indexed="true" stored="true" multiValued="true" />
    <field name="subject_facet" type="descendent_path" indexed="true" stored="true" multiValued="true" />
-   <field name="subject_era_facet" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="subject_geo_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="subject_era_facet" type="facetString" indexed="true" stored="true" multiValued="true" />
+   <field name="subject_geo_facet" type="facetString" indexed="true" stored="true" multiValued="true" />
    <!-- pub_date is used for facet and display so it must be indexed and stored -->
    <field name="pub_date" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="title_sort" type="alphaNumSort" indexed="true" stored="false" />
@@ -694,7 +707,7 @@
 
    <dynamicField name="*_display" type="string" indexed="false" stored="true" multiValued="true" />
    <dynamicField name="*_1display" type="string" indexed="false" stored="true" multiValued="false" />
-   <dynamicField name="*_facet" type="string" indexed="true" stored="false" multiValued="true" />
+   <dynamicField name="*_facet" type="facetString" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*_index" type="text" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*_sort" type="alphaOnlySort" indexed="true" stored="false" />
    <dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="false" multiValued="true" />
