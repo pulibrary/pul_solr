@@ -6,7 +6,7 @@ Dependencies
 
 * Ruby: 2.6.5
 
-SolrCloud machines are running Solr 7.7.2, 8.4.1
+SolrCloud machines are running Solr 8.4.1
 
 To install run `bundle install`
 
