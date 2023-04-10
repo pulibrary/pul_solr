@@ -15,7 +15,7 @@
     </commitWithin>
 
   </updateHandler>
-  
+
   <updateProcessor class="solr.processor.SignatureUpdateProcessorFactory" name="add_hash_id">
     <bool name="enabled">true</bool>
     <str name="signatureField">hashed_id_ssi</str>
@@ -29,12 +29,12 @@
     <processor class="solr.DistributedUpdateProcessorFactory"/>
     <processor class="solr.RunUpdateProcessorFactory"/>
   </updateRequestProcessorChain>
-  
+
   <!-- solr lib dirs -->
   <!-- Needed to enable ICUTokenizerFactory -->
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
-    
+
   <requestHandler name="search" class="solr.SearchHandler" default="true">
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
@@ -147,9 +147,6 @@
       <str name="buildOnOptimize">true</str>
     </lst>
   </searchComponent>
-
-  
-  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
 
   <requestDispatcher handleSelect="true" >
     <requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048" />
