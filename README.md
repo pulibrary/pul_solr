@@ -173,24 +173,25 @@ This image:
 - contains scripts for solr setup in circleci and lando.
 
 ### Update and Rebuild
-### Dockerhub
-You must have an account under our dockerhub organization to push to dockerhub.
+### quay.io
+This is Red Hat's container registry (they also call it a repository), and where Ops is shifting to keeping images (as of May 2023). Contact the Ops team to become a member of [the pulibrary organization](https://quay.io/organization/pulibrary). You must be a member in order to push an image to the remote repository.
 
-To update and rebuild the image:
+Building and pushing an image:
 
 ```bash
 cd docker/
-docker login # login to docker hub
+docker login quay.io # login to quay.io
 docker buildx create --use # only necessary the first time you want to build an image
-docker buildx build --platform linux/arm64/v8,linux/amd64 -t pulibrary/ci-solr:{solr version}-{Dockerfile version} --push .
+docker buildx build --platform linux/arm64/v8,linux/amd64 -t quay.io/pulibrary/ci-solr:{solr version}-{Dockerfile version} --push .
 ```
+
 For example, if you are building with solr 8.4 and Dockerfile 1.0.0:
 
 ```bash
 cd docker/
-docker login # login to docker hub
+docker login # login to quay.io
 docker buildx create --use
-docker buildx build --platform linux/arm64/v8,linux/amd64 -t pulibrary/ci-solr:8.4-v1.0.0 --push .
+docker buildx build --platform linux/arm64/v8,linux/amd64 -t qay.io/pulibrary/ci-solr:8.4-v1.0.0 --push .
 ```
 
 ### Github Container Registry
@@ -201,14 +202,5 @@ You can also push to your own Github Container Registry, if you are just testing
 2. `docker buildx create --use # only necessary the first time`
 3. `docker buildx build --platform linux/arm64/v8,linux/amd64 -t ghcr.io/[username]/ci-solr:{solr version}-{Dockerfile version} --push .`
 
-### quay.io
-This is Red Hat's container registry (they also call it a repository), and where Ops is shifting to keeping images (as of May 2023). Contact the Ops team to become a member of [the pulibrary organization](https://quay.io/organization/pulibrary). 
-
-Pushing an image is almost identical to the Docker or Github container registries:
-
-```bash
-cd docker/
-docker login quay.io # login to docker hub
-docker buildx create --use
-docker buildx build --platform linux/arm64/v8,linux/amd64 -t quay.io/pulibrary/ci-solr:{solr version}-{Dockerfile version} --push .
-```
+### Docker hub - deprecated
+Old images were pushed to the pulibrary docker hub organization - for older tags see https://hub.docker.com/r/pulibrary/ci-solr/tags
