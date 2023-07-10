@@ -22,6 +22,7 @@ solr8_staging:
   - 'catalog-staging2' # uses catalog v2 production configset
   - 'dss-staging1' # uses dss production configset
   - 'pulfalight-staging'
+  - 'pulfalight-qa' # uses pulfalight-staging configset
   - 'cicognara-staging'
   - 'lae-staging'
   - 'dpul-staging'
