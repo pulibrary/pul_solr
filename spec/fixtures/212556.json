@@ -1,1 +1,155 @@
-{"id":"212556","numeric_id_b":true,"author_display":["Bürger, Peter, 1936-"],"author_citation_display":["Bürger, Peter"],"author_roles_1display":"{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Bürger, Peter\"}","author_s":["Bürger, Peter, 1936-"],"opensearch_display":["Bürger, Peter, 1936-","Theory of the avant-garde / Peter Bürger ; translation from the German by Michael Shaw ; foreword by Jochen Schulte-Sasse.","Avant-garde (Aesthetics)"],"marc_relator_display":["Author"],"uniform_title_s":["Theorie der Avantgarde. English"],"title_display":"Theory of the avant-garde / Peter Bürger ; translation from the German by Michael Shaw ; foreword by Jochen Schulte-Sasse.","title_t":["Theory of the avant-garde / Peter Bürger ; translation from the German by Michael Shaw ; foreword by Jochen Schulte-Sasse."],"title_citation_display":["Theory of the avant-garde /"],"compiled_created_t":["Theory of the avant-garde / Peter Bürger ; translation from the German by Michael Shaw ; foreword by Jochen Schulte-Sasse."],"pub_created_display":["Minneapolis : University of Minnesota Press, c1984."],"pub_created_s":["Minneapolis : University of Minnesota Press, c1984."],"pub_citation_display":["Minneapolis: University of Minnesota Press"],"pub_date_display":["1984"],"pub_date_start_sort":1984,"cataloged_tdt":"2000-06-13T05:00:00Z","format":["Book"],"description_display":["lv, 135 p. : ill. ; 24 cm."],"description_t":["lv, 135 p. : ill. ; 24 cm."],"series_display":["Theory and history of literature ; v. 4"],"more_in_this_series_t":["Theory and history of literature ;"],"notes_display":["Translation of Theorie der Avantgarde.","Includes index."],"bib_ref_notes_display":["Bibliography: p. 122-125."],"language_facet":["English","German"],"language_code_s":["eng","ger"],"subject_display":["Avant-garde (Aesthetics)"],"subject_t":["Avant-garde (Aesthetics)"],"subject_facet":["Avant-garde (Aesthetics)"],"isbn_display":["0816610673","0816610681 (pbk.)"],"lccn_display":["   83010549 "],"lccn_s":["83010549"],"isbn_s":["9780816610679","9780816610686"],"isbn_t":["9780816610679","9780816610686"],"oclc_s":["9577163"],"other_version_s":["9780816610679","9780816610686","ocm09577163"],"holdings_1display":"{\"233441\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"copy_number\":\"1\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"},\"233442\":{\"location\":\"Marquand Library\",\"library\":\"Marquand Library\",\"location_code\":\"sa\",\"copy_number\":\"1\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"},\"233444\":{\"location\":\"Architecture Library\",\"library\":\"Architecture Library\",\"location_code\":\"ues\",\"copy_number\":\"1\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"},\"233445\":{\"location\":\"Forrestal Annex - Reserve\",\"library\":\"Forrestal Annex\",\"location_code\":\"res\",\"copy_number\":\"50\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"},\"233447\":{\"location\":\"Marquand Library\",\"library\":\"Marquand Library\",\"location_code\":\"sa\",\"copy_number\":\"2\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"},\"233448\":{\"location\":\"Marquand Library\",\"library\":\"Marquand Library\",\"location_code\":\"sa\",\"copy_number\":\"3\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"}}","location_code_s":["f","sa","ues","res"],"location":["Firestone Library","Marquand Library","Architecture Library","Forrestal Annex"],"location_display":["Firestone Library","Marquand Library","Architecture Library","Forrestal Annex - Reserve"],"advanced_location_s":["f","sa","ues","res","Firestone Library","Marquand Library","Architecture Library","Forrestal Annex"],"name_uniform_title_1display":"[[\"Bürger, Peter, 1936-.\",\"Theorie der Avantgarde.\",\"English\"]]","name_title_browse_s":["Bürger, Peter, 1936-. Theorie der Avantgarde","Bürger, Peter, 1936-. Theorie der Avantgarde. English"],"call_number_display":["BH301.A94 B8313 1984"],"call_number_browse_s":["BH301.A94 B8313 1984"],"timestamp":"2018-02-28T15:42:54.356Z"}
+{
+    "id": "212556",
+    "numeric_id_b": true,
+    "author_display": [
+        "Bürger, Peter, 1936-"
+    ],
+    "author_citation_display": [
+        "Bürger, Peter"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Bürger, Peter\"}",
+    "author_s": [
+        "Bürger, Peter, 1936-"
+    ],
+    "opensearch_display": [
+        "Bürger, Peter, 1936-",
+        "Theory of the avant-garde / Peter Bürger ; translation from the German by Michael Shaw ; foreword by Jochen Schulte-Sasse.",
+        "Avant-garde (Aesthetics)"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "uniform_title_s": [
+        "Theorie der Avantgarde. English"
+    ],
+    "title_display": "Theory of the avant-garde / Peter Bürger ; translation from the German by Michael Shaw ; foreword by Jochen Schulte-Sasse.",
+    "title_t": [
+        "Theory of the avant-garde / Peter Bürger ; translation from the German by Michael Shaw ; foreword by Jochen Schulte-Sasse."
+    ],
+    "title_citation_display": [
+        "Theory of the avant-garde /"
+    ],
+    "compiled_created_t": [
+        "Theory of the avant-garde / Peter Bürger ; translation from the German by Michael Shaw ; foreword by Jochen Schulte-Sasse."
+    ],
+    "pub_created_display": [
+        "Minneapolis : University of Minnesota Press, c1984."
+    ],
+    "pub_created_s": [
+        "Minneapolis : University of Minnesota Press, c1984."
+    ],
+    "pub_citation_display": [
+        "Minneapolis: University of Minnesota Press"
+    ],
+    "pub_date_display": [
+        "1984"
+    ],
+    "pub_date_start_sort": 1984,
+    "cataloged_tdt": "2000-06-13T05:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "lv, 135 p. : ill. ; 24 cm."
+    ],
+    "description_t": [
+        "lv, 135 p. : ill. ; 24 cm."
+    ],
+    "series_display": [
+        "Theory and history of literature ; v. 4"
+    ],
+    "more_in_this_series_t": [
+        "Theory and history of literature ;"
+    ],
+    "notes_display": [
+        "Translation of Theorie der Avantgarde.",
+        "Includes index."
+    ],
+    "bib_ref_notes_display": [
+        "Bibliography: p. 122-125."
+    ],
+    "language_facet": [
+        "English",
+        "German"
+    ],
+    "language_code_s": [
+        "eng",
+        "ger"
+    ],
+    "subject_display": [
+        "Avant-garde (Aesthetics)"
+    ],
+    "subject_t": [
+        "Avant-garde (Aesthetics)"
+    ],
+    "subject_facet": [
+        "Avant-garde (Aesthetics)"
+    ],
+    "isbn_display": [
+        "0816610673",
+        "0816610681 (pbk.)"
+    ],
+    "lccn_display": [
+        "   83010549 "
+    ],
+    "lccn_s": [
+        "83010549"
+    ],
+    "isbn_s": [
+        "9780816610679",
+        "9780816610686"
+    ],
+    "isbn_t": [
+        "9780816610679",
+        "9780816610686"
+    ],
+    "oclc_s": [
+        "9577163"
+    ],
+    "other_version_s": [
+        "9780816610679",
+        "9780816610686",
+        "ocm09577163"
+    ],
+    "holdings_1display": "{\"233441\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"copy_number\":\"1\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"},\"233442\":{\"location\":\"Marquand Library\",\"library\":\"Marquand Library\",\"location_code\":\"sa\",\"copy_number\":\"1\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"},\"233444\":{\"location\":\"Architecture Library\",\"library\":\"Architecture Library\",\"location_code\":\"ues\",\"copy_number\":\"1\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"},\"233445\":{\"location\":\"Forrestal Annex - Reserve\",\"library\":\"Forrestal Annex\",\"location_code\":\"res\",\"copy_number\":\"50\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"},\"233447\":{\"location\":\"Marquand Library\",\"library\":\"Marquand Library\",\"location_code\":\"sa\",\"copy_number\":\"2\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"},\"233448\":{\"location\":\"Marquand Library\",\"library\":\"Marquand Library\",\"location_code\":\"sa\",\"copy_number\":\"3\",\"call_number\":\"BH301.A94 B8313 1984\",\"call_number_browse\":\"BH301.A94 B8313 1984\"}}",
+    "location_code_s": [
+        "f",
+        "sa",
+        "ues",
+        "res"
+    ],
+    "location": [
+        "Firestone Library",
+        "Marquand Library",
+        "Architecture Library",
+        "Forrestal Annex"
+    ],
+    "location_display": [
+        "Firestone Library",
+        "Marquand Library",
+        "Architecture Library",
+        "Forrestal Annex - Reserve"
+    ],
+    "advanced_location_s": [
+        "f",
+        "sa",
+        "ues",
+        "res",
+        "Firestone Library",
+        "Marquand Library",
+        "Architecture Library",
+        "Forrestal Annex"
+    ],
+    "name_uniform_title_1display": "[[\"Bürger, Peter, 1936-.\",\"Theorie der Avantgarde.\",\"English\"]]",
+    "name_title_browse_s": [
+        "Bürger, Peter, 1936-. Theorie der Avantgarde",
+        "Bürger, Peter, 1936-. Theorie der Avantgarde. English"
+    ],
+    "call_number_display": [
+        "BH301.A94 B8313 1984"
+    ],
+    "call_number_browse_s": [
+        "BH301.A94 B8313 1984"
+    ],
+    "timestamp": "2018-02-28T15:42:54.356Z"
+}
