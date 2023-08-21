@@ -374,11 +374,12 @@
       <str name="echoParams">explicit</str>
       <int name="rows">10</int>
       <str name="sow">on</str>
-      <!-- <str name="q.alt">*:*</str> -->
-      <str name="mm">6&lt;90%</str>
+      <str name="df">text</str>
+      <str name="q.alt">*:*</str>
+      <!-- <str name="mm">6&lt;90%</str> -->
 
       <!-- boost local holdings (add 50 to the score) to reduce unnecessary requests -->
-      <str name="bf">if(field(numeric_id_b),50,0)</str>
+      <!-- <str name="bf">if(field(numeric_id_b),50,0)</str> -->
 
        <!-- this qf and pf are used by default, if not otherwise specified by
             client. The default blacklight_config will use these for the
