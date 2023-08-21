@@ -88,7 +88,7 @@ describe 'CJK character equivalence' do
         solr.add({ id: 1, notes_index: '閑話' })
         solr.commit
         params = {q: notes}
-        expect(solr_resp_doc_ids_only(params, 'search')).to include('1')
+        expect(solr_resp_doc_ids_only(params, 'select')).to include('1')
       end
     end
     describe "Korean" do
