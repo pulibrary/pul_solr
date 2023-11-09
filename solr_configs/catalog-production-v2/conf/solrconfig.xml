@@ -129,6 +129,11 @@
       <str name="q.alt">*:*</str>
       <str name="mm">6&lt;90%</str>
 
+      <!-- HighlightComponent using unified highlighter -->
+      <str name="hl">true</str>
+      <str name="hl.method">unified</str>
+      <str name="hl.fl">author_display title_display title_vern_display</str>
+
       <!-- boost local holdings (add 50 to the score) to reduce unnecessary requests -->
       <str name="bf">if(field(numeric_id_b),50,0)</str>
 
