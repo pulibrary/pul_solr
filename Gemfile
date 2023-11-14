@@ -14,6 +14,7 @@ gem 'whenever'
 group :development do
   gem 'bcrypt_pbkdf'
   gem 'capistrano', '~> 3.9'
+  gem 'ed25519'
   gem 'rbnacl', '< 5.0'
   gem 'rbnacl-libsodium'
 end
