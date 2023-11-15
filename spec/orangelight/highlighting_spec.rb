@@ -6,11 +6,9 @@ require 'json'
 describe 'unified highlighting component' do
   include_context 'solr_helpers'
 
-  let(:highlighted_doc) {'1355809'}
-
   before do
     delete_all
-    add_doc(highlighted_doc)
+    add_doc('1355809')
     add_doc('212556')
     add_doc('454035')
     add_doc('1225885')
@@ -18,16 +16,32 @@ describe 'unified highlighting component' do
   end
 
   describe 'highlighting' do
-    let(:response) do
-      solr_response({q: "Patterns in nature"})
-    end
-    let(:docs) { response['docs'] }
     
-    it 'has a highlighting section' do
-      expect(response['highlighting']).to be_truthy
+    let(:docs) { response['docs'] }
+
+    context 'highlights title' do
+      let(:response) do
+        solr_response({q: "Patterns in nature"})
+      end
+      it 'highlighting includes title_display field with emphasis' do
+        expect(response['highlighting']['1355809']['title_display'][0]).to include('<em>')
+      end
     end
-    it 'highlighting includes highlighted doc id with emphasis' do
-      expect(response['highlighting']['1355809']['title_display'][0]).to include('<em>')
+    context 'highlights author' do
+      let(:response) do
+        solr_response({q: "Stevens"})
+      end
+      it 'highlighting includes author_display field with emphasis' do
+        expect(response['highlighting']['1355809']['author_display'][0]).to include('<em>')
+      end
+    end
+    context 'highlights subject' do
+      let(:response) do
+        solr_response({q: "morphology"})
+      end
+      it 'highlighting includes subject_display field with emphasis' do
+        expect(response['highlighting']['1355809']['subject_display'][0]).to include('<em>')
+      end
     end
   end
 end
