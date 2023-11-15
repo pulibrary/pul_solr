@@ -43,5 +43,13 @@ describe 'unified highlighting component' do
         expect(response['highlighting']['1355809']['subject_display'][0]).to include('<em>')
       end
     end
+    context 'highlights notes_display' do
+      let(:response) do
+        solr_response({q: "Atlantic"})
+      end
+      it 'highlighting includes notes_display field with emphasis' do
+        expect(response['highlighting']['1355809']['notes_display'][0]).to include('<em>')
+      end
+    end
   end
 end
