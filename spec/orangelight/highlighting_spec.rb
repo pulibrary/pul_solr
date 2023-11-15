@@ -12,6 +12,8 @@ describe 'unified highlighting component' do
     add_doc('212556')
     add_doc('454035')
     add_doc('1225885')
+    add_doc('99125315781206421')
+    add_doc('99129071662406421')
     solr.commit
   end
 
@@ -49,6 +51,14 @@ describe 'unified highlighting component' do
       end
       it 'highlighting includes notes_display field with emphasis' do
         expect(response['highlighting']['1355809']['notes_display'][0]).to include('<em>')
+      end
+    end
+    context 'highlights any matching term for an hl.fl field' do
+      let(:response) do
+        solr_response( { q: "black teenagers" })
+      end
+      it "higlighting includes active highlighted fields with any matching query term" do
+        expect(response['highlighting']['99125315781206421']['title_display']).to eq(["Birth Cohort and the <em>Black</em>-White Achievement Gap: The Roles of Access and Health Soon After Birth / Kenneth Y. "])
       end
     end
   end
