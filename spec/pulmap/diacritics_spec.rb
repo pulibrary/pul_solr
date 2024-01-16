@@ -13,8 +13,8 @@ describe 'title keyword search' do
   end
   before(:all) do
     solr(
-      port: ENV['CI'] ? "8983" : ENV['lando_pulmap_test_solr_conn_port'],
-      core: ENV['CI'] ? "solr/pulmap-core" : "solr/blacklight-core",
+      port: PulSolr.solr_connection[:test][:pulmap][:port],
+      core: PulSolr.solr_connection[:test][:pulmap][:core]
     )
     delete_all
   end
