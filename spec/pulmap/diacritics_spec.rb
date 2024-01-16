@@ -12,7 +12,7 @@ describe 'title keyword search' do
     { qf: "${title_qf}", pf: "${title_pf}", q: q }
   end
   before(:all) do
-    solr(port: ENV['lando_pulmap_test_solr_conn_port'])
+    solr(port: ENV['CI'] ? "8983" : ENV['lando_pulmap_test_solr_conn_port'])
     delete_all
   end
   describe 'diacritics' do

@@ -7,7 +7,8 @@ jobs:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
           RAILS_ENV: test
-
+      - image: pulibrary/ci-solr:8.4-v2.0.0
+        command: server/scripts/ci-start.sh
     steps:
       - checkout
 
@@ -16,7 +17,7 @@ jobs:
           - pul_solr-{{ checksum "Gemfile" }}
           - pul_solr-
 
-      - run: gem install bundler -v '~> 2.0'
+      - run: gem install bundler -v 2.4.22
 
       - run:
           name: Install dependencies
@@ -28,12 +29,19 @@ jobs:
             - vendor/bundle
 
       - run:
-          name: Start Solr test instance
-          command: bundle exec rake solr:start
-          background: true
-
-      - run: bin/jetty_wait
-
+          name: Load catalog configs into solr and create collection
+          command: |
+            cd solr_configs/catalog-production-v2/conf
+            zip -1 -r solr_config.zip ./*
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@localhost:8983/solr/admin/configs?action=UPLOAD&name=catalog"
+            curl -H 'Content-type: application/json' "http://solr:SolrRocks@localhost:8983/api/collections/" -d '{create: {name: blacklight-core, config: catalog, numShards: 1}}'
+      - run:
+          name: Load pulmap configs into solr and create collection
+          command: |
+            cd solr_configs/pulmap/conf
+            zip -1 -r solr_config.zip ./*
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@localhost:8983/solr/admin/configs?action=UPLOAD&name=pulmap"
+            curl -H 'Content-type: application/json' "http://solr:SolrRocks@localhost:8983/api/collections/" -d '{create: {name: blacklight-core, config: pulmap, numShards: 1}}'
       - run:
           name: Rspec
           command: bundle exec rspec spec

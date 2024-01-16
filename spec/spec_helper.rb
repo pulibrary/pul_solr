@@ -13,11 +13,11 @@ RSpec.shared_context 'solr_helpers' do
 
   WebMock.disable_net_connect!(allow_localhost: true)
 
-  def solr(host: "localhost",
+  def solr(host: ENV['CI'] ? "solr:SolrRocks@localhost" : "localhost",
            core: "solr/blacklight-core",
            dtype: "edismax",
            suffix: "&defType=edismax",
-           port: ENV['lando_blacklight_test_solr_conn_port'])
+           port: ENV['CI'] ? "8983" : ENV['lando_blacklight_test_solr_conn_port'])
     unless @solr
       @solr = RSolr.connect :url => "http://#{host}:#{port}/#{core}", :read_timeout => 9999999
       puts "Solr URL: #{@solr.uri}"
