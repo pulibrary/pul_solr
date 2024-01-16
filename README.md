@@ -92,14 +92,14 @@ $ curl "http://localhost:8983/solr/admin/collections?action=RESTORE&name=pulfali
 
 ## Specs
 
-Solr must be running in order for rspec-solr specs to run.
+Start Solr via lando, then run the specs
 
 ```
-rake solr:start
+lando start
 rspec
 ```
 
-To stop Solr again do `rake solr:stop`
+To stop Solr again do `lando stop`
 
 ### Fixtures
 
@@ -131,7 +131,7 @@ we can't test against fields that are indexed but not stored. Pull a fixture
 like, e.g.:
 
 ```
-http://localhost:8983/solr/plantain-core-dev/select?id=MC001-02-03&qt=document
+http://localhost:8983/solr/pulfalight-dev/select?id=MC001-02-03&qt=document
 ```
 
 ### Heap Dump
