@@ -3,6 +3,7 @@ require 'rspec-solr'
 require 'faraday'
 require 'pry'
 require 'webmock/rspec'
+require_relative '../lando_env'
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 # Use this (by calling #include_context) as you would a ruby Module,
@@ -12,11 +13,13 @@ RSpec.shared_context 'solr_helpers' do
 
   WebMock.disable_net_connect!(allow_localhost: true)
 
-  def solr(host: "localhost", core: "solr/blacklight-core", dtype: "edismax", suffix: "&defType=edismax", port: 8888)
+  def solr(host: "localhost",
+           core: "solr/blacklight-core",
+           dtype: "edismax",
+           suffix: "&defType=edismax",
+           port: ENV['lando_blacklight_test_solr_conn_port'])
     unless @solr
       @solr = RSolr.connect :url => "http://#{host}:#{port}/#{core}", :read_timeout => 9999999
-      #solr_config = ENV['TRAVIS'] ? YAML::load_file('config/solr.yml')["test"] : YAML::load_file('config/solr.yml')["dev"]
-      #@@solr = RSolr.connect(solr_config)
       puts "Solr URL: #{@solr.uri}"
     end
     @solr

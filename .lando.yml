@@ -1,0 +1,14 @@
+name: pul_solr
+services:
+  blacklight_test_solr:
+    type: solr:8.4
+    portforward: true
+    core: blacklight-core
+    config:
+      dir: solr_configs/catalog-production-v2/conf
+  pulmap_test_solr:
+    type: solr:8.4
+    portforward: true
+    core: blacklight-core
+    config:
+      dir: solr_configs/pulmap/conf

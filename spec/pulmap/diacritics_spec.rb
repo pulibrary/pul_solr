@@ -12,8 +12,8 @@ describe 'title keyword search' do
     { qf: "${title_qf}", pf: "${title_pf}", q: q }
   end
   before(:all) do
+    solr(port: ENV['lando_pulmap_test_solr_conn_port'])
     delete_all
-    @solr =  RSolr.connect :url => "http://127.0.0.1:8888/solr/pulmap", :read_timeout => 9999999
   end
   describe 'diacritics' do
     diacritic_name = 'princeton-4j03d346d'

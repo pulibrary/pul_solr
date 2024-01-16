@@ -8,7 +8,6 @@ gem 'pry-byebug'
 gem 'rake'
 gem 'rsolr'
 gem 'rspec', '~> 3.8'
-gem 'solr_wrapper'
 gem 'whenever'
 
 group :development do
