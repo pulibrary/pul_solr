@@ -41,7 +41,7 @@ jobs:
             cd solr_configs/pulmap/conf
             zip -1 -r solr_config.zip ./*
             curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@localhost:8983/solr/admin/configs?action=UPLOAD&name=pulmap"
-            curl -H 'Content-type: application/json' "http://solr:SolrRocks@localhost:8983/api/collections/" -d '{create: {name: blacklight-core, config: pulmap, numShards: 1}}'
+            curl -H 'Content-type: application/json' "http://solr:SolrRocks@localhost:8983/api/collections/" -d '{create: {name: pulmap-core, config: pulmap, numShards: 1}}'
       - run:
           name: Rspec
           command: bundle exec rspec spec
