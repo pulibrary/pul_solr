@@ -4,20 +4,24 @@ gem 'stringex', :git => 'https://github.com/pulibrary/stringex.git', :tag => 'vp
 
 gem 'capistrano-bundler'
 gem 'faraday'
-gem 'pry-byebug'
 gem 'rake'
 gem 'rsolr'
-gem 'rspec', '~> 3.8'
 gem 'whenever'
 
 group :development do
   gem 'bcrypt_pbkdf'
   gem 'capistrano', '~> 3.9'
+  gem 'ed25519'
   gem 'rbnacl', '< 5.0'
   gem 'rbnacl-libsodium'
 end
 
 group :test do
+  gem 'rspec', '~> 3.8'
   gem 'rspec-solr', '~> 3.0'
   gem 'webmock'
+end
+
+group :development, :test do
+  gem 'pry-byebug'
 end
