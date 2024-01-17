@@ -1,10 +1,10 @@
-server 'lib-solr-staging4', user: 'deploy', roles: %{main}
+server 'lib-solr-staging4d', user: 'deploy', roles: %{main}
 
 set :whenever_host, ->{ "solr8" }
 set :whenever_environment, ->{ "staging" }
 
 def zk_host
-  "lib-zk-staging1:2181,lib-zk-staging2:2181,lib-zk-staging3:2181/solr8"
+  "lib-zk-staging1d:2181,lib-zk-staging2d:2181,lib-zk-staging3d:2181/solr8"
 end
 
 # config directory => config set name
