@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/pul_solr
 
     docker:
-      - image: cimg/ruby:2.7.6
+      - image: cimg/ruby:3.1.0
         environment:
           RAILS_ENV: test
       - image: pulibrary/ci-solr:8.4-v2.0.0
@@ -17,7 +17,7 @@ jobs:
           - pul_solr-{{ checksum "Gemfile" }}
           - pul_solr-
 
-      - run: gem install bundler -v 2.4.22
+      - run: gem install bundler
 
       - run:
           name: Install dependencies
