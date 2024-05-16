@@ -1,4 +1,4 @@
-server 'lib-solr-prod4', user: 'deploy', roles: %{main}
+server 'lib-solr-prod7', user: 'deploy', roles: %{main}
 
 set :whenever_host, ->{ "solr8" }
 set :whenever_environment, ->{ "production" }
