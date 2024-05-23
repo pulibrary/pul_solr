@@ -4,7 +4,7 @@ set :whenever_host, ->{ "solr8" }
 set :whenever_environment, ->{ "production" }
 
 def zk_host
-  "lib-zk1:2181,lib-zk2:2181,lib-zk3:2181/solr8"
+  "lib-zk-prod1:2181,lib-zk-prod2:2181,lib-zk-prod3:2181/solr8"
 end
 
 # config directory => config set name
