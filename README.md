@@ -158,10 +158,15 @@ eventually you may be lucky!
 1. Download and install the [eclipse memory analyzer](https://www.eclipse.org/mat/downloads.php) application.
 
 1. You need to assign enough heap to the app to hold the entire heap that you
-dumped on the server. When you unzip it you get a `mat` directory. Right click
-and select "Show Package Contents", then expand contents > eclipse > right click
-on "MemoryAnalyzer.ini" to edit. Change "-Xmx" to be a number bigger than the
-file you have.
+dumped on the server. When you unzip it you get a `mat` directory:
+
+    1. After installing the Memory Analyzer, open the
+    Applications directory in Finder.
+    1. Right click on Memory Analyzer and select "Show Package Contents"
+    1. expand contents > eclipse > right click
+    on "MemoryAnalyzer.ini" to edit.
+    1. Change "-Xmx" to be a number bigger than the
+    file you have.
 
 1. You're supposed to be able to double-click the 'mat' file but that doesn't work.
 you have to "Show Package Contents" > Contents > MacOS > run 'MemoryAnalyzer'
