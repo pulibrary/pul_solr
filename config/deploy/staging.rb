@@ -1,6 +1,6 @@
 server 'lib-solr-staging4d', user: 'deploy', roles: %{main}
 
-set :whenever_host, ->{ "solr8d" }
+set :whenever_host, ->{ "solr8" }
 set :whenever_environment, ->{ "staging" }
 
 def zk_host
