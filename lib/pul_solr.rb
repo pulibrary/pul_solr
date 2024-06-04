@@ -1,4 +1,5 @@
 require_relative 'pul_solr/backup_manager'
+require 'yaml'
 
 module PulSolr
   def self.collections
