@@ -1,5 +1,8 @@
 server 'lib-solr-staging4d', user: 'deploy', roles: %{main}
 
+# This must match the first half of a key in collections.yml,
+# otherwise the backup process won't be able to find any
+# collections to backup
 set :whenever_host, ->{ "solr8" }
 set :whenever_environment, ->{ "staging" }
 

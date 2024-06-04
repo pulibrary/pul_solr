@@ -6,6 +6,11 @@ gem 'capistrano-bundler'
 gem 'faraday'
 gem 'rake'
 gem 'rsolr'
+
+# RSpec should be in the test group, however rake tasks
+# try to load tasks from Rspec, and this causes backups
+# to fail.  Make sure backups work before moving it to
+# the test group.
 gem 'rspec', '~> 3.8'
 gem 'whenever'
 
