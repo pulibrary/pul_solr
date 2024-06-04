@@ -89,11 +89,37 @@ Backups are implemented as a ruby service class wrapped in a rake task that's in
 
 If a specific backup did not complete and you want more information, consult the log for the requeststatus and check it with the [requeststatus api call](https://lucene.apache.org/solr/guide/8_4/collections-api.html#requeststatus).
 
+### Restoring a backup
+
 Restoring a backup ([solr docs](https://lucene.apache.org/solr/guide/8_4/collection-management.html#restore)) is a matter of issuing the proper API call on the solr box, e.g.:
 
 ```
 $ curl "http://localhost:8983/solr/admin/collections?action=RESTORE&name=pulfalight-staging-20210111.bk&collection=pulfalight-staging-restore&location=/mnt/solr_backup/staging/20210111"
 ```
+
+To find the right values for this curl:
+
+1. SSH with a tunnel to a solr box (for example, `ssh -L 8983:localhost:8983 deploy@lib-solr-staging5d`)
+1. Run `ls -t /mnt/solr_backup/solr8/production` if you want to restore from
+   a production backup, or `ls -t /mnt/solr_backup/solr8/staging` if you want
+   to restore from a staging backup.  The first directory will be the most
+   recent backup.
+    * The **location** parameter will be `/mnt/solr_backup/solr8/{Environment}/{Backup Date}`.  In the example above, it is `/mnt/solr_backup/staging/20210111`
+1. Do an `ls` of the directory that you will use as the location parameter.  
+   For example, `ls /mnt/solr_backup/staging/20210111`.
+    * The **name** parameter will be the directory name of the collection you want to restore.  In the example above, it is `pulfalight-staging-20210111.bk`, referring to the `/mnt/solr_backup/staging/20210111/pulfalight-staging-20210111.bk` directory.
+1. Choose a name for a new collection you'd like to restore the data into.
+   In your browser, go to http://localhost:8983/solr/#/~collections and
+   confirm that there is not already a collection by that name.
+    * The **collection** parameter will be the name of the collection.
+1. If the collection is very large (e.g. the catalog), the restore will
+   probably time out.  You can still move forward by adding the **async**
+   parameter.  It should be something unique to this particular restore.
+1. Run the curl with the location, name, and collection parameters you
+   determined above.
+
+If you ran this with an async ID in the **async** param, you can check
+the progress in your browser at: `http://localhost:1234/solr/admin/collections?action=REQUESTSTATUS&requestid={your async id}`
 
 ## Specs
 
