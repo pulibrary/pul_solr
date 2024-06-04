@@ -6,6 +6,7 @@ gem 'capistrano-bundler'
 gem 'faraday'
 gem 'rake'
 gem 'rsolr'
+gem 'rspec', '~> 3.8'
 gem 'whenever'
 
 group :development do
@@ -17,7 +18,6 @@ group :development do
 end
 
 group :test do
-  gem 'rspec', '~> 3.8'
   gem 'rspec-solr', '~> 3.0'
   gem 'webmock'
 end
