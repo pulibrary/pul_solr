@@ -37,5 +37,5 @@ def allowed_targets
 end
 
 def allowed_hosts
-  ["solr8"]
+  ["solr8", "solr9"]
 end
