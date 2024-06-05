@@ -120,7 +120,7 @@ To find the right values for this curl:
    is large -- async parameters you determined above.
 
 If you ran this with an async ID in the **async** param, you can check
-the progress in your browser at: `http://localhost:1234/solr/admin/collections?action=REQUESTSTATUS&requestid={your async id}`
+the progress in your browser at: `http://localhost:8983/solr/admin/collections?action=REQUESTSTATUS&requestid={your async id}`
 
 ## Specs
 
