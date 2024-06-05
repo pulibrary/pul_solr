@@ -13,8 +13,8 @@ end
 # config directory => config set name
 def config_map
   {
-    "cdh_ppa" => "cdh_ppa",
-    "geniza" => "geniza"
+  #  "cdh_ppa" => "cdh_ppa",
+  #  "geniza" => "geniza"
   }
 end
 
