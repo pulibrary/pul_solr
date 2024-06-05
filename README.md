@@ -113,10 +113,11 @@ To find the right values for this curl:
    confirm that there is not already a collection by that name.
     * The **collection** parameter will be the name of the collection.
 1. If the collection is very large (e.g. the catalog), the restore will
-   probably time out.  You can still move forward by adding the **async**
-   parameter.  It should be something unique to this particular restore.
-1. Run the curl with the location, name, and collection parameters you
-   determined above.
+   probably time out.  You can still move forward by adding the
+   [**async** parameter](https://solr.apache.org/guide/8_4/collections-api.html#asynchronous-calls).
+   It should be something unique to this particular restore.
+1. Run the curl with the location, name, collection, and -- if the collection
+   is large -- async parameters you determined above.
 
 If you ran this with an async ID in the **async** param, you can check
 the progress in your browser at: `http://localhost:1234/solr/admin/collections?action=REQUESTSTATUS&requestid={your async id}`
