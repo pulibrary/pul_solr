@@ -32,3 +32,9 @@ solr8_staging:
   - 'pulmap-staging'
   - 'library-staging1' # uses libwww configset, which is the same as solr 7
   - 'special-collections-staging1' # uses libwww configset, which is the same as solr 7
+solr9_production:
+  - 'cdh_ppa'
+  - 'geniza'
+solr9_staging:
+  - 'cdh_ppa'
+  - 'geniza'
