@@ -4,7 +4,7 @@
 
 Dependencies
 
-* Ruby: 2.6.5
+* Ruby: 3.1.0
 
 SolrCloud machines are running Solr 8.4.1
 
