@@ -130,8 +130,8 @@
 
       <!-- boost local holdings (add 23 to the score) to reduce unnecessary requests -->
       <!-- When we changed to the BM25SimilarityFactory all scores were reduced by  -->
-      <!-- a factor of 2.2 so this was scaled from 50 to 23 -->
-      <str name="bf">if(field(numeric_id_b),23,0)</str>
+      <!-- a factor of 2.2 so this was scaled from 50 to 22.7272 -->
+      <str name="bf">if(field(numeric_id_b),22.7272,0)</str>
 
        <!-- this qf and pf are used by default, if not otherwise specified by
             client. The default blacklight_config will use these for the
