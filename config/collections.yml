@@ -1,21 +1,20 @@
 ---
 solr8_production:
-  - 'catalog-production1'
-  - 'catalog-production2'
   - 'cdh_shxco'
   - 'dpul-production'
-  - 'dss-production1'
+  - 'dss-production2'
   - 'pulfalight-production'
   - 'cicognara'
   - 'lae'
   - 'catalog-alma-production3'
   - 'catalog-alma-production2'
-  - 'pdc-discovery-production'
+  - 'pdc-discovery-production1'
+  - 'pdc-discovery-production2'
   - 'oawaiver-production'
   - 'figgy-production'
   - 'pulmap'
   - 'library-prod1' # uses libwww configset, which is the same as solr 7
-  - 'special-collections-prod1' # uses libwww configset, which is the same as solr 7
+  - 'special-collections-prod2' # uses libwww configset, which is the same as solr 7
 solr8_staging:
   - 'catalog-qa1' # uses catalog v2 production configset
   - 'catalog-qa2' # uses catalog v2 production configset
