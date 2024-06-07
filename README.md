@@ -91,6 +91,17 @@ If a specific backup did not complete and you want more information, consult the
 
 ### Restoring a backup
 
+Before restoring:
+1. Check the size of your backup with `du -sh`.  For example, if your backup is /mnt/solr_backup/solr8/production/20240606/catalog-alma-production3-20240606.bk:
+    
+    ```
+    /mnt/solr_backup/solr8/production/20240606/catalog-alma-production3-20240606.bk
+    ```
+    
+1. Check the size of the root file system on the machine on which you are performing the restore: `df -h`.
+1. If there is not enough storage on the root file system for the backup, resolve
+   that issue before proceeding.
+
 Restoring a backup ([solr docs](https://lucene.apache.org/solr/guide/8_4/collection-management.html#restore)) is a matter of issuing the proper API call on the solr box, e.g.:
 
 ```
