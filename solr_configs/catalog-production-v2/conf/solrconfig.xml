@@ -128,10 +128,8 @@
       <str name="q.alt">*:*</str>
       <str name="mm">6&lt;90%</str>
 
-      <!-- boost local holdings (add 23 to the score) to reduce unnecessary requests -->
-      <!-- When we changed to the BM25SimilarityFactory all scores were reduced by  -->
-      <!-- a factor of 2.2 so this was scaled from 50 to 22.7272 -->
-      <str name="bf">if(field(numeric_id_b),22.7272,0)</str>
+      <!-- boost local holdings (add 50 to the score) to reduce unnecessary requests -->
+      <str name="bf">if(field(numeric_id_b),50,0)</str>
 
        <!-- this qf and pf are used by default, if not otherwise specified by
             client. The default blacklight_config will use these for the
@@ -210,13 +208,13 @@
         title_addl_la
       </str>
       <str name="left_anchor_pf">
-        title_245a_lr^600
-        title_245_lr^600
-        title_245a_la^500
-        title_245_la^100
-        title_lr^100
-        title_la^20
-        title_addl_la^10
+        title_245a_lr^1320
+        title_245_lr^1320
+        title_245a_la^1100
+        title_245_la^220
+        title_lr^220
+        title_la^44
+        title_addl_la^22
       </str>
       <str name="in_series_qf">
         more_in_this_series_la
