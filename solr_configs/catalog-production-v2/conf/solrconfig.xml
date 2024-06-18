@@ -202,10 +202,10 @@
         cjk_author^22
       </str>
       <str name="left_anchor_qf">
-        title_245a_la^110
-        title_245_la^22
-        title_la^4.4
-        title_addl_la^2.2
+        title_245a_la^50
+        title_245_la^10
+        title_la^2
+        title_addl_la
       </str>
       <str name="left_anchor_pf">
         title_245a_lr^1320
@@ -259,7 +259,7 @@
         cjk_series_title^22
       </str>
       <str name="title_qf">
-        title_a_index^2420
+        title_a_index^1100
         title_unstem_search^220
         title_display^110
         other_title_index^11
