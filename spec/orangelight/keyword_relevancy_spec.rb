@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'json'
-require 'byebug'
 
 describe 'title subfield a boost' do
   include_context 'solr_helpers'

@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'json'
-require 'byebug'
 
 def title_query_params q
   {qf: "${title_qf}", pf:"${title_pf}", q: q}
@@ -103,7 +102,7 @@ describe 'title keyword search' do
     end
     it 'left anchor exact matches Science' do
       results = solr_response(left_anchor_query_params('Science').merge('sort' => 'score DESC'))["response"]["docs"]
-      byebug
+
       expect(results[0]["id"]).to eq(first_science)
       expect(results[1]["id"]).to eq(second_science)
       expect(results[2]["id"]).to eq(science_and_spirit)
