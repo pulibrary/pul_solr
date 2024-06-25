@@ -87,8 +87,10 @@ describe 'title keyword search' do
     let(:first_science) { '9774575' }
     let(:science_and_spirit) { '9805613' }
     let(:second_science) { '857469' }
+    let(:delta) { 0.2 }
 
     before do
+      delete_all
       add_doc(first_science)
       add_doc(science_and_spirit)
       add_doc(second_science)
@@ -99,8 +101,15 @@ describe 'title keyword search' do
             .to eq({"id" => science_and_spirit})
     end
     it 'left anchor exact matches Science' do
-      expect(solr_resp_doc_ids_only(left_anchor_query_params('Science').merge('sort' => 'score DESC'))["response"]["docs"].last)
-            .to eq({"id" => science_and_spirit})
+      results = solr_response(left_anchor_query_params('Science').merge('sort' => 'score DESC'))["response"]["docs"]
+
+      expect(results[0]["id"]).to eq(first_science)
+      expect(results[1]["id"]).to eq(second_science)
+      expect(results[2]["id"]).to eq(science_and_spirit)
+
+      expect(results[0]["score"]).to be_within(delta).of(399.7818)
+      expect(results[1]["score"]).to be_within(delta).of(291.5021)
+      expect(results[2]["score"]).to be_within(delta).of(248.32442)
     end
 
     context 'with a title which includes whitespace around punctuation marks' do
@@ -126,22 +135,25 @@ describe 'title keyword search' do
     let(:parameters) do
       title_query_params(query).merge('sort' => 'score DESC')
     end
-    let(:response) { solr_resp_doc_ids_only(parameters) }
+    let(:response) { solr_response(parameters) }
     let(:documents) { response["response"]["docs"] }
+    let(:delta) { 0.2 }
 
     before do
+      delete_all
       add_doc(bibid)
     end
 
     it 'finds titles containing dashes' do
-      expect(documents.last).to eq({ "id" => bibid })
+      expect(documents.last["id"]).to eq( bibid )
+      expect(documents.last["score"]).to be_within(delta).of(1651.019)
     end
 
     context 'when a query contains a dash character' do
       let(:query) { 'theory of the avant-garde' }
 
       it 'finds titles containing dashes' do
-        expect(documents.last).to eq({ "id" => bibid })
+        expect(documents.last["id"]).to eq(bibid)
       end
     end
   end

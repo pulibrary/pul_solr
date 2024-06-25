@@ -36,6 +36,7 @@ describe 'subject keyword search' do
     end
   end
   describe 'stemming disabled' do
+    let(:delta) { 0.2 }
     before(:all) do
       solr.add({ id: 1, subject_unstem_search: 'Biographical films—United States' })
       solr.commit
@@ -48,6 +49,10 @@ describe 'subject keyword search' do
     end
     it 'stemmed form excluded from subject field' do
       expect(solr_resp_doc_ids_only(subject_query_params('Biograph film Unit State'))).not_to include('1')
+    end
+    it 'calulates the correct score' do
+      docs = solr_response(subject_query_params('Biographical films United States'))["response"]["docs"]
+      expect(docs[0]["score"]).to be_within(delta).of(253.16022)
     end
   end
   after(:all) do

@@ -38,19 +38,28 @@ describe 'title subfield a boost' do
     end
   end
   context 'when performing a keyword search with local and scsb results' do
-    capitalism_socialism_democracy_1 = '1225885'
-    capitalism_socialism_democracy_2 = '1225884'
+    capitalism_socialism_democracy_1 = '1225884'
+    capitalism_socialism_democracy_2 = '1225885'
     capitalism_socialism_democracy_3 = 'SCSB-3330744'
+    let(:delta) { 0.2 }
+
     before(:all) do
+      # The next line is needed for tests to pass when
+      # run as both the whole file and individually
+      delete_all
       add_doc(capitalism_socialism_democracy_1)
       add_doc(capitalism_socialism_democracy_2)
       add_doc(capitalism_socialism_democracy_3)
     end
     it 'sorts scsb record after local records' do
-      expect(solr_resp_doc_ids_only({ 'q' => 'capitalism socialism democracy' }))
-            .to include(capitalism_socialism_democracy_1).before(capitalism_socialism_democracy_3)
-      expect(solr_resp_doc_ids_only({ 'q' => 'capitalism socialism democracy' }))
-            .to include(capitalism_socialism_democracy_2).before(capitalism_socialism_democracy_3)
+      documents = solr_response({ 'q' => 'capitalism socialism democracy' })["response"]["docs"]
+      expect(documents[0]["id"]).to eq(capitalism_socialism_democracy_1)
+      expect(documents[1]["id"]).to eq(capitalism_socialism_democracy_2)
+      expect(documents[2]["id"]).to eq(capitalism_socialism_democracy_3)
+
+      expect(documents[0]["score"]).to be_within(delta).of(7665.9126)
+      expect(documents[1]["score"]).to be_within(delta).of(7665.902)
+      expect(documents[2]["score"]).to be_within(delta).of(7615.921)
     end
   end
 

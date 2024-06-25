@@ -26,12 +26,15 @@ describe 'author keyword search' do
   describe 'author 1xx field' do
     author = '484612'
     related_name = '5188770'
+    let(:delta) { 0.2 }
     before(:all) do
       add_doc(author)
       add_doc(related_name)
     end
     it 'author 1xx match returned before 7xx match' do
-      expect(solr_resp_doc_ids_only(author_query_params('Fellbaum'))).to include(author).before(related_name)
+      documents = solr_response(author_query_params('Fellbaum'))["response"]["docs"]
+      expect(documents[0]["id"]).to include(author).before(related_name)
+      expect(documents[0]["score"]).to be_within(delta).of(13.909944)
     end
   end
   after(:all) do
