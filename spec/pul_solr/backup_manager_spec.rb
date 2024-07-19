@@ -74,4 +74,54 @@ describe PulSolr::BackupManager do
       expect(a_request(:get, url).with(query: hash_including(staging_params))).to have_been_made
     end
   end
+  describe 'logging' do
+    let(:logger) { Logger.new(nil) }
+    let(:backup_manager) { PulSolr::BackupManager.new(base_dir: base_dir, host: host, 
+                                                      solr_env: solr_env, logger:) }
+    it 'logs before and after cleaning up backups' do
+      allow(logger).to receive(:info)
+      backup_manager.cleanup_old_backups
+      expect(logger).to have_received(:info).twice
+      expect(logger).to have_received(:info).with(/Deleting backups from before/)
+      expect(logger).to have_received(:info).with(/Backups deleted from before/)
+    end
+
+    it "logs the file it's backing up to" do
+      allow(logger).to receive(:info)
+      backup_manager.backup_dir
+      expect(logger).to have_received(:info).with(/Backup directory is/)
+    end
+
+    it 'logs before and after backing up a collection' do
+      url = "http://localhost:8983/solr/admin/collections"
+      test_params = {
+        "action" => "BACKUP",
+        "collection" => "test-staging",
+        "location" => File.join(File.absolute_path(base_dir), host, solr_env, today_str),
+        "name" => "test-staging-#{today_str}.bk"
+      }
+      staging_params = {
+        "action" => "BACKUP",
+        "collection" => "test",
+        "location" => File.join(File.absolute_path(base_dir), host, solr_env, today_str),
+        "name" => "test-#{today_str}.bk"
+      }
+      stub_request(:get, url)
+        .with(:query => hash_including(test_params))
+        .to_return(status: 200, body: "", headers: {})
+      stub_request(:get, url)
+        .with(:query => hash_including(staging_params))
+        .to_return(status: 200, body: "", headers: {})
+      FileUtils.mkdir_p(base_dir)
+      collections = ["test", "test-staging"]
+
+      allow(logger).to receive(:info)
+      backup_manager.backup(collections: collections)
+      expect(logger).to have_received(:info).with(/Backup directory is/)
+      expect(logger).to have_received(:info).with(/Begin backing up collection: test with request status/)
+      expect(logger).to have_received(:info).with(/Begin backing up collection: test-staging with request status/)
+      expect(logger).to have_received(:info).with(/Finished backing up collection: test with response code: 200 and message: /)
+      expect(logger).to have_received(:info).with(/Finished backing up collection: test-staging with response code: 200 and message: /)
+    end
+  end
 end
