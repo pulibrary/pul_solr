@@ -18,12 +18,14 @@ module PulSolr
       Dir[File.join(base_dir, host, solr_env, "*")].select { |d| older_than_threshold?(d) }.each do |d|
         FileUtils.rmtree(d)
       end
+      logger.info "Backups deleted from before #{oldest_backup_date}"
     end
 
     def backup_dir
       @backup_dir ||=
         begin
           FileUtils.mkdir_p(destination)
+          logger.info("Backup directory is #{destination}")
           destination
         end
     end
@@ -32,10 +34,11 @@ module PulSolr
     def backup(collections:)
       collections.each do |collection|
         request_status = "#{collection}-#{timestamp}"
-        logger.info "Backing up collection: #{collection} with requeststatus #{request_status}"
+        logger.info "Begin backing up collection: #{collection} with request status #{request_status}"
         url_path = "/admin/collections?action=BACKUP&name=#{collection}-#{today_str}.bk&collection=#{collection}&location=#{backup_dir}&async=#{request_status}"
         uri = URI.parse("#{base_url}#{url_path}")
         response = Net::HTTP.get_response(uri)
+        logger.info("Finished backing up collection: #{collection} with response code: #{response.code} and message: #{response.message}")
       end
     end
 
