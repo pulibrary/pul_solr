@@ -27,6 +27,7 @@ solr8_staging:
   - 'cicognara-staging'
   - 'lae-staging'
   - 'dpul-staging'
+  - 'dpulc-staging'
   - 'pdc-discovery-staging'
   - 'oawaiver-staging'
   - 'figgy-staging'
