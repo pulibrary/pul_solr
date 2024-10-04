@@ -91,6 +91,7 @@
        configuration.
     -->
   <dataDir>${solr.data.dir:}</dataDir>
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
 
 
   <!-- The DirectoryFactory to use for indexes.
