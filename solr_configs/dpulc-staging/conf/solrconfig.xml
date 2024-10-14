@@ -1094,8 +1094,8 @@
   <updateProcessor class="org.apache.solr.update.processor.LangDetectLanguageIdentifierUpdateProcessorFactory" name="lang-detection">
     <str name="langid">true</str>
     <str name="langid.fl">description_txtm</str>
-    <str name="langid.langField">language_s</str>
-    <str name="langid.langsField">language_ss</str>
+    <str name="langid.langField">detectlang_s</str>
+    <str name="langid.langsField">detectlang_ss</str>
     <str name="langid.fallback">nolang</str>
     <str name="langid.map">true</str>
     <str name="langid.map.keepOrig">true</str>
