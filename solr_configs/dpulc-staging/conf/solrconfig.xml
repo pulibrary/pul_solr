@@ -72,7 +72,8 @@
        The example below can be used to load a solr-contrib along
        with their external dependencies.
     -->
-    <!-- <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-ltr-\d.*\.jar" /> -->
+    <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-.*\.jar" />
+    <lib dir="${solr.install.dir:../../../..}/contrib/langid/lib/" regex=".*\.jar" />
 
   <!-- an exact 'path' can be used instead of a 'dir' to specify a
        specific jar file.  This will cause a serious error to be logged
@@ -90,6 +91,7 @@
        configuration.
     -->
   <dataDir>${solr.data.dir:}</dataDir>
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
 
 
   <!-- The DirectoryFactory to use for indexes.
@@ -776,6 +778,12 @@
     </lst>
   </initParams>
 
+  <initParams path="/update/**">
+    <lst name="defaults">
+      <str name="update.chain">langdetect</str>
+    </lst>
+  </initParams>
+
   <!-- Search Components
 
        Search components are registered to SolrCore and used by
@@ -1042,6 +1050,13 @@
 
     -->
 
+  <updateRequestProcessorChain name="langdetect"
+           processor="lang-detection">
+    <processor class="solr.LogUpdateProcessorFactory"/>
+    <processor class="solr.DistributedUpdateProcessorFactory"/>
+    <processor class="solr.RunUpdateProcessorFactory"/>
+  </updateRequestProcessorChain>
+
   <!-- Add unknown fields to the schema
 
        Field type guessing update processors that will
@@ -1076,6 +1091,17 @@
       <str>EEE MMM ppd HH:mm:ss [z ]yyyy</str>
     </arr>
   </updateProcessor>
+  <updateProcessor class="org.apache.solr.update.processor.LangDetectLanguageIdentifierUpdateProcessorFactory" name="lang-detection">
+    <str name="langid">true</str>
+    <str name="langid.fl">description_txtm</str>
+    <str name="langid.langField">detectlang_s</str>
+    <str name="langid.langsField">detectlang_ss</str>
+    <str name="langid.fallback">nolang</str>
+    <str name="langid.map">true</str>
+    <str name="langid.map.keepOrig">true</str>
+    <str name="langid.map.individual">true</str>
+    <str name="langid.whitelist">en,ar,bg,ca,cj,cz,da,de,el,es,et,eu,fa,fi,fr,ga,gl,hi,hu,hy,id,it,ja,ko,lv,nl,no,pt,ro,ru,sv,th,tr</str>
+  </updateProcessor>
   <updateProcessor class="solr.AddSchemaFieldsUpdateProcessorFactory" name="add-schema-fields">
     <lst name="typeMapping">
       <str name="valueClass">java.lang.String</str>
@@ -1105,6 +1131,8 @@
       <str name="fieldType">pdoubles</str>
     </lst>
   </updateProcessor>
+
+  <!-- Language detection and indexing for descriptions -->
 
   <!-- The update.autoCreateFields property can be turned to false to disable schemaless mode -->
   <updateRequestProcessorChain name="add-unknown-fields-to-the-schema" default="${update.autoCreateFields:true}"

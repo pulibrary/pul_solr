@@ -143,7 +143,41 @@
       "*_itsi" => "*_i"
     -->
 
-    <dynamicField name="*_txt_ens" type="text_en"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm" type="text_general" indexed="true" stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_nolang" type="text_general" indexed="true" stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_en" type="text_en"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_ar" type="text_ar"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_bg" type="text_bg"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_ca" type="text_ca"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_cjk" type="text_cjk" indexed="true" stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_cz" type="text_cz"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_da" type="text_da"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_de" type="text_de"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_el" type="text_el"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_es" type="text_es"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_et" type="text_et"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_eu" type="text_eu"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_fa" type="text_fa"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_fi" type="text_fi"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_fr" type="text_fr"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_ga" type="text_ga"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_gl" type="text_gl"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_hi" type="text_hi"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_hu" type="text_hu"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_hy" type="text_hy"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_id" type="text_id"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_it" type="text_it"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_ja" type="text_ja"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_ko" type="text_ko"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_lv" type="text_lv"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_nl" type="text_nl"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_no" type="text_no"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_pt" type="text_pt"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_ro" type="text_ro"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_ru" type="text_ru"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_sv" type="text_sv"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_th" type="text_th"  indexed="true"  stored="true" multiValued="true"/>
+    <dynamicField name="*_txtm_tr" type="text_tr"  indexed="true"  stored="true" multiValued="true"/>
 
     <dynamicField name="*_i"  type="pint"    indexed="true"  stored="true"/>
     <dynamicField name="*_is" type="pints"    indexed="true"  stored="true"/>
