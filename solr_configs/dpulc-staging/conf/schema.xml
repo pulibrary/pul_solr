@@ -130,7 +130,7 @@
        for fields via the specification of patterns to match field names.
        EXAMPLE:  name="*_i" will match any field ending in _i (like myid_i, z_i)
        RESTRICTION: the glob-like pattern in the name attribute must have a "*" only at the start or the end.  -->
-   
+
     <!-- The default solr config has dynamic fields that map from blacklight dynamic fields as follows:
       "*_ssi" => "*_s"
       "*_ssim" => "*_ss"
