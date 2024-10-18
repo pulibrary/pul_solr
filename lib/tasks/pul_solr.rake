@@ -26,6 +26,15 @@ namespace :pul_solr do
     backup_manager.cleanup_old_backups
     backup_manager.backup(collections: collections)
   end
+
+  desc "copies files from another project that has been checked out locally"
+  task :sync do
+    from_dir = ENV["FROM_DIR"]
+    configset = ENV["CONFIGSET"]
+    abort "usage: rake pul_solr:sync FROM_DIR=../dpul-collections CONFIGSET=dpulc-staging" unless from_dir && configset
+
+    FileUtils.cp_r(File.join(from_dir, "solr", "conf"), File.join("solr_configs", configset))
+  end
 end
 
 def config_target(target)
