@@ -707,7 +707,7 @@
       <str name="q.alt">*:*</str>
       <str name="qf">
         id
-        title_ss
+        title_txtm
         description_txtm
         years_is
       </str>
@@ -1096,13 +1096,14 @@
   </updateProcessor>
   <updateProcessor class="org.apache.solr.update.processor.LangDetectLanguageIdentifierUpdateProcessorFactory" name="lang-detection">
     <str name="langid">true</str>
-    <str name="langid.fl">description_txtm</str>
+    <str name="langid.fl">description_txtm,title_txtm</str>
     <str name="langid.langField">detectlang_s</str>
     <str name="langid.langsField">detectlang_ss</str>
     <str name="langid.fallback">nolang</str>
     <str name="langid.map">true</str>
     <str name="langid.map.keepOrig">true</str>
     <str name="langid.map.individual">true</str>
+    <str name="langid.threshold">0.8</str>
     <str name="langid.whitelist">en,ar,bg,ca,cj,cz,da,de,el,es,et,eu,fa,fi,fr,ga,gl,hi,hu,hy,id,it,ja,ko,lv,nl,no,pt,ro,ru,sv,th,tr</str>
   </updateProcessor>
   <updateProcessor class="solr.AddSchemaFieldsUpdateProcessorFactory" name="add-schema-fields">
