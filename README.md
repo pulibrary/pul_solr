@@ -39,11 +39,6 @@ There are capistrano tasks to connect to the Solr UI for managing solr that can 
    bundle exec cap staging solr:console
    ```
 
- * Staging Solr 8d
-   ```
-   bundle exec cap staging_new solr:console
-   ```
-
 ## Managing Orangelight Catalog Configsets
 
 When we need to make a change to the orangelight config set that would break
