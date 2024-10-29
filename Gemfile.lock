@@ -58,8 +58,7 @@ GEM
       ffi
     rbnacl-libsodium (1.0.16)
       rbnacl (>= 3.0.1)
-    rexml (3.3.6)
-      strscan
+    rexml (3.3.9)
     rsolr (2.5.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
@@ -86,7 +85,6 @@ GEM
       net-scp (>= 1.1.2)
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
-    strscan (3.1.0)
     uri (0.13.0)
     webmock (3.19.1)
       addressable (>= 2.8.0)
