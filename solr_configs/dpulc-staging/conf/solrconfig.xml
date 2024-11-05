@@ -783,7 +783,7 @@
 
   <initParams path="/update/**">
     <lst name="defaults">
-      <str name="update.chain">langdetect</str>
+      <str name="update.chain">dpulc-processor-chain</str>
     </lst>
   </initParams>
 
@@ -1053,12 +1053,16 @@
 
     -->
 
-  <updateRequestProcessorChain name="langdetect"
-           processor="lang-detection">
+  <updateRequestProcessorChain name="dpulc-processor-chain"
+           processor="lang-detection, build-slugs">
     <processor class="solr.LogUpdateProcessorFactory"/>
     <processor class="solr.DistributedUpdateProcessorFactory"/>
     <processor class="solr.RunUpdateProcessorFactory"/>
   </updateRequestProcessorChain>
+
+  <updateProcessor class="solr.StatelessScriptUpdateProcessorFactory" name="build-slugs">
+    <str name="script">slug.js</str>
+  </updateProcessor>
 
   <!-- Add unknown fields to the schema
 
@@ -1099,12 +1103,13 @@
     <str name="langid.fl">description_txtm,title_txtm</str>
     <str name="langid.langField">detectlang_s</str>
     <str name="langid.langsField">detectlang_ss</str>
+    <str name="langid.lcmap">zh-cn:cjk zh-tw:cjk ja:cjk ko:cjk</str>
     <str name="langid.fallback">nolang</str>
     <str name="langid.map">true</str>
     <str name="langid.map.keepOrig">true</str>
     <str name="langid.map.individual">true</str>
     <str name="langid.threshold">0.8</str>
-    <str name="langid.whitelist">en,ar,bg,ca,cj,cz,da,de,el,es,et,eu,fa,fi,fr,ga,gl,hi,hu,hy,id,it,ja,ko,lv,nl,no,pt,ro,ru,sv,th,tr</str>
+    <str name="langid.whitelist">en,ar,bg,ca,cj,cz,da,de,el,es,et,eu,fa,fi,fr,ga,gl,hi,hu,hy,id,it,ja,ko,lv,nl,no,pt,ro,ru,sv,th,tr,zh,zh-cn,zh-tw</str>
   </updateProcessor>
   <updateProcessor class="solr.AddSchemaFieldsUpdateProcessorFactory" name="add-schema-fields">
     <lst name="typeMapping">
