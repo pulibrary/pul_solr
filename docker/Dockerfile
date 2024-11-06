@@ -3,6 +3,8 @@ FROM solr:8.4
 COPY --chown=$SOLR_USER:$SOLR_USER security.json /opt/solr/security.json
 COPY --chown=$SOLR_USER:$SOLR_USER ci-start.sh /opt/solr/server/scripts/ci-start.sh
 COPY --chown=$SOLR_USER:$SOLR_USER lando-start.sh /opt/solr/server/scripts/lando-start.sh
+COPY --chown=$SOLR_USER:$SOLR_USER rhino-1.7.15.jar /opt/solr/server/solr-webapp/webapp/WEB-INF/lib/rhino-1.7.15.jar
+COPY --chown=$SOLR_USER:$SOLR_USER rhino-engine-1.7.15.jar /opt/solr/server/solr-webapp/webapp/WEB-INF/lib/rhino-engine-1.7.15.jar
 
 ENV BASE_URL "https://raw.githubusercontent.com/pulibrary/princeton_ansible/main/roles/solrcloud/files"
 ENV JTS_URL "$BASE_URL/jts-core-1.15.1.jar"
