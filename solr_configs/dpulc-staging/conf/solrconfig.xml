@@ -1062,6 +1062,7 @@
 
   <updateProcessor class="solr.StatelessScriptUpdateProcessorFactory" name="build-slugs">
     <str name="script">slug.js</str>
+    <str name="engine">rhino</str>
   </updateProcessor>
 
   <!-- Add unknown fields to the schema

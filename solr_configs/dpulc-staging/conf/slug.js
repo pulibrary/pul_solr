@@ -1,7 +1,11 @@
 function processAdd(cmd) {
   var doc = cmd.solrDoc;
-  var lang = doc.getFieldValue("detectlang_s");
-  var title = doc.getFieldValue("title_txtm");
+
+  // ""+ is a workaround to with the Rhino JS scripting engine
+  // that coerces a Java string to a JavaScript string.
+  // https://stackoverflow.com/questions/4050513/rhino-how-to-return-a-string-from-java-to-javascript
+  var lang = ""+doc.getFieldValue("detectlang_s");
+  var title = ""+doc.getFieldValue("title_txtm");
   var maxWords = 5;
   var maxCharacters = 35;
 
