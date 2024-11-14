@@ -143,6 +143,7 @@
       "*_itsi" => "*_i"
     -->
 
+    <!-- fields populated by language detection -->
     <dynamicField name="*_txtm" type="text_general" indexed="true" stored="true" multiValued="true"/>
     <dynamicField name="*_txtm_nolang" type="text_general" indexed="true" stored="true" multiValued="true"/>
     <dynamicField name="*_txtm_en" type="text_en"  indexed="true"  stored="true" multiValued="true"/>

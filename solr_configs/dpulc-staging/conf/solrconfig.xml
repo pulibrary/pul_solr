@@ -707,9 +707,79 @@
       <str name="q.alt">*:*</str>
       <str name="qf">
         id
-        title_txtm
-        description_txtm
         years_is
+
+        title_txtm
+        title_txtm_nolang
+        title_txtm_en
+        title_txtm_ar
+        title_txtm_bg
+        title_txtm_ca
+        title_txtm_cjk
+        title_txtm_cz
+        title_txtm_da
+        title_txtm_de
+        title_txtm_el
+        title_txtm_es
+        title_txtm_et
+        title_txtm_eu
+        title_txtm_fa
+        title_txtm_fi
+        title_txtm_fr
+        title_txtm_ga
+        title_txtm_gl
+        title_txtm_hi
+        title_txtm_hu
+        title_txtm_hy
+        title_txtm_id
+        title_txtm_it
+        title_txtm_ja
+        title_txtm_ko
+        title_txtm_lv
+        title_txtm_nl
+        title_txtm_no
+        title_txtm_pt
+        title_txtm_ro
+        title_txtm_ru
+        title_txtm_sv
+        title_txtm_th
+        title_txtm_tr
+
+        description_txtm
+        description_txtm_nolang
+        description_txtm_en
+        description_txtm_ar
+        description_txtm_bg
+        description_txtm_ca
+        description_txtm_cjk
+        description_txtm_cz
+        description_txtm_da
+        description_txtm_de
+        description_txtm_el
+        description_txtm_es
+        description_txtm_et
+        description_txtm_eu
+        description_txtm_fa
+        description_txtm_fi
+        description_txtm_fr
+        description_txtm_ga
+        description_txtm_gl
+        description_txtm_hi
+        description_txtm_hu
+        description_txtm_hy
+        description_txtm_id
+        description_txtm_it
+        description_txtm_ja
+        description_txtm_ko
+        description_txtm_lv
+        description_txtm_nl
+        description_txtm_no
+        description_txtm_pt
+        description_txtm_ro
+        description_txtm_ru
+        description_txtm_sv
+        description_txtm_th
+        description_txtm_tr
       </str>
     </lst>
     <!-- In addition to defaults, "appends" params can be specified
