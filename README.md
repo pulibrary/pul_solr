@@ -85,9 +85,9 @@ SOLR_URL=http://localhost:8983/solr bundle exec cap development "collections:del
 
 ## SolrCloud Backups
 
-Backups are implemented as a ruby service class wrapped in a rake task that's invoked by cron (scheduled via whenever / capistrano)
+Backups are implemented as a ruby service class wrapped in a rake task that's invoked by cron (scheduled via whenever / capistrano). A collection must be listed in the `config_map` of the `/config/deploy/<env>.rb` file to generate a backup.
 
-If a specific backup did not complete and you want more information, consult the log for the requeststatus and check it with the [requeststatus api call](https://lucene.apache.org/solr/guide/8_4/collections-api.html#requeststatus).
+If a specific backup did not complete and you want more information, consult the Ruby log for the requeststatus and check it with the [requeststatus api call](https://lucene.apache.org/solr/guide/8_4/collections-api.html#requeststatus).
 
 ### Restoring a backup
 
