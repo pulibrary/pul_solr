@@ -23,7 +23,12 @@ inventory](https://docs.google.com/spreadsheets/d/118O7JeVEPaoVsCIxoWLdDTctcTCe4
 
 ## Adding a new core
 
-This repository updates, but does not create, collections. To add a new collection, create its config here and deploy to get the config up to the server. Then use the UI to create the collection. Finally, you can add the collection to the deploy scripts so that it will be updated in future deployments (https://github.com/pulibrary/pul_solr/blob/main/config/collections.yml).
+This repository updates, but does not create, collections. To add a new collection:
+- create the collection config here
+- deploy to get the config up to the server
+- use the UI to create the collection
+- add the collection to the deploy scripts so that it will be updated in future deployments (https://github.com/pulibrary/pul_solr/blob/main/config/collections.yml)
+- add the collection to the `config_map` in the relevant `/config/deploy/<env>.rb` file so that it will be backed up
 
 **Note: Each collection should be created with a replication factor of 2 at minimum.**
 
