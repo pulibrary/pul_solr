@@ -19,12 +19,10 @@ namespace :pul_solr do
     target = ENV["SOLR_ENV"]
     host = ENV["HOST"]
     abort "usage: rake pul_solr:backup HOST=solr8 SOLR_ENV=[production|staging]" unless (allowed_targets.include?(target) && allowed_hosts.include?(host))
-    collections = PulSolr.collections["#{host}_#{target}"]
-
     logger = Logger.new("/tmp/solr_backup.log", "monthly")
     backup_manager = PulSolr::BackupManager.new(host: host, solr_env: target, logger: logger)
     backup_manager.cleanup_old_backups
-    backup_manager.backup(collections: collections)
+    backup_manager.backup
   end
 
   desc "copies files from another project that has been checked out locally"
