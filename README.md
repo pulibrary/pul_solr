@@ -24,11 +24,11 @@ inventory](https://docs.google.com/spreadsheets/d/118O7JeVEPaoVsCIxoWLdDTctcTCe4
 ## Adding a new core
 
 This repository updates, but does not create, collections. To add a new collection:
-- create the collection config here
+- add the new collection's configuration to this project's `solr_configs` directory
+- add the new solr configuration location and config set name to the `config_map` in the relevant `/config/deploy/<env>.rb` file so it will be uploaded to zookeeper
 - deploy to get the config up to the server
 - use the UI to create the collection
-- add the collection to the deploy scripts so that it will be updated in future deployments (https://github.com/pulibrary/pul_solr/blob/main/config/collections.yml)
-- add the collection to the `config_map` in the relevant `/config/deploy/<env>.rb` file so that it will be backed up
+- add the collection to the deploy scripts (https://github.com/pulibrary/pul_solr/blob/main/config/collections.yml) collections listed in `collections.yml` will be updated in future deployments and also backed up by the rake task
 
 **Note: Each collection should be created with a replication factor of 2 at minimum.**
 
@@ -85,7 +85,7 @@ SOLR_URL=http://localhost:8983/solr bundle exec cap development "collections:del
 
 ## SolrCloud Backups
 
-Backups are implemented as a ruby service class wrapped in a rake task that's invoked by cron (scheduled via whenever / capistrano). A collection must be listed in the `config_map` of the `/config/deploy/<env>.rb` file to generate a backup.
+Backups are implemented as a ruby service class wrapped in a rake task that's invoked by cron (scheduled via whenever / capistrano). A collection must be listed in the collection lists in `config/collections.yml` to generate a backup.
 
 If a specific backup did not complete and you want more information, consult the Ruby log for the requeststatus and check it with the [requeststatus api call](https://lucene.apache.org/solr/guide/8_4/collections-api.html#requeststatus).
 
