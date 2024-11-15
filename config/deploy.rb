@@ -42,6 +42,12 @@ def solr_url
   ENV['SOLR_URL'] ||= 'http://localhost:8983/solr'
 end
 
+def list_collections
+  body = capture "curl '#{solr_url}/admin/collections?action=LIST'"
+  json = JSON.parse(body)
+  json["collections"]
+end
+
 namespace :deploy do
   desc "Generate the crontab tasks using Whenever"
   after :published, :whenever do
@@ -63,7 +69,7 @@ namespace :deploy do
       # on solr cloud, reload the configsets and collections
       else
         config_map.each { |key, val| update_configset(config_dir: key, config_set: val) }
-        collections.each { |collection| reload_collection(collection) }
+        list_collections.each { |collection| reload_collection(collection) }
       end
     end
   end
@@ -141,10 +147,6 @@ namespace :configsets do
 end
 
 namespace :collections do
-  def list_collections
-    execute "curl '#{solr_url}/admin/collections?action=LIST'"
-  end
-
   def create_collection(collection, config_name, num_shards = 1, replication_factor = 1, shards_per_node = 1)
     execute "curl '#{solr_url}/admin/collections?action=CREATE&name=#{collection}&collection.configName=#{config_name}&numShards=#{num_shards}&replicationFactor=#{replication_factor}&maxShardsPerNode=#{shards_per_node}'"
   end
@@ -160,7 +162,7 @@ namespace :collections do
   desc 'List Collections'
   task :list do
     on roles(:main) do
-      list_collections
+      puts list_collections
     end
   end
 
