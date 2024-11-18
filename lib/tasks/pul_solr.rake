@@ -4,16 +4,6 @@ require 'logger'
 require_relative '../../lib/pul_solr'
 
 namespace :pul_solr do
-  namespace :list do
-    desc "list collections configuration for given deploy target"
-    task :collections do
-      target = ENV["TARGET"]
-      abort "usage: rake pul_solr:list:collections TARGET=solr8-production" unless target
-      collections = PulSolr.collections[config_target(target)]
-      collections.each { |collection| puts collection }
-    end
-  end
-
   desc "backup all collections on solrcloud server"
   task "backup" do
     target = ENV["SOLR_ENV"]

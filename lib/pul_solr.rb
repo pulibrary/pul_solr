@@ -2,10 +2,6 @@ require_relative 'pul_solr/backup_manager'
 require 'yaml'
 
 module PulSolr
-  def self.collections
-    @@collections ||= YAML.safe_load(File.read(File.join("config", "collections.yml")))
-  end
-
   def self.solr_connection
     @@solr_connection ||= {
       test: {

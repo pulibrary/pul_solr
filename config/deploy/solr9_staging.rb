@@ -1,8 +1,6 @@
 server 'lib-solr-staging1', user: 'deploy', roles: %{main}
 
-# This must match the first half of a key in collections.yml,
-# otherwise the backup process won't be able to find any
-# collections to backup
+# This is used to create part of the backup directory path
 set :whenever_host, ->{ "solr9" }
 set :whenever_environment, ->{ "staging" }
 
@@ -16,8 +14,4 @@ def config_map
     "cdh_ppa" => "cdh_ppa",
     "geniza" => "geniza"
   }
-end
-
-def collections
-  PulSolr.collections["solr9_staging"]
 end
