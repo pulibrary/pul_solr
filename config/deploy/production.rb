@@ -23,7 +23,3 @@ def config_map
     "pulmap" => "pulmap"
   }
 end
-
-def collections
-  PulSolr.collections["solr8_production"]
-end

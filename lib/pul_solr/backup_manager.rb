@@ -1,10 +1,11 @@
 require 'net/http'
 require 'logger'
+require 'json'
 
 module PulSolr
   class BackupManager
     attr_reader :base_dir, :host, :solr_env, :base_url, :logger
-    def initialize(base_dir: "/mnt/solr_backup", host:, solr_env:, base_url: "http://localhost:8983/solr", logger:)
+    def initialize(base_dir: "/mnt/solr_backup", host:, solr_env:, base_url: "http://localhost:8983", logger:)
       @base_dir = base_dir
       @solr_env = solr_env
       @host = host
@@ -31,15 +32,22 @@ module PulSolr
     end
 
     # @param collections [Array<String>]
-    def backup(collections:)
-      collections.each do |collection|
+    def backup
+      list_collections.each do |collection|
         request_status = "#{collection}-#{timestamp}"
         logger.info "Begin backing up collection: #{collection} with request status #{request_status}"
-        url_path = "/admin/collections?action=BACKUP&name=#{collection}-#{today_str}.bk&collection=#{collection}&location=#{backup_dir}&async=#{request_status}"
+        url_path = "/solr/admin/collections?action=BACKUP&name=#{collection}-#{today_str}.bk&collection=#{collection}&location=#{backup_dir}&async=#{request_status}"
         uri = URI.parse("#{base_url}#{url_path}")
         response = Net::HTTP.get_response(uri)
         logger.info("Finished backing up collection: #{collection} with response code: #{response.code} and message: #{response.message}")
       end
+    end
+
+    def list_collections
+      url_path = "/api/collections"
+      uri = URI.parse("#{base_url}#{url_path}")
+      response = Net::HTTP.get_response(uri)
+      JSON.parse(response.body)["collections"]
     end
 
     private

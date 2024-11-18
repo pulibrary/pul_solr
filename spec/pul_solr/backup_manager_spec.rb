@@ -2,6 +2,7 @@ require 'spec_helper'
 require_relative '../../lib/pul_solr'
 require 'date'
 require 'fileutils'
+require 'json'
 
 describe PulSolr::BackupManager do
   let(:base_dir) { "spec/tmp" }
@@ -45,8 +46,35 @@ describe PulSolr::BackupManager do
     end
   end
 
+  describe "#list_collections" do
+    it "returns the list of collections from a solr cloud" do
+      url = "http://localhost:8983/api/collections"
+      body = {
+        "responseHeader" => {
+          "status" => 0,
+          "QTime" => 7
+        },
+        "collections" => ["dpulc1"]
+      }.to_json.to_s
+      stub_request(:get, url)
+        .to_return(status: 200, body: body, headers: {})
+      expect(backup_manager.list_collections).to eq ["dpulc1"]
+    end
+  end
+
   describe "#backup" do
     it "issues commands to solr via the collections api" do
+      collections_url = "http://localhost:8983/api/collections"
+      collections_body = {
+        "responseHeader" => {
+          "status" => 0,
+          "QTime" => 7
+        },
+        "collections" => ["test", "test-staging"]
+      }.to_json.to_s
+      stub_request(:get, collections_url)
+        .to_return(status: 200, body: collections_body, headers: {})
+
       url = "http://localhost:8983/solr/admin/collections"
       test_params = {
         "action" => "BACKUP",
@@ -67,13 +95,13 @@ describe PulSolr::BackupManager do
         .with(:query => hash_including(staging_params))
         .to_return(status: 200, body: "", headers: {})
       FileUtils.mkdir_p(base_dir)
-      collections = ["test", "test-staging"]
 
-      backup_manager.backup(collections: collections)
+      backup_manager.backup
       expect(a_request(:get, url).with(query: hash_including(test_params))).to have_been_made
       expect(a_request(:get, url).with(query: hash_including(staging_params))).to have_been_made
     end
   end
+
   describe 'logging' do
     let(:logger) { Logger.new(nil) }
     let(:backup_manager) { PulSolr::BackupManager.new(base_dir: base_dir, host: host, 
@@ -93,6 +121,17 @@ describe PulSolr::BackupManager do
     end
 
     it 'logs before and after backing up a collection' do
+      collections_url = "http://localhost:8983/api/collections"
+      collections_body = {
+        "responseHeader" => {
+          "status" => 0,
+          "QTime" => 7
+        },
+        "collections" => ["test", "test-staging"]
+      }.to_json.to_s
+      stub_request(:get, collections_url)
+        .to_return(status: 200, body: collections_body, headers: {})
+
       url = "http://localhost:8983/solr/admin/collections"
       test_params = {
         "action" => "BACKUP",
@@ -116,7 +155,7 @@ describe PulSolr::BackupManager do
       collections = ["test", "test-staging"]
 
       allow(logger).to receive(:info)
-      backup_manager.backup(collections: collections)
+      backup_manager.backup
       expect(logger).to have_received(:info).with(/Backup directory is/)
       expect(logger).to have_received(:info).with(/Begin backing up collection: test with request status/)
       expect(logger).to have_received(:info).with(/Begin backing up collection: test-staging with request status/)

@@ -14,7 +14,3 @@ def config_map
     "geniza" => "geniza"
   }
 end
-
-def collections
-  PulSolr.collections["solr9_production"]
-end

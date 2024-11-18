@@ -8,7 +8,6 @@ server 'localhost', user: 'deploy', roles: %{main}
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-
 def config_map
   {
     "catalog-production" => "catalog-production",
@@ -20,25 +19,6 @@ def config_map
     "pulmap" => "pulmap",
     "libwww" => 'libwww'
   }
-end
-
-def collections
-  [
-    'dpul-production',
-    'figgy',
-    'lae',
-    'catalog-production1',
-    'catalog-production2',
-    'pulmap',
-    'catalog-staging',
-    'pulmap-staging',
-    'dpul-staging-core',
-    'lae-blacklight-staging',
-    'cicognara-staging',
-    'cicognara',
-    'libwww-staging',
-    'libwww-production'
-  ]
 end
 
 # role-based syntax
