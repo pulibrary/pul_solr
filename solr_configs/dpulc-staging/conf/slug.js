@@ -7,7 +7,7 @@ function processAdd(cmd) {
 
   // Remove punctuation, and split into words
   var words = title
-              .replace(/[.,\/#!$%\^&\*'";:{},<=>\-_@`~\[\]()]/g,'')
+              .replace(/[.,\/#!¡\?¿$%\^&\*'";:{},<=>\-_@`~\[\]()]/g,'')
               .replace(/  +/g, ' ')
               .toLowerCase()
               .split(' ')
@@ -27,20 +27,12 @@ function processAdd(cmd) {
 
   // Truncate slug to a maximum of maxWords words and join and then ensure
   // that the total slug length does not exceed maxCharacters
-  if (rtlLangauges.indexOf(lang) == -1) {
-    // LTR Languages
-    var slug = words
-              .slice(0, maxWords)
-              .join('-')
-              .slice(0, maxCharacters)
-  } else {
-    // RTL Languages
-    var slug = words
-              .slice(-maxWords)
-              .join('-')
-              .slice(-maxCharacters)
-  }
-    doc.setField("slug_s", slug);
+  var slug = words
+            .slice(0, maxWords)
+            .join('-')
+            .slice(0, maxCharacters)
+
+  doc.setField("slug_s", slug);
 }
 
 // no-op update request processor methods
@@ -49,8 +41,6 @@ function processMergeIndexes(cmd) { }
 function processCommit(cmd) { }
 function processRollback(cmd) { }
 function finish() { }
-
-var rtlLangauges = ["ar", "fa"]
 
 // Object with stopwords by langauge code. Copied from solr stopwords files.
 var stopwords = {
