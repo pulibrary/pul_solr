@@ -181,7 +181,7 @@
     <dynamicField name="*_txtm_tr" type="text_tr"  indexed="true"  stored="true" multiValued="true"/>
 
     <dynamicField name="*_i"  type="pint"    indexed="true"  stored="true"/>
-    <dynamicField name="*_is" type="pints"    indexed="true"  stored="true"/>
+    <dynamicField name="*_is" type="pints"    indexed="true"  stored="true" sortMissingLast="true" />
     <dynamicField name="*_s"  type="string"  indexed="true"  stored="true" />
     <dynamicField name="*_ss" type="strings"  indexed="true"  stored="true"/>
     <dynamicField name="*_l"  type="plong"   indexed="true"  stored="true"/>
