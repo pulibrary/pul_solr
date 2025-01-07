@@ -99,7 +99,7 @@
 
   <query>
     <filterCache class="solr.search.CaffeineCache"
-                 size="2048"
+                 maxRamMB="256"
                  initialSize="2048"
                  autowarmCount="64"/>
     <queryResultCache class="solr.search.CaffeineCache"
