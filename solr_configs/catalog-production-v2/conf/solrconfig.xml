@@ -349,6 +349,7 @@
       <str name="f.advanced_location_s.facet.sort">index</str>
       <str name="f.language_facet.facet.limit">1000</str>
       <str name="f.advanced_location_s.facet.limit">500</str>
+      <str name="f.subject_topic_facet.method">fcs</str>
     </lst>
   </initParams>
 
