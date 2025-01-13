@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<config>
+  <luceneMatchVersion>8.4.1</luceneMatchVersion>
+
+  <lib dir="${solr.install.dir}/contrib/analysis-extras/lib" />
+  <lib dir="${solr.install.dir}/contrib/analysis-extras/lucene-libs" />
+  <lib dir="conf" />
+
+  <directoryFactory name="DirectoryFactory"
+                    class="${solr.directoryFactory:solr.StandardDirectoryFactory}">
+  </directoryFactory>
+
+  <updateHandler class="solr.DirectUpdateHandler2">
+    <updateLog>
+      <str name="dir">${solr.core0.data.dir:}</str>
+    </updateLog>
+    <!-- Hard commit every 60 minutes -->
+    <autoCommit>
+      <maxTime>36000000</maxTime>
+      <openSearcher>false</openSearcher>
+    </autoCommit>
+    <!-- Soft commit every 5 minutes -->
+    <autoSoftCommit>
+      <maxTime>300000</maxTime>
+    </autoSoftCommit>
+  </updateHandler>
+
+  <updateProcessor class="solr.processor.SignatureUpdateProcessorFactory" name="add_hash_id">
+    <bool name="enabled">true</bool>
+    <str name="signatureField">hashed_id_ssi</str>
+    <bool name="overwriteDupes">false</bool>
+    <str name="fields">id</str>
+    <str name="signatureClass">solr.processor.Lookup3Signature</str>
+  </updateProcessor>
+
+  <updateRequestProcessorChain name="cloud" processor="add_hash_id" default="true">
+    <processor class="solr.LogUpdateProcessorFactory"/>
+    <processor class="solr.DistributedUpdateProcessorFactory"/>
+    <processor class="solr.RunUpdateProcessorFactory"/>
+  </updateRequestProcessorChain>
+
+  <codecFactory class="solr.SchemaCodecFactory"/>
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
+
+  <dataDir>${solr.blacklight-core.data.dir:}</dataDir>
+
+  <requestDispatcher handleSelect="true" >
+    <requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
+  </requestDispatcher>
+
+  <updateLog class="solr.FSUpdateLog">
+    <str name="dir">${solr.data.dir:}</str>
+  </updateLog>
+
+  <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
+
+  <requestHandler name="/update" class="solr.UpdateRequestHandler" >
+  </requestHandler>
+
+  <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
+    <lst name="invariants">
+      <str name="q">solrpingquery</str>
+    </lst>
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="/get" class="solr.RealTimeGetHandler">
+    <lst name="defaults">
+      <str name="omitHeader">true</str>
+      <str name="wt">json</str>
+      <str name="indent">true</str>
+    </lst>
+  </requestHandler>
+
+  <!-- config for the admin interface -->
+  <admin>
+    <defaultQuery>solr</defaultQuery>
+  </admin>
+
+
+  <query>
+    <filterCache class="solr.search.CaffeineCache"
+                 size="2048"
+                 initialSize="2048"
+                 autowarmCount="64"/>
+    <queryResultCache class="solr.search.CaffeineCache"
+                      size="4096"
+                      initialSize="4096"
+                      autowarmCount="32"/>
+    <documentCache class="solr.search.CaffeineCache"
+                   size="4096"
+                   initialSize="4096"/>
+
+    <enableLazyFieldLoading>true</enableLazyFieldLoading>
+
+   <queryResultWindowSize>100</queryResultWindowSize>
+   <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
+  </query>
+
+  <initParams name="searchParams">
+    <!-- default values for query parameters can be specified, these
+         will be overridden by parameters in the request
+      -->
+    <lst name="defaults">
+      <str name="defType">edismax</str>
+      <str name="echoParams">explicit</str>
+      <int name="rows">10</int>
+      <str name="sow">on</str>
+      <str name="q.alt">*:*</str>
+      <str name="mm">6&lt;90%</str>
+
+      <!-- boost local holdings (add 50 to the score) to reduce unnecessary requests -->
+      <str name="bf">if(field(numeric_id_b),50,0)</str>
+
+       <!-- this qf and pf are used by default, if not otherwise specified by
+            client. The default blacklight_config will use these for the
+            "keywords" search. See the author_qf/author_pf, title_qf, etc
+            below, which the default blacklight_config will specify for
+            those searches. You may also be interested in:
+            http://wiki.apache.org/solr/LocalParams
+       -->
+
+      <str name="qf">
+        title_a_index^3300
+        author_main_unstem_search^2200
+        title_unstem_search^88
+        title_display^88
+        author_unstem_search^88
+        subject_topic_unstem_search^39.6
+        subject_unstem_search^33
+        siku_subject_unstem_search^33
+        local_subject_unstem_search^33
+        homoit_subject_unstem_search^33
+        subject_topic_index^26.4
+        genre_unstem_search^22
+        subject_t^22
+        subject_addl_unstem_search^17.6
+        subject_addl_t^8.8
+        isbn_t^6.6
+        issn_s^6.6
+        lccn_s^6.6
+        uncontrolled_keyword_unstem_search^6.6
+        text^2.2
+        description_t^2.2
+        cjk_all^2.2
+        cjk_text^2.2
+      </str>
+      <str name="pf">
+        title_245a_lr^35200
+        title_245_lr^35200
+        title_a_index^26400
+        author_main_unstem_search^22000
+        title_unstem_search^880
+        title_display^880
+        author_unstem_search^880
+        subject_topic_unstem_search^396
+        subject_unstem_search^330
+        siku_subject_unstem_search^330
+        local_subject_unstem_search^330
+        homoit_subject_unstem_search^330
+        subject_topic_index^264
+        genre_unstem_search^220
+        subject_t^220
+        subject_addl_unstem_search^176
+        subject_addl_t^88
+        isbn_t^66
+        issn_s^66
+        lccn_s^66
+        uncontrolled_keyword_unstem_search^22
+        text^22
+        description_t^22
+        cjk_all^22
+        cjk_text^22
+      </str>
+      <str name="author_qf">
+        author_main_unstem_search^44
+        author_unstem_search^22
+        cjk_author^2.2
+      </str>
+      <str name="author_pf">
+        author_main_unstem_search^440
+        author_unstem_search^220
+        cjk_author^22
+      </str>
+      <str name="left_anchor_qf">
+        title_245a_la^50
+        title_245_la^10
+        title_la^2
+        title_addl_la
+      </str>
+      <str name="left_anchor_pf">
+        title_245a_lr^1320
+        title_245_lr^1320
+        title_245a_la^1100
+        title_245_la^220
+        title_lr^220
+        title_la^44
+        title_addl_la^22
+      </str>
+      <str name="in_series_qf">
+        more_in_this_series_la^2.2
+      </str>
+      <str name="in_series_pf">
+        more_in_this_series_la^2.2
+      </str>
+      <str name="publisher_qf">
+        pub_created_unstem_search^2.2
+        cjk_publisher^2.2
+      </str>
+      <str name="publisher_pf">
+        pub_created_unstem_search^2.2
+        cjk_publisher^2.2
+      </str>
+      <str name="notes_qf">
+        notes_index^2.2
+        cjk_notes^2.2
+        cjk_notes_copied^2.2
+      </str>
+      <str name="notes_pf">
+        notes_index^2.2
+        cjk_notes^2.2
+        cjk_notes_copied^2.2
+      </str>
+      <str name="series_title_qf">
+        series_title_index^11
+        series_ae_index^2.2
+        series_statement_index^2.2
+        linked_series_title_index^2.2
+        linked_series_index^2.2
+        original_version_series_index^2.2
+        cjk_series_title^2.2
+      </str>
+      <str name="series_title_pf">
+        series_title_index^110
+        series_ae_index^22
+        series_statement_index^22
+        linked_series_title_index^22
+        linked_series_index^22
+        original_version_series_index^22
+        cjk_series_title^22
+      </str>
+      <str name="title_qf">
+        title_a_index^1100
+        title_unstem_search^220
+        title_display^110
+        other_title_index^11
+        series_title_index^11
+        uniform_title_s^11
+        title_vern_display^2.2
+        content_title_index^2.2
+        contains_title_index^2.2
+        linked_title_index^2.2
+        series_ae_index^2.2
+        series_statement_index^2.2
+        linked_series_title_index^2.2
+        linked_series_index^2.2
+        original_version_series_index^2.2
+        cjk_title^2.2
+      </str>
+      <str name="title_pf">
+        title_245a_lr^12100
+        title_245_lr^12100
+        title_a_index^11000
+        title_unstem_search^2200
+        title_display^1100
+        other_title_index^110
+        series_title_index^110
+        uniform_title_s^110
+        title_vern_display^22
+        content_title_index^22
+        contains_title_index^22
+        linked_title_index^22
+        series_ae_index^22
+        series_statement_index^22
+        linked_series_title_index^22
+        linked_series_index^22
+        original_version_series_index^22
+        cjk_title^22
+      </str>
+      <str name="subject_qf">
+        subject_topic_unstem_search^55
+        subject_unstem_search^44
+        genre_unstem_search^33
+        siku_subject_unstem_search^2.2
+        local_subject_unstem_search^2.2
+        homoit_subject_unstem_search^2.2
+        cjk_subject^2.2
+      </str>
+      <str name="subject_pf">
+        subject_topic_unstem_search^550
+        subject_unstem_search^440
+        genre_unstem_search^330
+        siku_subject_unstem_search^22
+        local_subject_unstem_search^22
+        homoit_subject_unstem_search^22
+        cjk_subject^22
+      </str>
+
+      <int name="ps">3</int>
+      <float name="tie">0.01</float>
+
+      <str name="fl">
+        id,
+        score,
+        author_display,
+        marc_relator_display,
+        format,
+        pub_created_display,
+        title_display,
+        title_vern_display,
+        isbn_s,
+        oclc_s,
+        lccn_s,
+        holdings_1display,
+        electronic_access_1display,
+        electronic_portfolio_s,
+        cataloged_tdt,
+        contained_in_s,
+        call_number_display
+      </str>
+
+      <str name="facet">true</str>
+      <str name="facet.mincount">1</str>
+      <str name="facet.limit">10</str>
+      <str name="facet.field">format</str>
+      <str name="facet.field">language_facet</str>
+      <str name="facet.field">pub_date_start_sort</str>
+      <str name="facet.field">advanced_location_s</str>
+      <str name="f.format.facet.sort">index</str>
+      <str name="f.advanced_location_s.facet.sort">index</str>
+      <str name="f.language_facet.facet.limit">1000</str>
+      <str name="f.advanced_location_s.facet.limit">500</str>
+    </lst>
+  </initParams>
+
+  <!-- SearchHandler
+
+       http://wiki.apache.org/solr/SearchHandler
+
+       For processing Search Queries, the primary Request Handler
+       provided with Solr is "SearchHandler" It delegates to a sequent
+       of SearchComponents (see below) and supports distributed
+       queries across multiple shards
+    -->
+  <requestHandler name="search" class="solr.SearchHandler" default="true" initParams="searchParams"></requestHandler>
+
+  <requestHandler name="engineering_search" class="solr.SearchHandler" initParams="searchParams">
+    <!-- Appends means we add this parameter always but the query sent by the client can also add more of them. -->
+    <lst name="appends">
+      <str name="boost">if(termfreq(text,'engineering'),100,0)</str>
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="/advanced" class="solr.SearchHandler" initParams="searchParams">
+    <!-- a lucene request handler for using the JSON Query DSL, for advanced search
+         Using a separate request handler as a work around to
+         https://issues.apache.org/jira/browse/SOLR-16916 
+    -->
+    <!-- default values for query parameters can be specified, these
+         will be overridden by parameters in the request
+      -->
+    <lst name="defaults">
+      <str name="defType">lucene</str>
+    </lst>
+  </requestHandler>
+  
+  <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
+  <requestHandler name="document" class="solr.SearchHandler" >
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+      <str name="fl">*</str>
+      <str name="rows">1</str>
+      <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
+    </lst>
+  </requestHandler>
+</config>
