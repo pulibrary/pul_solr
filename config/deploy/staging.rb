@@ -12,6 +12,7 @@ end
 def config_map
   {
     "catalog-production-v2" => "catalog-production-v2",
+    "catalog-production-v3" => "catalog-production-v3",
     "dss-production" => "dss-production",
     "pulfalight-staging" => "pulfalight-staging",
     "cicognara" => "cicognara",
