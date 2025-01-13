@@ -7,7 +7,7 @@ function processAdd(cmd) {
 
   // Remove punctuation, and split into words
   var words = title
-              .replace(/[.,\/#!¡\?¿$%\^&\*'";:{},<=>\-_@`~\[\]()]/g,'')
+              .replace(/[.,\/#!¡\?¿$%\^&\*'";:{},<=>\-_@`~\[\]()…]/g,'')
               .replace(/  +/g, ' ')
               .toLowerCase()
               .split(' ')
@@ -31,6 +31,11 @@ function processAdd(cmd) {
             .slice(0, maxWords)
             .join('-')
             .slice(0, maxCharacters)
+
+  // Remove any trailing dash
+  if (slug.slice(-1) == '-') {
+    slug = slug.slice(0, -1)
+  }
 
   doc.setField("slug_s", slug);
 }
