@@ -1,6 +1,7 @@
 require 'net/http'
 require 'logger'
 require 'json'
+require 'date'
 
 module PulSolr
   class BackupManager
