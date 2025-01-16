@@ -61,6 +61,8 @@ namespace :deploy do
   desc "Update configsets and reload collections"
   after :published, :restart do
     on roles(:main), wait: 5 do
+      # make it a no-op for servers deployed with the cdh method
+      next if config_map.empty?
       # on stand alone server just restart solr, no way to send information to zoo keeper since it does not exist
       if fetch(:stand_alone, false)
         on roles(:main) do
