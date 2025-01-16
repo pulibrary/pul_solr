@@ -23,6 +23,16 @@ set :job_template, "bash -l -c 'export PATH=\"/usr/local/bin/:$PATH\" && :job'"
 
 job_type :rake, "cd :path && SOLR_ENV=:environment HOST=:host bundle exec rake :task"
 
-every 1.day, roles: [:db] do
+# Default time is midnight UTC, which is:
+#   7pm EST / 6pm EDT the evening before
+#   4pm PST / 3pm PDT the afternoon before
+every 1.day, roles: [:main] do
   rake "pul_solr:backup"
+end
+
+# Default time is midnight UTC, which is:
+#   7pm EST / 6pm EDT the evening before
+#   4pm PST / 3pm PDT the afternoon before
+every 1.day, roles: [:main] do
+  rake "pul_solr:cleanup"
 end
