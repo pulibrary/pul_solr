@@ -6,6 +6,8 @@ gem 'base64'
 gem 'bigdecimal'
 gem 'capistrano-bundler'
 gem 'faraday'
+gem 'logger'
+gem 'ostruct'
 gem 'rake'
 gem 'rsolr'
 

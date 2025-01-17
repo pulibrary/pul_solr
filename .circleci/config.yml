@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/pul_solr
 
     docker:
-      - image: cimg/ruby:3.3.7
+      - image: cimg/ruby:3.4.1
         environment:
           RAILS_ENV: test
       - image: pulibrary/ci-solr:8.4-v2.0.0
