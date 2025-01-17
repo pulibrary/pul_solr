@@ -7,6 +7,10 @@ require_relative '../lando_env'
 require_relative '../lib/pul_solr'
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
+RSpec.configure do |config|
+  config.example_status_persistence_file_path = "tmp/rspec_examples.txt"
+end
+
 # Use this (by calling #include_context) as you would a ruby Module,
 # to mixin these methods into an rspec context. This allows contexts
 # to access different solr instances and cores.
