@@ -21,7 +21,7 @@ RSpec.shared_context 'solr_helpers' do
            suffix: "&defType=edismax",
            port: PulSolr.solr_connection[:test][:catalog][:port])
     unless @solr
-      @solr = RSolr.connect :url => "http://#{host}:#{port}/#{core}", :read_timeout => 9999999
+      @solr = RSolr.connect :url => "http://#{host}:#{port}/#{core}", :timeout => 9999999
       puts "Solr URL: #{@solr.uri}"
     end
     @solr
