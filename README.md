@@ -86,7 +86,11 @@ SOLR_URL=http://localhost:8983/solr bundle exec cap development "collections:del
 
 Backups are implemented as a ruby service class wrapped in a rake task that's invoked by cron (scheduled via whenever / capistrano). The task queries solr for the list of collections and then backs up each one.
 
-If a specific backup did not complete and you want more information, consult `/tmp/solr_backup.log` for the requeststatus and check it with the [requeststatus api call](https://lucene.apache.org/solr/guide/8_4/collections-api.html#requeststatus).
+If a specific backup did not complete and you want more information, consult `/tmp/solr_backup.log` for the request id and check it with the [requeststatus api call](https://lucene.apache.org/solr/guide/8_4/collections-api.html#requeststatus). Example:
+
+```
+curl "http://localhost:8983/solr/admin/collections?action=REQUESTSTATUS&requestid=figgy-production-202501132037"
+```
 
 ### Restoring a backup
 

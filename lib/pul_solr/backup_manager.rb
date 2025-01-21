@@ -35,9 +35,9 @@ module PulSolr
     # @param collections [Array<String>]
     def backup
       list_collections.each do |collection|
-        request_status = "#{collection}-#{timestamp}"
-        logger.info "Begin backing up collection: #{collection} with request status #{request_status}"
-        url_path = "/solr/admin/collections?action=BACKUP&name=#{collection}-#{today_str}.bk&collection=#{collection}&location=#{backup_dir}&async=#{request_status}"
+        request_id = "#{collection}-#{timestamp}"
+        logger.info "Begin backing up collection: #{collection} with request id #{request_id}"
+        url_path = "/solr/admin/collections?action=BACKUP&name=#{collection}-#{today_str}.bk&collection=#{collection}&location=#{backup_dir}&async=#{request_id}"
         uri = URI.parse("#{base_url}#{url_path}")
         response = Net::HTTP.get_response(uri)
         logger.info("Finished backing up collection: #{collection} with response code: #{response.code} and message: #{response.message}")

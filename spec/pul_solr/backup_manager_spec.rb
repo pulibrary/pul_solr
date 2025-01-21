@@ -157,8 +157,8 @@ describe PulSolr::BackupManager do
       allow(logger).to receive(:info)
       backup_manager.backup
       expect(logger).to have_received(:info).with(/Backup directory is/)
-      expect(logger).to have_received(:info).with(/Begin backing up collection: test with request status/)
-      expect(logger).to have_received(:info).with(/Begin backing up collection: test-staging with request status/)
+      expect(logger).to have_received(:info).with(/Begin backing up collection: test with request id/)
+      expect(logger).to have_received(:info).with(/Begin backing up collection: test-staging with request id/)
       expect(logger).to have_received(:info).with(/Finished backing up collection: test with response code: 200 and message: /)
       expect(logger).to have_received(:info).with(/Finished backing up collection: test-staging with response code: 200 and message: /)
     end
