@@ -7,6 +7,10 @@ require_relative '../lando_env'
 require_relative '../lib/pul_solr'
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
+RSpec.configure do |config|
+  config.example_status_persistence_file_path = "tmp/rspec_examples.txt"
+end
+
 # Use this (by calling #include_context) as you would a ruby Module,
 # to mixin these methods into an rspec context. This allows contexts
 # to access different solr instances and cores.
@@ -21,7 +25,7 @@ RSpec.shared_context 'solr_helpers' do
            suffix: "&defType=edismax",
            port: PulSolr.solr_connection[:test][:catalog][:port])
     unless @solr
-      @solr = RSolr.connect :url => "http://#{host}:#{port}/#{core}", :read_timeout => 9999999
+      @solr = RSolr.connect :url => "http://#{host}:#{port}/#{core}", :timeout => 9999999
       puts "Solr URL: #{@solr.uri}"
     end
     @solr
