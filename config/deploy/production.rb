@@ -19,7 +19,6 @@ def config_map
     "oawaiver" => "oawaiver-production",
     "figgy" => "figgy-production",
     "dpul" => "dpul",
-    "libwww" => "libwww",
     "pulmap" => "pulmap"
   }
 end

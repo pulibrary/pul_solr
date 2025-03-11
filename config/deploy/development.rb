@@ -16,8 +16,7 @@ def config_map
     "dpul" => "dpul",
     "figgy" => "figgy",
     "lae" => "lae",
-    "pulmap" => "pulmap",
-    "libwww" => 'libwww'
+    "pulmap" => "pulmap"
   }
 end
 

@@ -21,7 +21,6 @@ def config_map
     "pdc-discovery" => "pdc-discovery-staging",
     "oawaiver" => "oawaiver-staging",
     "figgy" => "figgy-staging",
-    "libwww" => "libwww",
     "pulmap" => "pulmap"
   }
 end
