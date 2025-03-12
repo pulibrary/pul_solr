@@ -1,6 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
 require 'json'
+require 'byebug'
 
 describe 'apostrophes are stripped' do
   include_context 'solr_helpers'
@@ -11,9 +12,13 @@ describe 'apostrophes are stripped' do
   let(:french) { "l'opéra-comique français"}
   let(:response) { solr_resp_doc_ids_only(params)['response'] }
   let(:docs) { response['docs'] }
+  let(:solr_doc) { { id: 1, title_display: [contraction] } }
 
-  before do
-    solr.add({ id: 1, title_display: [contraction] })
+  around do |example|
+    solr.add(solr_doc)
+    solr.commit
+    example.run
+    delete_all
     solr.commit
   end
 
@@ -37,14 +42,23 @@ describe 'apostrophes are stripped' do
     end
 
     context 'for Romanized Cyrillic' do
-      before do
-        solr.add({ id: 1, title_display: [cyrillic] })
-        solr.commit
-      end
+      let(:solr_doc) { { id: 1, title_display: [cyrillic] } }
 
       context 'when apostrophe included in query for Romanized Cyrillic' do
         let(:params) do
           { 'q' => "brat'ia" }
+        end
+        let(:response) { solr_resp_doc_ids_only(params)['response'] }
+        let(:docs) { response['docs'] }
+
+        it 'matches' do
+          expect(docs).to eq([{ "id" => "1" }])
+        end
+      end
+
+      context 'when OCLC apostrophe included in query for Romanized Cyrillic' do
+        let(:params) do
+          { 'q' => "bratʹia" }
         end
         let(:response) { solr_resp_doc_ids_only(params)['response'] }
         let(:docs) { response['docs'] }
@@ -68,10 +82,7 @@ describe 'apostrophes are stripped' do
     end
 
     context 'for French searches with articles' do
-      before do
-        solr.add({ id: 1, title_display: [french] })
-        solr.commit
-      end
+      let(:solr_doc) { { id: 1, title_display: [french] } }
 
       context 'when apostrophe included in query, no whitespace after article' do
         let(:params) do
@@ -137,17 +148,13 @@ describe 'apostrophes are stripped' do
     context 'for Romanized Cyrillic name' do
       let(:response) { solr_resp_doc_ids_only(params)['response'] }
       let(:docs) { response['docs'] }
+      let(:solr_doc) { { id: 1, author_s: [cyrillic_name] } }
 
-      before do
-        solr.add({ id: 1, author_s: [cyrillic_name] })
-        solr.commit
-      end
       context 'when apostrophe is included in query' do
         let(:params) do
           { qf: "${author_qf}", pf: "${author_pf}", 'q' => "arsen'ev" }
         end
         it 'matches' do
-          pending("Fixing name search with apostrophes")
           expect(docs).to eq([{ "id" => "1" }])
         end
       end
@@ -168,9 +175,5 @@ describe 'apostrophes are stripped' do
         end
       end
     end
-  end
-
-  after do
-    delete_all
   end
 end

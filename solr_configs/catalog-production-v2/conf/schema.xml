@@ -595,6 +595,7 @@
    <!-- author keyword -->
    <copyField source="author_display" dest="author_main_unstem_search"/>
    <copyField source="author_s" dest="author_unstem_search"/>
+   <copyField source="author_s" dest="author_la"/>
 
    <!-- publisher keyword -->
    <copyField source="pub_created_s" dest="pub_created_unstem_search"/>
