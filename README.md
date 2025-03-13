@@ -136,12 +136,17 @@ To find the right values for this curl:
 If you ran this with an async ID in the **async** param, you can check
 the progress in your browser at: `http://localhost:8983/solr/admin/collections?action=REQUESTSTATUS&requestid={your async id}`
 
-## Specs
+## Testing
 
-Start Solr via lando, then run the specs
+Start Solr via lando, then run the specs.
+
+If you are making changes to a Solr configuration during testing, you will need to re-start the Solr service in lando in order for the changes to take effect. (`lando restart`) 
 
 ```
 lando start
+rspec
+[make a change]
+lando restart
 rspec
 ```
 
