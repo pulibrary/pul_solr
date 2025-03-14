@@ -3,6 +3,7 @@ require 'rspec-solr'
 require 'faraday'
 require 'pry'
 require 'webmock/rspec'
+require 'byebug'
 require_relative '../lando_env'
 require_relative '../lib/pul_solr'
 $LOAD_PATH.unshift(File.dirname(__FILE__))
