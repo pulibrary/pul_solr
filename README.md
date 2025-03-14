@@ -138,10 +138,15 @@ the progress in your browser at: `http://localhost:8983/solr/admin/collections?a
 
 ## Specs
 
-Start Solr via lando, then run the specs
+Start Solr via lando, then run the specs.
+
+If you are making changes to a file in the solr_configs directory, such as a schema.xml or solrconfig.xml file, you will need to restart lando after each change in order for it to be picked up by the tests.
 
 ```
 lando start
+rspec
+<!-- make some change -->
+lando restart
 rspec
 ```
 

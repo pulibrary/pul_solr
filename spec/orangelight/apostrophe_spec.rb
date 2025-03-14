@@ -6,6 +6,7 @@ describe 'apostrophes are stripped' do
   include_context 'solr_helpers'
 
   let(:contraction) { "Can't and Won't" }
+  let(:cyrillic_name) { "Arsenʹev, Alekseĭ Aleksandrovich" }
   let(:cyrillic) { "Bratʹi︠a︡ Karamazovy" }
   let(:french) { "l'opéra-comique français"}
   let(:response) { solr_resp_doc_ids_only(params)['response'] }
@@ -128,6 +129,43 @@ describe 'apostrophes are stripped' do
 
       it 'matches' do
         expect(docs).to eq([{ "id" => "1" }])
+      end
+    end
+  end
+
+  describe 'in author search' do
+    context 'for Romanized Cyrillic name' do
+      let(:response) { solr_resp_doc_ids_only(params)['response'] }
+      let(:docs) { response['docs'] }
+
+      before do
+        solr.add({ id: 1, author_s: [cyrillic_name] })
+        solr.commit
+      end
+
+      context 'when apostrophe is included in query' do
+        let(:params) do
+          { qf: "${author_qf}", pf: "${author_pf}", 'q' => "arsen'ev" }
+        end
+        it 'matches' do
+          expect(docs).to eq([{ "id" => "1" }])
+        end
+      end
+      context 'when OCLC special character is included in query' do
+        let(:params) do
+          { qf: "${author_qf}", pf: "${author_pf}", 'q' => "arsenʹev" }
+        end
+        it 'matches' do
+          expect(docs).to eq([{ "id" => "1" }])
+        end
+      end
+      context 'when apostrophe is not included in query' do
+        let(:params) do
+          { qf: "${author_qf}", pf: "${author_pf}", 'q' => "arsenev" }
+        end
+        it 'matches' do
+          expect(docs).to eq([{ "id" => "1" }])
+        end
       end
     end
   end
