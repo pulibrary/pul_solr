@@ -559,7 +559,7 @@
    <dynamicField name="*_t"  type="text"    indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_txt" type="text_general"    indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_b"  type="boolean" indexed="true"  stored="true"/>
-   <dynamicField name="*_la" type="title_l" indexed="true" stored="true" multiValued="true"/>
+   <dynamicField name="*_la" type="title_l" indexed="true" stored="false" multiValued="true"/>
    <dynamicField name="*_lr" type="text_lr" indexed="true" stored="false" multiValued="true"/>
 
    <dynamicField name="cjk_*" type="text_cjk" stored="false" indexed="true" multiValued="true" />
@@ -587,7 +587,7 @@
    <dynamicField name="*_facet" type="string" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*_index" type="text" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*_sort" type="alphaOnlySort" indexed="true" stored="false" />
-   <dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="true" multiValued="true" />
+   <dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*spell" type="textSpell" indexed="true" stored="false" multiValued="true" />
 
    <!-- uncomment the following to ignore any fields that don't already match an existing
