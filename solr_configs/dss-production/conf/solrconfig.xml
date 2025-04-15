@@ -286,14 +286,6 @@
         pub_created_unstem_search
         cjk_publisher
       </str>
-      <str name="notes_qf">
-        notes_index
-        cjk_notes
-      </str>
-      <str name="notes_pf">
-        notes_index
-        cjk_notes
-      </str>
       <str name="title_qf">
         title_unstem_search^100
         title_display^50
