@@ -708,33 +708,6 @@
    <!-- sort fields -->
    <copyField source="pub_date" dest="pub_date_sort"/>
 
-   <!-- left-anchored search fields -->
-   <copyField source="title_a_index" dest="title_245a_la"/>
-   <copyField source="title_a_index" dest="title_245a_lr"/>
-   <copyField source="title_display" dest="title_245_la"/>
-   <copyField source="title_display" dest="title_245_lr"/>
-   <copyField source="title_vern_display" dest="title_245_la"/>
-   <copyField source="title_vern_display" dest="title_245_lr"/>
-   <copyField source="title_sort" dest="title_245_la"/>
-   <copyField source="title_vern_sort" dest="title_245_la"/>
-   <copyField source="title_no_h_index" dest="title_245_la"/>
-   <copyField source="title_245_la" dest="title_245_lr"/>
-   <copyField source="other_title_index" dest="title_la"/>
-   <copyField source="series_title_index" dest="title_la"/>
-   <copyField source="series_statement_index" dest="title_la"/>
-   <copyField source="uniform_title_s" dest="title_la"/>
-   <copyField source="title_la" dest="title_lr"/>
-   <copyField source="content_title_index" dest="title_addl_la"/>
-   <copyField source="contains_title_index" dest="title_addl_la"/>
-   <copyField source="linked_title_index" dest="title_addl_la"/>
-   <copyField source="linked_series_title_index" dest="title_addl_la"/>
-   <copyField source="linked_series_index" dest="title_addl_la"/>
-   <copyField source="series_ae_index" dest="title_addl_la"/>
-   <copyField source="original_version_series_index" dest="title_addl_la"/>
-   <copyField source="title_addl_la" dest="title_addl_lr"/>
-
-   <copyField source="more_in_this_series_t" dest="more_in_this_series_la"/>
-
    <!-- advanced search fields cjk config -->
    <copyField source="pub_created_vern_display" dest="cjk_publisher"/>
 
@@ -810,9 +783,6 @@
    <copyField source="*_facet" dest="text"/>
    <copyField source="*_sort" dest="text"/>
    <copyField source="*_unstem_search" dest="text"/>
-   <copyField source="title_245_la" dest="text"/>
-   <copyField source="title_la" dest="text"/>
-   <copyField source="title_addl_la" dest="text"/>
 
    <!-- copy name to alphaNameSort, a field designed for sorting by name -->
    <!-- <copyField source="name" dest="alphaNameSort"/> -->

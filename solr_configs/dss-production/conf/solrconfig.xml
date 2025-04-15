@@ -253,7 +253,6 @@
        -->
 
       <str name="qf">
-        title_a_index^1500
         title_unstem_search^40
         title_display^40
         subject_topic_unstem_search^18
@@ -267,9 +266,6 @@
         cjk_all
       </str>
       <str name="pf">
-        title_245a_lr^16000
-        title_245_lr^16000
-        title_a_index^12000
         title_unstem_search^400
         title_display^400
         subject_topic_unstem_search^180
@@ -281,27 +277,6 @@
         text^10
         description_t^10
         cjk_all^10
-      </str>
-      <str name="left_anchor_qf">
-        title_245a_la^50
-        title_245_la^10
-        title_la^2
-        title_addl_la
-      </str>
-      <str name="left_anchor_pf">
-        title_245a_lr^600
-        title_245_lr^600
-        title_245a_la^500
-        title_245_la^100
-        title_lr^100
-        title_la^20
-        title_addl_la^10
-      </str>
-      <str name="in_series_qf">
-        more_in_this_series_la
-      </str>
-      <str name="in_series_pf">
-        more_in_this_series_la
       </str>
       <str name="publisher_qf">
         pub_created_unstem_search
@@ -338,7 +313,6 @@
         cjk_series_title^10
       </str>
       <str name="title_qf">
-        title_a_index^500
         title_unstem_search^100
         title_display^50
         other_title_index^5
@@ -356,9 +330,6 @@
         cjk_title
       </str>
       <str name="title_pf">
-        title_245a_lr^5500
-        title_245_lr^5500
-        title_a_index^5000
         title_unstem_search^1000
         title_display^500
         other_title_index^50
