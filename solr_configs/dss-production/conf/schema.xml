@@ -696,9 +696,6 @@
         or to add multiple fields to the same field for easier/faster searching.  -->
    <!-- Copy Fields -->
 
-   <!-- publisher keyword -->
-   <copyField source="pub_created_s" dest="pub_created_unstem_search"/>
-
    <!-- unstemmed fields -->
    <copyField source="title_display" dest="title_unstem_search"/>
    <copyField source="subject_display" dest="subject_unstem_search"/>
@@ -707,16 +704,6 @@
 
    <!-- sort fields -->
    <copyField source="pub_date" dest="pub_date_sort"/>
-
-   <!-- advanced search fields cjk config -->
-   <copyField source="pub_created_vern_display" dest="cjk_publisher"/>
-
-   <!-- Above, multiple source fields are copied to the [text] field.
-    Another way to map multiple source fields to the same
-    destination field is to use the dynamic field syntax.
-    copyField also supports a maxChars to copy setting.  -->
-
-  <!--    <copyField source="*_t" dest="text" maxChars="3000"/> -->
 
   <!-- default, catch all search field -->
    <copyField source="id" dest="text"/>

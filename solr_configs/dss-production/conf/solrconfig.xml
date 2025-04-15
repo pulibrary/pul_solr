@@ -278,14 +278,6 @@
         description_t^10
         cjk_all^10
       </str>
-      <str name="publisher_qf">
-        pub_created_unstem_search
-        cjk_publisher
-      </str>
-      <str name="publisher_pf">
-        pub_created_unstem_search
-        cjk_publisher
-      </str>
       <str name="title_qf">
         title_unstem_search^100
         title_display^50
