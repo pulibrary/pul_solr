@@ -153,14 +153,6 @@
         <lst><str name="fq">location:Stokes Library</str></lst>
         <lst><str name="fq">location:Video Library</str></lst>
 
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-21DAYS TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-2MONTHS TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]</str></lst>
-
         <lst><str name="fq">language_facet:English</str></lst>
         <lst><str name="fq">language_facet:German</str></lst>
         <lst><str name="fq">language_facet:French</str></lst>
@@ -273,9 +265,6 @@
         subject_t^10
         subject_addl_unstem_search^8
         subject_addl_t^4
-        isbn_t^3
-        issn_s^3
-        lccn_s^3
         text
         description_t
         cjk_all
@@ -294,9 +283,6 @@
         subject_t^100
         subject_addl_unstem_search^80
         subject_addl_t^40
-        isbn_t^30
-        issn_s^30
-        lccn_s^30
         text^10
         description_t^10
         cjk_all^10
@@ -426,14 +412,7 @@
         format,
         pub_created_display,
         title_display,
-        title_vern_display,
-        isbn_s,
-        oclc_s,
-        lccn_s,
-        holdings_1display,
-        electronic_access_1display,
-        electronic_portfolio_s,
-        cataloged_tdt
+        title_vern_display
       </str>
 
       <str name="facet">true</str>
