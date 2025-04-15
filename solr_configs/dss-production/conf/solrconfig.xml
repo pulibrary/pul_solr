@@ -116,7 +116,6 @@
         <lst><str name="q">*:*</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
         <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort desc, title_sort asc</str></lst>
         <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort asc, title_sort asc</str></lst>
-        <lst><str name="q">*:*</str><str name="sort">author_sort asc, title_sort asc</str></lst>
         <lst><str name="q">*:*</str><str name="sort">title_sort asc, pub_date_start_sort desc</str></lst>
         <lst><str name="q">nature</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
         <lst><str name="q">time</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
@@ -254,11 +253,8 @@
        -->
 
       <str name="qf">
-        title_a_index^1500
-        author_main_unstem_search^1000
         title_unstem_search^40
         title_display^40
-        author_unstem_search^40
         subject_topic_unstem_search^18
         subject_unstem_search^15
         subject_topic_index^12
@@ -270,13 +266,8 @@
         cjk_all
       </str>
       <str name="pf">
-        title_245a_lr^16000
-        title_245_lr^16000
-        title_a_index^12000
-        author_main_unstem_search^10000
         title_unstem_search^400
         title_display^400
-        author_unstem_search^400
         subject_topic_unstem_search^180
         subject_unstem_search^150
         subject_topic_index^120
@@ -287,107 +278,26 @@
         description_t^10
         cjk_all^10
       </str>
-      <str name="author_qf">
-        author_main_unstem_search^20
-        author_unstem_search^10
-        cjk_author
-      </str>
-      <str name="author_pf">
-        author_main_unstem_search^200
-        author_unstem_search^100
-        cjk_author^10
-      </str>
-      <str name="left_anchor_qf">
-        title_245a_la^50
-        title_245_la^10
-        title_la^2
-        title_addl_la
-      </str>
-      <str name="left_anchor_pf">
-        title_245a_lr^600
-        title_245_lr^600
-        title_245a_la^500
-        title_245_la^100
-        title_lr^100
-        title_la^20
-        title_addl_la^10
-      </str>
-      <str name="in_series_qf">
-        more_in_this_series_la
-      </str>
-      <str name="in_series_pf">
-        more_in_this_series_la
-      </str>
-      <str name="publisher_qf">
-        pub_created_unstem_search
-        cjk_publisher
-      </str>
-      <str name="publisher_pf">
-        pub_created_unstem_search
-        cjk_publisher
-      </str>
-      <str name="notes_qf">
-        notes_index
-        cjk_notes
-      </str>
-      <str name="notes_pf">
-        notes_index
-        cjk_notes
-      </str>
-      <str name="series_title_qf">
-        series_title_index^5
-        series_ae_index
-        series_statement_index
-        linked_series_title_index
-        linked_series_index
-        original_version_series_index
-        cjk_series_title
-      </str>
-      <str name="series_title_pf">
-        series_title_index^50
-        series_ae_index^10
-        series_statement_index^10
-        linked_series_title_index^10
-        linked_series_index^10
-        original_version_series_index^10
-        cjk_series_title^10
-      </str>
       <str name="title_qf">
-        title_a_index^500
         title_unstem_search^100
         title_display^50
         other_title_index^5
-        series_title_index^5
         uniform_title_s^5
         title_vern_display
         content_title_index
         contains_title_index
         linked_title_index
-        series_ae_index
-        series_statement_index
-        linked_series_title_index
-        linked_series_index
-        original_version_series_index
         cjk_title
       </str>
       <str name="title_pf">
-        title_245a_lr^5500
-        title_245_lr^5500
-        title_a_index^5000
         title_unstem_search^1000
         title_display^500
         other_title_index^50
-        series_title_index^50
         uniform_title_s^50
         title_vern_display^10
         content_title_index^10
         contains_title_index^10
         linked_title_index^10
-        series_ae_index^10
-        series_statement_index^10
-        linked_series_title_index^10
-        linked_series_index^10
-        original_version_series_index^10
         cjk_title^10
       </str>
       <str name="subject_qf">
@@ -407,7 +317,6 @@
       <str name="fl">
         id,
         score,
-        author_display,
         marc_relator_display,
         format,
         pub_created_display,
