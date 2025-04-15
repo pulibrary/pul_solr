@@ -294,56 +294,26 @@
         notes_index
         cjk_notes
       </str>
-      <str name="series_title_qf">
-        series_title_index^5
-        series_ae_index
-        series_statement_index
-        linked_series_title_index
-        linked_series_index
-        original_version_series_index
-        cjk_series_title
-      </str>
-      <str name="series_title_pf">
-        series_title_index^50
-        series_ae_index^10
-        series_statement_index^10
-        linked_series_title_index^10
-        linked_series_index^10
-        original_version_series_index^10
-        cjk_series_title^10
-      </str>
       <str name="title_qf">
         title_unstem_search^100
         title_display^50
         other_title_index^5
-        series_title_index^5
         uniform_title_s^5
         title_vern_display
         content_title_index
         contains_title_index
         linked_title_index
-        series_ae_index
-        series_statement_index
-        linked_series_title_index
-        linked_series_index
-        original_version_series_index
         cjk_title
       </str>
       <str name="title_pf">
         title_unstem_search^1000
         title_display^500
         other_title_index^50
-        series_title_index^50
         uniform_title_s^50
         title_vern_display^10
         content_title_index^10
         contains_title_index^10
         linked_title_index^10
-        series_ae_index^10
-        series_statement_index^10
-        linked_series_title_index^10
-        linked_series_index^10
-        original_version_series_index^10
         cjk_title^10
       </str>
       <str name="subject_qf">
