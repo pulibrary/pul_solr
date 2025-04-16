@@ -1,0 +1,56 @@
+{
+    "title_t": [
+        "ACCRA Cost of Living Index - Historical Dataset (1990 - 2024 Q3)"
+    ],
+    "title_display": "ACCRA Cost of Living Index - Historical Dataset (1990 - 2024 Q3)",
+    "resource_id_t": [
+        "1048"
+    ],
+    "url_s": [
+        "http://dss.princeton.edu/cgi-bin/catalog/search.cgi?studyno=3003"
+    ],
+    "blurb_t": [
+        "<p>Cost of living statistics by city for United States and select Canadian cities. For statistics prior to 1990, see the print in Firestone Library which goes back to 1981. HD6983.I57 The preceding title was Cost of living indicators. Inter-city index report. Holdings are spotty and under call numbers HD6983.A7 (1972, 1978) and HD9004.A4 (1979-1981).</p>\r\n"
+    ],
+    "sample_t": [
+        ""
+    ],
+    "principal_investigator_t": [
+        ""
+    ],
+    "producer_t": [
+        ""
+    ],
+    "distributor_t": [
+        ""
+    ],
+    "version_t": [
+        ""
+    ],
+    "more_detail_url_t": [
+        ""
+    ],
+    "resource_type_s": [
+        "Series - ongoing"
+    ],
+    "format": [
+        "Series - ongoing"
+    ],
+    "link_time_t": [
+        "2016-11-15T01:14:00.000Z"
+    ],
+    "id": "resource1030",
+    "created_at_t": [
+        "2016-12-15T18:53:37.000Z"
+    ],
+    "updated_at_t": [
+        "2024-10-31T19:53:51.378Z"
+    ],
+    "subject_geo_facet": [
+        "Canada",
+        "United States"
+    ],
+    "subject_topic_facet": [
+        "Consumer Spending & Finance"
+    ]
+}
