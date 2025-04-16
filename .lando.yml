@@ -6,6 +6,12 @@ services:
     core: blacklight-core
     config:
       dir: solr_configs/catalog-production-v2/conf
+  dss_test_solr:
+    type: solr:8.4
+    portforward: true
+    core: blacklight-core
+    config:
+      dir: solr_configs/dss-production/conf
   pulmap_test_solr:
     type: solr:8.4
     portforward: true
@@ -15,5 +21,7 @@ services:
 proxy:
   blacklight_test_solr:
     - blacklight.test.solr.lndo.site:8983
+  dss_test_solr:
+    - dss.test.solr.lndo.site:8983
   pulmap_test_solr:
     - pulmap.test.solr.lndo.site:8983
