@@ -241,74 +241,31 @@
       <str name="q.alt">*:*</str>
       <str name="mm">6&lt;90%</str>
 
-      <!-- boost local holdings (add 50 to the score) to reduce unnecessary requests -->
-      <str name="bf">if(field(numeric_id_b),50,0)</str>
-
-       <!-- this qf and pf are used by default, if not otherwise specified by
-            client. The default blacklight_config will use these for the
-            "keywords" search. See the author_qf/author_pf, title_qf, etc
-            below, which the default blacklight_config will specify for
-            those searches. You may also be interested in:
-            http://wiki.apache.org/solr/LocalParams
-       -->
-
       <str name="qf">
         title_unstem_search^40
         title_display^40
         subject_topic_unstem_search^18
-        subject_unstem_search^15
         subject_topic_index^12
-        subject_t^10
-        subject_addl_unstem_search^8
-        subject_addl_t^4
         text
-        description_t
-        cjk_all
       </str>
       <str name="pf">
         title_unstem_search^400
         title_display^400
         subject_topic_unstem_search^180
-        subject_unstem_search^150
         subject_topic_index^120
-        subject_t^100
-        subject_addl_unstem_search^80
-        subject_addl_t^40
         text^10
-        description_t^10
-        cjk_all^10
       </str>
       <str name="title_qf">
-        title_unstem_search^100
-        title_display^50
-        other_title_index^5
-        uniform_title_s^5
-        title_vern_display
-        content_title_index
-        contains_title_index
-        linked_title_index
-        cjk_title
+        title_unstem_search
       </str>
       <str name="title_pf">
-        title_unstem_search^1000
-        title_display^500
-        other_title_index^50
-        uniform_title_s^50
-        title_vern_display^10
-        content_title_index^10
-        contains_title_index^10
-        linked_title_index^10
-        cjk_title^10
+        title_unstem_search
       </str>
       <str name="subject_qf">
-        subject_topic_unstem_search^25
-        subject_unstem_search^20
-        cjk_subject
+        subject_topic_unstem_search
       </str>
       <str name="subject_pf">
-        subject_topic_unstem_search^250
-        subject_unstem_search^200
-        cjk_subject^10
+        subject_topic_unstem_search
       </str>
 
       <int name="ps">3</int>
