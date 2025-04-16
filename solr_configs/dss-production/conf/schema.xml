@@ -521,15 +521,6 @@
       users normally should not need to know about them.
      -->
     <fieldType name="point" class="solr.PointType" dimension="2" subFieldSuffix="_d"/>
-
-    <!-- A specialized field for geospatial search. If indexed, this fieldType must not be multivalued. -->
-    <fieldType name="location" class="solr.LatLonType" subFieldSuffix="_coordinate"/>
-
-   <!--
-    A Geohash is a compact representation of a latitude longitude pair in a single field.
-    See http://wiki.apache.org/solr/SpatialSearch
-   -->
-    <fieldtype name="geohash" class="solr.GeoHashField"/>
  </types>
 
 
@@ -595,11 +586,9 @@
    <dynamicField name="*_la" type="title_l" indexed="true" stored="false" multiValued="true"/>
    <dynamicField name="*_lr" type="text_lr" indexed="true" stored="false" multiValued="true"/>
 
-   <!-- Type used to index the lat and lon components for the "location" FieldType -->
    <dynamicField name="*_coordinate"  type="tdouble" indexed="true"  stored="false"/>
 
    <dynamicField name="*_dt" type="date"    indexed="true"  stored="true"/>
-   <dynamicField name="*_p"  type="location" indexed="true" stored="true"/>
 
    <!-- some trie-coded dynamic fields for faster range queries -->
    <dynamicField name="*_ti" type="tint"    indexed="true"  stored="true"/>
