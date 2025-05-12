@@ -6,7 +6,7 @@ require 'date'
 module PulSolr
   class BackupManager
     attr_reader :base_dir, :host, :solr_env, :base_url, :logger
-    def initialize(base_dir: "/mnt/solr_backup", host:, solr_env:, base_url: "http://localhost:8983", logger:)
+    def initialize(base_dir: "/data/solr/backups", host:, solr_env:, base_url: "http://localhost:8983", logger:)
       @base_dir = base_dir
       @solr_env = solr_env
       @host = host
