@@ -5,7 +5,7 @@ set :whenever_host, ->{ "solr9" }
 set :whenever_environment, ->{ "staging" }
 
 def zk_host
-  "lib-zk-staging4:2181,lib-zk-staging5:2181,lib-zk-staging6:2181/solr9"
+  "lib-zk-staging4.princeton.edu:2181,lib-zk-staging5.princeton.edu:2181,lib-zk-staging6.princeton.edu:2181"
 end
 
 # config directory => config set name
