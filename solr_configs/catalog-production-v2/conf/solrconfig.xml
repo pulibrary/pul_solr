@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
  Licensed to the Apache Software Foundation (ASF) under one or more
  contributor license agreements.  See the NOTICE file distributed with
@@ -19,12 +19,13 @@
 <config>
   <luceneMatchVersion>8.4.1</luceneMatchVersion>
 
-  <lib dir="${solr.install.dir}/contrib/analysis-extras/lib" />
+
+  <!-- <lib dir="${solr.install.dir}/contrib/analysis-extras/lib" />
   <lib dir="${solr.install.dir}/contrib/analysis-extras/lucene-libs" />
-  <lib dir="conf" />
+  <lib dir="conf" /> -->
 
   <directoryFactory name="DirectoryFactory"
-                    class="${solr.directoryFactory:solr.StandardDirectoryFactory}">
+    class="${solr.directoryFactory:solr.StandardDirectoryFactory}">
   </directoryFactory>
 
   <updateHandler class="solr.DirectUpdateHandler2">
@@ -51,17 +52,17 @@
   </updateProcessor>
 
   <updateRequestProcessorChain name="cloud" processor="add_hash_id" default="true">
-    <processor class="solr.LogUpdateProcessorFactory"/>
-    <processor class="solr.DistributedUpdateProcessorFactory"/>
-    <processor class="solr.RunUpdateProcessorFactory"/>
+    <processor class="solr.LogUpdateProcessorFactory" />
+    <processor class="solr.DistributedUpdateProcessorFactory" />
+    <processor class="solr.RunUpdateProcessorFactory" />
   </updateRequestProcessorChain>
 
-  <codecFactory class="solr.SchemaCodecFactory"/>
-  <schemaFactory class="ClassicIndexSchemaFactory"/>
+  <codecFactory class="solr.SchemaCodecFactory" />
+  <schemaFactory class="ClassicIndexSchemaFactory" />
 
   <dataDir>${solr.blacklight-core.data.dir:}</dataDir>
 
-  <requestDispatcher handleSelect="true" >
+  <requestDispatcher handleSelect="true">
     <requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
   </requestDispatcher>
 
@@ -71,7 +72,7 @@
 
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
 
-  <requestHandler name="/update" class="solr.UpdateRequestHandler" >
+  <requestHandler name="/update" class="solr.UpdateRequestHandler">
   </requestHandler>
 
   <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
@@ -99,21 +100,21 @@
 
   <query>
     <filterCache class="solr.search.CaffeineCache"
-                 size="2048"
-                 initialSize="2048"
-                 autowarmCount="64"/>
+      size="2048"
+      initialSize="2048"
+      autowarmCount="64" />
     <queryResultCache class="solr.search.CaffeineCache"
-                      size="4096"
-                      initialSize="4096"
-                      autowarmCount="32"/>
+      size="4096"
+      initialSize="4096"
+      autowarmCount="32" />
     <documentCache class="solr.search.CaffeineCache"
-                   size="4096"
-                   initialSize="4096"/>
+      size="4096"
+      initialSize="4096" />
 
     <enableLazyFieldLoading>true</enableLazyFieldLoading>
 
-   <queryResultWindowSize>100</queryResultWindowSize>
-   <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
+    <queryResultWindowSize>100</queryResultWindowSize>
+    <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
   </query>
 
   <initParams name="searchParams">
@@ -131,7 +132,7 @@
       <!-- boost local holdings (add 50 to the score) to reduce unnecessary requests -->
       <str name="bf">if(field(numeric_id_b),50,0)</str>
 
-       <!-- this qf and pf are used by default, if not otherwise specified by
+      <!-- this qf and pf are used by default, if not otherwise specified by
             client. The default blacklight_config will use these for the
             "keywords" search. See the author_qf/author_pf, title_qf, etc
             below, which the default blacklight_config will specify for
@@ -161,8 +162,6 @@
         uncontrolled_keyword_unstem_search^6.6
         text^2.2
         description_t^2.2
-        cjk_all^2.2
-        cjk_text^2.2
       </str>
       <str name="pf">
         title_245a_lr^35200
@@ -188,20 +187,19 @@
         uncontrolled_keyword_unstem_search^22
         text^22
         description_t^22
-        cjk_all^22
-        cjk_text^22
+
       </str>
       <str name="author_qf">
         author_main_unstem_search^44
         author_unstem_search^22
         author_int^22
-        cjk_author^2.2
+
       </str>
       <str name="author_pf">
         author_main_unstem_search^440
         author_unstem_search^220
         author_int^22
-        cjk_author^22
+
       </str>
       <str name="left_anchor_qf">
         title_245a_la^50
@@ -226,21 +224,15 @@
       </str>
       <str name="publisher_qf">
         pub_created_unstem_search^2.2
-        cjk_publisher^2.2
       </str>
       <str name="publisher_pf">
         pub_created_unstem_search^2.2
-        cjk_publisher^2.2
       </str>
       <str name="notes_qf">
         notes_index^2.2
-        cjk_notes^2.2
-        cjk_notes_copied^2.2
       </str>
       <str name="notes_pf">
         notes_index^2.2
-        cjk_notes^2.2
-        cjk_notes_copied^2.2
       </str>
       <str name="series_title_qf">
         series_title_index^11
@@ -249,7 +241,6 @@
         linked_series_title_index^2.2
         linked_series_index^2.2
         original_version_series_index^2.2
-        cjk_series_title^2.2
       </str>
       <str name="series_title_pf">
         series_title_index^110
@@ -258,7 +249,6 @@
         linked_series_title_index^22
         linked_series_index^22
         original_version_series_index^22
-        cjk_series_title^22
       </str>
       <str name="title_qf">
         title_a_index^1100
@@ -276,7 +266,6 @@
         linked_series_title_index^2.2
         linked_series_index^2.2
         original_version_series_index^2.2
-        cjk_title^2.2
       </str>
       <str name="title_pf">
         title_245a_lr^12100
@@ -296,7 +285,6 @@
         linked_series_title_index^22
         linked_series_index^22
         original_version_series_index^22
-        cjk_title^22
       </str>
       <str name="subject_qf">
         subject_topic_unstem_search^55
@@ -305,7 +293,6 @@
         siku_subject_unstem_search^2.2
         local_subject_unstem_search^2.2
         homoit_subject_unstem_search^2.2
-        cjk_subject^2.2
       </str>
       <str name="subject_pf">
         subject_topic_unstem_search^550
@@ -314,7 +301,6 @@
         siku_subject_unstem_search^22
         local_subject_unstem_search^22
         homoit_subject_unstem_search^22
-        cjk_subject^22
       </str>
 
       <int name="ps">3</int>
@@ -377,9 +363,9 @@
       <str name="defType">lucene</str>
     </lst>
   </requestHandler>
-  
+
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
-  <requestHandler name="document" class="solr.SearchHandler" >
+  <requestHandler name="document" class="solr.SearchHandler">
     <lst name="defaults">
       <str name="echoParams">all</str>
       <str name="fl">*</str>
