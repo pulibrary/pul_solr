@@ -1,4 +1,4 @@
-server 'lib-solr-prod7', user: 'deploy', roles: %{main}
+server 'lib-solr-prod7.princeton.edu', user: 'deploy', roles: %{main}
 
 set :whenever_host, ->{ "solr8" }
 set :whenever_environment, ->{ "production" }

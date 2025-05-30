@@ -1,4 +1,4 @@
-server 'lib-solr-staging4d', user: 'deploy', roles: %{main}
+server 'lib-solr-staging4d.princeton.edu', user: 'deploy', roles: %{main}
 
 # This is used to create part of the backup directory path
 set :whenever_host, ->{ "solr8" }
