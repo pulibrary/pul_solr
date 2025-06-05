@@ -836,6 +836,34 @@
       -->
   </requestHandler>
 
+  <!-- A more like this request handler for related items -->
+  <requestHandler name="/related" class="solr.MoreLikeThisHandler">
+  <!-- we can just use the english fields, because we're not taking a user query here -->
+    <str name="mlt">true</str>
+    <lst name="defaults">
+      <str name="mlt.fl">
+        description_txtm
+        genre_txtm
+        subject_txtm
+      </str>
+    </lst>
+  <!-- question: 
+      will the highest matching field determine the frequency, and if so does it make sense to use a combined field?
+  -->
+  <!-- more like this fields
+    description
+    genre
+    subject
+    geographic origin
+    keywords
+    language
+    date
+    creator
+    contributor
+    project
+  -->
+  </requestHandler>
+
   <!-- A request handler that returns indented JSON by default -->
   <requestHandler name="/query" class="solr.SearchHandler">
     <lst name="defaults">
