@@ -780,6 +780,26 @@
         description_txtm_sv
         description_txtm_th
         description_txtm_tr
+
+        alternative_title_txtm
+        barcode_txtm
+
+        contributor_txtm
+        creator_txtm
+        display_date_s
+        genre_txtm
+        geo_subject_txtm
+        geographic_origin_txtm
+        holding_location_txtm
+        keywords_txtm
+        language_txtm
+        ephemera_project_title_s
+        provenance_txtm
+        publisher_txtm
+        series_txtm
+        subject_txtm
+        transliterated_title_txtm
+
       </str>
     </lst>
     <!-- In addition to defaults, "appends" params can be specified
