@@ -19,6 +19,7 @@ def config_map
     "oawaiver" => "oawaiver-production",
     "figgy" => "figgy-production",
     "dpul" => "dpul",
+    "dpulc-production" => "dpulc-production",
     "pulmap" => "pulmap"
   }
 end
