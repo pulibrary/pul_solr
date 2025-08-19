@@ -1,11 +1,17 @@
 name: pul_solr
 services:
   blacklight_test_solr:
-    type: solr:8.4
+    type: solr:9.7
     portforward: true
     core: blacklight-core
     config:
       dir: solr_configs/catalog-production-v2/conf
+    run_as_root:
+      - cp /opt/solr/modules/analysis-extras/lib/solr-analysis-extras-9.7.0.jar /opt/solr/lib/solr-analysis-extras-9.7.0.jar
+      - cp /opt/solr/modules/analysis-extras/lib/icu4j-74.2.jar /opt/solr/lib/icu4j-74.2.jar
+      - cp /opt/solr/modules/analysis-extras/lib/lucene-analysis-icu-9.11.1.jar /opt/solr/lib/lucene-analysis-icu-9.11.1.jar
+      - cp /solrconf/conf/lucene-umich-solr-filters-2.0-solr-9.0.0.jar /opt/solr/lib/lucene-umich-solr-filters-2.0-solr-9.0.0.jar
+      - cp /solrconf/conf/CJKFilterUtils-v4.0.jar /opt/solr/lib/CJKFilterUtils-v4.0.jar
   dss_test_solr:
     type: solr:8.4
     portforward: true
