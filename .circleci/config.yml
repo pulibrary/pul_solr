@@ -8,9 +8,9 @@ jobs:
         environment:
           RAILS_ENV: test
       - image: quay.io/pulibrary/ci-solr:9.7-v1.0.0
-        command: server/scripts/ci-start-solr9.sh
+        command: server/scripts/ci-start.sh
       - image: pulibrary/ci-solr:8.4-v2.0.0
-        command: server/scripts/ci-start-solr8.sh
+        command: server/scripts/ci-start.sh
     steps:
       - checkout
 
