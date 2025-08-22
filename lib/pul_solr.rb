@@ -3,11 +3,13 @@ require 'yaml'
 
 module PulSolr
   def self.solr_connection
+    host = ENV['SOLR_URL'] == "http://solr8:8983/solr" ? "solr:SolrRocks@solr8" : "solr:SolrRocks@solr9"
+    port = ENV['SOLR_URL'] == "http://solr8:8983/solr" ? "8983" : "8984"
     @@solr_connection ||= {
       test: {
-        host: ENV['CI'] ? "solr:SolrRocks@localhost" : "localhost",
+        host: ENV['CI'] ? host : "localhost",
         catalog: {
-          port: ENV['CI'] ? "8983" : ENV['lando_blacklight_test_solr_conn_port'],
+          port: ENV['CI'] ? port : ENV['lando_blacklight_test_solr_conn_port'],
           core: "solr/blacklight-core",
         },
         dss: {
