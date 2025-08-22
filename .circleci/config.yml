@@ -46,8 +46,8 @@ jobs:
             sleep 3
             cd solr_configs/catalog-production-v3/conf
             zip -1 -r solr_config.zip ./*
-            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@solr9:8983/solr/admin/configs?action=UPLOAD&name=catalog"
-            curl -X POST -H 'Content-type: application/json' "http://solr:SolrRocks@solr9:8983/api/collections/" -d '{"name": "blacklight-core", "config": "catalog", "numShards": 1}'
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@solr9:8984/solr/admin/configs?action=UPLOAD&name=catalog"
+            curl -X POST -H 'Content-type: application/json' "http://solr:SolrRocks@solr9:8984/api/collections/" -d '{"name": "blacklight-core", "config": "catalog", "numShards": 1}'
       - run:
           name: Load pulmap configs into solr 8 and create collection
           command: |
@@ -73,5 +73,5 @@ jobs:
           command: bundle exec rspec spec/orangelight
           environment:
             RAILS_ENV: test
-            SOLR_URL: http://solr9:8983/solr
+            SOLR_URL: http://solr9:8984/solr
 
