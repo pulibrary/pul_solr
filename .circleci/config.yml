@@ -12,6 +12,7 @@ jobs:
         name: solr9
       - image: pulibrary/ci-solr:8.4-v2.0.0
         command: server/scripts/ci-start.sh
+        name: solr8
     steps:
       - checkout
 
@@ -37,8 +38,8 @@ jobs:
             sleep 3
             cd solr_configs/catalog-production-v2/conf
             zip -1 -r solr_config.zip ./*
-            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@localhost:8983/solr/admin/configs?action=UPLOAD&name=catalog"
-            curl -H 'Content-type: application/json' "http://solr:SolrRocks@localhost:8983/api/collections/" -d '{create: {name: blacklight-core, config: catalog, numShards: 1}}'
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@solr8:8983/solr/admin/configs?action=UPLOAD&name=catalog"
+            curl -H 'Content-type: application/json' "http://solr:SolrRocks@solr8:8983/api/collections/" -d '{create: {name: blacklight-core, config: catalog, numShards: 1}}'
       - run:
           name: Load catalog v3 configs into solr 9 and create collection
           command: |
@@ -52,20 +53,21 @@ jobs:
           command: |
             cd solr_configs/pulmap/conf
             zip -1 -r solr_config.zip ./*
-            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@localhost:8983/solr/admin/configs?action=UPLOAD&name=pulmap"
-            curl -H 'Content-type: application/json' "http://solr:SolrRocks@localhost:8983/api/collections/" -d '{create: {name: pulmap-core, config: pulmap, numShards: 1}}'
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@solr8:8983/solr/admin/configs?action=UPLOAD&name=pulmap"
+            curl -H 'Content-type: application/json' "http://solr:SolrRocks@solr8:8983/api/collections/" -d '{create: {name: pulmap-core, config: pulmap, numShards: 1}}'
       - run:
           name: Load DSS configs into solr 8 and create collection
           command: |
             cd solr_configs/dss-production/conf
             zip -1 -r solr_config.zip ./*
-            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@localhost:8983/solr/admin/configs?action=UPLOAD&name=dss"
-            curl -H 'Content-type: application/json' "http://solr:SolrRocks@localhost:8983/api/collections/" -d '{create: {name: dss-core, config: dss, numShards: 1}}'
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@solr8:8983/solr/admin/configs?action=UPLOAD&name=dss"
+            curl -H 'Content-type: application/json' "http://solr:SolrRocks@solr8:8983/api/collections/" -d '{create: {name: dss-core, config: dss, numShards: 1}}'
       - run:
           name: Rspec
           command: bundle exec rspec spec
           environment:
             RAILS_ENV: test
+            SOLR_URL: http://solr8:8983/solr
       - run:
           name: Rspec Solr 9 catalog tests
           command: bundle exec rspec spec/orangelight
