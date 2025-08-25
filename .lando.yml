@@ -1,17 +1,23 @@
 name: pul_solr
 services:
-  blacklight_test_solr:
+  blacklight_test_solr_9:
     type: solr:9.7
     portforward: true
     core: blacklight-core
     config:
-      dir: solr_configs/catalog-production-v2/conf
+      dir: solr_configs/catalog-production-v3/conf
     run_as_root:
       - cp /opt/solr/modules/analysis-extras/lib/solr-analysis-extras-9.7.0.jar /opt/solr/lib/solr-analysis-extras-9.7.0.jar
       - cp /opt/solr/modules/analysis-extras/lib/icu4j-74.2.jar /opt/solr/lib/icu4j-74.2.jar
       - cp /opt/solr/modules/analysis-extras/lib/lucene-analysis-icu-9.11.1.jar /opt/solr/lib/lucene-analysis-icu-9.11.1.jar
       - cp /solrconf/conf/lucene-umich-solr-filters-2.0-solr-9.0.0.jar /opt/solr/lib/lucene-umich-solr-filters-2.0-solr-9.0.0.jar
       - cp /solrconf/conf/CJKFilterUtils-v4.0.jar /opt/solr/lib/CJKFilterUtils-v4.0.jar
+  blacklight_test_solr_8:
+    type: solr:8.4
+    portforward: true
+    core: blacklight-core
+    config:
+      dir: solr_configs/catalog-production-v2/conf
   dss_test_solr:
     type: solr:8.4
     portforward: true
@@ -25,8 +31,10 @@ services:
     config:
       dir: solr_configs/pulmap/conf
 proxy:
-  blacklight_test_solr:
-    - blacklight.test.solr.lndo.site:8983
+  blacklight_test_solr_8:
+    - blacklight.test.solr.8.lndo.site:8983
+  blacklight_test_solr_9:
+    - blacklight.test.solr.9.lndo.site:8983
   dss_test_solr:
     - dss.test.solr.lndo.site:8983
   pulmap_test_solr:

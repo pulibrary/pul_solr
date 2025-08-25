@@ -7,8 +7,12 @@ module PulSolr
     @@solr_connection ||= {
       test: {
         host: ENV['CI'] ? "solr:SolrRocks@localhost" : "localhost",
-        catalog: {
-          port: ENV['CI'] ? port : ENV['lando_blacklight_test_solr_conn_port'],
+        catalog_solr8: {
+          port: ENV['CI'] ? port : ENV['lando_blacklight_test_solr_8_conn_port'],
+          core: "solr/blacklight-core",
+        },
+        catalog_solr9: {
+          port: ENV['CI'] ? port : ENV['lando_blacklight_test_solr_9_conn_port'],
           core: "solr/blacklight-core",
         },
         dss: {
