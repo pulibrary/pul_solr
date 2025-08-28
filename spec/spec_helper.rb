@@ -24,7 +24,7 @@ RSpec.shared_context 'solr_helpers' do
            core: "solr/blacklight-core",
            dtype: "edismax",
            suffix: "&defType=edismax",
-           port: PulSolr.solr_connection[:test][:catalog][:port])
+           port: PulSolr.solr_connection[:test][:catalog_solr8][:port])
     unless @solr
       @solr = RSolr.connect :url => "http://#{host}:#{port}/#{core}", :timeout => 9999999
       puts "Solr URL: #{@solr.uri}"
