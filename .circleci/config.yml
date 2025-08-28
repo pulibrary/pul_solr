@@ -7,7 +7,7 @@ jobs:
       - image: cimg/ruby:3.4.1
         environment:
           RAILS_ENV: test
-      - image: quay.io/pulibrary/ci-solr:9.7-v1.0.1
+      - image: quay.io/pulibrary/ci-solr:9.7-v1.0.2
         command: server/scripts/ci-start.sh
       - image: pulibrary/ci-solr:8.4-v2.0.0
         command: server/scripts/ci-start.sh
