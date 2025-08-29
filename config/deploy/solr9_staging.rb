@@ -9,7 +9,10 @@ def zk_host
 end
 
 # config directory => config set name
-# This should be empty if there are only cdh things on the box
+# The box will also have some configs from CDH.  They are not managed by capistrano, but
+# are reloaded when we deploy.
 def config_map
-  { }
+  {
+    "catalog-production-v3" => "catalog-production-v3",
+  }
 end
