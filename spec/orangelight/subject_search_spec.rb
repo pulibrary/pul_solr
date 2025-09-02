@@ -1,8 +1,7 @@
 require 'spec_helper'
 require 'json'
 
-describe 'subject keyword search' do
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared subject keyword search' do
 
   def subject_query_params q
     {qf: "${subject_qf}", pf: "${subject_pf}", q: q}
@@ -57,5 +56,17 @@ describe 'subject keyword search' do
   end
   after(:all) do
     delete_all
+  end
+end
+
+RSpec.describe 'subject keyword search' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared subject keyword search'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared subject keyword search'
   end
 end

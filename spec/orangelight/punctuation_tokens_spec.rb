@@ -1,8 +1,7 @@
 require 'spec_helper'
 require 'json'
 
-describe 'stripping punctuation surrounded by whitespace' do
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared stripping punctuation surrounded by whitespace' do
 
   def qf_pf_params q, field
     {qf: "${#{field}_qf}", pf: "${#{field}_pf}", q: q}
@@ -53,5 +52,17 @@ describe 'stripping punctuation surrounded by whitespace' do
   end
   after(:all) do
     delete_all
+  end
+end
+
+RSpec.describe 'protected words' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared stripping punctuation surrounded by whitespace'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared stripping punctuation surrounded by whitespace'
   end
 end

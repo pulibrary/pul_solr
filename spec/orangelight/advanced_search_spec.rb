@@ -3,8 +3,7 @@
 require 'spec_helper'
 require 'json'
 
-describe 'subject keyword search' do
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared subject keyword search' do
 
   before do
     delete_all
@@ -38,5 +37,17 @@ describe 'subject keyword search' do
       expect(response['docs'].length).to eq(1)
       expect(response['docs'].first['id']).to eq('212556')
     end
+  end
+end
+
+RSpec.describe 'subject keyword search' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared subject keyword search'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared subject keyword search'
   end
 end

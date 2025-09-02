@@ -9,8 +9,7 @@ RSpec::Matchers.define :contain_only_hexadecimal_characters do
   end
 end
 
-describe 'hash id field solrconfig update handler' do
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared hash id field solrconfig update handler' do
 
   before(:all) do
     delete_all
@@ -32,5 +31,17 @@ describe 'hash id field solrconfig update handler' do
   end
   after(:all) do
     delete_all
+  end
+end
+
+RSpec.describe 'hash id field solrconfig update handler' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared hash id field solrconfig update handler'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared hash id field solrconfig update handler'
   end
 end

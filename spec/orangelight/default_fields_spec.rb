@@ -1,8 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe 'default fields' do
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared default fields' do
 
   before do
     delete_all
@@ -17,5 +16,17 @@ describe 'default fields' do
   after do
     delete_all
     solr.commit
+  end
+end
+
+RSpec.describe 'default fields' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared default fields'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared default fields'
   end
 end

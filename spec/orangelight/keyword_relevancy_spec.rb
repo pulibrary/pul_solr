@@ -1,8 +1,7 @@
 require 'spec_helper'
 require 'json'
 
-describe 'title subfield a boost' do
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared title subfield a boost' do
 
   before(:all) do
     delete_all
@@ -87,5 +86,17 @@ describe 'title subfield a boost' do
   end
   after(:all) do
     delete_all
+  end
+end
+
+RSpec.describe 'title subfield a boost' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared title subfield a boost'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared title subfield a boost'
   end
 end

@@ -9,8 +9,7 @@ def left_anchor_query_params q
   {qf: "${left_anchor_qf}", pf: "${left_anchor_pf}", q: "#{q}*"}
 end
 
-describe 'title keyword search' do
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared title keyword search' do
 
   before do
     delete_all
@@ -163,8 +162,7 @@ describe 'title keyword search' do
   end
 end
 
-describe 'title_l search' do
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared title_l search' do
 
   let(:response) { solr_resp_doc_ids_only(params)['response'] }
   let(:docs) { response['docs'] }
@@ -230,5 +228,29 @@ describe 'title_l search' do
 
   after do
     delete_all
+  end
+end
+
+RSpec.describe 'title keyword search' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared title keyword search'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared title keyword search'
+  end
+end
+
+RSpec.describe 'title_l search' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared title_l search'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared title_l search'
   end
 end
