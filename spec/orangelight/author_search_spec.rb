@@ -1,9 +1,7 @@
 require 'spec_helper'
 require 'json'
 
-describe 'author keyword search' do
-
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared author keyword search' do
 
   def author_query_params q
     { qf: "${author_qf}", pf: "${author_pf}", q: q }
@@ -39,5 +37,17 @@ describe 'author keyword search' do
   end
   after(:all) do
     delete_all
+  end
+end
+
+RSpec.describe 'author keyword search' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared author keyword search'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared author keyword search'
   end
 end

@@ -2,8 +2,7 @@
 require 'spec_helper'
 require 'json'
 
-describe 'apostrophes are stripped' do
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared apostrophes are stripped' do
 
   let(:contraction) { "Can't and Won't" }
   let(:cyrillic_name) { "Arsenʹev, Alekseĭ Aleksandrovich" }
@@ -172,5 +171,17 @@ describe 'apostrophes are stripped' do
 
   after do
     delete_all
+  end
+end
+
+RSpec.describe 'apostrophes are stripped' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared apostrophes are stripped'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared apostrophes are stripped'
   end
 end

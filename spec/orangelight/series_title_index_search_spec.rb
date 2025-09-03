@@ -1,8 +1,6 @@
 require 'spec_helper'
 
-describe 'series title keyword search' do
-
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared series title keyword search' do
 
   def series_title_query_params q
     { qf: "${series_title_qf}", pf: "${series_title_pf}", q: q }
@@ -30,3 +28,15 @@ describe 'series title keyword search' do
       delete_all
     end
   end
+
+RSpec.describe 'series title keyword search' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared series title keyword search'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared series title keyword search'
+  end
+end

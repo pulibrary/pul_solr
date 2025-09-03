@@ -4,8 +4,7 @@ require 'json'
 docs = JSON.parse(File.read('spec/fixtures/cjk_map_solr_fixtures.json'))
 stanford_docs = JSON.parse(File.read('spec/fixtures/cjk_stanford_fixtures.json'))
 
-describe 'CJK character equivalence' do
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared CJK character equivalence' do
 
   def add_single_field_doc char
     solr.add({ id: 1, cjk_title: char })
@@ -172,5 +171,17 @@ describe 'CJK character equivalence' do
 
   after(:all) do
     delete_all
+  end
+end
+
+RSpec.describe 'CJK character equivalence' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared CJK character equivalence'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared CJK character equivalence'
   end
 end

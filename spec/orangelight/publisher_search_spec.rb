@@ -1,8 +1,6 @@
 require 'spec_helper'
 
-describe 'publisher keyword search' do
-
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared publisher keyword search' do
 
   def publisher_query_params q
     { qf: "${publisher_qf}", pf: "${publisher_pf}", q: q }
@@ -31,3 +29,15 @@ describe 'publisher keyword search' do
       delete_all
     end
   end
+
+RSpec.describe 'publisher keyword search' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared publisher keyword search'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared publisher keyword search'
+  end
+end

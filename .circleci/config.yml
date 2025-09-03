@@ -66,10 +66,3 @@ jobs:
           environment:
             RAILS_ENV: test
             SOLR_URL: http://localhost:8983/solr
-      - run:
-          name: Rspec Solr 9 catalog tests
-          command: bundle exec rspec spec/orangelight
-          environment:
-            RAILS_ENV: test
-            SOLR_URL: http://localhost:8984/solr
-

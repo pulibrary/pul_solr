@@ -1,8 +1,7 @@
 require 'spec_helper'
 require 'json'
 
-describe 'protected words' do
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared protected words' do
 
   before(:all) do
     delete_all
@@ -21,5 +20,17 @@ describe 'protected words' do
   end
   after(:all) do
     delete_all
+  end
+end
+
+RSpec.describe 'protected words' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared protected words'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared protected words'
   end
 end

@@ -1,8 +1,6 @@
 require 'spec_helper'
 
-describe 'in series keyword search' do
-
-  include_context 'solr_helpers'
+RSpec.shared_examples 'shared in series keyword search' do
 
   def in_series_query_params q
     { qf: "${in_series_qf}", pf: "${in_series_pf}", q: "\"#{q}\"" }
@@ -30,3 +28,15 @@ describe 'in series keyword search' do
       delete_all
     end
   end
+
+RSpec.describe 'in series keyword search' do
+  context 'with solr8' do
+    include_context 'solr8'
+    include_examples 'shared in series keyword search'
+  end
+
+    context 'with solr9' do
+    include_context 'solr9'
+    include_examples 'shared in series keyword search'
+  end
+end
