@@ -1,7 +1,7 @@
 name: pul_solr
 services:
   blacklight_test_solr_9:
-    type: solr:9.7
+    type: solr:9.9
     portforward: true
     core: blacklight-core
     config:
