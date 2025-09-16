@@ -1,0 +1,2 @@
+# Uploading JARs as part of the config set is disallowed by zookeeper for security reasons
+*.jar export-ignore
