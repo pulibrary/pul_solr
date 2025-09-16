@@ -1,4 +1,4 @@
-server 'lib-solr-staging1.princeton.edu', user: 'deploy', roles: %{main}
+server 'lib-solr-staging2.princeton.edu', user: 'deploy', roles: %{main}
 
 # This is used to create part of the backup directory path
 set :whenever_host, ->{ "solr9" }

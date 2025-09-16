@@ -119,7 +119,7 @@ namespace :configsets do
   end
 
   def update_configset(config_dir:, config_set:)
-    execute "cd /opt/solr/bin && ./solr zk -upconfig -d #{File.join(release_path, "solr_configs", config_dir)} -n #{config_set} -z #{zk_host}"
+    execute "cd /opt/solr/bin && ./solr zk upconfig -d #{File.join(release_path, "solr_configs", config_dir)} -n #{config_set} -z #{zk_host}"
   end
 
   def delete_configset(config_set)
