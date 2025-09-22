@@ -784,22 +784,21 @@
         alternative_title_txtm
         barcode_txtm
 
-        contributor_txtm
-        creator_txtm
+        contributor_txt_sort
+        creator_txt_sort
         display_date_s
-        genre_txtm
-        geo_subject_txtm
-        geographic_origin_txtm
-        holding_location_txtm
-        keywords_txtm
-        language_txtm
+        genre_txt_sort
+        geo_subject_txt_sort
+        geographic_origin_txt_sort
+        holding_location_txt_sort
+        keywords_txt_sort
+        language_txt_sort
         ephemera_project_title_s
         provenance_txtm
-        publisher_txtm
-        series_txtm
-        subject_txtm
+        publisher_txt_sort
+        series_txt_sort
+        subject_txt_sort
         transliterated_title_txtm
-
       </str>
     </lst>
     <!-- In addition to defaults, "appends" params can be specified
