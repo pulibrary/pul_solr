@@ -33,7 +33,7 @@ chown -R solr:solr /solrconf
 chown -R solr:solr /opt/solr
 chown -R solr:solr /var/solr
 
-. /opt/docker-solr/scripts/run-initdb
+. /opt/solr/docker/scripts/run-initdb
 
 # Go down to solr and run
 if [ "$LANDO_SOLR_CUSTOM" != "none" ]; then
