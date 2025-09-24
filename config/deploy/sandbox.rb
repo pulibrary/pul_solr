@@ -1,4 +1,4 @@
-server 'solr-sandbox1.lib.princeton.edu', user: 'deploy', roles: %{main}
+server 'sandbox-solr1.lib.princeton.edu', user: 'deploy', roles: %{main}
 
 # This is used to create part of the backup directory path
 set :whenever_host, ->{ "solr8" }
