@@ -231,12 +231,10 @@
       <str name="notes_qf">
         notes_index^2.2
         cjk_notes^2.2
-        cjk_notes_copied^2.2
       </str>
       <str name="notes_pf">
         notes_index^2.2
         cjk_notes^2.2
-        cjk_notes_copied^2.2
       </str>
       <str name="series_title_qf">
         series_title_index^11

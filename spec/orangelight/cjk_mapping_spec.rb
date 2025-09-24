@@ -84,7 +84,7 @@ RSpec.shared_examples 'shared CJK character equivalence' do
       end
       it "can find notes" do
         notes = '闲话'
-        solr.add({ id: 1, notes_index: '閑話' })
+        solr.add({ id: 1, cjk_notes: '閑話' })
         solr.commit
         params = {q: notes}
         expect(solr_resp_doc_ids_only(params, 'select')).to include('1')

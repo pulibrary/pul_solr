@@ -65,4 +65,3 @@ jobs:
           command: bundle exec rspec spec
           environment:
             RAILS_ENV: test
-            SOLR_URL: http://localhost:8983/solr
