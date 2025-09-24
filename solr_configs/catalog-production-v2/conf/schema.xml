@@ -734,7 +734,5 @@
    <copyField source="title_la" dest="text"/>
    <copyField source="title_addl_la" dest="text"/>
 
-  <!-- copy notes_index to cjk_notes_copied -->
-   <copyField source="notes_index" dest="cjk_notes_copied"/>
-   <copyField source="notes_index" dest="cjk_text"/>
+   <copyField source="cjk_notes" dest="cjk_text"/>
 </schema>

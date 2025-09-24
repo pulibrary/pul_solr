@@ -232,6 +232,7 @@
         pub_created_unstem_search^2.2
         cjk_publisher^2.2
       </str>
+      <!-- After a full reindex following September 2025, we can feel free to remove the cjk_notes_copied from notes_*f -->
       <str name="notes_qf">
         notes_index^2.2
         cjk_notes^2.2
