@@ -10,5 +10,7 @@ end
 # config directory => config set name
 # This should be empty if there are only cdh things on the box
 def config_map
-  { }
+  {
+    "catalog-production-v3" => "catalog-production-v3",
+  }
 end

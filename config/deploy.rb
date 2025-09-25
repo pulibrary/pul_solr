@@ -89,8 +89,8 @@ namespace :alias do
   task :swap do
     production = ENV['PRODUCTION']
     rebuild = ENV['REBUILD']
-    production_alias = ENV['PRODUCTION_ALIAS'] || "catalog-alma-production"
-    rebuild_alias = ENV['REBUILD_ALIAS'] || "catalog-alma-production-rebuild"
+    production_alias = ENV['PRODUCTION_ALIAS'] || "catalog-production"
+    rebuild_alias = ENV['REBUILD_ALIAS'] || "catalog-production-rebuild"
     if production && rebuild
       on roles(:main) do
         # Delete the rebuild alias
@@ -107,7 +107,7 @@ namespace :alias do
       # Set PRODUCTION the collection name that is going to be in production.
       # Set REBUILD the collection name that is in production until the swap and moving forward is going to be in rebuild.
       # To know the current collection names for PRODUCTION and REBUILD see Solr UI -> collections. The following is an example.
-      puts "PRODUCTION=catalog-alma-production2 REBUILD=catalog-alma-production3 cap production alias:swap"
+      puts "PRODUCTION=catalog-production1 REBUILD=catalog-production2 cap production alias:swap"
       puts "PRODUCTION=catalog-staging2 REBUILD=catalog-staging1 PRODUCTION_ALIAS=catalog-staging REBUILD_ALIAS=catalog-staging-rebuild cap production alias:swap"
     end
   end
