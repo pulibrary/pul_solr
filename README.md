@@ -108,7 +108,7 @@ Before restoring:
 Restoring a backup ([solr docs](https://lucene.apache.org/solr/guide/8_4/collection-management.html#restore)) is a matter of issuing the proper API call on the solr box, e.g.:
 
 ```
-$ curl "http://localhost:8983/solr/admin/collections?action=RESTORE&name=pulfalight-staging-20210111.bk&collection=pulfalight-staging-restore&location=/solr/data/cloud_backup/staging/20210111"
+$ curl "http://localhost:8983/solr/admin/collections?action=RESTORE&name=pulfalight-staging-20210111.bk&collection=pulfalight-staging-restore&location=/solr/data/cloud_backup/solr8/staging/20210111"
 ```
 
 To find the right values for this curl:
@@ -118,10 +118,10 @@ To find the right values for this curl:
    a production backup, or `ls -t /solr/data/cloud_backup/solr8/staging` if you want
    to restore from a staging backup.  The first directory will be the most
    recent backup.
-    * The **location** parameter will be `/solr/data/cloud_backup/solr8/{Environment}/{Backup Date}`.  In the example above, it is `/solr/data/cloud_backup/staging/20210111`
+    * The **location** parameter will be `/solr/data/cloud_backup/solr8/{Environment}/{Backup Date}`.  In the example above, it is `/solr/data/cloud_backup/solr8/staging/20210111`
 1. Do an `ls` of the directory that you will use as the location parameter.  
-   For example, `ls /solr/data/cloud_backup/staging/20210111`.
-    * The **name** parameter will be the directory name of the collection you want to restore.  In the example above, it is `pulfalight-staging-20210111.bk`, referring to the `/solr/data/cloud_backup/staging/20210111/pulfalight-staging-20210111.bk` directory.
+   For example, `ls /solr/data/cloud_backup/solr8/staging/20210111`.
+    * The **name** parameter will be the directory name of the collection you want to restore.  In the example above, it is `pulfalight-staging-20210111.bk`, referring to the `/solr/data/cloud_backup/solr8/staging/20210111/pulfalight-staging-20210111.bk` directory.
 1. Choose a name for a new collection you'd like to restore the data into.
    In your browser, go to http://localhost:8983/solr/#/~collections and
    confirm that there is not already a collection by that name.
