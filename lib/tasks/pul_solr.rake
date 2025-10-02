@@ -8,7 +8,7 @@ namespace :pul_solr do
   task "backup" do
     target = ENV["SOLR_ENV"]
     host = ENV["HOST"]
-    abort "usage: rake pul_solr:backup HOST=solr8 SOLR_ENV=[production|staging]" unless (allowed_targets.include?(target) && allowed_hosts.include?(host))
+    abort "usage: rake pul_solr:backup HOST=solr8 SOLR_ENV=[production|sandbox|staging]" unless (allowed_targets.include?(target) && allowed_hosts.include?(host))
     logger = Logger.new("/tmp/solr_backup.log", "monthly")
     backup_manager = PulSolr::BackupManager.new(host: host, solr_env: target, logger: logger)
     backup_manager.backup
@@ -18,7 +18,7 @@ namespace :pul_solr do
   task "cleanup" do
     target = ENV["SOLR_ENV"]
     host = ENV["HOST"]
-    abort "usage: rake pul_solr:cleanup HOST=solr8 SOLR_ENV=[production|staging]" unless (allowed_targets.include?(target) && allowed_hosts.include?(host))
+    abort "usage: rake pul_solr:cleanup HOST=solr8 SOLR_ENV=[production|sandbox|staging]" unless (allowed_targets.include?(target) && allowed_hosts.include?(host))
     logger = Logger.new("/tmp/solr_backup.log", "monthly")
     backup_manager = PulSolr::BackupManager.new(host: host, solr_env: target, logger: logger)
     backup_manager.cleanup_old_backups
@@ -39,7 +39,7 @@ def config_target(target)
 end
 
 def allowed_targets
-  ["production", "staging"]
+  ["production", "sandbox", "staging"]
 end
 
 def allowed_hosts
