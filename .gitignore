@@ -11,3 +11,6 @@ solr_configs/*/data/
 .DS_Store
 /.byebug_history
 urls.txt
+#devbox
+/vendor/bundle/
+/.devbox/
