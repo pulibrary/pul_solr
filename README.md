@@ -2,10 +2,33 @@
 
 [![Circle CI](https://circleci.com/gh/pulibrary/pul_solr.svg?style=svg)](https://circleci.com/gh/pulibrary/pul_solr)
 
-Dependencies
+## Development setup
 
-* see .tool-versions for language dependencies
-* SolrCloud machines are running Solr 8.4.1
+### Devbox (recommended)
+
+This repo includes a `devbox.json` to provide a consistent local environment
+(Ruby 3.4.1 and JDK 19.0.2).
+
+```bash
+devbox shell
+devbox run bundle
+```
+
+Common commands:
+
+```bash
+devbox run cap
+devbox run spec
+```
+
+### Without Devbox
+
+If you prefer not to use Devbox, install the language dependencies listed in
+`.tool-versions`, then run:
+
+```bash
+bundle install
+```
 
 To install run `bundle install`
 
@@ -13,7 +36,7 @@ To install run `bundle install`
 
 `solr_configs/` is configured to be the Solr home directory. Each application's Solr core configuration is a subdirectory of `solr_configs/`. Relevant Solr analysis library packages can be found within each core's `lib/` directory.
 
-Note that `solr.xml` is used for development and testing on this repository, but not in production. The production file is at https://github.com/pulibrary/princeton_ansible/blob/master/roles/pulibrary.solrcloud/templates/solr.xml.j2
+Note that `solr.xml` is used for development and testing on this repository, but not in production. The production file is at <https://github.com/pulibrary/princeton_ansible/blob/master/roles/pulibrary.solrcloud/templates/solr.xml.j2>
 
 ## SolrCloud Inventory
 
@@ -23,6 +46,7 @@ inventory](https://docs.google.com/spreadsheets/d/118O7JeVEPaoVsCIxoWLdDTctcTCe4
 ## Adding a new core
 
 This repository updates, but does not create, collections. To add a new collection:
+
 - add the new collection's configuration to this project's `solr_configs` directory
 - add the new solr configuration location and config set name to the `config_map` in the relevant `/config/deploy/<env>.rb` file so it will be uploaded to zookeeper
 - deploy to get the config up to the server
@@ -32,14 +56,18 @@ This repository updates, but does not create, collections. To add a new collecti
 **Note: Each collection should be created with a replication factor of 2 at minimum.**
 
 ### Connecting to Solr UI
-There are capistrano tasks to connect to the Solr UI for managing solr that can be run from the project directory on your machine.  You will need to be connected to VPN for the tasks to run.
- * Production Solr 8
-   ```
+
+There are capistrano tasks to connect to the Solr UI for managing solr that can be run from the project directory on your machine. You will need to be connected to VPN for the tasks to run.
+
+- Production Solr 8
+
+   ```text
    bundle exec cap production solr:console
    ```
 
- * Staging Solr 8
-   ```
+- Staging Solr 8
+
+   ```text
    bundle exec cap staging solr:console
    ```
 
@@ -64,7 +92,8 @@ the following procedure should be followed:
 ## Managing Configsets
 
 *After deploying* one may list, upload, update, and delete Configsets using the following Capistrano tasks:
-```
+
+```text
 SOLR_URL=http://localhost:8983/solr bundle exec cap development configsets:list
 SOLR_URL=http://localhost:8983/solr bundle exec cap development "configsets:update[dpul_new/conf,dpul-config]"
 SOLR_URL=http://localhost:8983/solr bundle exec cap development "configsets:delete[dpul-config]"
@@ -75,7 +104,8 @@ Please note that, when uploading a directory for a new Configset from this repos
 ## Managing Collections
 
 Using Capistrano, one may create, reload, delete, and list Collections using the following tasks:
-```
+
+```text
 SOLR_URL=http://localhost:8983/solr bundle exec cap development collections:list
 SOLR_URL=http://localhost:8983/solr bundle exec cap development "collections:create[dpul,dpul-config]"
 SOLR_URL=http://localhost:8983/solr bundle exec cap development "collections:reload[dpul]"
@@ -88,26 +118,27 @@ Backups are implemented as a ruby service class wrapped in a rake task that's in
 
 If a specific backup did not complete and you want more information, consult `/tmp/solr_backup.log` for the request id and check it with the [requeststatus api call](https://lucene.apache.org/solr/guide/8_4/collections-api.html#requeststatus). Example:
 
-```
+```text
 curl "http://localhost:8983/solr/admin/collections?action=REQUESTSTATUS&requestid=figgy-production-202501132037"
 ```
 
 ### Restoring a backup
 
 Before restoring:
-1. Check the size of your backup with `du -sh`.  For example, if your backup is /solr/data/cloud_backup/solr8/production/20240606/catalog-alma-production3-20240606.bk:
-    
-    ```
+
+1. Check the size of your backup with `du -sh`. For example, if your backup is /solr/data/cloud_backup/solr8/production/20240606/catalog-alma-production3-20240606.bk:
+
+    ```text
     /solr/data/cloud_backup/solr8/production/20240606/catalog-alma-production3-20240606.bk
     ```
-    
+
 1. Check the size of the root file system on the machine on which you are performing the restore: `df -h`.
 1. If there is not enough storage on the root file system for the backup, resolve
    that issue before proceeding.
 
 Restoring a backup ([solr docs](https://lucene.apache.org/solr/guide/8_4/collection-management.html#restore)) is a matter of issuing the proper API call on the solr box, e.g.:
 
-```
+```text
 $ curl "http://localhost:8983/solr/admin/collections?action=RESTORE&name=pulfalight-staging-20210111.bk&collection=pulfalight-staging-restore&location=/solr/data/cloud_backup/solr8/staging/20210111"
 ```
 
@@ -116,18 +147,18 @@ To find the right values for this curl:
 1. SSH with a tunnel to a solr box (for example, `ssh -L 8983:localhost:8983 deploy@lib-solr-staging5d`)
 1. Run `ls -t /solr/data/cloud_backup/solr8/production` if you want to restore from
    a production backup, or `ls -t /solr/data/cloud_backup/solr8/staging` if you want
-   to restore from a staging backup.  The first directory will be the most
+   to restore from a staging backup. The first directory will be the most
    recent backup.
-    * The **location** parameter will be `/solr/data/cloud_backup/solr8/{Environment}/{Backup Date}`.  In the example above, it is `/solr/data/cloud_backup/solr8/staging/20210111`
+   - The **location** parameter will be `/solr/data/cloud_backup/solr8/{Environment}/{Backup Date}`. In the example above, it is `/solr/data/cloud_backup/solr8/staging/20210111`
 1. Do an `ls` of the directory that you will use as the location parameter.  
    For example, `ls /solr/data/cloud_backup/solr8/staging/20210111`.
-    * The **name** parameter will be the directory name of the collection you want to restore.  In the example above, it is `pulfalight-staging-20210111.bk`, referring to the `/solr/data/cloud_backup/solr8/staging/20210111/pulfalight-staging-20210111.bk` directory.
+   - The **name** parameter will be the directory name of the collection you want to restore. In the example above, it is `pulfalight-staging-20210111.bk`, referring to the `/solr/data/cloud_backup/solr8/staging/20210111/pulfalight-staging-20210111.bk` directory.
 1. Choose a name for a new collection you'd like to restore the data into.
-   In your browser, go to http://localhost:8983/solr/#/~collections and
+   In your browser, go to <http://localhost:8983/solr/#/~collections> and
    confirm that there is not already a collection by that name.
-    * The **collection** parameter will be the name of the collection.
+   - The **collection** parameter will be the name of the collection.
 1. If the collection is very large (e.g. the catalog), the restore will
-   probably time out.  You can still move forward by adding the
+   probably time out. You can still move forward by adding the
    [**async** parameter](https://solr.apache.org/guide/8_4/collections-api.html#asynchronous-calls).
    It should be something unique to this particular restore.
 1. Run the curl with the location, name, collection, and -- if the collection
@@ -142,7 +173,7 @@ Start Solr via lando, then run the specs.
 
 If you are making changes to a file in the solr_configs directory, such as a schema.xml or solrconfig.xml file, you will need to restart lando after each change in order for it to be picked up by the tests.
 
-```
+```text
 lando start
 rspec
 <!-- make some change -->
@@ -181,7 +212,7 @@ In pulfalight we are pulling fixture documents straight from solr, which means
 we can't test against fields that are indexed but not stored. Pull a fixture
 like, e.g.:
 
-```
+```text
 http://localhost:8983/solr/pulfalight-dev/select?id=MC001-02-03&qt=document
 ```
 
@@ -208,6 +239,7 @@ dumped on the server. When you unzip it you get a `mat` directory:
 
     1. After installing the Memory Analyzer, open the
     Applications directory in Finder.
+
     1. Right click on Memory Analyzer and select "Show Package Contents"
     1. expand contents > eclipse > right click
     on "MemoryAnalyzer.ini" to edit.
@@ -225,15 +257,19 @@ about an hour for a 20g file for us.
 object. Right-click the biggest one's thread (higher in the tree) > Java Basics > Thread Overview and Stacks. Expand the thread click the "total" button at the bottom so all of them will open up. Expand the first column (Object stack frame). Expand 'org.eclipse.jetty.servlet.ServletHandler.doHandle'. Click the first (local) frame. Look on the left, double-click the + to expand more properties, the thing that broke it was `_originalURI`. right-click > copy value.
 
 ## Solr Docker
+
 The docker directory contains a Dockerfile that serves as the base docker image for running Solr in CI and Lando.
 
 This image:
+
 - adds a security.json which allows us to make changes to solr via basic auth. It runs with an embedded zookeeper on a separate port.
 - adds Solr plugins downloaded from the solrcloud role in princeton_ansible
 - contains scripts for solr setup in circleci and lando.
 
 ### Update and Rebuild
+
 ### quay.io
+
 This is Red Hat's container registry (they also call it a repository), and where Ops is shifting to keeping images (as of May 2023). Contact the Ops team to become a member of [the pulibrary organization](https://quay.io/organization/pulibrary). You must be a member in order to push an image to the remote repository.
 
 Building and pushing an image:
@@ -255,12 +291,14 @@ docker buildx build --platform linux/arm64/v8,linux/amd64 -t qay.io/pulibrary/ci
 ```
 
 ### Github Container Registry
+
 You can also push to your own Github Container Registry, if you are just testing something out:
 
 1. [Login to the container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-1. `cd docker`
-2. `docker buildx create --use # only necessary the first time`
-3. `docker buildx build --platform linux/arm64/v8,linux/amd64 -t ghcr.io/[username]/ci-solr:{solr version}-{Dockerfile version} --push .`
+2. `cd docker`
+3. `docker buildx create --use # only necessary the first time`
+4. `docker buildx build --platform linux/arm64/v8,linux/amd64 -t ghcr.io/[username]/ci-solr:{solr version}-{Dockerfile version} --push .`
 
 ### Docker hub - deprecated
-Old images were pushed to the pulibrary docker hub organization - for older tags see https://hub.docker.com/r/pulibrary/ci-solr/tags
+
+Old images were pushed to the pulibrary docker hub organization - for older tags see <https://hub.docker.com/r/pulibrary/ci-solr/tags>
