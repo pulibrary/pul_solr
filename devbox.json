@@ -2,7 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.16.0/.schema/devbox.schema.json",
   "packages": [
     "ruby@3.4.1",
-    "jdk@19.0.2"
+    "jdk@19.0.2",
+    "pkg-config@latest",
+    "libffi@latest",
+    "clang@latest"
   ],
   "shell": {
     "init_hook": [
