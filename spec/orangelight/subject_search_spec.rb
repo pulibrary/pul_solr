@@ -57,15 +57,40 @@ RSpec.shared_examples 'shared subject keyword search' do
   after(:all) do
     delete_all
   end
+
+  describe 'ICPSR subjects' do
+    before(:all) do
+      [
+        { id: 1, icpsr_subject_unstem_search: ['Auto theft'] },
+        { id: 2, icpsr_subject_unstem_search: ['Economic indicators'] },
+        { id: 3, subject_unstem_search: ['Economic indicators'] },
+      ].each { |doc| solr.add doc }
+      solr.commit
+    end
+    it 'finds records with matching ICPSR subject headings in general keyword search' do
+      results = solr_response({ 'q' => 'auto theft' })['response']['docs'].map { |doc| doc['id']}
+      expect(results).to eq ['1']
+    end
+    it 'finds records with matching ICPSR subject headings in subject keyword search' do
+      results = solr_response(subject_query_params('auto theft'))['response']['docs'].map { |doc| doc['id']}
+      expect(results).to eq ['1']
+    end
+    it 'ranks other subject heading matches before ICPSR subject heading matches' do
+      results = solr_response({ 'q' => 'economic indicators' })['response']['docs'].map { |doc| doc['id']}
+      expect(results).to eq ['3', '2']
+    end
+    it 'ranks other subject heading matches before ICPSR subject heading matches in subject keyword search' do
+      results = solr_response(subject_query_params('economic indicators' ))['response']['docs'].map { |doc| doc['id']}
+      expect(results).to eq ['3', '2']
+    end
+  end
+  after(:all) do
+    delete_all
+  end
 end
 
 RSpec.describe 'subject keyword search' do
-  context 'with solr8' do
-    include_context 'solr8'
-    include_examples 'shared subject keyword search'
-  end
-
-    context 'with solr9' do
+  context 'with solr9' do
     include_context 'solr9'
     include_examples 'shared subject keyword search'
   end
