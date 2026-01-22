@@ -15,6 +15,18 @@ set :filter, :roles => %w{main}
 
 # Default value for :scm is :git
 # set :scm, :git
+# fix SSH failure
+set :ssh_options, (fetch(:ssh_options, {})).merge(
+  encryption: %w[
+    chacha20-poly1305@openssh.com
+    aes256-gcm@openssh.com
+    aes128-gcm@openssh.com
+    aes256-ctr
+    aes192-ctr
+    aes128-ctr
+  ]
+)
+
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh

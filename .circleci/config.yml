@@ -16,7 +16,7 @@ jobs:
 
       - restore_cache:
           keys:
-          - pul_solr-{{ checksum "Gemfile" }}
+          - pul_solr-{{ checksum "Gemfile.lock" }}
           - pul_solr-
 
       - run: gem install bundler
@@ -24,14 +24,14 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            bundle config set path 'vendor/bundle'
-            bundle config set without 'development production'
+            bundle config set --local path 'vendor/bundle'
+            bundle config set --local without 'development production'
             bundle check || bundle install --jobs 4 --retry 3
 
       - save_cache:
-          key: pul_solr-{{ checksum "Gemfile" }}
+          key: pul_solr-{{ checksum "Gemfile.lock" }}
           paths:
-            - vendor/bundle
+            - .bundle
 
       - run:
           name: Load catalog v2 configs into solr 8 and create collection
