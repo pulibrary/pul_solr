@@ -90,7 +90,7 @@ GEM
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
       ostruct
-    uri (0.13.2)
+    uri (0.13.3)
     webmock (3.19.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
