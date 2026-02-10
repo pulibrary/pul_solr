@@ -12,5 +12,6 @@ end
 def config_map
   {
     "catalog-production-v3" => "catalog-production-v3",
+    "figgy-9" => "figgy-9"
   }
 end
