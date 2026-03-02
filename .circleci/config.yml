@@ -11,6 +11,7 @@ jobs:
         platform: linux/amd64
         command: server/scripts/ci-start.sh
       - image: ghcr.io/pulibrary/ci-solr:8.4-v2.0.0
+        platform: linux/amd64
         command: server/scripts/ci-start.sh
     steps:
       - checkout
