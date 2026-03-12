@@ -745,41 +745,41 @@
         title_txtm_th
         title_txtm_tr
 
-        description_txtm
-        description_txtm_nolang
-        description_txtm_en
-        description_txtm_ar
-        description_txtm_bg
-        description_txtm_ca
-        description_txtm_cjk
-        description_txtm_cz
-        description_txtm_da
-        description_txtm_de
-        description_txtm_el
-        description_txtm_es
-        description_txtm_et
-        description_txtm_eu
-        description_txtm_fa
-        description_txtm_fi
-        description_txtm_fr
-        description_txtm_ga
-        description_txtm_gl
-        description_txtm_hi
-        description_txtm_hu
-        description_txtm_hy
-        description_txtm_id
-        description_txtm_it
-        description_txtm_ja
-        description_txtm_ko
-        description_txtm_lv
-        description_txtm_nl
-        description_txtm_no
-        description_txtm_pt
-        description_txtm_ro
-        description_txtm_ru
-        description_txtm_sv
-        description_txtm_th
-        description_txtm_tr
+        summary_txtm
+        summary_txtm_nolang
+        summary_txtm_en
+        summary_txtm_ar
+        summary_txtm_bg
+        summary_txtm_ca
+        summary_txtm_cjk
+        summary_txtm_cz
+        summary_txtm_da
+        summary_txtm_de
+        summary_txtm_el
+        summary_txtm_es
+        summary_txtm_et
+        summary_txtm_eu
+        summary_txtm_fa
+        summary_txtm_fi
+        summary_txtm_fr
+        summary_txtm_ga
+        summary_txtm_gl
+        summary_txtm_hi
+        summary_txtm_hu
+        summary_txtm_hy
+        summary_txtm_id
+        summary_txtm_it
+        summary_txtm_ja
+        summary_txtm_ko
+        summary_txtm_lv
+        summary_txtm_nl
+        summary_txtm_no
+        summary_txtm_pt
+        summary_txtm_ro
+        summary_txtm_ru
+        summary_txtm_sv
+        summary_txtm_th
+        summary_txtm_tr
 
         alternative_title_txtm
         barcode_txtm
@@ -793,7 +793,7 @@
         holding_location_txt_sort
         keywords_txt_sort
         language_txt_sort
-        ephemera_project_title_s
+        collection_title_txt_sort
         provenance_txtm
         publisher_txt_sort
         series_txt_sort
@@ -1184,7 +1184,7 @@
   </updateProcessor>
   <updateProcessor class="org.apache.solr.update.processor.LangDetectLanguageIdentifierUpdateProcessorFactory" name="lang-detection">
     <str name="langid">true</str>
-    <str name="langid.fl">description_txtm,title_txtm</str>
+    <str name="langid.fl">summary_txtm,title_txtm</str>
     <str name="langid.langField">detectlang_s</str>
     <str name="langid.langsField">detectlang_ss</str>
     <str name="langid.lcmap">zh-cn:cjk zh-tw:cjk ja:cjk ko:cjk</str>
@@ -1225,7 +1225,7 @@
     </lst>
   </updateProcessor>
 
-  <!-- Language detection and indexing for descriptions -->
+  <!-- Language detection and indexing for summaries -->
 
   <!-- The update.autoCreateFields property can be turned to false to disable schemaless mode -->
   <updateRequestProcessorChain name="add-unknown-fields-to-the-schema" default="${update.autoCreateFields:true}"
