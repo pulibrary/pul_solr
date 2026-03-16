@@ -10,7 +10,7 @@ namespace :pul_solr do
     host = ENV["HOST"]
     abort "usage: rake pul_solr:backup HOST=solr8 SOLR_ENV=[production|staging]" unless (allowed_targets.include?(target) && allowed_hosts.include?(host))
     logger = Logger.new("/tmp/solr_backup.log", "monthly")
-    backup_manager = PulSolr::BackupManager.new(host: host, solr_env: target, logger: logger)
+    backup_manager = PulSolr::BackupManager.new(base_dir: backup_path(host), host: host, solr_env: target, logger: logger)
     backup_manager.backup
   end
 
@@ -20,7 +20,7 @@ namespace :pul_solr do
     host = ENV["HOST"]
     abort "usage: rake pul_solr:cleanup HOST=solr8 SOLR_ENV=[production|staging]" unless (allowed_targets.include?(target) && allowed_hosts.include?(host))
     logger = Logger.new("/tmp/solr_backup.log", "monthly")
-    backup_manager = PulSolr::BackupManager.new(host: host, solr_env: target, logger: logger)
+    backup_manager = PulSolr::BackupManager.new(base_dir: backup_path(host), host: host, solr_env: target, logger: logger)
     backup_manager.cleanup_old_backups
   end
 
@@ -44,4 +44,12 @@ end
 
 def allowed_hosts
   ["solr8", "solr9"]
+end
+
+def backup_path(host)
+  if host == "solr8"
+    "/solr/data/backups/cloud_backup"
+  else
+    "/solr/backups/cloud_backup"
+  end
 end
