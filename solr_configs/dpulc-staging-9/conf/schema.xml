@@ -224,7 +224,7 @@
     <copyField source="sourceFieldName" dest="destinationFieldName"/>
     -->
     <copyField source="title_txtm" dest="title_ss"/>
-    <copyField source="ephemera_project_title_s" dest="ephemera_project_title_txt_sort"/>
+    <copyField source="collection_titles_ss" dest="collection_title_txt_sort"/>
 
     <!-- field type definitions. The "name" attribute is
        just a label to be used by field definitions.  The "class"
