@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'subject keyword search' do
-  include_context 'solr8'
+  include_context 'solr9'
   before(:all) do
     solr(
       port: PulSolr.solr_connection[:test][:dss][:port],

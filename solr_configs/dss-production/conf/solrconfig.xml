@@ -23,10 +23,6 @@
 <config>
   <luceneMatchVersion>8.4.1</luceneMatchVersion>
 
-  <lib dir="${solr.install.dir}/contrib/analysis-extras/lib" />
-  <lib dir="${solr.install.dir}/contrib/analysis-extras/lucene-libs" />
-  <lib dir="conf" />
-
   <directoryFactory name="DirectoryFactory"
                     class="${solr.directoryFactory:solr.StandardDirectoryFactory}">
   </directoryFactory>
