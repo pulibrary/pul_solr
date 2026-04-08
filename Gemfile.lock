@@ -8,8 +8,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.8.6)
-      public_suffix (>= 2.0.2, < 6.0)
+    addressable (2.9.0)
+      public_suffix (>= 2.0.2, < 8.0)
     airbrussh (1.5.1)
       sshkit (>= 1.6.1, != 1.7.0)
     base64 (0.2.0)
@@ -55,7 +55,7 @@ GEM
     pry-byebug (3.10.1)
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
-    public_suffix (5.0.4)
+    public_suffix (5.1.1)
     rake (13.1.0)
     rbnacl (4.0.2)
       ffi
