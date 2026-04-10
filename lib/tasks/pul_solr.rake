@@ -47,9 +47,5 @@ def allowed_hosts
 end
 
 def backup_path(host)
-  if host == "solr8"
-    "/solr/data/backups/cloud_backup"
-  else
-    "/solr/backups/cloud_backup"
-  end
+  "/solr/backups/cloud_backup"
 end
