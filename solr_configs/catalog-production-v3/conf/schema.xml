@@ -525,7 +525,7 @@
    <field name="aat_genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="rbgenr_genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="homoit_genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="jsonld_genre_display" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="homoit_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="local_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="siku_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
