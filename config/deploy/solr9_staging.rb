@@ -14,8 +14,8 @@ end
 def config_map
   {
     "catalog-production-v3" => "catalog-production-v3",
-    "dpulc-staging-9" => "dpulc-staging",
+    "dpulc-staging" => "dpulc-staging",
     "dss-production" => "dss-production",
-    "figgy-9" => "figgy-9",
+    "figgy" => "figgy-9",
   }
 end
