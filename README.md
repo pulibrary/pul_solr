@@ -50,6 +50,15 @@ This repository updates, but does not create, collections. To add a new collecti
 - add the new collection's configuration to this project's `solr_configs` directory
 - add the new solr configuration location and config set name to the `config_map` in the relevant `/config/deploy/<env>.rb` file so it will be uploaded to zookeeper
 - deploy to get the config up to the server
+  ```
+    Solr 8:
+    bundle exec cap production deploy
+    bundle exec cap staging deploy
+
+    Solr 9:
+    bundle exec cap solr9_production deploy
+    bundle exec cap solr9_staging deploy
+  ```
 - use the UI to create the collection
 - all collections are reloaded each time this project is deployed
 
@@ -69,6 +78,18 @@ There are capistrano tasks to connect to the Solr UI for managing solr that can 
 
    ```text
    bundle exec cap staging solr:console
+   ```
+
+- Production Solr 9
+
+   ```text
+   bundle exec cap solr9_production solr:console
+   ```
+
+- Staging Solr 9
+
+   ```text
+   bundle exec cap solr9_staging solr:console
    ```
 
 ## Managing Orangelight Catalog Configsets
