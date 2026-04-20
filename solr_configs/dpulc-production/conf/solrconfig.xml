@@ -699,75 +699,19 @@
 
         title_txtm
         title_txtm_nolang
-        title_txtm_en
         title_txtm_ar
-        title_txtm_bg
-        title_txtm_ca
-        title_txtm_cjk
-        title_txtm_cz
-        title_txtm_da
-        title_txtm_de
-        title_txtm_el
+        title_txtm_en
         title_txtm_es
-        title_txtm_et
-        title_txtm_eu
-        title_txtm_fa
-        title_txtm_fi
-        title_txtm_fr
-        title_txtm_ga
-        title_txtm_gl
-        title_txtm_hi
-        title_txtm_hu
-        title_txtm_hy
-        title_txtm_id
-        title_txtm_it
-        title_txtm_ja
-        title_txtm_ko
-        title_txtm_lv
-        title_txtm_nl
-        title_txtm_no
         title_txtm_pt
-        title_txtm_ro
         title_txtm_ru
-        title_txtm_sv
-        title_txtm_th
-        title_txtm_tr
 
         summary_txtm
         summary_txtm_nolang
-        summary_txtm_en
         summary_txtm_ar
-        summary_txtm_bg
-        summary_txtm_ca
-        summary_txtm_cjk
-        summary_txtm_cz
-        summary_txtm_da
-        summary_txtm_de
-        summary_txtm_el
+        summary_txtm_en
         summary_txtm_es
-        summary_txtm_et
-        summary_txtm_eu
-        summary_txtm_fa
-        summary_txtm_fi
-        summary_txtm_fr
-        summary_txtm_ga
-        summary_txtm_gl
-        summary_txtm_hi
-        summary_txtm_hu
-        summary_txtm_hy
-        summary_txtm_id
-        summary_txtm_it
-        summary_txtm_ja
-        summary_txtm_ko
-        summary_txtm_lv
-        summary_txtm_nl
-        summary_txtm_no
         summary_txtm_pt
-        summary_txtm_ro
         summary_txtm_ru
-        summary_txtm_sv
-        summary_txtm_th
-        summary_txtm_tr
 
         alternative_title_txtm
         barcode_txtm
@@ -1181,7 +1125,7 @@
     <str name="langid.map.keepOrig">true</str>
     <str name="langid.map.individual">true</str>
     <str name="langid.threshold">0.8</str>
-    <str name="langid.whitelist">en,ar,bg,ca,cj,cz,da,de,el,es,et,eu,fa,fi,fr,ga,gl,hi,hu,hy,id,it,ja,ko,lv,nl,no,pt,ro,ru,sv,th,tr,zh,zh-cn,zh-tw</str>
+    <str name="langid.allowlist">en,ar,bg,ca,cj,cz,da,de,el,es,et,eu,fa,fi,fr,ga,gl,hi,hu,hy,id,it,ja,ko,lv,nl,no,pt,ro,ru,sv,th,tr,zh,zh-cn,zh-tw</str>
   </updateProcessor>
   <updateProcessor class="solr.AddSchemaFieldsUpdateProcessorFactory" name="add-schema-fields">
     <lst name="typeMapping">
