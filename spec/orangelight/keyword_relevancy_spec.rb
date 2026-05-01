@@ -90,12 +90,7 @@ RSpec.shared_examples 'shared title subfield a boost' do
 end
 
 RSpec.describe 'title subfield a boost' do
-  context 'with solr8' do
-    include_context 'solr8'
-    include_examples 'shared title subfield a boost'
-  end
-
-    context 'with solr9' do
+  context 'with solr9' do
     include_context 'solr9'
     include_examples 'shared title subfield a boost'
   end

@@ -175,12 +175,7 @@ RSpec.shared_examples 'shared apostrophes are stripped' do
 end
 
 RSpec.describe 'apostrophes are stripped' do
-  context 'with solr8' do
-    include_context 'solr8'
-    include_examples 'shared apostrophes are stripped'
-  end
-
-    context 'with solr9' do
+  context 'with solr9' do
     include_context 'solr9'
     include_examples 'shared apostrophes are stripped'
   end

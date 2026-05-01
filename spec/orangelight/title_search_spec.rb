@@ -232,24 +232,14 @@ RSpec.shared_examples 'shared title_l search' do
 end
 
 RSpec.describe 'title keyword search' do
-  context 'with solr8' do
-    include_context 'solr8'
-    include_examples 'shared title keyword search'
-  end
-
-    context 'with solr9' do
+  context 'with solr9' do
     include_context 'solr9'
     include_examples 'shared title keyword search'
   end
 end
 
 RSpec.describe 'title_l search' do
-  context 'with solr8' do
-    include_context 'solr8'
-    include_examples 'shared title_l search'
-  end
-
-    context 'with solr9' do
+  context 'with solr9' do
     include_context 'solr9'
     include_examples 'shared title_l search'
   end

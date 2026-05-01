@@ -35,12 +35,7 @@ RSpec.shared_examples 'shared hash id field solrconfig update handler' do
 end
 
 RSpec.describe 'hash id field solrconfig update handler' do
-  context 'with solr8' do
-    include_context 'solr8'
-    include_examples 'shared hash id field solrconfig update handler'
-  end
-
-    context 'with solr9' do
+  context 'with solr9' do
     include_context 'solr9'
     include_examples 'shared hash id field solrconfig update handler'
   end
