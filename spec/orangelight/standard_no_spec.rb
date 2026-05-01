@@ -85,12 +85,7 @@ RSpec.shared_examples 'shared standard no keyword search' do
 end
 
 RSpec.describe 'standard no keyword search' do
-  context 'with solr8' do
-    include_context 'solr8'
-    include_examples 'shared standard no keyword search'
-  end
-
-    context 'with solr9' do
+  context 'with solr9' do
     include_context 'solr9'
     include_examples 'shared standard no keyword search'
   end

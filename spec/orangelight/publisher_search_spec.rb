@@ -31,12 +31,7 @@ RSpec.shared_examples 'shared publisher keyword search' do
   end
 
 RSpec.describe 'publisher keyword search' do
-  context 'with solr8' do
-    include_context 'solr8'
-    include_examples 'shared publisher keyword search'
-  end
-
-    context 'with solr9' do
+  context 'with solr9' do
     include_context 'solr9'
     include_examples 'shared publisher keyword search'
   end

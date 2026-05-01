@@ -20,12 +20,7 @@ RSpec.shared_examples 'shared default fields' do
 end
 
 RSpec.describe 'default fields' do
-  context 'with solr8' do
-    include_context 'solr8'
-    include_examples 'shared default fields'
-  end
-
-    context 'with solr9' do
+  context 'with solr9' do
     include_context 'solr9'
     include_examples 'shared default fields'
   end

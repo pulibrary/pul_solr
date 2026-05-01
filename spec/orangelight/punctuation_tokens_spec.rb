@@ -56,12 +56,7 @@ RSpec.shared_examples 'shared stripping punctuation surrounded by whitespace' do
 end
 
 RSpec.describe 'protected words' do
-  context 'with solr8' do
-    include_context 'solr8'
-    include_examples 'shared stripping punctuation surrounded by whitespace'
-  end
-
-    context 'with solr9' do
+  context 'with solr9' do
     include_context 'solr9'
     include_examples 'shared stripping punctuation surrounded by whitespace'
   end
