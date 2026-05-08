@@ -6,9 +6,10 @@
   
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
   
-  <luceneMatchVersion>7.0.0</luceneMatchVersion>
+  <luceneMatchVersion>9.9.0</luceneMatchVersion>
 
   <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
 
   <updateHandler class="solr.DirectUpdateHandler2">
     <updateLog>
@@ -26,24 +27,7 @@
     </autoSoftCommit>
   </updateHandler>
 
-  <!-- solr lib dirs -->  
-  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
-  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
-
   <dataDir>${solr.data.dir:}</dataDir>
-
-  <requestHandler name="/replication" class="solr.ReplicationHandler">
-    <lst name="master">
-      <str name="replicateAfter">commit</str>
-      <str name="backupAfter">optimize</str>
-      <str name="confFiles">solrconfig_replication.xml:solrconfig.xml</str>
-      <str name="commitReserveDuration">00:00:10</str>
-    </lst>
-    <int name="maxNumberOfBackups">1</int>
-    <lst name="invariants">
-      <str name="maxWriteMPPerSec">16</str>
-    </lst>
-  </requestHandler>
 
   <requestHandler name="search" class="solr.SearchHandler" default="true">
     <!-- default values for query parameters can be specified, these
@@ -72,7 +56,7 @@
           active_fedora_model_ssi
           title_tesim
           author_tesim
-          subject_tsim
+          subject_tesim
           all_text_timv
         </str>
         <str name="pf">
@@ -93,7 +77,7 @@
        <str name="title_pf">
        </str>
        <str name="subject_qf">
-          subject_tsim
+          subject_tesim
        </str>
        <str name="subject_pf">
        </str>
@@ -175,11 +159,12 @@
       <str name="buildOnOptimize">true</str>
     </lst>
   </searchComponent>
-    
+  
+  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" /> 
+  
   <requestDispatcher handleSelect="true" >
-    <requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048" />
+    <requestParsers multipartUploadLimitInKB="2048" />
   </requestDispatcher>
   
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
 </config>
-
