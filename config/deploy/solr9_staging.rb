@@ -18,5 +18,6 @@ def config_map
     "dpulc-staging" => "dpulc-staging",
     "dss-production" => "dss-production",
     "figgy" => "figgy-9",
+    "pulmap" => "pulmap"
   }
 end
