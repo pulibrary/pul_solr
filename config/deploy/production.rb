@@ -17,7 +17,6 @@ def config_map
     "lae" => "lae",
     "pdc-discovery" => "pdc-discovery-production",
     "oawaiver" => "oawaiver-production",
-    "dpul" => "dpul",
-    "pulmap" => "pulmap"
+    "dpul" => "dpul"
   }
 end
