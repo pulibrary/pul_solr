@@ -12,7 +12,7 @@ end
 def config_map
   {
     "catalog-production-v3" => "catalog-production-v3",
-    "dpul-9" => "dpul",
+    "dpul" => "dpul",
     "dpulc-production" => "dpulc-production",
     "dss-production" => "dss-production",
     "figgy" => "figgy-9",
