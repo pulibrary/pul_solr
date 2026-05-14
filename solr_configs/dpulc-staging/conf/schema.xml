@@ -223,6 +223,9 @@
     -->
     <copyField source="title_txtm" dest="title_ss"/>
     <copyField source="collection_titles_ss" dest="collection_title_txt_sort"/>
+    <copyField source="title_txtm" dest="spellcheck_txtm"/>
+    <copyField source="summary_txtm" dest="spellcheck_txtm"/>
+    <copyField source="publisher_txt_sort" dest="spellcheck_txtm"/>
 
     <!-- field type definitions. The "name" attribute is
        just a label to be used by field definitions.  The "class"

@@ -786,6 +786,9 @@
          <str>nameOfCustomComponent2</str>
        </arr>
       -->
+    <arr name="last-components">
+      <str>spellcheck</str>
+    </arr>
   </requestHandler>
 
   <!-- A request handler that returns indented JSON by default -->
@@ -865,7 +868,7 @@
     <!-- a spellchecker built from a field of the main index -->
     <lst name="spellchecker">
       <str name="name">default</str>
-      <str name="field">_text_</str>
+      <str name="field">spellcheck_txtm</str>
       <str name="classname">solr.DirectSolrSpellChecker</str>
       <!-- the spellcheck distance measure used, the default is the internal levenshtein -->
       <str name="distanceMeasure">internal</str>
@@ -887,16 +890,14 @@
     </lst>
 
     <!-- a spellchecker that can break or combine words.  See "/spell" handler below for usage -->
-    <!--
     <lst name="spellchecker">
       <str name="name">wordbreak</str>
       <str name="classname">solr.WordBreakSolrSpellChecker</str>
-      <str name="field">name</str>
+      <str name="field">spellcheck_txtm</str>
       <str name="combineWords">true</str>
       <str name="breakWords">true</str>
       <int name="maxChanges">10</int>
     </lst>
-    -->
   </searchComponent>
 
   <!-- A request handler for demonstrating the spellcheck component.
