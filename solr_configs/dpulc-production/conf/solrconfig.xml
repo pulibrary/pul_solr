@@ -730,6 +730,7 @@
         publisher_txt_sort
         series_txt_sort
         subject_txt_sort
+        categories_txt_sort
         transliterated_title_txtm
       </str>
     </lst>
