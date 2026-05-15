@@ -12,7 +12,6 @@ def config_map
   {
     "catalog-production-v2" => "catalog-production-v2",
     "dss-production" => "dss-production",
-    "pulfalight-production" => "pulfalight-production",
     "cicognara" => "cicognara",
     "lae" => "lae",
     "pdc-discovery" => "pdc-discovery-production",

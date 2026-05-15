@@ -28,7 +28,7 @@
        that you fully re-index after changing this setting as it can
        affect both how text is indexed and queried.
   -->
-  <luceneMatchVersion>8.2.0</luceneMatchVersion>
+  <luceneMatchVersion>9.11.1</luceneMatchVersion>
 
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
@@ -64,7 +64,7 @@
        of SearchComponents (see below) and supports distributed
        queries across multiple shards
     -->
-  <requestHandler name="search" class="solr.SearchHandler" default="true">
+  <initParams name="searchParams">
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
       -->
@@ -198,7 +198,17 @@
     <arr name="last-components">
       <str>spellcheck</str>
     </arr>
-  
+  </initParams>
+
+  <requestHandler name="search" class="solr.SearchHandler" default="true" initParams="searchParams">
+  </requestHandler>
+
+  <requestHandler name="online-content" class="solr.SearchHandler" initParams="searchParams">
+    <lst name="appends">
+      <str name="boost">
+        if(termfreq(has_direct_online_content_ssim, "true"),100,0)
+      </str>
+    </lst>
   </requestHandler>
 
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
