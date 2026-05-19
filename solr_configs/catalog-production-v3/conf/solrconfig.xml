@@ -87,6 +87,16 @@
     </lst>
   </requestHandler>
 
+  <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
+    <lst name="defaults">
+      <str name="suggest">true</str>
+      <str name="suggest.count">6</str>
+    </lst>
+    <arr name="components">
+      <str>suggest</str>
+    </arr>
+  </requestHandler>
+
   <!-- config for the admin interface -->
   <admin>
     <defaultQuery>solr</defaultQuery>
@@ -395,4 +405,15 @@
       <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
     </lst>
   </requestHandler>
+
+  <searchComponent name="suggest" class="solr.SuggestComponent">
+    <lst name="suggester">
+      <str name="name">south_asian_latin</str>
+      <str name="field">south_asian_latin_suggest</str>
+      <str name="suggestAnalyzerFieldType">south_asian_latin</str>
+      <str name="lookupImpl">AnalyzingLookupFactory</str>
+      <str name="dictionaryImpl">DocumentDictionaryFactory</str>
+    </lst>
+  </searchComponent>
+
 </config>
