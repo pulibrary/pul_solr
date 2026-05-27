@@ -13,7 +13,6 @@ def config_map
     "catalog-production-v2" => "catalog-production-v2",
     "dss-production" => "dss-production",
     "cicognara" => "cicognara",
-    "lae" => "lae",
     "pdc-discovery" => "pdc-discovery-production",
     "oawaiver" => "oawaiver-production",
     "dpul" => "dpul"

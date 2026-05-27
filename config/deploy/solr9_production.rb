@@ -17,6 +17,7 @@ def config_map
     "dss-production" => "dss-production",
     "figgy" => "figgy-9",
     "pulfalight-production" => "pulfalight-production",
-    "pulmap" => "pulmap"
+    "pulmap" => "pulmap",
+    "lae" => "lae"
   }
 end
