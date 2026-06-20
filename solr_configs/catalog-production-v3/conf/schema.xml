@@ -470,6 +470,28 @@
       users normally should not need to know about them.
      -->
     <fieldType name="point" class="solr.PointType" dimension="2" subFieldSuffix="_d"/>
+
+    <fieldType name="south_asian_latin" class="solr.TextField">
+      <analyzer>
+        <tokenizer name="standard"/>
+        <filter name="icuFolding" />
+        <filter name="synonymGraph" synonyms="synonyms_south_asia.txt" />
+        <filter name="flattenGraph" />
+        <filter name="patternReplace" pattern="oo" replacement="u" />
+        <!-- remove implicit letter a -->
+        <filter name="patternReplace" pattern="[ao]+" replacement="" />
+        <filter name="patternReplace" pattern="(sh|Sh)" replacement="s" />
+        <filter name="patternReplace" pattern="(ch|Ch)" replacement="c" />
+        <filter name="patternReplace" pattern="[WVwv]" replacement="b" />
+
+        <!-- Create shingles (pairs of words) then remove the whitespace
+         between those words. This allows us to match in cases where
+         a term may be spelled with a space (Ram janmabhoomi) or
+         without it (Rāmajanmabhūmi) -->
+        <filter name="shingle" outputUnigrams="false" outputUnigramsIfNoShingles="true"/>
+        <filter name="patternReplace" pattern=" " replacement="" />
+      </analyzer>
+    </fieldType>
  </types>
 
 
@@ -547,6 +569,8 @@
 
     <!-- MARCXML field - stores the full MARCXML record as a string -->
    <field name="marcxml" type="string" indexed="false" stored="true" multiValued="false"/>
+
+   <field name="south_asian_latin_suggest" type="south_asian_latin" indexed="true" stored="true" multiValued="true" />
 
     <!-- Dynamic field definitions.  If a field name is not found, dynamicFields
         will be used if the name matches any of the patterns.
