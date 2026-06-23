@@ -471,7 +471,7 @@
      -->
     <fieldType name="point" class="solr.PointType" dimension="2" subFieldSuffix="_d"/>
     <!-- <fieldType name="knn_vector" class="solr.DenseVectorField" vectorDimension="768" vectorEncoding="BYTE" similarityFunction="cosine" knnAlgorithm="hnsw" hnswMaxConnections="10" hnswBeamWidth="40" /> -->
-    <fieldType name="knn_vector" class="solr.DenseVectorField" vectorDimension="96" vectorEncoding="BYTE" similarityFunction="dot_product" />
+        <fieldType name="knn_vector" class="solr.DenseVectorField" vectorEncoding="FLOAT32" vectorDimension="384" similarityFunction="dot_product" hnswMaxConnections="10" hnswBeamWidth="40" />
  </types>
 
 
