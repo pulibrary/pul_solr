@@ -1,20 +1,24 @@
-server 'lib-solr-prod7.princeton.edu', user: 'deploy', roles: %{main}
+server 'lib-solr-prod1.princeton.edu', user: 'deploy', roles: %{main}
 
-set :whenever_host, ->{ "solr8" }
+set :whenever_host, ->{ "solr9" }
 set :whenever_environment, ->{ "production" }
 
 def zk_host
-  "lib-zk-prod1:2181,lib-zk-prod2:2181,lib-zk-prod3:2181/solr8"
+  "lib-zk4:2181,lib-zk5:2181,lib-zk6:2181"
 end
 
 # config directory => config set name
+# This should be empty if there are only cdh things on the box
 def config_map
   {
-    "catalog-production-v2" => "catalog-production-v2",
+    "catalog-production-v3" => "catalog-production-v3",
+    "dpul" => "dpul",
+    "dpulc-production" => "dpulc-production",
     "dss-production" => "dss-production",
-    "cicognara" => "cicognara",
+    "figgy" => "figgy-9",
     "pdc-discovery" => "pdc-discovery-production",
-    "oawaiver" => "oawaiver-production",
-    "dpul" => "dpul"
+    "pulfalight-production" => "pulfalight-production",
+    "pulmap" => "pulmap",
+    "lae" => "lae"
   }
 end

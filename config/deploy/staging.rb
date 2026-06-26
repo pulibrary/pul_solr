@@ -1,21 +1,25 @@
-server 'lib-solr-staging4d.princeton.edu', user: 'deploy', roles: %{main}
+server 'lib-solr-staging2.princeton.edu', user: 'deploy', roles: %{main}
 
 # This is used to create part of the backup directory path
-set :whenever_host, ->{ "solr8" }
+set :whenever_host, ->{ "solr9" }
 set :whenever_environment, ->{ "staging" }
 
 def zk_host
-  "lib-zk-staging1d:2181,lib-zk-staging2d:2181,lib-zk-staging3d:2181/solr8"
+  "lib-zk-staging4.princeton.edu:2181,lib-zk-staging5.princeton.edu:2181,lib-zk-staging6.princeton.edu:2181"
 end
 
 # config directory => config set name
+# The box will also have some configs from CDH.  They are not managed by capistrano, but
+# are reloaded when we deploy.
 def config_map
   {
-    "catalog-production-v2" => "catalog-production-v2",
-    "dss-production" => "dss-production",
-    "cicognara" => "cicognara",
+    "catalog-production-v3" => "catalog-production-v3",
     "dpul" => "dpul",
+    "dpulc-staging" => "dpulc-staging",
+    "dss-production" => "dss-production",
+    "figgy" => "figgy-9",
     "pdc-discovery" => "pdc-discovery-staging",
-    "oawaiver" => "oawaiver-staging"
+    "pulfalight-staging" => "pulfalight-staging",
+    "lae" => "lae"
   }
 end
