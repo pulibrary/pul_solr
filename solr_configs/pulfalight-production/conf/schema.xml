@@ -141,6 +141,7 @@
         <tokenizer class="solr.ICUTokenizerFactory" />
         <filter class="solr.KeywordRepeatFilterFactory" />
         <filter class="solr.ICUFoldingFilterFactory" />
+        <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt" />
         <filter class="solr.PorterStemFilterFactory"/>
         <filter class="solr.RemoveDuplicatesTokenFilterFactory" />
       </analyzer>
