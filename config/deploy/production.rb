@@ -16,9 +16,9 @@ def config_map
     "dpulc-production" => "dpulc-production",
     "dss-production" => "dss-production",
     "figgy" => "figgy-9",
+    "lae" => "lae",
     "pdc-discovery" => "pdc-discovery-production",
     "pulfalight-production" => "pulfalight-production",
-    "pulmap" => "pulmap",
-    "lae" => "lae"
+    "pulmap" => "pulmap"
   }
 end

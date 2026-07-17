@@ -18,8 +18,8 @@ def config_map
     "dpulc-staging" => "dpulc-staging",
     "dss-production" => "dss-production",
     "figgy" => "figgy-9",
+    "lae" => "lae",
     "pdc-discovery" => "pdc-discovery-staging",
-    "pulfalight-staging" => "pulfalight-staging",
-    "lae" => "lae"
+    "pulfalight-staging" => "pulfalight-staging"
   }
 end
