@@ -20,6 +20,7 @@ def config_map
     "figgy" => "figgy-9",
     "lae" => "lae",
     "pdc-discovery" => "pdc-discovery-staging",
-    "pulfalight-staging" => "pulfalight-staging"
+    "pulfalight-staging" => "pulfalight-staging",
+    "catalog-dedupe" => "catalog-dedupe"
   }
 end
