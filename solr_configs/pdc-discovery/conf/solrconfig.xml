@@ -10,6 +10,9 @@
   <schemaFactory class="ClassicIndexSchemaFactory"/>
 
   <updateHandler class="solr.DirectUpdateHandler2">
+    <updateLog>
+      <str name="dir">${solr.core0.data.dir:}</str>
+    </updateLog>
     <commitWithin>
       <softCommit>${solr.commitwithin.softcommit:true}</softCommit>
     </commitWithin>
