@@ -214,6 +214,7 @@
         <lst><str name="fq">acces_facet:In the Library</str></lst>
       </arr>
     </listener>
+    <slowQueryThresholdMillis>4000</slowQueryThresholdMillis>
   </query>
 
   <!-- SearchHandler
