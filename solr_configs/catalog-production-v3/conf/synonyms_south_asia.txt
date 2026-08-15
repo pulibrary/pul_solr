@@ -1,0 +1,6 @@
+banarji => banerjee
+banerji => banerjee
+bannerjee => banerjee
+bandyopadhyay => banerjee
+vandyopadhyay => banerjee
+bandyopadhyaya => banerjee
