@@ -694,6 +694,8 @@
       <str name="defType">edismax</str>
       <str name="q.alt">*:*</str>
       <str name="qf">
+        searchable_metadata
+
         id
         years_is
 
