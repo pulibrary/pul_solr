@@ -126,6 +126,9 @@
          because it's very expensive to index everything twice. -->
     <!-- <copyField source="*" dest="_text_"/> -->
 
+    <!-- Field to hold descriptive metadata values for search -->
+    <field name="searchable_metadata" type="text_en" indexed="true" stored="false" multiValued="true"/>
+
     <!-- Dynamic field definitions allow using convention over configuration
        for fields via the specification of patterns to match field names.
        EXAMPLE:  name="*_i" will match any field ending in _i (like myid_i, z_i)
