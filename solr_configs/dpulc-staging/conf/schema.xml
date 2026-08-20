@@ -364,6 +364,16 @@
          is that it takes up more space on disk; which is why it's not used in place of TextField
          for every fieldType in this _default schema.
 	  -->
+    <!-- Title sort key. Needs a different field type from standard sort fields to allow words
+         that have diacritics to sort alongside non-accented versions.
+
+        `strength="primary"` allows accented and non-accented characters to sort together.The
+         base character is used for comparison, without regard to case.
+         Example: "Álvarez" < "apple"
+    -->
+    <fieldType name="collated_sort" class="solr.ICUCollationField" locale="en" strength="primary" sortMissingLast="true"/>
+    <field name="title_sort" type="collated_sort" indexed="false" stored="false" docValues="true"/>
+
     <dynamicField name="*_t_sort" type="text_gen_sort" indexed="true" stored="true" multiValued="false"/>
     <dynamicField name="*_txt_sort" type="text_gen_sort" indexed="true" stored="true"/>
     <fieldType name="text_gen_sort" class="solr.SortableTextField" positionIncrementGap="100" multiValued="true">
