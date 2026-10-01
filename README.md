@@ -11,7 +11,16 @@ This repo includes a `devbox.json` to provide a consistent local environment
 
 ```bash
 devbox shell
-devbox run bundle
+devbox run setup # this will start a local solr for you
+```
+
+If you already have something running on port 8983, the above steps
+will fail.  Instead, you can:
+
+```bash
+devbox shell
+export SOLR_PORT=8383
+devbox run setup
 ```
 
 Common commands:
@@ -19,6 +28,7 @@ Common commands:
 ```bash
 devbox run cap
 devbox run spec
+devbox services down # when you are done with the local solr server
 ```
 
 ### Without Devbox
