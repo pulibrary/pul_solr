@@ -21,13 +21,13 @@ services:
   dss_test_solr:
     type: solr:8.4
     portforward: true
-    core: blacklight-core
+    core: dss-core
     config:
       dir: solr_configs/dss-production/conf
   pulmap_test_solr:
     type: solr:8.4
     portforward: true
-    core: blacklight-core
+    core: pulmap-core
     config:
       dir: solr_configs/pulmap/conf
 proxy:
