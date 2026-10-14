@@ -129,6 +129,9 @@
     <!-- Field to hold descriptive metadata values for search -->
     <field name="searchable_metadata" type="text_en" indexed="true" stored="false" multiValued="true"/>
 
+    <!-- Copy all of searchable_metadata here for spellchecking. Don't stem so we don't suggest stemmed values. -->
+    <field name="spell_text" type="text_spell" indexed="true" stored="false" multiValued="true"/>
+
     <!-- Dynamic field definitions allow using convention over configuration
        for fields via the specification of patterns to match field names.
        EXAMPLE:  name="*_i" will match any field ending in _i (like myid_i, z_i)
@@ -226,6 +229,7 @@
     -->
     <copyField source="title_txtm" dest="title_ss"/>
     <copyField source="collection_titles_ss" dest="collection_title_txt_sort"/>
+    <copyField source="searchable_metadata" dest="spell_text"/>
 
     <!-- field type definitions. The "name" attribute is
        just a label to be used by field definitions.  The "class"
@@ -337,6 +341,13 @@
 	       (empty by default), and down cases.  At query time only, it
 	       also applies synonyms.
 	  -->
+    <fieldType name="text_spell" class="solr.TextField" positionIncrementGap="100" multiValued="true">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
     <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" multiValued="true">
       <analyzer type="index">
         <tokenizer class="solr.StandardTokenizerFactory"/>
