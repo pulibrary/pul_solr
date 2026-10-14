@@ -344,7 +344,8 @@
     <fieldType name="text_spell" class="solr.TextField" positionIncrementGap="100" multiValued="true">
       <analyzer>
         <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
+        <!-- Fold up accents and things. -->
+        <filter class="solr.ICUFoldingFilterFactory"/>
       </analyzer>
     </fieldType>
 
