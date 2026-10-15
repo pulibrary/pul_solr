@@ -6,21 +6,17 @@ module PulSolr
     @@solr_connection ||= {
       test: {
         host: ENV['CI'] ? "solr:SolrRocks@localhost" : "localhost",
-        catalog_solr8: {
-          port: ENV['CI'] ? '8983' : ENV['lando_blacklight_test_solr_8_conn_port'],
-          core: "solr/blacklight-core",
-        },
         catalog_solr9: {
-          port: ENV['CI'] ? '8984' : ENV['lando_blacklight_test_solr_9_conn_port'],
+          port: ENV['CI'] ? '8984' : ENV['SOLR_PORT'] || ENV['lando_blacklight_test_solr_9_conn_port'] || '8983',
           core: "solr/blacklight-core",
         },
         dss: {
-          port: ENV['CI'] ? "8984" : ENV['lando_dss_test_solr_conn_port'],
-          core: ENV['CI'] ? "solr/dss-core" : "solr/blacklight-core"
+          port: ENV['CI'] ? "8984" : ENV['SOLR_PORT'] || ENV['lando_dss_test_solr_conn_port'] || '8983',
+          core: "solr/dss-core"
         },
         pulmap: {
-          port: ENV['CI'] ? "8983" : ENV['lando_pulmap_test_solr_conn_port'],
-          core: ENV['CI'] ? "solr/pulmap-core" : "solr/blacklight-core"
+          port: ENV['CI'] ? "8983" : ENV['SOLR_PORT'] ||  ENV['lando_pulmap_test_solr_conn_port'] || '8983',
+          core: "solr/pulmap-core"
         }
       }
     }
