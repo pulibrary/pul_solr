@@ -707,6 +707,8 @@
         title_txtm_pt
         title_txtm_ru
 
+        parent_title_txtm
+
         summary_txtm
         summary_txtm_nolang
         summary_txtm_ar
