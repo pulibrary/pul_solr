@@ -5,7 +5,9 @@
     "jdk@19.0.2",
     "pkg-config@latest",
     "libffi@latest",
-    "clang@latest"
+    "clang@latest",
+    "git@latest",
+    "path:flakes/solr#default"
   ],
   "shell": {
     "init_hook": [
@@ -13,8 +15,31 @@
     ],
     "scripts": {
       "bundle": "bundle install",
-      "spec": "bundle exec rspec",
-      "cap": "bundle exec cap -T"
+      "spec":   [
+        "devbox run setup",
+        "bundle exec rspec"
+      ],
+      "cap":    "bundle exec cap -T",
+      "setup":  [
+        "devbox run bundle",
+        "lsof -i -sTCP:LISTEN | grep 8983 || if [[ -z $SOLR_PORT ]] ; then echo 'There is already something running on port 8983, export SOLR_PORT=8999 or similar to choose a different port' && exit 1; fi",
+        "devbox services up -b  && sleep 5 || echo 'services are already running'",
+        "devbox run create_solr_collections"
+      ],
+      "create_solr_collections": [
+        "[ $(curl -s -o /dev/null -w '%{http_code}' http://localhost:${SOLR_PORT:-8983}/solr/blacklight-core/admin/ping) -eq '200' ] || solr create_core -c blacklight-core -d solr_configs/catalog-production-v3 -p ${SOLR_PORT:-8983}",
+        "[ $(curl -s -o /dev/null -w '%{http_code}' http://localhost:${SOLR_PORT:-8983}/solr/dss-core/admin/ping) -eq '200' ] || solr create_core -c dss-core -d solr_configs/dss-production -p ${SOLR_PORT:-8983}",
+        "[ $(curl -s -o /dev/null -w '%{http_code}' http://localhost:${SOLR_PORT:-8983}/solr/pulmap-core/admin/ping) -eq '200' ] || solr create_core -c pulmap-core -d solr_configs/pulmap -p ${SOLR_PORT:-8983}"
+      ],
+      "delete_solr_collections": [
+        "curl -X POST http://localhost:${SOLR_PORT:-8983}/api/cores/blacklight-core/unload -H 'Content-Type: application/json' -d '{\"deleteIndex\":true,\"deleteDataDir\":true,\"deleteInstanceDir\":true}' || echo 'pulmap core was already deleted'",
+        "curl -X POST http://localhost:${SOLR_PORT:-8983}/api/cores/dss-core/unload -H 'Content-Type: application/json' -d '{\"deleteIndex\":true,\"deleteDataDir\":true,\"deleteInstanceDir\":true}' || echo 'pulmap core was already deleted'",
+        "curl -X POST http://localhost:${SOLR_PORT:-8983}/api/cores/pulmap-core/unload -H 'Content-Type: application/json' -d '{\"deleteIndex\":true,\"deleteDataDir\":true,\"deleteInstanceDir\":true}' || echo 'pulmap core was already deleted'"
+      ],
+      "recreate_solr_collections": [
+        "devbox run delete_solr_collections",
+        "devbox run create_solr_collections"
+      ]
     }
   }
 }
