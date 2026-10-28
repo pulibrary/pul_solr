@@ -507,6 +507,7 @@
 
    <!-- these fields are also used for display, so they must be stored -->
    <field name="subject_geo_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="subject_topic_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="title_sort" type="alphaNumSort" indexed="true" stored="false" />
 
    <!-- format is used for facet, display, and choosing which partial to use for the show view, so it must be stored and indexed -->
