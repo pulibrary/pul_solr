@@ -29,6 +29,11 @@ ENV ICU4J_PATH_DEST="$EXTRAS_BASE_PATH/icu4j-74.2.jar"
 ENV LUCENE_ICU_PATH_DEST="$EXTRAS_BASE_PATH/lucene-analysis-icu-9.12.2.jar"
 
 USER root
+# The solr base image ships an unpatched libbrotli1; upgrade it to the
+# security release (CVE-2026-111497, fixed in jammy 1.0.9-2ubuntu0.1).
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends --only-upgrade libbrotli1 && \
+    rm -rf /var/lib/apt/lists/*
 RUN wget $CJK_URL -O $CJK_PATH
 RUN wget $UMICH_URL -O $UMICH_PATH
 RUN wget $JTS_URL -O $JTS_PATH
